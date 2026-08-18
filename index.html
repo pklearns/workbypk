@@ -100,7 +100,7 @@
   <section id="contact" class="contact">
     <p class="eyebrow">Contact</p>
     <div class="contact-list">
-      <a class="u contact-link" href="mailto:patrick@workbypk.com">patrick@workbypk.com</a>
+      <a class="u contact-link" id="em" data-u="kcirtap" data-h="moc.kpybkrow">Email</a>
       <a class="u contact-link" href="https://www.linkedin.com/in/pwking80">LinkedIn</a>
     </div>
     <div class="rule rule-tight">
@@ -117,5 +117,8 @@
 
 </main>
 
+<script>
+(function(){var a=document.getElementById("em");if(!a)return;var u=a.dataset.u.split("").reverse().join(""),h=a.dataset.h.split("").reverse().join("");a.href="mailto:"+u+"@"+h;a.textContent=u+"@"+h;})();
+</script>
 </body>
 </html>
