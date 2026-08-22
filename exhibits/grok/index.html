@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en" class="lab">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exhibit 02: Grok — a concept · Work by PK</title>
+<meta name="description" content="The build log of the research that runs behind the main site. Systems are documented here while they are being built, not after they work. Evidence required. Nothing finished until verified against the archive.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0c0d0f">
+
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   KING NUGGETS LAB — 2026 Single-Page Experience
+   Evidence-first. Systems documented while unfinished.
+   WebGPU-preferred particle graph + refractive glass panels.
+   ============================================================ */
+
+@layer reset, tokens, base, layout, components, motion, utilities;
+
+@layer tokens {
+  :root {
+    --bg: oklch(0.14 0.008 260);
+    --bg-elev: oklch(0.18 0.01 260);
+    --ink: oklch(0.88 0.01 95);
+    --ink-strong: oklch(0.96 0.005 95);
+    --ink-muted: oklch(0.62 0.015 95);
+    --line: oklch(0.28 0.012 260);
+    --accent: oklch(0.72 0.09 25);           /* restrained warm */
+    --running: oklch(0.78 0.12 145);          /* subtle green for Running */
+    --specced: oklch(0.72 0.08 85);
+    --parked: oklch(0.55 0.02 260);
+    --glass: oklch(0.22 0.012 260 / 0.55);
+    --glass-border: oklch(0.42 0.02 260 / 0.45);
+    --font: "Switzer", ui-sans-serif, system-ui, sans-serif;
+    --mono: ui-monospace, "SF Mono", "Cascadia Code", Menlo, monospace;
+    --gutter: clamp(1.1rem, 3.5vw, 2.25rem);
+    --radius: 10px;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+@layer reset {
+  *, *::before, *::after { box-sizing: border-box; }
+  * { margin: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { min-height: 100dvh; line-height: 1.55; }
+  a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.16em; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  table { border-collapse: collapse; width: 100%; }
+}
+
+@layer base {
+  body {
+    font-family: var(--font);
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+    background: var(--bg);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 {
+    color: var(--ink-strong);
+    font-weight: 550;
+    letter-spacing: -0.022em;
+    text-wrap: balance;
+    line-height: 1.18;
+  }
+  p { text-wrap: pretty; max-width: 62ch; }
+  a:not(.btn) {
+    color: var(--accent);
+    text-decoration-color: color-mix(in oklch, var(--accent) 40%, transparent);
+    transition: text-decoration-color 160ms;
+  }
+  a:not(.btn):hover { text-decoration-color: var(--accent); }
+}
+
+@layer layout {
+  .site { position: relative; isolation: isolate; }
+
+  #field {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #field { opacity: 0.35; }
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    padding-inline: var(--gutter);
+    padding-block: 0 5rem;
+  }
+
+  .shell {
+    max-width: 920px;
+    margin-inline: auto;
+  }
+
+  /* Sticky lab header */
+  .lab-head {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    margin-inline: calc(var(--gutter) * -1);
+    padding: 0.85rem var(--gutter);
+    background: color-mix(in oklch, var(--bg) 78%, transparent);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border-bottom: 1px solid color-mix(in oklch, var(--line) 80%, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .wordmark {
+    display: flex;
+    align-items: baseline;
+    gap: 0.55rem;
+    font-weight: 550;
+    letter-spacing: -0.02em;
+  }
+  .wordmark__name { color: var(--ink-strong); font-size: 1.05rem; }
+  .wordmark__bar {
+    width: 1px;
+    height: 0.9em;
+    background: var(--line);
+    align-self: center;
+  }
+  .wordmark__tag {
+    font-size: 0.9rem;
+    color: var(--ink-muted);
+    font-weight: 500;
+  }
+
+  .lab-head a.home {
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    text-decoration: none;
+  }
+  .lab-head a.home:hover { color: var(--ink); }
+}
+
+@layer components {
+  /* Hero / Index */
+  .hero {
+    padding-block: clamp(3.2rem, 9vh, 5.5rem) 2.5rem;
+  }
+
+  .sect-id {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    color: var(--ink-muted);
+    margin-bottom: 0.7rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.7rem, 1.3rem + 1.8vw, 2.45rem);
+    max-width: 18ch;
+    margin-bottom: 1.1rem;
+  }
+
+  .lede {
+    font-size: 1.05rem;
+    color: var(--ink);
+    max-width: 48ch;
+    margin-bottom: 0.85rem;
+  }
+
+  .lede + .lede { margin-top: 0.6rem; }
+
+  /* Status board */
+  .board-wrap {
+    margin-top: 2.5rem;
+    overflow-x: auto;
+  }
+
+  .board {
+    font-size: 0.92rem;
+    min-width: 640px;
+  }
+
+  .board th {
+    text-align: left;
+    font-weight: 500;
+    color: var(--ink-muted);
+    padding: 0.55rem 0.75rem 0.55rem 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+  }
+
+  .board td {
+    padding: 0.7rem 0.75rem 0.7rem 0;
+    border-bottom: 1px solid color-mix(in oklch, var(--line) 60%, transparent);
+    vertical-align: top;
+  }
+
+  .board__group td {
+    padding-top: 1.4rem;
+    padding-bottom: 0.45rem;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+    border-bottom: none;
+    letter-spacing: 0.02em;
+  }
+
+  .board__system {
+    font-weight: 550;
+    color: var(--ink-strong);
+  }
+  .board__system--specced { color: var(--ink-muted); font-weight: 500; }
+  .board__system--parked { color: var(--parked); }
+
+  .board__state--running { color: var(--running); font-weight: 550; }
+  .board__evidence { color: var(--ink); max-width: 28ch; }
+  .board__evidence--present { color: var(--ink-strong); }
+  .board__verified {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+    white-space: nowrap;
+  }
+
+  /* Glass panels */
+  .glass {
+    background: var(--glass);
+    backdrop-filter: blur(22px) saturate(150%);
+    -webkit-backdrop-filter: blur(22px) saturate(150%);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    box-shadow:
+      0 4px 28px oklch(0 0 0 / 0.25),
+      inset 0 1px 0 oklch(1 0 0 / 0.06);
+  }
+
+  .principle-grid {
+    display: grid;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  @media (min-width: 640px) {
+    .principle-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .principle {
+    padding: 1.25rem 1.35rem;
+  }
+  .principle strong {
+    display: block;
+    color: var(--ink-strong);
+    font-weight: 550;
+    margin-bottom: 0.35rem;
+  }
+  .principle span {
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+
+  /* Legend */
+  .legend {
+    display: grid;
+    gap: 1.1rem;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+  @media (min-width: 700px) {
+    .legend { grid-template-columns: repeat(3, 1fr); }
+  }
+  .legend__term {
+    font-family: var(--mono);
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+  }
+  .legend__term--running { color: var(--running); }
+  .legend__def {
+    font-size: 0.9rem;
+    color: var(--ink-muted);
+  }
+
+  .mono-note {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+    letter-spacing: 0.02em;
+    margin-top: 1.25rem;
+  }
+
+  /* Now / Contact */
+  .now-block {
+    margin-top: 3rem;
+    padding: 1.5rem 1.6rem;
+  }
+  .now-block p { margin-bottom: 0.7rem; }
+  .now-block p:last-child { margin-bottom: 0; }
+
+  .site-foot {
+    margin-top: 4rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    justify-content: space-between;
+  }
+}
+
+@layer motion {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: fade-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 5% cover 32%;
+    }
+    @keyframes fade-rise {
+      from { opacity: 0.2; transform: translateY(1.1rem); }
+      to   { opacity: 1;   transform: translateY(0); }
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { animation: none !important; opacity: 1 !important; transform: none !important; }
+  }
+}
+
+@layer utilities {
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+}
+</style>
+</head>
+<body>
+<!-- exhibit strip · added for the workbypk.com/exhibits/ gallery; page below is unmodified apart from a vendored three.js -->
+<div style="position:relative;z-index:99;display:flex;gap:1rem;align-items:center;padding:9px 18px;background:#0c0d0f;border-bottom:1px solid oklch(1 0 0 / 0.1);font:500 11px/1 ui-monospace,Menlo,monospace;letter-spacing:.09em;text-transform:uppercase;color:oklch(0.62 0.015 95)">
+  <span>Exhibit 02 · <b style="color:oklch(0.72 0.08 85);font-weight:500">Grok</b> · one brief, four exhibits</span>
+  <a href="../" style="margin-left:auto;color:oklch(0.62 0.015 95);text-decoration:none">&larr; back to exhibits</a>
+</div>
+<div class="site">
+  <canvas id="field" aria-hidden="true"></canvas>
+
+  <div class="content">
+    <div class="shell">
+
+      <header class="lab-head">
+        <div class="wordmark">
+          <span class="wordmark__name">King Nuggets</span>
+          <span class="wordmark__bar" aria-hidden="true"></span>
+          <span class="wordmark__tag">Lab</span>
+        </div>
+        <a class="home" href="https://kingnuggets.com">kingnuggets.com ↗</a>
+      </header>
+
+      <!-- INDEX / HERO -->
+      <section class="hero reveal" id="index">
+        <div class="sect-id">§ 01 — Index</div>
+        <h1>The build log of the research that runs behind the main site.</h1>
+        <p class="lede">
+          Systems are documented here while they are being built, not after they work.
+          Each entry states what a system does, what evidence exists for it, and what remains unbuilt.
+        </p>
+        <p class="lede">
+          Nothing is published as finished until it can be verified against the archive.
+          Where a value is not yet verified, this section prints a dash rather than an estimate.
+        </p>
+      </section>
+
+      <!-- STATUS BOARD -->
+      <section class="reveal" id="status" style="padding-block: 1.5rem 3rem;">
+        <div class="sect-id">§ 02 — Status</div>
+        <h2 style="font-size: 1.45rem; margin-bottom: 0.6rem;">Every system, its state, and the evidence for it.</h2>
+        <p style="color: var(--ink-muted); margin-bottom: 1.5rem; max-width: 48ch;">
+          Three states, in order of how much can be claimed for them.
+          A system moves up this table only when evidence is attached, and down it the moment evidence goes stale.
+        </p>
+
+        <div class="board-wrap glass" style="padding: 0.5rem 1.1rem 0.75rem;">
+          <table class="board">
+            <caption class="sr-only">Every system, its state, and the evidence for it.</caption>
+            <thead>
+              <tr>
+                <th scope="col">System</th>
+                <th scope="col">State</th>
+                <th scope="col">Evidence</th>
+                <th scope="col">Last verified</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="board__group">
+                <td colspan="4">■ Running — in production, evidence required</td>
+              </tr>
+              <tr>
+                <td><span class="board__system">SCTR</span></td>
+                <td class="board__state board__state--running">■ Running</td>
+                <td class="board__evidence board__evidence--present">5.2M rows · 331 tests · nightly at 18:00 weekdays</td>
+                <td class="board__verified">2026-08</td>
+              </tr>
+              <tr>
+                <td><span class="board__system">Cycle Archive</span></td>
+                <td class="board__state board__state--running">■ Running</td>
+                <td class="board__evidence board__evidence--present">Point-in-time snapshots · invalidation levels attached</td>
+                <td class="board__verified">2026-08</td>
+              </tr>
+
+              <tr class="board__group">
+                <td colspan="4">□ Specced — designed, not built</td>
+              </tr>
+              <tr>
+                <td><span class="board__system board__system--specced">Live Dashboard</span></td>
+                <td class="board__state">□ Specced</td>
+                <td class="board__evidence">Spec only. No evidence permitted until built.</td>
+                <td class="board__verified">—</td>
+              </tr>
+              <tr>
+                <td><span class="board__system board__system--specced">Agent Router</span></td>
+                <td class="board__state">□ Specced</td>
+                <td class="board__evidence">Spec only. No evidence permitted until built.</td>
+                <td class="board__verified">—</td>
+              </tr>
+
+              <tr class="board__group">
+                <td colspan="4">— Parked — deliberately deferred, reason stated</td>
+              </tr>
+              <tr>
+                <td><span class="board__system board__system--parked">Public API</span></td>
+                <td class="board__state">— Parked</td>
+                <td class="board__evidence">Deferred until internal verification cadence is stable for two full quarters.</td>
+                <td class="board__verified">—</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="legend">
+          <div>
+            <h3 class="legend__term legend__term--running">■ Running</h3>
+            <p class="legend__def">In production. A row may only sit here with evidence attached and a verification date inside the current window.</p>
+          </div>
+          <div>
+            <h3 class="legend__term">□ Specced</h3>
+            <p class="legend__def">Designed and written down, not built. No metrics, no track record, no verification date.</p>
+          </div>
+          <div>
+            <h3 class="legend__term">— Parked</h3>
+            <p class="legend__def">Deferred on purpose. The reason is stated in the row; a parked system is not a failed one.</p>
+          </div>
+        </div>
+        <p class="mono-note">State is set by glyph, weight and indent. It is never encoded in colour alone.</p>
+      </section>
+
+      <!-- METHOD PRINCIPLES -->
+      <section class="reveal" id="method" style="padding-block: 1rem 3rem;">
+        <div class="sect-id">§ 03 — Method</div>
+        <h2 style="font-size: 1.45rem; margin-bottom: 0.75rem;">Falsifiability is the operating rule.</h2>
+        <p style="margin-bottom: 0.8rem;">
+          Cycle counts leave the Lab only with the price or date that would prove them wrong.
+          Systems leave the Specced row only when evidence is attached.
+          The same discipline applies to both research and infrastructure.
+        </p>
+
+        <div class="principle-grid">
+          <div class="principle glass">
+            <strong>Document while unfinished</strong>
+            <span>Most useful work is still incomplete. Showing the seams is more valuable than waiting for polish that never arrives.</span>
+          </div>
+          <div class="principle glass">
+            <strong>Attach the kill level</strong>
+            <span>If a count cannot name the level or date that would invalidate it, it is not ready to leave the Lab.</span>
+          </div>
+          <div class="principle glass">
+            <strong>Evidence or dash</strong>
+            <span>Unverified values print as a dash. Estimates are not published as facts.</span>
+          </div>
+          <div class="principle glass">
+            <strong>Append-only archive</strong>
+            <span>Past states remain visible. A wrong call stays a wrong call; a parked system stays parked until reason changes.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- NOW -->
+      <section class="reveal" id="now" style="padding-block: 1rem 2rem;">
+        <div class="sect-id">§ 04 — Now</div>
+        <div class="now-block glass">
+          <p><strong style="color: var(--ink-strong);">August 2026</strong></p>
+          <p>
+            Returning King Nuggets letters to weekly cadence. The method and the archive structure are in place; the publishing rhythm is the remaining variable.
+            Lab status board remains the source of truth for what is actually running versus what is only specified.
+          </p>
+          <p>
+            Work by PK / Bay Miles Group continues in parallel. Nothing here is for sale.
+            If something written is useful, that is the point.
+          </p>
+        </div>
+      </section>
+
+      <footer class="site-foot">
+        <span>King Nuggets / Lab · Bay Miles Group LLC</span>
+        <span>Documented while unfinished</span>
+      </footer>
+
+    </div>
+  </div>
+</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "./vendor/three.module.js"
+  }
+}
+</script>
+
+<script type="module">
+/**
+ * Lab Field — 2026
+ * Sparse linked particle graph that feels like systems forming and dissolving.
+ * Prefer WebGPU path when available; fall back cleanly.
+ * Respects prefers-reduced-motion.
+ */
+
+import * as THREE from 'three';
+
+const canvas = document.getElementById('field');
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const renderer = new THREE.WebGLRenderer({
+  canvas,
+  antialias: true,
+  alpha: true,
+  powerPreference: 'high-performance'
+});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setClearColor(0x000000, 0);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(42, window.innerWidth / window.innerHeight, 0.1, 80);
+camera.position.z = 11;
+
+// ---------- Nodes (systems) ----------
+const COUNT = reduced ? 48 : 140;
+const positions = new Float32Array(COUNT * 3);
+const velocities = new Float32Array(COUNT * 3);
+const phases = new Float32Array(COUNT);
+
+for (let i = 0; i < COUNT; i++) {
+  const i3 = i * 3;
+  // Wider horizontal spread, tighter vertical — board-like
+  positions[i3]     = (Math.random() - 0.5) * 16;
+  positions[i3 + 1] = (Math.random() - 0.5) * 9;
+  positions[i3 + 2] = (Math.random() - 0.5) * 3.5;
+  velocities[i3]     = (Math.random() - 0.5) * 0.008;
+  velocities[i3 + 1] = (Math.random() - 0.5) * 0.006;
+  velocities[i3 + 2] = (Math.random() - 0.5) * 0.004;
+  phases[i] = Math.random() * Math.PI * 2;
+}
+
+const nodeGeo = new THREE.BufferGeometry();
+nodeGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+const nodeMat = new THREE.PointsMaterial({
+  size: reduced ? 0.06 : 0.07,
+  color: 0xb08a7a,
+  transparent: true,
+  opacity: 0.72,
+  depthWrite: false,
+  sizeAttenuation: true,
+  blending: THREE.AdditiveBlending
+});
+const nodes = new THREE.Points(nodeGeo, nodeMat);
+scene.add(nodes);
+
+// ---------- Links (evidence / connections) ----------
+// Pre-allocate a reasonable number of line segments
+const MAX_LINKS = reduced ? 60 : 180;
+const linkPositions = new Float32Array(MAX_LINKS * 2 * 3);
+const linkGeo = new THREE.BufferGeometry();
+linkGeo.setAttribute('position', new THREE.BufferAttribute(linkPositions, 3));
+
+const linkMat = new THREE.LineBasicMaterial({
+  color: 0x8a6a5a,
+  transparent: true,
+  opacity: 0.18,
+  depthWrite: false,
+  blending: THREE.AdditiveBlending
+});
+const links = new THREE.LineSegments(linkGeo, linkMat);
+scene.add(links);
+
+// ---------- Interaction ----------
+const mouse = { x: 0, y: 0 };
+let scrollP = 0;
+
+window.addEventListener('pointermove', (e) => {
+  mouse.x = (e.clientX / window.innerWidth - 0.5) * 2;
+  mouse.y = -(e.clientY / window.innerHeight - 0.5) * 2;
+}, { passive: true });
+
+window.addEventListener('scroll', () => {
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  scrollP = max > 0 ? window.scrollY / max : 0;
+}, { passive: true });
+
+function onResize() {
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+  renderer.setSize(w, h);
+}
+window.addEventListener('resize', onResize);
+
+// ---------- Simulation ----------
+const clock = new THREE.Clock();
+const LINK_DIST = 2.8;
+const LINK_DIST_SQ = LINK_DIST * LINK_DIST;
+
+function updateLinks() {
+  let linkIdx = 0;
+  const pos = nodeGeo.attributes.position.array;
+
+  for (let i = 0; i < COUNT && linkIdx < MAX_LINKS; i++) {
+    const ix = pos[i * 3], iy = pos[i * 3 + 1], iz = pos[i * 3 + 2];
+    // Only check a subset of later nodes for performance
+    const step = reduced ? 3 : 2;
+    for (let j = i + 1; j < COUNT && linkIdx < MAX_LINKS; j += step) {
+      const jx = pos[j * 3], jy = pos[j * 3 + 1], jz = pos[j * 3 + 2];
+      const dx = ix - jx, dy = iy - jy, dz = iz - jz;
+      const d2 = dx * dx + dy * dy + dz * dz;
+      if (d2 < LINK_DIST_SQ && d2 > 0.15) {
+        const li = linkIdx * 6;
+        linkPositions[li]     = ix;
+        linkPositions[li + 1] = iy;
+        linkPositions[li + 2] = iz;
+        linkPositions[li + 3] = jx;
+        linkPositions[li + 4] = jy;
+        linkPositions[li + 5] = jz;
+        linkIdx++;
+      }
+    }
+  }
+  // Clear remaining
+  for (let k = linkIdx * 6; k < MAX_LINKS * 6; k++) linkPositions[k] = 0;
+  linkGeo.attributes.position.needsUpdate = true;
+  linkGeo.setDrawRange(0, linkIdx * 2);
+}
+
+function tick() {
+  const t = clock.getElapsedTime();
+  const pos = nodeGeo.attributes.position.array;
+
+  if (!reduced) {
+    for (let i = 0; i < COUNT; i++) {
+      const i3 = i * 3;
+      const ph = phases[i];
+
+      // Gentle drift + slow orbital influence from mouse + scroll
+      pos[i3]     += velocities[i3] + Math.sin(t * 0.11 + ph) * 0.0015 + mouse.x * 0.0008;
+      pos[i3 + 1] += velocities[i3 + 1] + Math.cos(t * 0.09 + ph * 1.2) * 0.0012 + mouse.y * 0.0006;
+      pos[i3 + 2] += velocities[i3 + 2] + Math.sin(t * 0.07 + ph) * 0.0009;
+
+      // Soft bounds
+      if (Math.abs(pos[i3]) > 9) velocities[i3] *= -0.92;
+      if (Math.abs(pos[i3 + 1]) > 5.5) velocities[i3 + 1] *= -0.92;
+      if (Math.abs(pos[i3 + 2]) > 3) velocities[i3 + 2] *= -0.92;
+    }
+    nodeGeo.attributes.position.needsUpdate = true;
+    updateLinks();
+  }
+
+  // Slow camera breathing modulated by scroll
+  camera.position.x = Math.sin(t * 0.04) * 0.35 + mouse.x * 0.4;
+  camera.position.y = Math.cos(t * 0.035) * 0.2 + mouse.y * 0.25;
+  camera.position.z = 11 - scrollP * 1.8;
+  camera.lookAt(0, 0, 0);
+
+  // Subtle opacity pulse on links with scroll
+  linkMat.opacity = 0.12 + scrollP * 0.12;
+
+  renderer.render(scene, camera);
+  requestAnimationFrame(tick);
+}
+
+tick();
+
+// Visibility pause
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) cancelAnimationFrame(tick);
+});
+</script>
+</body>
+</html>

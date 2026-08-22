@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exhibits — Work by PK</title>
+<meta name="description" content="One brief, four single-page experiences: GPT, Grok, and two takes from Fable. A design experiment for workbypk.com.">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --garnet: #6E1E28;
+  --garnet-deep: #41111A;
+  --paper: #E4E5E2;
+  --gold: #CDA96A;
+  --ink: #221317;
+  --ink-soft: color-mix(in oklch, var(--ink) 70%, var(--paper));
+  --rule: color-mix(in oklch, var(--garnet) 22%, var(--paper));
+  --mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+  --s--1: clamp(0.8rem, 0.76rem + 0.2vw, 0.9rem);
+  --s-0: clamp(1rem, 0.94rem + 0.3vw, 1.15rem);
+  --s-1: clamp(1.25rem, 1.1rem + 0.7vw, 1.6rem);
+  --s-2: clamp(1.9rem, 1.4rem + 2.4vw, 3.2rem);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Switzer', ui-sans-serif, system-ui, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: var(--s-0);
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--garnet); color: #E2C48C; }
+
+.wrap { max-width: 66ch; margin-inline: auto; padding: clamp(3rem, 8vh, 5.5rem) clamp(1.25rem, 5vw, 2rem); }
+
+.top { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 2.6rem; }
+.wordmark {
+  display: inline-grid; place-items: center;
+  width: 40px; aspect-ratio: 1;
+  background: var(--garnet); color: var(--gold);
+  font-weight: 800; font-size: 1.05rem;
+}
+.top a { color: var(--garnet); text-decoration: none; font-size: var(--s--1); }
+.top a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+h1 { font-size: var(--s-2); font-weight: 700; letter-spacing: -0.02em; line-height: 1.08; text-wrap: balance; color: var(--garnet-deep); margin-bottom: 1.2rem; }
+p { margin-block: 1em; text-wrap: pretty; }
+.dim { color: var(--ink-soft); }
+
+.brief {
+  margin-block: 1.8rem;
+  padding: 1.1rem 1.3rem;
+  border-left: 3px solid var(--gold);
+  background: color-mix(in oklch, var(--garnet) 5%, var(--paper));
+  font-size: var(--s-0);
+  font-style: italic;
+  color: color-mix(in oklch, var(--ink) 85%, var(--paper));
+  text-wrap: pretty;
+}
+.brief b { font-style: normal; font-weight: 600; font-size: var(--s--1); letter-spacing: 0.12em; text-transform: uppercase; color: var(--garnet); display: block; margin-bottom: 0.4rem; }
+
+.exhibits { margin-top: 2.6rem; border-top: 1px solid var(--rule); }
+.ex {
+  display: block; text-decoration: none; color: inherit;
+  padding: 1.6rem 0 1.7rem;
+  border-bottom: 1px solid var(--rule);
+  transition: background 0.15s;
+}
+.ex:hover { background: color-mix(in oklch, var(--garnet) 4%, var(--paper)); }
+.ex .num { font: 600 var(--s--1)/1 var(--mono); letter-spacing: 0.12em; color: var(--gold); }
+.ex h2 { font-size: var(--s-1); font-weight: 700; letter-spacing: -0.01em; color: var(--garnet-deep); margin: 0.45rem 0 0.2rem; }
+.ex h2 span { color: var(--garnet); }
+.ex h2 .arrow { color: var(--gold); transition: translate 0.15s; display: inline-block; }
+.ex:hover h2 .arrow { translate: 4px 0; }
+.ex .desc { color: var(--ink-soft); max-width: 58ch; margin: 0.3rem 0 0.7rem; }
+.ex .fp {
+  font: 500 var(--s--1)/1.7 var(--mono);
+  letter-spacing: 0.03em;
+  color: color-mix(in oklch, var(--ink) 55%, var(--paper));
+}
+.ex .fp b { color: var(--garnet); font-weight: 500; }
+
+.after { margin-top: 2.4rem; font-size: var(--s--1); color: var(--ink-soft); }
+.after a { color: var(--garnet); }
+.sig { margin-top: 2.2rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <span class="wordmark" aria-hidden="true">PK</span>
+    <a href="https://workbypk.com">← workbypk.com</a>
+  </div>
+
+  <h1>Exhibits.</h1>
+  <p>A design experiment. I gave the same brief to three frontier models — GPT, Grok, and Fable — and asked each to build a single-page experience for this site using whatever the web could do in August 2026. Fable answered twice: once restrained, once told explicitly to go loud. Nothing here is a template, a framework, or a picked winner. Four files, one prompt.</p>
+
+  <div class="brief">
+    <b>The brief, verbatim</b>
+    "Push the boundaries of what's possible in web design with the absolute latest in CSS, WebGL, shaders, etc. as of August 2026 and create the most impressive, informational single-page experience you can imagine. Build it based on concepts associated with workbypk.com."
+  </div>
+
+  <p class="dim">Everything below is a concept, not the site. All market-looking lines are synthetic. Read them the way you'd read a backtest: check what the code does, not what it says it does.</p>
+
+  <div class="exhibits">
+
+    <a class="ex" href="gpt/">
+      <span class="num">EXHIBIT 01</span>
+      <h2><span>GPT</span> — the cockpit <span class="arrow">→</span></h2>
+      <p class="desc">Maximal terminal aesthetic. The only entry that actually ships WebGPU — a WGSL shader with WebGL2 and canvas fallbacks beneath it, and a label telling you which tier you landed on. Abandons the house palette entirely and argues its choices in a README.</p>
+      <p class="fp"><b>webgpu → webgl2 → 2d</b> · inter + space grotesk · cyan/violet on near-black · 85 KB</p>
+    </a>
+
+    <a class="ex" href="grok/">
+      <span class="num">EXHIBIT 02</span>
+      <h2><span>Grok</span> — the graph <span class="arrow">→</span></h2>
+      <p class="desc">The minimalist. A quarter the size of the cockpit, the only one that kept Switzer, colors in oklch throughout. A sparse particle graph of systems forming and dissolving. Its docstring prefers a WebGPU path; the code renders WebGL through three.js.</p>
+      <p class="fp"><b>webgl via three.js</b> (vendored) · switzer · oklch · 22 KB + library</p>
+    </a>
+
+    <a class="ex" href="shape-of-time/">
+      <span class="num">EXHIBIT 03</span>
+      <h2><span>Fable</span> — take one, the essay <span class="arrow">→</span></h2>
+      <p class="desc">Restraint as the position. An interactive essay in the house garnet and paper: a shader whose hero line is literally a sum of three cycles, an instrument with a phase readout, margin notes anchored beside the prose, and cycles you can hear as a chord.</p>
+      <p class="fp"><b>webgl2 + web audio</b> · switzer · garnet/paper/gold · 37 KB</p>
+    </a>
+
+    <a class="ex" href="fable/">
+      <span class="num">EXHIBIT 04</span>
+      <h2><span>Fable</span> — take two, one full cycle <span class="arrow">→</span></h2>
+      <p class="desc">The same model told to go loud. The page itself is one cycle, trough to trough: a single phase variable drives the shader's energy, a revolving dial, a scrubbable regime map, and a drone that brightens at the crest — all on one shared clock.</p>
+      <p class="fp"><b>webgl2 + web audio</b> · clash display + switzer · night garnet/gold/ember · 34 KB</p>
+    </a>
+
+  </div>
+
+  <p class="after">Notes on what the four builds agree on, where they diverge, and what their comments claim versus what their code does — coming in <a href="https://pklearns.substack.com">the build log</a>.</p>
+
+  <p class="sig">— Patrick King, CMT</p>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The shape of time — Patrick King, CMT</title>
+<meta name="description" content="An interactive essay on market cycles, rhythm, and building in public. Patrick King, CMT.">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700,800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   The shape of time — v2
+   Patrick King, CMT · garnet #6E1E28 · paper #E4E5E2
+   ============================================================ */
+
+@property --scroll-p { syntax: '<number>'; inherits: true; initial-value: 0; }
+
+:root {
+  --garnet: #6E1E28;
+  --garnet-deep: #41111A;
+  --garnet-black: #24090E;
+  --paper: #E4E5E2;
+  --gold: #CDA96A;
+  --gold-bright: #E2C48C;
+  --ink: #221317;
+  --ink-soft: color-mix(in oklch, var(--ink) 70%, var(--paper));
+  --rule: color-mix(in oklch, var(--garnet) 22%, var(--paper));
+  --measure: 62ch;
+  --step--1: clamp(0.82rem, 0.78rem + 0.2vw, 0.92rem);
+  --step-0: clamp(1.02rem, 0.95rem + 0.35vw, 1.19rem);
+  --step-1: clamp(1.25rem, 1.1rem + 0.7vw, 1.6rem);
+  --step-2: clamp(1.7rem, 1.4rem + 1.6vw, 2.6rem);
+  --step-3: clamp(2.4rem, 1.7rem + 3.6vw, 4.6rem);
+  --step-4: clamp(3rem, 1.8rem + 6.5vw, 7.2rem);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-timeline: --page block;
+}
+
+body {
+  font-family: 'Switzer', ui-sans-serif, system-ui, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: var(--step-0);
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--garnet); color: var(--gold-bright); }
+
+/* ---------- SIGNATURE 1: progress as a composite wave ----------
+   The reading indicator isn't a bar. It's the same three-cycle
+   sum the essay is about, drawn in as you descend. ------------- */
+.progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 34px;
+  z-index: 60;
+  pointer-events: none;
+  background: linear-gradient(var(--paper) 55%, transparent);
+}
+.progress svg { width: 100%; height: 100%; display: block; }
+.progress .track {
+  fill: none;
+  stroke: color-mix(in oklch, var(--garnet) 15%, var(--paper));
+  stroke-width: 1.5;
+}
+.progress .drawn {
+  fill: none;
+  stroke: var(--garnet);
+  stroke-width: 2;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw linear both;
+  animation-timeline: --page;
+}
+@keyframes draw { to { stroke-dashoffset: 0; } }
+
+/* ---------- hero ---------- */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  background: var(--garnet-black);
+  color: var(--paper);
+  overflow: clip;
+  animation: hero-exit linear both;
+  animation-timeline: --page;
+  animation-range: 0 90svh;
+}
+@keyframes hero-exit {
+  to { filter: brightness(0.5) saturate(0.8); transform: scale(1.04); }
+}
+
+#field { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+.hero-inner { position: relative; z-index: 2; text-align: center; padding: 2rem; max-width: 56rem; }
+
+.wordmark {
+  display: inline-grid; place-items: center;
+  width: clamp(52px, 8vw, 72px); aspect-ratio: 1;
+  background: var(--garnet); color: var(--gold);
+  font-weight: 800; font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+  margin-bottom: clamp(1.5rem, 4vh, 3rem);
+  box-shadow: 0 0 0 1px color-mix(in oklch, var(--gold) 35%, transparent),
+              0 24px 60px -20px rgb(0 0 0 / 0.6);
+}
+
+.hero h1 {
+  font-size: var(--step-4); font-weight: 700;
+  line-height: 1.02; letter-spacing: -0.03em;
+  text-wrap: balance; color: var(--paper);
+}
+.hero h1 em { font-style: normal; color: var(--gold-bright); }
+
+.hero .dek {
+  margin-top: 1.4rem; font-size: var(--step-1);
+  color: color-mix(in oklch, var(--paper) 78%, var(--garnet));
+  text-wrap: balance; max-width: 38ch; margin-inline: auto;
+}
+
+.kicker {
+  font-size: var(--step--1); letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 1.1rem; font-weight: 600;
+}
+
+.scroll-cue {
+  position: absolute; bottom: 2rem; left: 50%; translate: -50% 0; z-index: 2;
+  width: 1px; height: 56px;
+  background: linear-gradient(var(--gold), transparent); opacity: 0.8;
+}
+.scroll-cue::before {
+  content: ''; position: absolute; top: 0; left: -1.5px;
+  width: 4px; height: 4px; border-radius: 50%; background: var(--gold-bright);
+  animation: drip 2.4s cubic-bezier(0.6,0,0.3,1) infinite;
+}
+@keyframes drip { 0%{top:0;opacity:1} 80%,100%{top:52px;opacity:0} }
+
+/* ---------- scaffolding ---------- */
+.band { padding: clamp(4.5rem, 12vh, 9rem) clamp(1.25rem, 5vw, 4rem); }
+.prose { max-width: var(--measure); margin-inline: auto; }
+.prose p { margin-block: 1.1em; text-wrap: pretty; }
+.prose p:first-of-type { margin-top: 0; }
+
+.eyebrow {
+  font-size: var(--step--1); letter-spacing: 0.14em; text-transform: uppercase;
+  font-weight: 600; color: var(--garnet);
+  display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.6rem;
+}
+.eyebrow::after { content: ''; height: 1px; flex: 0 0 3rem; background: currentColor; opacity: 0.4; }
+
+h2 {
+  font-size: var(--step-3); font-weight: 700; letter-spacing: -0.025em;
+  line-height: 1.05; text-wrap: balance; margin-bottom: 1.8rem; color: var(--garnet-deep);
+}
+
+.reveal {
+  animation: rise linear both;
+  animation-timeline: view();
+  animation-range: entry 5% entry 45%;
+}
+@keyframes rise { from { opacity: 0; transform: translateY(2.2rem); } to { opacity: 1; transform: none; } }
+
+/* ---------- SIGNATURE 2: anchored margin notes ----------
+   Prose-first means the asides belong beside the text, not
+   inside it. CSS anchor positioning puts them there when
+   there's room, and inline when there isn't. -------------- */
+.anchor-term {
+  anchor-name: var(--a);
+  border-bottom: 1px dashed var(--garnet);
+  cursor: help;
+  font-weight: 500;
+}
+.margin-note {
+  font-size: var(--step--1);
+  line-height: 1.45;
+  color: var(--ink-soft);
+  border-left: 2px solid var(--gold);
+  padding-left: 0.85rem;
+  margin: 0.9rem 0 1.4rem;
+  max-width: 34ch;
+}
+.margin-note b { color: var(--garnet); font-weight: 600; }
+
+@supports (anchor-name: --x) {
+  @media (min-width: 1080px) {
+    .margin-note {
+      position: absolute;
+      position-anchor: var(--a);
+      position-area: right;
+      margin: 0 0 0 3rem;
+      width: 20ch;
+      position-try-fallbacks: flip-inline, block-end;
+    }
+  }
+}
+
+/* ---------- interlude ---------- */
+.interlude { background: var(--garnet); color: var(--paper); text-align: center; overflow: clip; }
+.interlude .band { padding-block: clamp(5rem, 16vh, 11rem); }
+.interlude blockquote {
+  font-size: var(--step-2); font-weight: 500; letter-spacing: -0.015em;
+  line-height: 1.25; max-width: 26ch; margin-inline: auto; text-wrap: balance;
+}
+.interlude blockquote em { font-style: normal; color: var(--gold-bright); }
+.interlude .attr {
+  margin-top: 1.6rem; font-size: var(--step--1); letter-spacing: 0.12em;
+  text-transform: uppercase; color: color-mix(in oklch, var(--gold) 75%, var(--paper));
+}
+.interlude::before {
+  content: ''; position: absolute; inset: -20% -10%;
+  background: repeating-linear-gradient(100deg, transparent 0 38px,
+    color-mix(in oklch, var(--gold) 14%, transparent) 38px 39px);
+  opacity: 0.5;
+  animation: drift linear both; animation-timeline: view();
+}
+@keyframes drift { from { transform: translateX(-4%); } to { transform: translateX(4%); } }
+
+/* ---------- the instrument ---------- */
+.lab { background: radial-gradient(120% 90% at 50% 0%, color-mix(in oklch, var(--garnet) 6%, var(--paper)), var(--paper) 55%); }
+.lab-frame { max-width: 72rem; margin-inline: auto; }
+
+.lab-stage {
+  position: relative;
+  border: 1px solid var(--rule);
+  background: color-mix(in oklch, var(--paper) 88%, white);
+  box-shadow: 0 30px 80px -50px color-mix(in oklch, var(--garnet) 55%, transparent);
+}
+#lab-canvas { display: block; width: 100%; height: clamp(320px, 50vh, 500px); touch-action: pan-y; cursor: crosshair; }
+
+/* SIGNATURE 3: the readout — turns the chart into an instrument */
+.readout {
+  position: absolute; top: 0; right: 0;
+  display: grid; gap: 0.35rem;
+  padding: 0.9rem 1rem;
+  background: color-mix(in oklch, var(--paper) 92%, white);
+  border-left: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+  font-size: var(--step--1); font-variant-numeric: tabular-nums;
+  min-width: 15rem;
+  transition: opacity 0.2s;
+}
+.readout[data-idle="true"] { opacity: 0.45; }
+.readout .row { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; }
+.readout .row span:first-child { color: var(--ink-soft); display: flex; align-items: center; gap: 0.5rem; }
+.readout .row.total { border-top: 1px solid var(--rule); padding-top: 0.35rem; margin-top: 0.15rem; font-weight: 600; }
+.readout .swatch { width: 14px; height: 3px; background: var(--c); flex: none; }
+.readout .phase {
+  margin-top: 0.35rem; padding-top: 0.5rem; border-top: 1px solid var(--rule);
+  color: var(--garnet); font-weight: 600;
+}
+@media (max-width: 620px) {
+  .readout { position: static; border-left: 0; border-top: 1px solid var(--rule); min-width: 0; }
+}
+
+.lab-controls {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-top: 0;
+}
+.control { background: var(--paper); padding: 1.1rem 1.2rem; }
+.control label { display: flex; align-items: center; gap: 0.7rem; font-weight: 600; font-size: var(--step--1); cursor: pointer; user-select: none; }
+.control input[type="checkbox"] {
+  appearance: none; width: 34px; height: 20px;
+  border: 1px solid var(--garnet); background: transparent;
+  position: relative; cursor: pointer; flex: none; transition: background 0.25s;
+}
+.control input[type="checkbox"]::after {
+  content: ''; position: absolute; top: 3px; left: 3px; width: 12px; height: 12px;
+  background: var(--garnet); transition: translate 0.25s cubic-bezier(0.5,0,0.2,1.4), background 0.25s;
+}
+.control input[type="checkbox"]:checked { background: var(--garnet); }
+.control input[type="checkbox"]:checked::after { translate: 14px 0; background: var(--gold-bright); }
+.control input:focus-visible, .control button:focus-visible { outline: 2px solid var(--garnet); outline-offset: 3px; }
+.control .hint { margin-top: 0.45rem; font-size: var(--step--1); color: var(--ink-soft); }
+.control input[type="range"] { width: 100%; margin-top: 0.7rem; accent-color: var(--garnet); }
+.control:has(input[type="checkbox"]:not(:checked)) { color: color-mix(in oklch, var(--ink) 42%, var(--paper)); }
+
+/* SIGNATURE 4: hear the cycles */
+.audio-control { display: grid; align-content: start; }
+.audio-control button {
+  font: inherit; font-weight: 600; font-size: var(--step--1);
+  background: var(--garnet); color: var(--gold-bright);
+  border: 0; padding: 0.55rem 0.9rem; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 0.6rem; justify-self: start;
+  transition: background 0.2s;
+}
+.audio-control button:hover { background: var(--garnet-deep); }
+.audio-control button[aria-pressed="true"] { background: var(--garnet-deep); }
+.audio-control .dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: color-mix(in oklch, var(--gold) 45%, transparent);
+}
+.audio-control button[aria-pressed="true"] .dot { background: var(--gold-bright); animation: pulse 1.6s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: 0.25; } }
+
+.lab-note { max-width: var(--measure); margin: 2rem auto 0; font-size: var(--step--1); color: var(--ink-soft); }
+
+/* ---------- the work ---------- */
+.prop-list { max-width: 72rem; margin-inline: auto; border-top: 1px solid var(--rule); }
+.prop {
+  display: grid; grid-template-columns: minmax(9rem, 16rem) 1fr;
+  gap: clamp(1rem, 4vw, 3rem);
+  padding: clamp(1.8rem, 4vh, 3rem) 0;
+  border-bottom: 1px solid var(--rule); align-items: start;
+}
+.prop h3 { font-size: var(--step-1); font-weight: 700; color: var(--garnet-deep); line-height: 1.15; }
+.prop h3 span {
+  display: block; font-size: var(--step--1); font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gold); margin-top: 0.4rem;
+}
+.prop p { color: var(--ink-soft); max-width: 58ch; text-wrap: pretty; }
+.prop p b { color: var(--ink); font-weight: 600; }
+@media (max-width: 640px) { .prop { grid-template-columns: 1fr; gap: 0.6rem; } }
+
+/* ---------- principles ---------- */
+.principles { background: var(--garnet-deep); color: var(--paper); }
+.principles h2 { color: var(--paper); }
+.principles .eyebrow { color: var(--gold); }
+.rule-list { max-width: var(--measure); margin-inline: auto; counter-reset: rule; }
+.rule-item {
+  counter-increment: rule; padding: 1.5rem 0 1.5rem 4rem; position: relative;
+  border-top: 1px solid color-mix(in oklch, var(--gold) 24%, transparent); text-wrap: pretty;
+}
+.rule-item::before {
+  content: counter(rule, decimal-leading-zero);
+  position: absolute; left: 0; top: 1.6rem;
+  font-size: var(--step--1); font-weight: 600; letter-spacing: 0.08em; color: var(--gold);
+}
+.rule-item b { color: var(--gold-bright); font-weight: 600; }
+
+/* ---------- colophon ---------- */
+.colophon { background: var(--garnet-black); color: color-mix(in oklch, var(--paper) 72%, var(--garnet)); font-size: var(--step--1); }
+.colophon .band { padding-block: clamp(3rem, 8vh, 5rem); }
+.colophon .prose { display: grid; gap: 0.5rem; }
+.colophon a { color: var(--gold); text-decoration: none; }
+.colophon a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.colophon .sig { margin-top: 1.6rem; color: var(--paper); }
+
+/* ---------- floors ---------- */
+@supports not (animation-timeline: view()) {
+  .reveal, .progress .drawn, .hero, .interlude::before { animation: none; }
+  .reveal { opacity: 1; transform: none; }
+  .progress .drawn { stroke-dashoffset: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal, .hero, .interlude::before, .scroll-cue::before, .audio-control .dot { animation: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+<!-- exhibit strip · added for the workbypk.com/exhibits/ gallery -->
+<div style="position:relative;z-index:99;display:flex;gap:1rem;align-items:center;padding:9px 18px;background:#E4E5E2;border-bottom:1px solid rgba(110,30,40,.22);font:500 11px/1 ui-monospace,Menlo,monospace;letter-spacing:.09em;text-transform:uppercase;color:#6E1E28">
+  <span>Exhibit 03 · <b style="color:#6E1E28;font-weight:600">Fable</b> · take one · one brief, four exhibits</span>
+  <a href="../" style="margin-left:auto;color:#6E1E28;text-decoration:none">&larr; back to exhibits</a>
+</div>
+
+<!-- progress as a composite wave -->
+<div class="progress" aria-hidden="true">
+  <svg viewBox="0 0 1200 34" preserveAspectRatio="none">
+    <path class="track" id="wave-track" pathLength="1"></path>
+    <path class="drawn" id="wave-drawn" pathLength="1"></path>
+  </svg>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="hero-inner">
+    <div class="wordmark" aria-label="PK">PK</div>
+    <p class="kicker">Patrick King, CMT · an interactive essay</p>
+    <h1>Markets don't move in lines.<br>They move in <em>rhythm</em>.</h1>
+    <p class="dek">On cycles, timing, and the discipline of building something in public every single week.</p>
+  </div>
+  <div class="scroll-cue" aria-hidden="true"></div>
+</section>
+
+<!-- ============ PREMISE ============ -->
+<section class="band" aria-labelledby="premise-h">
+  <div class="prose reveal">
+    <p class="eyebrow">The premise</p>
+    <h2 id="premise-h">Price is the surface. Time is the structure.</h2>
+    <p>Most charts get read left to right as a story about price: it went up, it went down, someone was right, someone wasn't. That's the surface. Underneath it, markets keep time. Shorter rhythms nest inside longer ones, and the shape you see on any chart is the sum of rhythms you can't see individually.</p>
+    <p>That's not mysticism, it's arithmetic. Add a slow wave, a medium wave, and a fast wave and you get something lopsided, noisy, alive — something that looks like a market. Cycle analysis runs that arithmetic backwards: take the composite apart, find where each rhythm sits in its swing, and ask what that says about the next <span class="anchor-term" style="--a:--low">low</span>.</p>
+    <aside class="margin-note" style="--a:--low"><b>Why lows, not highs.</b> Cycles are measured trough to trough. Lows are where the rhythms agree and the count resets; highs drift around inside the swing depending on pressure.</aside>
+    <p>I spent about twenty years inside institutional capital markets before earning the CMT charter and starting to do this work in the open. What follows is a demonstration of the idea, as methodology rather than advice. Two sections down you can take the wave apart yourself — and, if you want, hear it.</p>
+  </div>
+</section>
+
+<!-- ============ INTERLUDE ============ -->
+<section class="interlude" aria-label="Pull quote">
+  <div class="band">
+    <blockquote class="reveal">A trend is just the part of a cycle <em>too long to see</em> from where you're standing.</blockquote>
+    <p class="attr reveal">The working hypothesis</p>
+  </div>
+</section>
+
+<!-- ============ THE INSTRUMENT ============ -->
+<section class="band lab" aria-labelledby="lab-h">
+  <div class="lab-frame">
+    <div class="prose reveal" style="margin-bottom: 2.5rem;">
+      <p class="eyebrow">The instrument</p>
+      <h2 id="lab-h">Take the wave apart.</h2>
+      <p>The line below looks like a price chart. It's three rhythms added together: a long trend swell, an intermediate cycle, and a short trading cycle. Switch each one off and the market simplifies. Move your pointer across it and the panel reads out what each rhythm contributes at that moment, and how far the intermediate cycle is through its swing.</p>
+    </div>
+
+    <div class="lab-stage reveal">
+      <canvas id="lab-canvas" role="img" aria-label="Interactive chart: three cycle components summing into a composite line, with a movable readout"></canvas>
+      <div class="readout" id="readout" data-idle="true">
+        <div class="row"><span><i class="swatch" style="--c:#CDA96A"></i>Trend swell</span><b id="r-trend">—</b></div>
+        <div class="row"><span><i class="swatch" style="--c:#9C5560"></i>Intermediate</span><b id="r-inter">—</b></div>
+        <div class="row"><span><i class="swatch" style="--c:#B9BBB6"></i>Trading</span><b id="r-daily">—</b></div>
+        <div class="row total"><span><i class="swatch" style="--c:#6E1E28"></i>Composite</span><b id="r-total">—</b></div>
+        <div class="phase" id="r-phase">Move across the chart</div>
+      </div>
+    </div>
+
+    <div class="lab-controls reveal">
+      <div class="control">
+        <label><input type="checkbox" id="c-trend" checked> Trend swell</label>
+        <p class="hint">The long wave. Inside one screen it just reads as "the trend."</p>
+      </div>
+      <div class="control">
+        <label><input type="checkbox" id="c-inter" checked> Intermediate cycle</label>
+        <p class="hint">The rhythm that sets the lows worth planning around.</p>
+      </div>
+      <div class="control">
+        <label><input type="checkbox" id="c-daily" checked> Trading cycle</label>
+        <p class="hint">Most of what feels like noise is just this, doing its job.</p>
+      </div>
+      <div class="control">
+        <label for="c-skew" style="display:block;font-weight:600;font-size:var(--step--1)">Translation</label>
+        <input type="range" id="c-skew" min="-100" max="100" value="0" aria-label="Cycle translation from left-skewed to right-skewed">
+        <p class="hint">Drag right and crests arrive late in each swing — upward pressure. Left is the opposite.</p>
+      </div>
+      <div class="control audio-control">
+        <button id="audio-toggle" aria-pressed="false"><span class="dot"></span><span id="audio-label">Hear the cycles</span></button>
+        <p class="hint">Each rhythm becomes a pitch — slow wave low, trading cycle high. Toggle a component and the chord changes. Quiet by design.</p>
+      </div>
+    </div>
+
+    <p class="lab-note reveal">Everything here is synthetic: three sine functions and a slider. That's the point. If arithmetic this simple produces a line you'd mistake for a chart, it's worth asking how much of a real chart is rhythm nobody has decomposed yet.</p>
+  </div>
+</section>
+
+<!-- ============ THE WORK ============ -->
+<section class="band" aria-labelledby="work-h">
+  <div class="lab-frame">
+    <div class="prose reveal" style="margin-bottom:2.5rem;margin-inline:0;max-width:var(--measure)">
+      <p class="eyebrow">The work</p>
+      <h2 id="work-h">Three places, one practice.</h2>
+      <p>Everything I make in public lives in one of three places. They share a palette, a typeface, and a rule: ship on rhythm, not on mood.</p>
+    </div>
+    <div class="prop-list">
+      <article class="prop reveal">
+        <h3>Work by PK<span>the hub</span></h3>
+        <p>The index. One page, prose first, saying what I'm working on and where to find it. No feed, no funnel — a person and their current projects, kept honest by being public.</p>
+      </article>
+      <article class="prop reveal">
+        <h3>The Build Log<span>weekly, on Substack</span></h3>
+        <p>A weekly log of the actual work: what got built, what broke, what I almost sent and didn't. The constraint is the product — <b>every week, whether the week was impressive or not.</b></p>
+      </article>
+      <article class="prop reveal">
+        <h3>King Nuggets<span>selective, archived daily</span></h3>
+        <p>Market research built on cycle methodology. The archive grows every day whether anything publishes or not; issues go out <b>only when the analysis clears the bar.</b></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRINCIPLES ============ -->
+<section class="band principles" aria-labelledby="rules-h">
+  <div class="prose reveal" style="margin-bottom:1rem">
+    <p class="eyebrow">Operating rules</p>
+    <h2 id="rules-h">Rules I actually keep.</h2>
+  </div>
+  <div class="rule-list">
+    <p class="rule-item reveal"><b>No infrastructure without a named requirement.</b> Every pipeline, repo, and automation answers to a specific analytical or publishing need, or it doesn't get built.</p>
+    <p class="rule-item reveal"><b>The model interprets; it never decides.</b> Language models narrate a frozen, validated state. They get no authority over data, calculations, signals, or thresholds.</p>
+    <p class="rule-item reveal"><b>Working product now, perfection later.</b> A rough thing that shipped teaches more than a polished thing that didn't.</p>
+    <p class="rule-item reveal"><b>Read before writing.</b> Guessing at what's in a file, a chart, or a claim is how the same failure happens twice.</p>
+    <p class="rule-item reveal"><b>The streak is the point.</b> Publishing weekly isn't the goal wearing a schedule. The schedule is the goal.</p>
+  </div>
+</section>
+
+<!-- ============ COLOPHON ============ -->
+<footer class="colophon">
+  <div class="band">
+    <div class="prose">
+      <p>Set in Switzer. Garnet and paper, same as everything else.</p>
+      <p>WebGL2 shader, CSS scroll-driven animations, anchor-positioned margin notes, Web Audio sonification, and one canvas doing arithmetic.</p>
+      <p>Hub: <a href="https://workbypk.com">workbypk.com</a> · Build Log: <a href="https://pklearns.substack.com">pklearns.substack.com</a> · Research: <a href="https://kingnuggets.com">kingnuggets.com</a></p>
+      <p class="sig">— Patrick King, CMT</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ============================================================
+   0) Progress waveform — the reading indicator is a composite
+   ============================================================ */
+(function () {
+  let d = '';
+  for (let i = 0; i <= 240; i++) {
+    const x = (i / 240) * 1200;
+    const u = (i / 240) * 26;
+    const y = 17 - (7 * Math.sin(u * 0.35) + 4 * Math.sin(u * 1.3 + 1.2) + 1.6 * Math.sin(u * 4.1));
+    d += (i ? 'L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(2);
+  }
+  document.getElementById('wave-track').setAttribute('d', d);
+  document.getElementById('wave-drawn').setAttribute('d', d);
+})();
+
+/* ============================================================
+   1) HERO — WebGL2 cycle field
+   ============================================================ */
+(function () {
+  const canvas = document.getElementById('field');
+  const gl = canvas.getContext('webgl2', { antialias: true, alpha: false });
+  if (!gl) { canvas.style.background = 'radial-gradient(80% 60% at 50% 40%, #6E1E28, #24090E)'; return; }
+
+  const vsrc = `#version 300 es
+  in vec2 p; void main(){ gl_Position = vec4(p,0.,1.); }`;
+
+  const fsrc = `#version 300 es
+  precision highp float;
+  uniform vec2 uRes; uniform float uT; uniform vec2 uMouse;
+  out vec4 o;
+  const vec3 BG   = vec3(0.141,0.035,0.055);
+  const vec3 GAR  = vec3(0.431,0.118,0.157);
+  const vec3 GOLD = vec3(0.804,0.663,0.416);
+  const vec3 PAPER= vec3(0.894,0.898,0.886);
+
+  float hash(vec2 q){ return fract(sin(dot(q, vec2(127.1,311.7)))*43758.5453); }
+  float noise(vec2 q){
+    vec2 i=floor(q), f=fract(q); f=f*f*(3.-2.*f);
+    return mix(mix(hash(i),hash(i+vec2(1,0)),f.x),
+               mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),f.x), f.y);
+  }
+  float composite(float x, float t, float amp){
+    return (0.34*sin(x*1.05 + t*0.11)
+          + 0.16*sin(x*3.3  - t*0.23 + 1.7)
+          + 0.06*sin(x*11.0 + t*0.55)) * amp;
+  }
+  void main(){
+    vec2 uv = gl_FragCoord.xy/uRes;
+    vec2 q = (uv - 0.5) * vec2(uRes.x/uRes.y, 1.0);
+    float t = uT;
+    float mAmp = 1.0 + 0.35*(uMouse.y - 0.5);
+    float mDrift = (uMouse.x - 0.5) * 0.6;
+    vec3 col = BG;
+
+    for (int i = 0; i < 7; i++){
+      float fi = float(i);
+      float y0 = -0.42 + fi*0.14;
+      float w  = composite(q.x*1.6 + fi*0.9 + mDrift, t + fi*4.0, mAmp*(0.9 - fi*0.06));
+      float band = exp(-abs(q.y - (y0 + w*0.5))*(9.0 + fi*2.0));
+      float tone = fi/6.0;
+      col += mix(GAR*0.55, GOLD*0.28, tone) * band * (0.55 - tone*0.28);
+    }
+
+    col += GAR * 0.10 * noise(q*vec2(28.0,9.0) + vec2(t*0.4,0.0)) * smoothstep(0.9,0.0,abs(q.y));
+
+    float wave = composite(q.x*1.6 + mDrift, t, mAmp);
+    float dist = abs(q.y - wave*0.5);
+    col += GOLD * exp(-dist*14.0) * 0.55;
+    col += mix(GOLD, PAPER, 0.6) * exp(-dist*160.0) * 1.1;
+
+    float e = 0.012;
+    float curv = composite((q.x-e)*1.6+mDrift,t,mAmp) + composite((q.x+e)*1.6+mDrift,t,mAmp) - 2.0*wave;
+    col += GOLD * smoothstep(0.0006,0.0022,curv) * exp(-dist*40.0) * 0.9;
+
+    col *= mix(0.55, 1.0, smoothstep(1.25,0.35,length(q*vec2(0.8,1.25))));
+    col = mix(col, BG, smoothstep(0.2,0.62,uv.y)*0.55);
+    col = col/(1.0+col);
+    col += (hash(gl_FragCoord.xy)-0.5)/255.0;
+    o = vec4(col,1.0);
+  }`;
+
+  function sh(type, src){
+    const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
+    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) console.error(gl.getShaderInfoLog(s));
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, sh(gl.VERTEX_SHADER, vsrc));
+  gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, fsrc));
+  gl.linkProgram(prog); gl.useProgram(prog);
+
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
+  const loc = gl.getAttribLocation(prog, 'p');
+  gl.enableVertexAttribArray(loc);
+  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+
+  const uRes = gl.getUniformLocation(prog,'uRes'),
+        uT = gl.getUniformLocation(prog,'uT'),
+        uMouse = gl.getUniformLocation(prog,'uMouse');
+
+  let mouse = [0.5,0.5], target = [0.5,0.5];
+  addEventListener('pointermove', e => {
+    target = [e.clientX/innerWidth, 1 - e.clientY/innerHeight];
+  }, { passive: true });
+
+  function resize(){
+    const dpr = Math.min(devicePixelRatio||1, 2);
+    const w = canvas.clientWidth*dpr, h = canvas.clientHeight*dpr;
+    if (canvas.width !== w || canvas.height !== h){ canvas.width=w; canvas.height=h; gl.viewport(0,0,w,h); }
+  }
+  addEventListener('resize', resize, { passive: true });
+
+  let visible = true;
+  new IntersectionObserver(([e]) => {
+    visible = e.isIntersecting;
+    if (visible && !REDUCED) requestAnimationFrame(loop);
+  }, { threshold: 0 }).observe(canvas);
+
+  const t0 = performance.now();
+  function loop(now){
+    if (!visible) return;
+    resize();
+    mouse[0] += (target[0]-mouse[0])*0.05;
+    mouse[1] += (target[1]-mouse[1])*0.05;
+    gl.uniform2f(uRes, canvas.width, canvas.height);
+    gl.uniform1f(uT, REDUCED ? 12.0 : (now-t0)/1000);
+    gl.uniform2f(uMouse, mouse[0], mouse[1]);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+    if (!REDUCED) requestAnimationFrame(loop);
+  }
+  resize(); loop(t0);
+})();
+
+/* ============================================================
+   2) THE INSTRUMENT — canvas + phase probe + sonification
+   ============================================================ */
+(function () {
+  const cv = document.getElementById('lab-canvas');
+  const ctx = cv.getContext('2d');
+  const C = { composite:'#6E1E28', trend:'#CDA96A', inter:'#9C5560', daily:'#B9BBB6', grid:'rgba(110,30,40,0.10)' };
+
+  const state = {
+    trend:{on:true,w:1}, inter:{on:true,w:1}, daily:{on:true,w:1},
+    skew:0, skewEased:0, probe:null
+  };
+
+  const el = id => document.getElementById(id);
+  ['trend','inter','daily'].forEach((k,i) => {
+    el(['c-trend','c-inter','c-daily'][i]).addEventListener('change', e => {
+      state[k].on = e.target.checked; syncAudio();
+    });
+  });
+  el('c-skew').addEventListener('input', e => { state.skew = +e.target.value/100; syncAudio(); });
+
+  const skewSin = (x,k) => Math.sin(x + k*0.9*Math.sin(x));
+  const components = (x,t,k) => ({
+    trend: 0.52*Math.sin(x*0.9 + t*0.10),
+    inter: 0.30*skewSin(x*3.1 - t*0.22 + 1.3, k),
+    daily: 0.13*skewSin(x*10.5 + t*0.5, k)
+  });
+
+  let W=0, H=0;
+  function resize(){
+    const dpr = Math.min(devicePixelRatio||1, 2);
+    W = cv.clientWidth; H = cv.clientHeight;
+    cv.width = W*dpr; cv.height = H*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  addEventListener('resize', resize, { passive:true });
+  resize();
+
+  const yOf = v => H*0.5 - v*H*0.34;
+  const DOMAIN = 9.0;
+
+  /* ---- phase probe ---- */
+  const readout = el('readout');
+  function setProbe(clientX){
+    const r = cv.getBoundingClientRect();
+    state.probe = Math.max(0, Math.min(1, (clientX - r.left)/r.width));
+    readout.dataset.idle = 'false';
+  }
+  cv.addEventListener('pointermove', e => setProbe(e.clientX), { passive:true });
+  cv.addEventListener('pointerdown', e => setProbe(e.clientX), { passive:true });
+  cv.addEventListener('pointerleave', () => {
+    state.probe = null; readout.dataset.idle = 'true';
+    el('r-trend').textContent = el('r-inter').textContent =
+    el('r-daily').textContent = el('r-total').textContent = '—';
+    el('r-phase').textContent = 'Move across the chart';
+  });
+
+  const fmt = v => (v >= 0 ? '+' : '') + v.toFixed(3);
+
+  /* ---- sonification: each rhythm is a pitch ---- */
+  let audio = null;
+  function syncAudio(){
+    if (!audio) return;
+    const now = audio.ctx.currentTime;
+    const gains = { trend: 0.055, inter: 0.035, daily: 0.018 };
+    for (const k of ['trend','inter','daily']){
+      audio.g[k].gain.setTargetAtTime(state[k].on ? gains[k] : 0, now, 0.12);
+    }
+    // translation shifts the intermediate voice slightly out of tune,
+    // so left/right skew is audible as beating against the trend
+    audio.o.inter.detune.setTargetAtTime(state.skew * 22, now, 0.15);
+  }
+
+  function startAudio(){
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return false;
+    const actx = new AC();
+    const master = actx.createGain(); master.gain.value = 0;
+    const lp = actx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 2400;
+    lp.connect(master); master.connect(actx.destination);
+
+    const freqs = { trend: 90, inter: 310, daily: 1050 };
+    const o = {}, g = {};
+    for (const k of ['trend','inter','daily']){
+      o[k] = actx.createOscillator();
+      o[k].type = k === 'daily' ? 'triangle' : 'sine';
+      o[k].frequency.value = freqs[k];
+      g[k] = actx.createGain(); g[k].gain.value = 0;
+      o[k].connect(g[k]); g[k].connect(lp);
+      o[k].start();
+    }
+    audio = { ctx: actx, o, g, master };
+    master.gain.setTargetAtTime(1, actx.currentTime, 0.4);
+    syncAudio();
+    return true;
+  }
+
+  function stopAudio(){
+    if (!audio) return;
+    const a = audio; audio = null;
+    a.master.gain.setTargetAtTime(0, a.ctx.currentTime, 0.2);
+    setTimeout(() => a.ctx.close(), 700);
+  }
+
+  const btn = el('audio-toggle'), btnLabel = el('audio-label');
+  btn.addEventListener('click', () => {
+    if (audio) { stopAudio(); btn.setAttribute('aria-pressed','false'); btnLabel.textContent = 'Hear the cycles'; }
+    else if (startAudio()) { btn.setAttribute('aria-pressed','true'); btnLabel.textContent = 'Stop'; }
+    else { btnLabel.textContent = 'Audio unavailable'; }
+  });
+
+  /* ---- draw ---- */
+  function draw(t){
+    for (const k of ['trend','inter','daily']) state[k].w += ((state[k].on?1:0) - state[k].w)*0.08;
+    state.skewEased += (state.skew - state.skewEased)*0.08;
+    const k = state.skewEased;
+
+    ctx.clearRect(0,0,W,H);
+    ctx.strokeStyle = C.grid; ctx.lineWidth = 1;
+    for (let gx=0; gx<=W; gx+=W/12){ ctx.beginPath(); ctx.moveTo(gx,0); ctx.lineTo(gx,H); ctx.stroke(); }
+    ctx.beginPath(); ctx.moveTo(0,H/2); ctx.lineTo(W,H/2); ctx.stroke();
+
+    const N = Math.max(240, Math.floor(W/3));
+    const xs = i => (i/N)*W, px = i => (i/N)*DOMAIN;
+
+    for (const [key,color] of [['trend',C.trend],['inter',C.inter],['daily',C.daily]]){
+      const w = state[key].w; if (w < 0.02) continue;
+      ctx.globalAlpha = 0.55*w; ctx.strokeStyle = color; ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      for (let i=0;i<=N;i++){
+        const v = components(px(i),t,k)[key]*w;
+        i ? ctx.lineTo(xs(i), yOf(v)) : ctx.moveTo(xs(i), yOf(v));
+      }
+      ctx.stroke(); ctx.globalAlpha = 1;
+    }
+
+    const vals = new Array(N+1);
+    ctx.strokeStyle = C.composite; ctx.lineWidth = 2.5; ctx.lineJoin = 'round';
+    ctx.beginPath();
+    for (let i=0;i<=N;i++){
+      const c = components(px(i),t,k);
+      const v = c.trend*state.trend.w + c.inter*state.inter.w + c.daily*state.daily.w;
+      vals[i] = v;
+      i ? ctx.lineTo(xs(i), yOf(v)) : ctx.moveTo(xs(i), yOf(v));
+    }
+    ctx.stroke();
+
+    ctx.fillStyle = C.composite;
+    for (let i=6;i<N-6;i++){
+      if (vals[i]<vals[i-6] && vals[i]<vals[i+6] && vals[i]<=vals[i-1] && vals[i]<=vals[i+1]){
+        ctx.beginPath(); ctx.arc(xs(i), yOf(vals[i]), 4, 0, 6.2832); ctx.fill();
+        ctx.beginPath(); ctx.arc(xs(i), yOf(vals[i]), 9, 0, 6.2832);
+        ctx.strokeStyle = 'rgba(110,30,40,0.25)'; ctx.lineWidth = 1.5; ctx.stroke();
+        ctx.strokeStyle = C.composite;
+        i += 10;
+      }
+    }
+
+    if (state.probe !== null){
+      const x = state.probe*W, u = state.probe*DOMAIN;
+      const c = components(u, t, k);
+      const cv_ = { trend:c.trend*state.trend.w, inter:c.inter*state.inter.w, daily:c.daily*state.daily.w };
+      const total = cv_.trend + cv_.inter + cv_.daily;
+
+      ctx.strokeStyle = 'rgba(110,30,40,0.45)'; ctx.lineWidth = 1;
+      ctx.setLineDash([3,3]);
+      ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke();
+      ctx.setLineDash([]);
+      for (const [key,color] of [['trend',C.trend],['inter',C.inter],['daily',C.daily]]){
+        if (state[key].w < 0.02) continue;
+        ctx.fillStyle = color;
+        ctx.beginPath(); ctx.arc(x, yOf(cv_[key]), 3.5, 0, 6.2832); ctx.fill();
+      }
+      ctx.fillStyle = C.composite;
+      ctx.beginPath(); ctx.arc(x, yOf(total), 5.5, 0, 6.2832); ctx.fill();
+      ctx.strokeStyle = '#E4E5E2'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(x, yOf(total), 5.5, 0, 6.2832); ctx.stroke();
+
+      el('r-trend').textContent = state.trend.on ? fmt(cv_.trend) : 'off';
+      el('r-inter').textContent = state.inter.on ? fmt(cv_.inter) : 'off';
+      el('r-daily').textContent = state.daily.on ? fmt(cv_.daily) : 'off';
+      el('r-total').textContent = fmt(total);
+
+      // where the intermediate cycle sits in its own swing, trough to trough
+      const phaseRad = (u*3.1 - t*0.22 + 1.3 + Math.PI/2);
+      const pct = ((phaseRad/(2*Math.PI)) % 1 + 1) % 1;
+      const stage = pct < 0.15 ? 'just off the low'
+                  : pct < 0.45 ? 'advancing'
+                  : pct < 0.6  ? 'near the crest'
+                  : pct < 0.9  ? 'declining'
+                  : 'approaching the low';
+      el('r-phase').textContent = Math.round(pct*100) + '% through the swing — ' + stage;
+    }
+  }
+
+  let visible = false;
+  new IntersectionObserver(([e]) => {
+    visible = e.isIntersecting;
+    if (!visible && audio) { stopAudio(); btn.setAttribute('aria-pressed','false'); btnLabel.textContent = 'Hear the cycles'; }
+    if (visible && !REDUCED) requestAnimationFrame(tick);
+    if (visible && REDUCED) draw(8.0);
+  }, { threshold: 0.05 }).observe(cv);
+
+  const t0 = performance.now();
+  function tick(now){
+    if (!visible) return;
+    draw(REDUCED ? 8.0 : (now-t0)/1000);
+    if (!REDUCED) requestAnimationFrame(tick);
+  }
+
+  if (REDUCED){
+    ['c-trend','c-inter','c-daily','c-skew'].forEach(id =>
+      el(id).addEventListener('input', () => { for (let i=0;i<40;i++) draw(8.0); }));
+    cv.addEventListener('pointermove', () => draw(8.0), { passive:true });
+    for (let i=0;i<40;i++) draw(8.0);
+  }
+})();
+</script>
+</body>
+</html>
