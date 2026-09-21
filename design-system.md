@@ -22,18 +22,18 @@ Derived from pages already built for workbypk.com. Nothing here is invented: eve
 | A5 | `exhibits/shape-of-time/index.html` | `8d8fc91edd3d89a6d0af1cf313228d15a7dd5f2692fb42417f9332a01304a4dc` |
 | B1 | `/Users/knuggs/Downloads/PKAIOS_ARCHITECTURE_MAP.html` | `2ed881317a5f2509ed750fbe9d6af0fcf5b1946379b7e7d5d6376546a829018a` |
 
-**Corpus rationale:** Corpus = pages Patrick shipped and kept, regardless of which model produced the first draft.
+**Corpus rule:** Corpus = pages that make up Patrick's own site (hub and section pages), regardless of which model produced the first draft. Exhibits displayed as specimens of other models' work (gpt, grok, fable, shape-of-time) are excluded because they are shown as comparisons, not adopted as house style. KN Lab is excluded as out of scope (not part of workbypk).
 
 **Which sources are binding:**
 - **Binding rules come only from A1–A4.**
-- **A5 is exhibit-only.** It has its own inline `<style>`, and links neither `styles.css` nor `log.css`. Its bespoke essay layout stays scoped to that exhibit. Its values are in §9 and count toward no rule.
-- **B1 is reference only.** It was never shipped: it lives in `~/Downloads`, not on a published site. It is recorded in the Appendix.
+- **A5 (`shape-of-time`) is excluded as a specimen** under the corpus rule. Its values are kept in §9 for reference only, because the lineage hypothesis below depends on them. They count toward no rule.
+- **B1 is reference only.** It is not part of workbypk (it lives in `~/Downloads`). It is recorded in the Appendix.
 
-**Lineage:** the section-system tokens (A2–A4) descend from A5, the Fable-built essay (`exhibits/index.html:124-127`), per Patrick (2026-09-21). This lineage does not disqualify them. Git alone can't settle the order (§9 provenance note), so the lineage is recorded as Patrick's statement.
+**Lineage:** [H] Section tokens overlap A5's (subset). Direction unknown: A2 was committed 47 min before A5 per git. Not attributed to Patrick.
 
-**Excluded by Patrick's decision:** these pages are also shipped. Their exclusion is Patrick's call, not a consequence of the corpus rationale above.
-- `exhibits/gpt/`, `exhibits/grok/`, `exhibits/fable/`
-- The Obsidian vault page `SecondBrain/_dropzone/index.html` (the KN Lab source). It shares 817 of its 852 unique lines with `exhibits/gpt/index.html`.
+**Excluded under the corpus rule:**
+- **Specimens:** `exhibits/gpt/`, `exhibits/grok/`, `exhibits/fable/`, `exhibits/shape-of-time/` (A5)
+- **Out of scope:** the KN Lab source page `SecondBrain/_dropzone/index.html`. It shares 817 of its 852 unique lines with `exhibits/gpt/index.html`.
 
 **Independence caveat:** `build-log/log.css:2-5` says its tokens and base rules were "copied from exhibits/index.html". A3 and A4 are separate files but not independent evidence. When a rule is supported only by A3 + A4, that is noted.
 
@@ -42,7 +42,7 @@ Derived from pages already built for workbypk.com. Nothing here is invented: eve
 **Rule threshold:**
 - A value becomes a rule only with evidence in ≥2 site-scope files (A1–A4), or ≥3 uses within one site-scope file.
 - Thinner evidence is labeled **single-source**.
-- A5-only evidence is labeled **exhibit-only**.
+- A5 is a specimen (§0) and contributes no evidence; its values are reference-only in §9.
 
 ---
 
@@ -184,7 +184,7 @@ Each color's role is inferred from the selector it styles.
 - **MUST** keep corners square. There is no `border-radius` on any box. The wordmark is a square tile: 40px, `aspect-ratio: 1`, garnet ground, gold "PK". [`projects/index.html:40-45`, `build-log/log.css:36-41`, `exhibits/index.html:39-44`]
 - **MUST NOT** add shadows (see §1).
 - **Accent rule (single-source):** a 3px gold left border on a tinted panel, used for the quoted brief. [`exhibits/index.html:55-56`]
-- **Focus (A1 only):** `outline: 2px solid` accent with `outline-offset: 3px` [`styles.css:42-45`]. A2–A4 define no focus style. This is **UNSPECIFIED** for the section system.
+- **Focus — MUST** on every page: `:focus-visible` gets `outline: 2px solid #6E1E28` with `outline-offset: 3px`. [`styles.css:42-45`] This is promoted from A1 (2026-09-21). A2–A4 currently define no focus style; see D6.
 - **Project marks (single-source, 7 uses):** 52px inline SVGs (40px ≤560px). Garnet primary stroke and gold secondary stroke, both `stroke-width: 2` with round caps. Garnet fills for nodes. [`projects/index.html:78-81,97`]
 
 ---
@@ -235,20 +235,19 @@ Each color's role is inferred from the selector it styles.
 - **MUST** honor `prefers-reduced-motion`. [`styles.css:47-50`, `build-log/log.css:73-75`] A4 has a gap here; see D2.
 
 **Theme:**
-- **MUST** be light-only (see §1). A dark theme is **UNSPECIFIED**: nothing in A1–A4 shows one. A5 uses dark garnet *bands* within a light page (exhibit-only, §9). That is not a dark theme.
+- **MUST** be light-only (see §1). A dark theme is **UNSPECIFIED**: nothing in A1–A4 shows one. A5 uses dark garnet *bands* within a light page (a specimen, reference-only in §9). That is not a dark theme.
 
 ---
 
 ## 8. UNSPECIFIED (not represented in A1–A4; do not fill)
 
-- **Forms and inputs:** A5 has toggles and a range input, but those are exhibit-only.
+- **Forms and inputs:** A5 has toggles and a range input, but A5 is a specimen, not house style.
 - **Buttons:** none in A1–A4.
 - **Tables:** none anywhere.
 - **Long-form body copy:** A1's prose is short paragraphs. There are no article-length pages, no h3, no blockquote in prose, no footnotes and no inline code.
 - **Rendered images and figure captions:** these exist only in a commented template.
 - **Data visualization and charts:** none.
 - **Dark theme:** none.
-- **Focus styles in the section system:** none.
 - **Role of `--ember` / `#B4402F`:** none (see D3).
 - **Status colors beyond running, specced and parked:** none.
 - **Error, empty and loading states:** none.
@@ -256,9 +255,9 @@ Each color's role is inferred from the selector it styles.
 
 ---
 
-## 9. A5 — exhibit-only values (not binding)
+## 9. A5 — specimen values (reference only, not binding)
 
-These are recorded so they aren't lost. They don't count toward any rule and must not be used on site pages without an explicit decision. Source: `exhibits/shape-of-time/index.html`, the Fable-drafted essay (`exhibits/index.html:124-127`). It is the ancestor of the section tokens (see §0 Lineage), but its bespoke essay layout and the extras below remain exhibit-only.
+These are recorded so they aren't lost. They don't count toward any rule and must not be used on site pages without an explicit decision. Source: `exhibits/shape-of-time/index.html`, the Fable-drafted essay (`exhibits/index.html:124-127`), which the corpus rule excludes as a specimen. Its tokens overlap the section tokens (see the §0 Lineage hypothesis [H]), but the direction of that relationship is unknown.
 
 **Extra tokens beyond the section set:**
 - `--garnet-black: #24090E`: the hero and colophon ground (`:21,89,337`)
@@ -273,7 +272,7 @@ These are recorded so they aren't lost. They don't count toward any rule and mus
 - A square toggle switch and a garnet button with gold text (`:267-292`)
 - Scroll-driven animation (`:41,79,165`)
 
-**Provenance note:** A2 was first committed with gold tokens at 2026-08-22 06:18 (`1aa4b3d`). A5 was first committed at 07:05 the same day (`681ac56`), carrying a superset of the same tokens. Git records commit order, not authoring order. That the section tokens descend from A5 is Patrick's statement (§0), and it is consistent with this evidence.
+**Provenance note:** A2 was first committed with gold tokens at 2026-08-22 06:18 (`1aa4b3d`). A5 was first committed at 07:05 the same day (`681ac56`), carrying a superset of the same tokens. Git records commit order, not authoring order, so the direction of the overlap is unknown (§0 [H]).
 
 ---
 
@@ -285,6 +284,8 @@ These are recorded so they aren't lost. They don't count toward any rule and mus
 | D2 | `exhibits/index.html` has transitions (`:69,75`) with no `prefers-reduced-motion` block. `rg` finds 0 matches in the file. | `exhibits/index.html:69,75` |
 | D3 | `--ember: #B4402F` is declared but never used (0 `var(--ember)` references). | `projects/index.html:16` |
 | D4 | The "parked" legend dot uses a literal `#8a8a86` instead of `--ink-soft` (the P5 rule). | `projects/index.html:118` vs `:67` |
+| D5 | A1 (hub) uses superseded values (P1-P4, P6-P8). Out of spec; migrate or ratify later. Not compliant. | `styles.css:1-8,20-27,56-58,90-99,145-149`; `index.html:16-27,98-100` |
+| D6 | A2–A4 have no `:focus-visible` style, which the focus MUST in §5 requires. | `projects/index.html:10-102`, `build-log/log.css`, `exhibits/index.html:10-88` (no `focus` match) |
 
 ---
 
