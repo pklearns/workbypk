@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AI Data Center Spend Map · WaveMiner · Work by PK</title>
+<meta name="description" content="Where each dollar of AI data-center capex goes, which of that spending recurs every year, and which service and supply niches a small operator could realistically enter. Sourced and graded research from the WaveMiner project.">
+<meta name="author" content="Patrick · workbypk.com">
+<link rel="canonical" href="https://workbypk.com/waveminer/spend-map/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Work by PK">
+<meta property="og:title" content="AI Data Center Spend Map">
+<meta property="og:description" content="Follow $1 billion of AI data-center capex: what's out of reach, what recurs, and which mundane service and supply niches a small operator could enter.">
+<meta property="og:url" content="https://workbypk.com/waveminer/spend-map/">
+<meta property="og:image" content="https://workbypk.com/waveminer/spend-map/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AI Data Center Spend Map: of each $1 billion, $689 million goes to servers and networking and $302 million to the facility.">
+<meta property="article:published_time" content="2026-09-24">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Data Center Spend Map">
+<meta name="twitter:description" content="Follow $1 billion of AI data-center capex: what's out of reach, what recurs, and which mundane niches a small operator could enter.">
+<meta name="twitter:image" content="https://workbypk.com/waveminer/spend-map/og-image.png">
+<style>
+@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/barlow-condensed-latin-600-normal.woff2") format("woff2")}
+@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/barlow-condensed-latin-700-normal.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/ibm-plex-sans-latin-400-normal.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url("fonts/ibm-plex-sans-latin-400-italic.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/ibm-plex-sans-latin-500-normal.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/ibm-plex-sans-latin-600-normal.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2")}
+:root{
+  --bg:#ECEFEE; --panel:#F7F9F8; --panel-2:#E3E8E6;
+  --ink:#141C1B; --ink-2:#3B4745; --muted:#63706D; --rule:#C6CFCC;
+  --accent:#1E4C8A; --accent-soft:#DCE5F2;
+  --teal:#2F7F7C; --sand:#8C7F66; --slate:#98A3A0;
+  --tag:#F0C93F; --tag-ink:#2A2206;
+  --good:#2C7449; --good-soft:#DCEEE2;
+  --warn:#9C620F; --warn-soft:#F5E6CA;
+  --crit:#A3342A; --crit-soft:#F3DAD6;
+  --hatch-a:#C3CBC9; --hatch-b:#D5DCDA;
+  --display:"Barlow Condensed","Arial Narrow","Roboto Condensed",sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0F1514; --panel:#161E1D; --panel-2:#1D2726;
+    --ink:#E2E9E7; --ink-2:#B9C4C1; --muted:#8B9895; --rule:#2B3634;
+    --accent:#8AADE6; --accent-soft:#1B2A40;
+    --teal:#63B7B2; --sand:#B3A588; --slate:#5E6A68;
+    --tag:#D9B63B; --tag-ink:#1B1604;
+    --good:#72C394; --good-soft:#162E20;
+    --warn:#E3AA4E; --warn-soft:#34270F;
+    --crit:#E6837A; --crit-soft:#3A1C19;
+    --hatch-a:#2A3533; --hatch-b:#222C2B;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0F1514; --panel:#161E1D; --panel-2:#1D2726;
+  --ink:#E2E9E7; --ink-2:#B9C4C1; --muted:#8B9895; --rule:#2B3634;
+  --accent:#8AADE6; --accent-soft:#1B2A40;
+  --teal:#63B7B2; --sand:#B3A588; --slate:#5E6A68;
+  --tag:#D9B63B; --tag-ink:#1B1604;
+  --good:#72C394; --good-soft:#162E20;
+  --warn:#E3AA4E; --warn-soft:#34270F;
+  --crit:#E6837A; --crit-soft:#3A1C19;
+  --hatch-a:#2A3533; --hatch-b:#222C2B;
+}
+*{box-sizing:border-box}
+html{color-scheme:light}
+[hidden]{display:none!important}
+img{max-width:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55;padding-inline:20px;padding-block:calc(28px + env(safe-area-inset-top,0px)) calc(64px + env(safe-area-inset-bottom,0px))}
+.wrap{max-width:1080px;margin-inline:auto;display:flex;flex-direction:column;gap:48px}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:.01em;text-wrap:balance;margin:0;line-height:1.08}
+h1{font-size:clamp(2.4rem,6vw,3.6rem);text-transform:uppercase}
+h2{font-size:1.9rem;text-transform:uppercase}
+h3{font-size:1.3rem}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lede{font-size:1.08rem;color:var(--ink-2);max-width:68ch}
+.num{font-variant-numeric:tabular-nums}
+.code{font-family:var(--mono);font-size:.74rem;font-weight:500;background:var(--tag);color:var(--tag-ink);padding:1px 6px 1px 6px;border-radius:2px;white-space:nowrap;letter-spacing:.02em}
+sup a{font-family:var(--mono);font-size:.68rem;text-decoration:none;padding-inline:1px}
+
+/* header */
+header{display:flex;flex-direction:column;gap:14px;border-bottom:3px solid var(--ink);padding-bottom:22px}
+.back{font-family:var(--mono);font-size:.78rem;color:var(--muted);text-decoration:none;align-self:flex-start}
+.back:hover{color:var(--accent)}
+.meta{display:flex;flex-wrap:wrap;gap:8px 20px;font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+
+/* section frame */
+section{display:flex;flex-direction:column;gap:18px}
+.sec-head{display:flex;flex-direction:column;gap:6px}
+
+/* bars */
+.flow{background:var(--panel);border:1px solid var(--rule);border-radius:4px;padding:22px;display:flex;flex-direction:column;gap:26px}
+.barblock{display:flex;flex-direction:column;gap:10px}
+.barlabel{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+.barlabel strong{font-family:var(--display);font-size:1.15rem;text-transform:uppercase;letter-spacing:.03em}
+.bar{display:flex;height:34px;border-radius:2px;overflow:hidden;border:1px solid var(--rule)}
+.bar>span{display:block;height:100%}
+.bar>span+span{border-left:2px solid var(--panel)}
+.hatch{background:repeating-linear-gradient(135deg,var(--hatch-a) 0 7px,var(--hatch-b) 7px 14px)}
+.s-fac{background:var(--accent)}
+.s-elec{background:var(--accent)}
+.s-mech{background:var(--teal)}
+.s-shell{background:var(--sand)}
+.s-gc{background:var(--slate)}
+.s-land{background:var(--ink-2)}
+.s-energy{background:var(--hatch-a)}
+.s-tax{background:var(--hatch-b)}
+.s-maint{background:var(--accent)}
+.s-labor{background:var(--teal)}
+.s-water{background:var(--sand)}
+.legend{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px 18px;font-size:.88rem}
+.legend div{display:flex;gap:8px;align-items:baseline}
+.sw{width:11px;height:11px;border-radius:1px;flex:none;transform:translateY(1px);box-shadow:inset 0 0 0 1px var(--rule)}
+.legend b{font-family:var(--mono);font-weight:500;font-size:.84rem}
+.legend em{font-style:normal;color:var(--muted)}
+.note{font-size:.84rem;color:var(--muted);max-width:80ch}
+
+/* readings */
+.readings{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.readings li{flex:1 1 300px;background:var(--panel);padding:18px 20px;display:flex;flex-direction:column;gap:6px}
+.readings .k{font-family:var(--display);font-weight:700;font-size:1.25rem;line-height:1.15}
+.readings p{color:var(--ink-2);font-size:.94rem}
+
+/* map controls */
+.controls{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.btn{font-family:var(--mono);font-size:.78rem;letter-spacing:.03em;border:1px solid var(--rule);background:var(--panel);color:var(--ink);padding:7px 12px;border-radius:3px;cursor:pointer}
+.btn:hover{border-color:var(--ink-2)}
+.btn[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.count{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+
+/* rows */
+.maphead,.row>summary{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(0,1.35fr) minmax(0,1.6fr) minmax(0,2fr);gap:14px;align-items:start}
+.maphead{font-family:var(--mono);font-size:.7rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);padding:0 16px 8px 34px;border-bottom:2px solid var(--ink)}
+.rows{display:flex;flex-direction:column}
+.row{border-bottom:1px solid var(--rule);background:var(--panel)}
+.row:first-child{border-top:0}
+.row>summary{list-style:none;cursor:pointer;padding:14px 16px 14px 34px;position:relative}
+.row>summary::-webkit-details-marker{display:none}
+.row>summary::before{content:"+";position:absolute;left:12px;top:12px;font-family:var(--mono);font-size:1rem;color:var(--muted)}
+.row[open]>summary::before{content:"\2212"}
+.row>summary:hover{background:var(--panel-2)}
+.r-title{font-weight:600;display:block;line-height:1.3}
+.r-path{font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.03em}
+.r-money{font-family:var(--mono);font-size:.84rem;font-variant-numeric:tabular-nums;line-height:1.4}
+.r-money small{display:block;color:var(--muted);font-size:.72rem}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{font-family:var(--mono);font-size:.7rem;padding:2px 7px;border-radius:2px;border:1px solid var(--rule);color:var(--ink-2);white-space:nowrap;background:var(--bg)}
+.chip.hi{background:var(--crit-soft);color:var(--crit);border-color:transparent}
+.chip.md{background:var(--warn-soft);color:var(--warn);border-color:transparent}
+.chip.lo{background:var(--good-soft);color:var(--good);border-color:transparent}
+.chip.fl{border-color:var(--good);color:var(--good);background:transparent}
+.chip.flp{border-style:dashed}
+.r-read{font-size:.92rem;color:var(--ink-2)}
+.r-read b{color:var(--ink)}
+.row.top{box-shadow:inset 4px 0 0 var(--accent)}
+.r-body{padding:4px 16px 20px 34px}
+.r-body dl{display:grid;grid-template-columns:170px minmax(0,1fr);gap:8px 18px;margin:0;font-size:.92rem;max-width:900px}
+.r-body dt{font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.r-body dd{margin:0;color:var(--ink-2)}
+.r-body dd strong{color:var(--ink)}
+.unres{font-size:.9rem;color:var(--muted);padding:14px 16px 0 34px}
+.unres b{color:var(--ink-2)}
+
+/* shortlist */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--rule);border-top:4px solid var(--accent);border-radius:4px;padding:20px;display:flex;flex-direction:column;gap:12px}
+.card .tagline{font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.card dl{margin:0;display:flex;flex-direction:column;gap:9px;font-size:.9rem}
+.card dt{font-family:var(--mono);font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.card dd{margin:2px 0 0;color:var(--ink-2)}
+.card.watch{border-top-color:var(--slate)}
+
+/* script + spec */
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px}
+.qlist{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:10px;color:var(--ink-2)}
+.qlist li::marker{font-family:var(--mono);color:var(--muted);font-size:.85em}
+.qlist b{color:var(--ink)}
+.fields{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.fields li{display:grid;grid-template-columns:150px minmax(0,1fr);gap:14px;padding:10px 0;border-bottom:1px solid var(--rule);font-size:.92rem;color:var(--ink-2)}
+.fields code{font-family:var(--mono);font-size:.8rem;color:var(--ink);font-weight:500}
+
+.credit{display:flex;flex-direction:column;gap:10px}
+.clist{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:8px;color:var(--ink-2);font-size:.94rem}
+.clist li::marker{color:var(--muted)}
+
+/* sources */
+.srcs{margin:0;padding-left:2.4em;display:grid;grid-template-columns:1fr;gap:6px;font-size:.86rem;color:var(--ink-2)}
+.srcs li::marker{font-family:var(--mono);font-size:.8em;color:var(--muted)}
+.srcs li:target{background:var(--accent-soft)}
+.tier{font-family:var(--mono);font-size:.68rem;padding:0 5px;border:1px solid var(--rule);border-radius:2px;margin-right:6px;color:var(--muted)}
+.tier.A{color:var(--good);border-color:var(--good)}
+.tier.B{color:var(--accent);border-color:var(--accent)}
+.tier.D{color:var(--warn);border-color:var(--warn)}
+footer{font-size:.84rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:16px}
+
+@media (max-width:820px){
+  .maphead{display:none}
+  .row>summary{grid-template-columns:1fr;gap:8px}
+  .r-body dl{grid-template-columns:1fr;gap:2px 0}
+  .r-body dd{margin-bottom:8px}
+  .fields li{grid-template-columns:1fr;gap:2px}
+}
+@media (max-width:480px){
+  body{padding-inline:16px}
+  .flow{padding:16px}
+  .row>summary,.r-body{padding-left:30px;padding-right:12px}
+  .row>summary::before{left:10px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <a class="back" href="/">&larr; workbypk.com</a>
+  <span class="eyebrow">WaveMiner · Research note 01 · AI data-center buildout</span>
+  <h1>AI Data Center Spend Map</h1>
+  <p class="lede">Where each dollar of AI data-center capex goes, which of that spending comes back every year, and which service and supply niches a small operator could realistically enter. Built from filings, cost models and trade sources, with every figure tagged to its source and evidence tier.</p>
+  <div class="meta"><span>Patrick · workbypk.com</span><span>Published 24 Sep 2026 · figures as of that date</span><span>Evidence tiers A–D explained under <a href="#sources">Sources</a></span></div>
+</header>
+
+<!-- ============ FUNNEL ============ -->
+<section id="funnel">
+  <div class="sec-head">
+    <span class="eyebrow">Top of funnel</span>
+    <h2>Follow $1 billion</h2>
+    <p class="lede">The four largest hyperscalers are guiding to roughly <b class="num">$710–733B</b> of 2026 capex, with <b class="num">$301B</b> already spent in the first half; Goldman forecasts <b class="num">$1.01T</b> for 2027.<sup><a href="#src-4">4</a>,<a href="#src-5">5</a></sup> Epoch AI's cost model of a typical 1 GW AI campus splits the money like this.<sup><a href="#src-1">1</a></sup></p>
+  </div>
+
+  <div class="flow">
+    <div class="barblock">
+      <div class="barlabel"><strong>Up-front capex, per $1B</strong><span class="eyebrow">Hatched = out of reach for a small operator</span></div>
+      <div class="bar" role="img" aria-label="Of each $1B: servers $559M, networking $130M, facility $302M, land and utility works $9M">
+        <span class="hatch" style="flex:0 0 55.93%"></span>
+        <span class="hatch" style="flex:0 0 13.00%"></span>
+        <span class="s-fac" style="flex:0 0 30.18%"></span>
+        <span class="s-land" style="flex:1 1 auto"></span>
+      </div>
+      <div class="legend">
+        <div><span class="sw hatch"></span><span><b>$559M</b> servers <em>(GPU systems)</em></span></div>
+        <div><span class="sw hatch"></span><span><b>$130M</b> networking</span></div>
+        <div><span class="sw s-fac"></span><span><b>$302M</b> facility <em>(the reachable slice)</em></span></div>
+        <div><span class="sw s-land"></span><span><b>$9M</b> land + utility works</span></div>
+      </div>
+    </div>
+
+    <div class="barblock">
+      <div class="barlabel"><strong>The $302M facility slice, by trade</strong><span class="eyebrow">Turner &amp; Townsend 2025 cost index ranges, midpoints shown</span></div>
+      <div class="bar" role="img" aria-label="Facility: electrical about 51 percent, mechanical about 27.5 percent, core and shell about 11.5 percent, GC fees about 10 percent">
+        <span class="s-elec" style="flex:0 0 51%"></span>
+        <span class="s-mech" style="flex:0 0 27.5%"></span>
+        <span class="s-shell" style="flex:0 0 11.5%"></span>
+        <span class="s-gc" style="flex:1 1 auto"></span>
+      </div>
+      <div class="legend">
+        <div><span class="sw s-elec"></span><span><b>$145–163M</b> electrical <em>(48–54%)</em></span></div>
+        <div><span class="sw s-mech"></span><span><b>$66–100M</b> mechanical <em>(22–33%)</em></span></div>
+        <div><span class="sw s-shell"></span><span><b>$27–42M</b> core &amp; shell <em>(9–14%)</em></span></div>
+        <div><span class="sw s-gc"></span><span><b>~$30M</b> GC fees <em>(~10%)</em></span></div>
+      </div>
+      <p class="note">Cost shares from ConstructConnect's summary of the Turner &amp; Townsend index.<sup><a href="#src-2">2</a></sup> Dollar ranges are those shares applied to Epoch's facility figure.</p>
+    </div>
+
+    <div class="barblock">
+      <div class="barlabel"><strong>Then every year after, per $1B of capex</strong><span class="eyebrow">Separate scale · about $24M a year, 2.4% of capex</span></div>
+      <div class="bar" role="img" aria-label="Annual operating spend per $1B of capex: energy $15.7M, taxes $3.8M, maintenance $3.2M, labor $1.1M, water $0.2M">
+        <span class="s-energy" style="flex:0 0 65.8%"></span>
+        <span class="s-tax" style="flex:0 0 15.8%"></span>
+        <span class="s-maint" style="flex:0 0 13.3%"></span>
+        <span class="s-labor" style="flex:0 0 4.4%"></span>
+        <span class="s-water" style="flex:1 1 auto"></span>
+      </div>
+      <div class="legend">
+        <div><span class="sw s-energy"></span><span><b>$15.7M</b> energy</span></div>
+        <div><span class="sw s-tax"></span><span><b>$3.8M</b> taxes</span></div>
+        <div><span class="sw s-maint"></span><span><b>$3.2M</b> maintenance <em>(the service pool)</em></span></div>
+        <div><span class="sw s-labor"></span><span><b>$1.1M</b> site labor</span></div>
+        <div><span class="sw s-water"></span><span><b>$0.2M</b> water</span></div>
+      </div>
+      <p class="note">Epoch models $0.9B a year of operating cost on $38B of capex for a stylized 1 GW hyperscaler campus, with 5-year IT and 14-year facility lives.<sup><a href="#src-1">1</a></sup> Real sites vary with location, design and power strategy.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ READINGS ============ -->
+<section id="readings">
+  <div class="sec-head">
+    <span class="eyebrow">What the numbers say</span>
+    <h2>Five readings</h2>
+  </div>
+  <ul class="readings">
+    <li><span class="k">69¢ of each dollar is out of reach.</span><p>Servers and networking take $689M of every $1B. A small operator competes for the $302M facility slice, and half of that is electrical.</p></li>
+    <li><span class="k">The recurring pool is small per site but it compounds.</span><p>About $3.2M a year of maintenance per $1B of capex, growing with every megawatt energized and still flowing if new capex stalls. JLL counts 66 GW under construction in North America.<sup><a href="#src-3">3</a></sup> At Epoch's $120M per GW, that is roughly $8B a year of maintenance once it is running (rough arithmetic on a stylized model).</p></li>
+    <li><span class="k">Mundane does not mean undiscovered.</span><p>Comfort Systems' management said service work on the growing installed base of data centers could become a longer-term revenue stream.<sup><a href="#src-7">7</a></sup> CBRE paid about $1.2B for Pearce to do UPS and generator service in-house.<sup><a href="#src-10">10</a></sup> PE closed about 125 fire and life-safety deals in 2025.<sup><a href="#src-29">29</a></sup> The overlooked part is the small end: hundreds of regional service firms with $3–25M of revenue.<sup><a href="#src-21">21</a></sup></p></li>
+    <li><span class="k">The build money mostly lands elsewhere.</span><p>77% of North American capacity under construction is in frontier markets like West Texas, Ohio and Louisiana.<sup><a href="#src-3">3</a></sup> A Florida tracker shows 5 of the 8 projects it follows have been stopped.<sup><a href="#src-26">26</a></sup> A Tampa Bay business needs a second demand base, and Florida has one: 3,771 nursing homes and ALFs under a 96-hour emergency-power mandate.<sup><a href="#src-23">23</a>,<a href="#src-24">24</a></sup></p></li>
+    <li><span class="k">The shortage has an end date.</span><p>Switchgear and transformer lead times run roughly one to five years today, with relief expected unevenly after 2028.<sup><a href="#src-11">11</a>,<a href="#src-12">12</a></sup> Supply plays should be underwritten to close when factories catch up.</p></li>
+  </ul>
+</section>
+
+<!-- ============ MAP ============ -->
+<section id="map">
+  <div class="sec-head">
+    <span class="eyebrow">The map</span>
+    <h2>Fourteen places the money goes</h2>
+    <p class="lede">Each row tags the phase (one-time build, installed base, or hardware refresh), how exposed it is to a capex slowdown, who is already there, and whether Florida demand exists without a data center. Open a row for the scarce input, entry route and sources. Blue-edged rows are the three being tested first.</p>
+  </div>
+
+  <div class="controls">
+    <div class="seg" role="group" aria-label="Filter by phase">
+      <button class="btn" id="f-all" type="button" data-phase="all" aria-pressed="true">All</button>
+      <button class="btn" id="f-build" type="button" data-phase="build" aria-pressed="false">Build-phase</button>
+      <button class="btn" id="f-base" type="button" data-phase="base" aria-pressed="false">Installed base</button>
+      <button class="btn" id="f-refresh" type="button" data-phase="refresh" aria-pressed="false">Refresh</button>
+    </div>
+    <div class="seg">
+      <button class="btn" id="f-fl" type="button" aria-pressed="false">Florida demand only</button>
+      <button class="btn" id="f-open" type="button" aria-pressed="false">Open all rows</button>
+      <span class="count" id="count" aria-live="polite">14 of 14 shown</span>
+    </div>
+  </div>
+
+  <div>
+    <div class="maphead"><span>Category</span><span>Size signal</span><span>Tags</span><span>Read</span></div>
+    <div class="rows" id="rows">
+
+      <!-- BUILD -->
+      <details class="row" data-phase="build" data-fl="no">
+        <summary>
+          <div><span class="r-title">Electrical contracting</span><span class="r-path">Service · build-phase</span></div>
+          <div class="r-money">$145–163M<small>per $1B of capex</small></div>
+          <div class="chips"><span class="chip hi">Cycle: high</span><span class="chip">Consolidating</span><span class="chip">FL: little</span></div>
+          <div class="r-read">Treat as a customer and an exit comparable, not an entry.</div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>Recurs?</dt><dd>No. One-time per build, so it rides the capex cycle.</dd>
+          <dt>Scarce input</dt><dd>Licensed electricians, superintendents who have already turned over a live data center, and bonding capacity. A newcomer adds none of these.<sup><a href="#src-17">17</a></sup></dd>
+          <dt>Who's there</dt><dd>Comfort Systems' backlog hit <strong>$14.06B</strong> at 30 June 2026, up from $8.12B a year earlier; EMCOR's remaining performance obligations reached <strong>$17.14B</strong>, up 44%.<sup><a href="#src-6">6</a>,<a href="#src-8">8</a></sup> Both buy regional firms; Comfort closed Hunt Electric on 1 May 2026.<sup><a href="#src-7">7</a></sup></dd>
+          <dt>Entry</dt><dd>BUY or PARTNER only.</dd>
+          <dt>Florida</dt><dd>Fort Meade in Polk County is the one approved hyperscale campus, and it faces two lawsuits and a recall.<sup><a href="#src-26">26</a>,<a href="#src-44">44</a></sup></dd>
+        </dl></div>
+      </details>
+
+      <details class="row" data-phase="build" data-fl="no">
+        <summary>
+          <div><span class="r-title">Mechanical &amp; cooling installation</span><span class="r-path">Service · build-phase</span></div>
+          <div class="r-money">$66–100M<small>per $1B of capex</small></div>
+          <div class="chips"><span class="chip hi">Cycle: high</span><span class="chip">Consolidating</span><span class="chip">FL: little</span></div>
+          <div class="r-read">Same read as electrical.</div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>Recurs?</dt><dd>No. Liquid cooling raises the mechanical share of each new build.</dd>
+          <dt>Scarce input</dt><dd>Pipefitters and mechanical supervisors. Steel pipe and tube prices are up 11.1% year over year.<sup><a href="#src-2">2</a></sup></dd>
+          <dt>Who's there</dt><dd>The same consolidators. Comfort reported a sharp increase in mechanical-segment profitability in Q2 2026.<sup><a href="#src-7">7</a></sup></dd>
+          <dt>Entry</dt><dd>BUY or PARTNER.</dd>
+        </dl></div>
+      </details>
+
+      <details class="row" data-phase="build" data-fl="no">
+        <summary>
+          <div><span class="r-title">Commissioning &amp; integrated systems testing</span><span class="r-path">Professional service · build-phase</span></div>
+          <div class="r-money">Per project<small>small slice of each build</small></div>
+          <div class="chips"><span class="chip hi">Cycle: high</span><span class="chip">Specialist firms</span><span class="chip">FL: little</span></div>
+          <div class="r-read">Opens doors to owners, but it is a people business you cannot staff yourself.</div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>Recurs?</dt><dd>Partly. Recommissioning follows retrofits and hardware refreshes.</dd>
+          <dt>Scarce input</dt><dd>Commissioning engineers with completed mission-critical turnovers. One recruiter reports failed integrated systems tests delay projects by 3.8 months on average (unverified).<sup><a href="#src-18">18</a></sup></dd>
+          <dt>Entry</dt><dd>PARTNER with a licensed commissioning engineer.</dd>
+        </dl></div>
+      </details>
+
+      <details class="row" data-phase="build" data-fl="partial">
+        <summary>
+          <div><span class="r-title">Mission-critical labor: staffing &amp; training</span><span class="r-path">Staffing / training · build-phase</span></div>
+          <div class="r-money">349k / 456k<small>net new construction workers needed, 2026 / 2027</small></div>
+          <div class="chips"><span class="chip hi">Cycle: high</span><span class="chip">Crowded</span><span class="chip fl flp">FL: partial</span></div>
+          <div class="r-read">Staffing is crowded. <b>Training is the version that adds supply.</b></div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>Scarce input</dt><dd>The people. The ABC estimates 349,000 net new workers needed in 2026 and 456,000 in 2027; NCCER projects about 41% of the construction workforce retires by 2031.<sup><a href="#src-16">16</a>,<a href="#src-17">17</a></sup></dd>
+          <dt>Scarce-input test</dt><dd>Staffing moves scarce people between projects. Training creates more of them.</dd>
+          <dt>Who's there</dt><dd>Most of the labor-shortage articles found for this map were published by staffing and recruiting firms marketing this exact service.</dd>
+          <dt>Entry</dt><dd>START (staffing) is cheap. A training pipeline is slower and capital-light, and it serves every trade in Florida, not only data centers.</dd>
+        </dl></div>
+      </details>
+
+      <details class="row top" data-phase="build" data-fl="partial">
+        <summary>
+          <div><span class="r-title">Transformer &amp; switchgear remanufacturing and surplus</span><span class="r-path">Supply · build-phase shortage</span></div>
+          <div class="r-money">52–80 wk<small>15 kV switchgear lead time (≈24 pre-pandemic)</small></div>
+          <div class="chips"><span class="chip md">Cycle: window</span><span class="chip">Shops + brokers</span><span class="chip fl flp">FL: partial</span></div>
+          <div class="r-read"><b>Strongest supply play.</b> Underwrite it to close when factories catch up.</div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>Shortage</dt><dd>Pad-mount transformers 40–65 weeks, substation class 75–110 weeks, generator step-up 100–150+ weeks.<sup><a href="#src-11">11</a></sup> Utilities, battery storage and reshored factories compete for the same gear.<sup><a href="#src-13">13</a></sup></dd>
+          <dt>What reman does</dt><dd>Remanufactured pad-mount units ship in 1–4 weeks at 10–40% below new, per sponsored content from a remanufacturer.<sup><a href="#src-14">14</a></sup></dd>
+          <dt>Scarce-input test</dt><dd>Passes. Remanufacturing adds supply of the scarce input instead of competing for it.</dd>
+          <dt>Who's there</dt><dd>Rewind and reman shops (Maddox runs five) and equipment brokers.<sup><a href="#src-14">14</a></sup></dd>
+          <dt>Window</dt><dd>Relief expected unevenly after 2028.<sup><a href="#src-12">12</a></sup></dd>
+          <dt>Entry</dt><dd>PARTNER with a rewind shop as its sourcing and sales arm, or DISTRIBUTE as a broker. Capital is medium to high: cores, test bay, inventory.</dd>
+        </dl></div>
+      </details>
+
+      <details class="row" data-phase="build" data-fl="yes">
+        <summary>
+          <div><span class="r-title">Used &amp; rental generators</span><span class="r-path">Supply · build-phase shortage</span></div>
+          <div class="r-money">60–75% of new<small>used low-hour price, vs 40–50% historically</small></div>
+          <div class="chips"><span class="chip md">Cycle: window</span><span class="chip">Dealers, brokers</span><span class="chip fl">FL: yes</span></div>
+          <div class="r-read">A good bolt-on to generator service. Thin on its own.</div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>Shortage</dt><dd>New units of 1,250 kW and up run 52+ weeks. Load-bank-tested used units ship in 1–4 weeks. The market is pricing the value of time.<sup><a href="#src-15">15</a></sup></dd>
+          <dt>Scarce-input test</dt><dd>Passes. Moves existing units to where they are needed; test documentation is the differentiator.</dd>
+          <dt>Florida</dt><dd>Hurricane season and the long-term-care mandate keep demand alive when data-center orders slow.</dd>
+          <dt>Entry</dt><dd>DISTRIBUTE, paired with testing service. Inventory needs capital.</dd>
+        </dl></div>
+      </details>
+
+      <!-- INSTALLED BASE -->
+      <details class="row top" data-phase="base" data-fl="yes">
+        <summary>
+          <div><span class="r-title">Generator testing, load bank &amp; fuel service</span><span class="r-path">Field service · installed base</span></div>
+          <div class="r-money">$1.8–2.4B/yr<small>US C&amp;I generator service (vendor est.)</small></div>
+          <div class="chips"><span class="chip lo">Cycle: low</span><span class="chip">Fragmented</span><span class="chip fl">FL: yes</span></div>
+          <div class="r-read"><b>Top candidate.</b> Code-mandated, fragmented, with a Florida base that does not depend on data centers.</div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>Why it recurs</dt><dd><span class="code">NFPA 110</span> requires a monthly exercise, an annual supplemental load test when monthly runs don't reach 30% load, and a full-load test every 36 months for Level 1 systems.<sup><a href="#src-19">19</a></sup> Data-center practice is annual at 100% load, semiannual for Tier III/IV.<sup><a href="#src-20">20</a></sup></dd>
+          <dt>Density</dt><dd>A 500 MW–1 GW AI campus runs 20 to 100+ generators.<sup><a href="#src-21">21</a></sup> Fort Meade's developer plans 100% backup generation for 1.2 GW.<sup><a href="#src-25">25</a></sup></dd>
+          <dt>Scarce input</dt><dd>OEM-certified technicians (12–24 months to replace one) and a master electrician license, often held by a single person.<sup><a href="#src-22">22</a></sup></dd>
+          <dt>Who's there</dt><dd>OEM dealer networks take warranty and national contracts. Independents do most day-to-day work, mostly within one metro; hundreds of regional firms run $3–25M of revenue.<sup><a href="#src-21">21</a></sup> CBRE bought Pearce to self-perform this work.<sup><a href="#src-10">10</a></sup></dd>
+          <dt>Price to buy</dt><dd>5–7× EBITDA for $3–10M dealers; 6.5–9× for $5–20M multi-brand firms with 40–65% recurring revenue. Hurricane years can inflate EBITDA 40–80%, so normalize over five years.<sup><a href="#src-22">22</a></sup></dd>
+          <dt>Florida</dt><dd><strong>691 nursing homes and 3,080 ALFs</strong> must keep emergency power and fuel for 96 hours under state law.<sup><a href="#src-23">23</a>,<a href="#src-24">24</a></sup> Florida adds a state electrical license and county standby permits.<sup><a href="#src-22">22</a></sup></dd>
+          <dt>Entry</dt><dd>BUY or PARTNER.</dd>
+        </dl></div>
+      </details>
+
+      <details class="row" data-phase="base" data-fl="partial">
+        <summary>
+          <div><span class="r-title">UPS battery testing &amp; replacement</span><span class="r-path">Field service · installed base</span></div>
+          <div class="r-money">3–5 yr<small>real-world VRLA replacement cycle</small></div>
+          <div class="chips"><span class="chip lo">Cycle: low</span><span class="chip">OEM-heavy for Li-ion</span><span class="chip fl flp">FL: partial</span></div>
+          <div class="r-read">VRLA work shrinks slowly. The lithium service gap is the opening.</div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>Why it recurs</dt><dd>VRLA strings are replaced every 3–5 years in real conditions; lithium-ion lasts 8–12.<sup><a href="#src-27">27</a></sup></dd>
+          <dt>Shift</dt><dd>Lithium-ion is now the default for new builds. Any UPS contractor can service VRLA, but lithium service is concentrated with OEMs and large integrators.<sup><a href="#src-27">27</a></sup></dd>
+          <dt>Scarce input</dt><dd>Lithium certification and OEM access.</dd>
+          <dt>Entry</dt><dd>Add-on to a generator service business.</dd>
+        </dl></div>
+      </details>
+
+      <details class="row" data-phase="base" data-fl="yes">
+        <summary>
+          <div><span class="r-title">Fire suppression inspection, testing &amp; maintenance</span><span class="r-path">Field service · installed base</span></div>
+          <div class="r-money">5–9× EBITDA<small>recurring-mix firms, $5–20M revenue</small></div>
+          <div class="chips"><span class="chip lo">Cycle: low</span><span class="chip hi">PE roll-up</span><span class="chip fl">FL: yes</span></div>
+          <div class="r-read">Great economics that PE has already found. Use as an exit comparable or an add-on line.</div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>Why it recurs</dt><dd><span class="code">NFPA 2001</span> clean-agent systems need monthly visual checks, semiannual cylinder weighing, an annual functional test that confirms HVAC shutdown, periodic hydrostatic retests, and an enclosure integrity test after any room change. Lithium battery rooms add an <span class="code">NFPA 855</span> review.<sup><a href="#src-28">28</a></sup></dd>
+          <dt>Who's there</dt><dd>Pye-Barker made 57 acquisitions in 2025. Sector deals rose 66.7% to about 125, and no firm holds more than 5% share.<sup><a href="#src-29">29</a></sup></dd>
+        </dl></div>
+      </details>
+
+      <details class="row top" data-phase="base" data-fl="no">
+        <summary>
+          <div><span class="r-title">Liquid-cooling fluid &amp; CDU service</span><span class="r-path">Field service · installed base</span></div>
+          <div class="r-money">Every 2–6 mo<small>lab testing of water/glycol coolant</small></div>
+          <div class="chips"><span class="chip lo">Cycle: low</span><span class="chip">Early</span><span class="chip">FL: weak today</span></div>
+          <div class="r-read"><b>The most AI-leveraged service.</b> Local volume near Tampa is small for now.</div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>Why it recurs</dt><dd>Coolant needs lab testing every 2–6 months (up to 12 for dielectric fluids), CDU filters need replacing, and pH drift, inhibitor depletion and microbial growth need watching.<sup><a href="#src-30">30</a>,<a href="#src-31">31</a></sup></dd>
+          <dt>Scarce input</dt><dd>Know-how. A fluid supplier says operators' facilities teams need upskilling in liquid systems, leak detection and CDU operation.<sup><a href="#src-31">31</a></sup></dd>
+          <dt>Who's there</dt><dd>Chemical majors running service networks (the Dow Coolant Care Network), fluid labs, and CDU vendors.<sup><a href="#src-32">32</a></sup></dd>
+          <dt>AI test</dt><dd>Passes. Stronger AI means denser racks, and denser racks mean more liquid cooling.</dd>
+          <dt>Entry</dt><dd>PARTNER as a regional field-service arm for a fluid supplier.</dd>
+        </dl></div>
+      </details>
+
+      <details class="row" data-phase="base" data-fl="yes">
+        <summary>
+          <div><span class="r-title">Cooling tower water treatment &amp; Legionella control</span><span class="r-path">Field service · installed base</span></div>
+          <div class="r-money">Contracted<small>suppliers moving to full-service</small></div>
+          <div class="chips"><span class="chip lo">Cycle: low</span><span class="chip">Established</span><span class="chip fl">FL: yes</span></div>
+          <div class="r-read">Mature and general-purpose, with little data-center-specific edge.</div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>Why it recurs</dt><dd>Routine disinfection and a Legionella risk-management program, typically built to <span class="code">ASHRAE 188</span>.<sup><a href="#src-33">33</a>,<a href="#src-42">42</a></sup> Chemical suppliers are shifting from product sales to full service contracts.<sup><a href="#src-34">34</a></sup></dd>
+          <dt>Headwind</dt><dd>New AI builds are moving toward closed-loop and liquid cooling with less evaporation.<sup><a href="#src-35">35</a></sup></dd>
+          <dt>Florida</dt><dd>A hyperscale site in Hillsborough County would need a consumptive-use permit from the Southwest Florida Water Management District.<sup><a href="#src-41">41</a></sup></dd>
+        </dl></div>
+      </details>
+
+      <details class="row" data-phase="base" data-fl="partial">
+        <summary>
+          <div><span class="r-title">Critical-environment cleaning &amp; particle certification</span><span class="r-path">Service · build + installed base</span></div>
+          <div class="r-money">ISO Class 8<small>target cleanliness for data halls</small></div>
+          <div class="chips"><span class="chip md">Cycle: mixed</span><span class="chip">Low barrier</span><span class="chip fl flp">FL: partial</span></div>
+          <div class="r-read">Cheapest to test and cheapest to copy.</div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>Why it recurs</dt><dd>Each new hall is cleaned and particle-tested before handover, and operators run ongoing programs to <span class="code">ISO 14644-1</span> Class 8.<sup><a href="#src-36">36</a>,<a href="#src-37">37</a></sup></dd>
+          <dt>Claim to check</dt><dd>A UK cleaning vendor says OEMs such as NVIDIA and Cisco increasingly require Class 8 and that dust damage can void warranties. Unverified.<sup><a href="#src-36">36</a></sup></dd>
+          <dt>Scarce input</dt><dd>None, which is the problem. Margin depends on certification and documentation quality.</dd>
+          <dt>Entry</dt><dd>START with low capital.</dd>
+        </dl></div>
+      </details>
+
+      <details class="row" data-phase="base" data-fl="partial">
+        <summary>
+          <div><span class="r-title">Facility operations (FM)</span><span class="r-path">Operations · installed base</span></div>
+          <div class="r-money">$4.2M/yr<small>maintenance + site labor per $1B</small></div>
+          <div class="chips"><span class="chip lo">Cycle: low</span><span class="chip hi">Majors own it</span><span class="chip fl flp">FL: partial</span></div>
+          <div class="r-read">Sell to the FM majors, not against them.</div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>Who's there</dt><dd>CBRE and JLL (acquiring SKAE Power Solutions) hold many owner relationships.<sup><a href="#src-10">10</a>,<a href="#src-38">38</a></sup> Some regional firms work as their local subcontractors.<sup><a href="#src-39">39</a></sup></dd>
+          <dt>Why it matters</dt><dd>Most categories above reach the owner through these firms, so their subcontractor onboarding is part of the route to a purchase order.</dd>
+        </dl></div>
+      </details>
+
+      <!-- REFRESH -->
+      <details class="row" data-phase="refresh" data-fl="partial">
+        <summary>
+          <div><span class="r-title">IT asset disposition &amp; GPU remarketing</span><span class="r-path">Service / resale · refresh cycle</span></div>
+          <div class="r-money">$12.95B<small>2026 decommissioning services (vendor-cited)</small></div>
+          <div class="chips"><span class="chip md">Cycle: lagged</span><span class="chip">Certified players</span><span class="chip fl flp">FL: partial</span></div>
+          <div class="r-read">Closest fit to a controls background. Research next.</div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>Why it recurs</dt><dd>Hardware refresh. Epoch assumes a 5-year IT life; ITAD vendors claim 18–36 months for training-grade GPUs.<sup><a href="#src-1">1</a>,<a href="#src-40">40</a></sup> The 2022–24 GPU cohort is entering disposal now.</dd>
+          <dt>Requirements</dt><dd>R2v3 and NAID AAA certification, NIST 800-88 sanitization and serial-level chain of custody,<sup><a href="#src-40">40</a></sup> plus export-control screening for high-performance hardware.<sup><a href="#src-43">43</a></sup></dd>
+          <dt>Fit</dt><dd>This is controls and documentation work, the closest match of any row to the author's operations and controls background. The moat is compliance, not labor.</dd>
+          <dt>Entry</dt><dd>PARTNER with or BUY a certified ITAD firm.</dd>
+        </dl></div>
+      </details>
+
+    </div>
+    <p class="unres"><b>Not yet researched:</b> specialty consumables distribution such as CDU filters, coolant, battery strings and PPE (Wesco's $1.5B a quarter of data-center sales shows distribution works at scale<sup><a href="#src-9">9</a></sup>, but the niche is unmapped). <b>Deprioritized:</b> grounds, pest control, roofing, fencing and guard services. They are a small slice of a $3.2M-a-year maintenance pool and no data-center premium turned up.</p>
+  </div>
+</section>
+
+<!-- ============ METHOD ============ -->
+<section id="method">
+  <div class="sec-head">
+    <span class="eyebrow">What this changed in the method</span>
+    <h2>Seven fields every opportunity card now carries</h2>
+    <p class="lede">Running one real theme end to end showed what a technology-focused template misses when the opportunity is a contractor, a supplier or a service business.</p>
+  </div>
+  <ul class="fields">
+    <li><code>phase</code><span>Build-phase, installed base or refresh. Decides cycle exposure.</span></li>
+    <li><code>recurrence_driver</code><span>Code mandate, wear-out interval or technology shift, with the citation.</span></li>
+    <li><code>scarce_input</code><span>What is short, who holds it, and whether a new entrant adds supply or just competes for it.</span></li>
+    <li><code>crowding</code><span>Named consolidators, deal counts and multiples paid.</span></li>
+    <li><code>hedge_market</code><span>Demand that survives if this wave's capex halves.</span></li>
+    <li><code>geography</code><span>Where the money physically lands versus where the founder can operate.</span></li>
+    <li><code>window_close</code><span>For shortage plays, when supply is expected to catch up.</span></li>
+  </ul>
+</section>
+
+<!-- ============ HOW THIS WAS MADE ============ -->
+<section id="how-made">
+  <div class="sec-head">
+    <span class="eyebrow">Credits</span>
+    <h2>How this was made</h2>
+    <p class="lede">WaveMiner is a personal opportunity-intelligence project: trace a technology shift to the bottleneck it creates, the buyer who pays to remove it, and the cheapest real-world test. This note is its first full test on a real theme.</p>
+  </div>
+  <div class="two">
+    <div class="credit">
+      <h3>Patrick's input</h3>
+      <ul class="clist">
+        <li>Developed the WaveMiner concept and specification: evidence, then bottleneck, workflow, buyer, experiment and a build-or-kill decision, instead of a news digest or an idea generator.</li>
+        <li>Set the evidence rules: sources graded A&ndash;D, every claim tied to a source, explicit kill criteria, and &ldquo;no material change&rdquo; counted as a valid result.</li>
+        <li>Widened the scope from technology companies to any business whose demand rises because of the wave: contractors, suppliers, field service, staffing, distribution and acquisitions. The north star is to own something whose demand grows as AI and robotics keep expanding.</li>
+        <li>Pointed the search at the mundane corners that most people are not looking at.</li>
+        <li>Chose to run one real theme end to end, the AI data-center buildout, before automating anything.</li>
+        <li>Treats direct conversations with operators, contractors and advisors as the real test, so customer evidence outranks research.</li>
+      </ul>
+    </div>
+    <div class="credit">
+      <h3>Claude's role</h3>
+      <ul class="clist">
+        <li>Stress-tested the specification and suggested additions: capex-cycle exposure, the scarce-input test, geography and hedge markets.</li>
+        <li>Gathered and read the sources, graded each one, ran the arithmetic and built this page.</li>
+        <li>Flagged vendor-sourced and unverified claims so they get checked before anything is acted on.</li>
+      </ul>
+      <p class="note">Claude is Anthropic's AI model. All research was directed and reviewed by Patrick.</p>
+    </div>
+  </div>
+  <p class="note">Next step: conversations with operators and contractors to test the leading candidates.</p>
+</section>
+
+<!-- ============ SOURCES ============ -->
+<section id="sources">
+  <div class="sec-head">
+    <span class="eyebrow">Provenance</span>
+    <h2>Sources</h2>
+    <p class="note">Tier A primary · B high-quality analysis · C industry reporting · D vendor marketing or weak signal. A D-tier source can suggest a lead but cannot validate it on its own.</p>
+    <p class="note">Data files: <a href="sources.csv">sources.csv</a> (every source, its tier and what it supports) · <a href="spend-per-1b.csv">spend-per-1b.csv</a> (the figures behind the bars).</p>
+  </div>
+  <ol class="srcs">
+    <li id="src-1"><span class="tier B">B</span><a href="https://epoch.ai/data-insights/ai-datacenter-cost-breakdown">Epoch AI: Total cost of ownership of a one-gigawatt AI data center</a> (May 2026, with CSVs)</li>
+    <li id="src-2"><span class="tier C">C</span><a href="https://news.constructconnect.com/data-center-construction-input-costs-rise-significantly">ConstructConnect: Data center construction input costs rise significantly</a> (cites Turner &amp; Townsend 2025 index)</li>
+    <li id="src-3"><span class="tier B">B</span><a href="https://www.jll.com/en-us/insights/market-dynamics/north-america-data-centers">JLL: North America Data Center Report, Midyear 2026</a></li>
+    <li id="src-4"><span class="tier C">C</span><a href="https://io-fund.com/ai-stocks/ai-capex-1-trillion-estimates-too-low">I/O Fund: AI capex to hit $1 trillion</a> (FactSet and Goldman Sachs data)</li>
+    <li id="src-5"><span class="tier C">C</span><a href="https://gpusmith.com/articles/en/hyperscaler-ai-capex-2026">GPUSmith: Hyperscaler AI capex 2026</a></li>
+    <li id="src-6"><span class="tier A">A</span><a href="https://www.businesswire.com/news/home/20260723227439/en/Comfort-Systems-USA-Reports-Second-Quarter-2026-Results">Comfort Systems USA: Second quarter 2026 results</a></li>
+    <li id="src-7"><span class="tier A">A</span><a href="https://www.investing.com/news/transcripts/earnings-call-transcript-comfort-systems-usa-tops-q2-2026-estimates-stock-slips-93CH-4812224">Comfort Systems USA: Q2 2026 earnings call transcript</a></li>
+    <li id="src-8"><span class="tier C">C</span><a href="https://www.tradingview.com/news/zacks:ab968b125094b:0-can-record-backlog-strengthen-comfort-systems-revenue-visibility/">Zacks via TradingView: EMCOR and Comfort Systems backlog</a></li>
+    <li id="src-9"><span class="tier A">A</span><a href="https://investors.wesco.com/news-releases/news-release-details/wesco-international-reports-second-quarter-2026-results">Wesco International: Second quarter 2026 results</a></li>
+    <li id="src-10"><span class="tier C">C</span><a href="https://www.facilitiesdive.com/news/cbre-pays-12b-to-expand-data-center-critical-power-system-capabilities/804884/">Facilities Dive: CBRE pays $1.2B to expand data center, critical power capabilities</a></li>
+    <li id="src-11"><span class="tier C">C</span><a href="https://terrapincg.com/news/switchgear-transformer-generator-lead-times-2026">Terrapin Construction Group: Switchgear, transformer and generator lead times in 2026</a></li>
+    <li id="src-12"><span class="tier C">C</span><a href="https://chargeduppro.com/post/data-center-transformer-shortage-power-bottleneck-industrial-property-2026">ChargedUp!: Data center transformer shortage</a></li>
+    <li id="src-13"><span class="tier C">C</span><a href="https://environmentenergyleader.com/stories/grid-equipment-bottleneck-isnt-just-a-data-center-problem,134481">Environment+Energy Leader: Grid equipment bottleneck isn't just a data center problem</a></li>
+    <li id="src-14"><span class="tier D">D</span><a href="https://www.powermag.com/partner-content/beating-the-transformer-bottleneck-remanufacturing-build-to-stock-and-smart-procurement/">POWER Magazine partner content (Maddox): Beating the transformer bottleneck</a></li>
+    <li id="src-15"><span class="tier D">D</span><a href="https://csdieselgenerators.com/the-ai-data-center-boom-and-generator-shortage-lead-times-prices/">CS Diesel Generators: The AI data center boom and the 2026 generator shortage</a></li>
+    <li id="src-16"><span class="tier C">C</span><a href="https://www.fierce-network.com/cloud/data-center-labor-shortage-pushes-operators-train-poach-and-automate">Fierce Network: Data center labor shortage pushes operators to train, poach and automate</a></li>
+    <li id="src-17"><span class="tier D">D</span><a href="https://thebirmgroup.com/data-center-construction-boom-2026/">The BIRM Group: Data center construction hiring 2026</a></li>
+    <li id="src-18"><span class="tier D">D</span><a href="https://www.irecruit.co/insights/data-center-construction-cost-per-mw-2026-benchmarks-owners">iRecruit: Data center construction cost per MW, 2026</a></li>
+    <li id="src-19"><span class="tier C">C</span><a href="https://www.duthiepower.com/what-is-the-required-code-to-complete-load-bank-testing/">Duthie Power: What is the required code to complete load bank testing?</a> (summary of NFPA 110)</li>
+    <li id="src-20"><span class="tier D">D</span><a href="https://onpointgen.com/resources/data-center-generator-maintenance-best-practices/">OnPoint Generators: Data center generator maintenance best practices</a></li>
+    <li id="src-21"><span class="tier D">D</span><a href="https://generatorsource.com/generator-service/the-u-s-commercial-and-industrial-generator-service-market-august-2026/">Generator Source: The US commercial and industrial generator service market, August 2026</a></li>
+    <li id="src-22"><span class="tier D">D</span><a href="https://ctacquisitions.com/buy-a-business/generator-service/">CT Acquisitions: Buy a generator service business, buyer's playbook</a></li>
+    <li id="src-23"><span class="tier B">B</span><a href="https://www.fhca.org/media_center/long_term_health_care_facts">Florida Health Care Association: Facts about long-term care in Florida</a> (AHCA data)</li>
+    <li id="src-24"><span class="tier A">A</span><a href="https://www.flsenate.gov/Session/Bill/2018/1874/Analyses/2018s01874.pre.hp.PDF">Florida Senate: SB 1874 (2018) bill analysis</a></li>
+    <li id="src-25"><span class="tier C">C</span><a href="https://www.wusf.org/environment/2026-04-08/fort-meade-is-one-step-closer-to-building-floridas-first-hysperscale-ai-data-center">WUSF: Fort Meade one step closer to Florida's first hyperscale AI data center</a></li>
+    <li id="src-26"><span class="tier C">C</span><a href="https://floridadatacenters.org/">Florida Data Centers: Every proposed data center in Florida</a> (independent tracker, opposition-oriented)</li>
+    <li id="src-27"><span class="tier D">D</span><a href="https://datacenterups.com/lithium-ion-vs-vrla-ups-batteries-data-center/">DataCenterUPS.com: Lithium-ion vs VRLA for data center UPS</a></li>
+    <li id="src-28"><span class="tier C">C</span><a href="https://www.uptocode.build/resources/clean-agent-checklist-data-center">Up To Code: Clean agent fire suppression checklist for data centers</a></li>
+    <li id="src-29"><span class="tier D">D</span><a href="https://ctacquisitions.com/guides/private-equity-fire-life-safety-2026/">CT Acquisitions: Private equity in fire and life safety, 2026</a></li>
+    <li id="src-30"><span class="tier D">D</span><a href="https://www.gfps.com/com/en/applications/direct-liquid-cooling.html">GF: Direct-to-chip liquid cooling</a></li>
+    <li id="src-31"><span class="tier D">D</span><a href="https://www.dober.com/direct-to-chip-cooling">Dober: Direct-to-chip cooling</a></li>
+    <li id="src-32"><span class="tier C">C</span><a href="https://www.electronics-cooling.com/2026/08/coolant-health-as-a-reliability-variable-in-direct-to-chip-data-center-cooling/">Electronics Cooling: Coolant health as a reliability variable in direct-to-chip cooling</a></li>
+    <li id="src-33"><span class="tier D">D</span><a href="https://www.chemaqua.com/en-us/blog/2026/05/11/8-water-treatment-areas-to-improve-data-center-operations/">Chem-Aqua: Water treatment areas to improve data center operations</a></li>
+    <li id="src-34"><span class="tier D">D</span><a href="https://dataintelo.com/report/water-treatment-chemicals-for-data-centers-market">Dataintelo: Water treatment chemicals for data centers</a></li>
+    <li id="src-35"><span class="tier D">D</span><a href="https://hydropurewater.com/blog/6033-data-center-water-reuse-trends-2026-engineering-costs-standards.html">HydropureWater: Data center water reuse trends 2026</a></li>
+    <li id="src-36"><span class="tier D">D</span><a href="https://www.itcleaning.co.uk/data-centre-cleaning-standard-iso-14644-1-class-8/">IT Cleaning Ltd: ISO 14644 Class 8 data centre cleaning standard</a></li>
+    <li id="src-37"><span class="tier D">D</span><a href="https://set3.com/solutions/cleaning/">SET3: Data center and cleanroom cleaning</a></li>
+    <li id="src-38"><span class="tier C">C</span><a href="https://www.jll.com/en-us/industries/data-centers">JLL: Data center services (SKAE Power Solutions acquisition)</a></li>
+    <li id="src-39"><span class="tier C">C</span><a href="https://umbrex.com/resources/how-industries-work/professional-business-services/how-the-facility-management-services-industry-works/">Umbrex: How the facility management services industry works</a></li>
+    <li id="src-40"><span class="tier D">D</span><a href="https://www.stselectronicrecyclinginc.com/data-center-itad-2026">STS Electronic Recycling: 2026 data center ITAD trends</a></li>
+    <li id="src-41"><span class="tier C">C</span><a href="https://floridadatacenters.org/counties/hillsborough">Florida Data Centers: Hillsborough County risk profile</a></li>
+    <li id="src-42"><span class="tier D">D</span><a href="https://alliancechemical.com/blogs/articles/sodium-hypochlorite-cooling-tower-data-center">Alliance Chemical: Sodium hypochlorite for cooling towers and data centers</a></li>
+    <li id="src-43"><span class="tier C">C</span><a href="https://invrecovery.org/data-center-decommissioning-in-2026-navigating-ai-infrastructure-upgrades/">Invrecovery: Data center decommissioning in 2026</a></li>
+    <li id="src-44"><span class="tier C">C</span><a href="https://therealdeal.com/miami/2026/08/10/meet-the-developers-behind-floridas-hyperscale-data-centers/">The Real Deal: Who are the developers behind Florida's hyperscale data centers?</a></li>
+  </ol>
+</section>
+
+<footer>Dollar splits apply published cost shares to Epoch AI's stylized 1 GW model; they are directional, not a budget for any real site. Figures marked vendor or unverified need a primary source before they are relied on. Research notes for business exploration, not investment advice. Company figures are cited from public filings and reporting. &copy; 2026 Work by PK.</footer>
+
+</div>
+
+<script>
+(function(){
+  var rows=[].slice.call(document.querySelectorAll('#rows .row'));
+  var phaseBtns=[].slice.call(document.querySelectorAll('[data-phase]')).filter(function(b){return b.tagName==='BUTTON';});
+  var flBtn=document.getElementById('f-fl');
+  var openBtn=document.getElementById('f-open');
+  var count=document.getElementById('count');
+  var phase='all', flOnly=false;
+  function apply(){
+    var shown=0;
+    rows.forEach(function(r){
+      var ok=(phase==='all'||r.dataset.phase===phase)&&(!flOnly||r.dataset.fl==='yes');
+      r.hidden=!ok; if(ok)shown++;
+    });
+    count.textContent=shown+' of '+rows.length+' shown';
+  }
+  phaseBtns.forEach(function(b){
+    b.addEventListener('click',function(){
+      phase=b.dataset.phase;
+      phaseBtns.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+      apply();
+    });
+  });
+  flBtn.addEventListener('click',function(){
+    flOnly=!flOnly; flBtn.setAttribute('aria-pressed',flOnly?'true':'false'); apply();
+  });
+  openBtn.addEventListener('click',function(){
+    var opening=openBtn.getAttribute('aria-pressed')!=='true';
+    rows.forEach(function(r){r.open=opening;});
+    openBtn.setAttribute('aria-pressed',opening?'true':'false');
+    openBtn.textContent=opening?'Close all rows':'Open all rows';
+  });
+  apply();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+section,item,low_usd_m,mid_usd_m,high_usd_m,basis,source_ids
+capex_per_1b,Servers,559.3,559.3,559.3,"Epoch 1 GW model: 21,188 of 37,883 ($M)",1
+capex_per_1b,Networking,130.0,130.0,130.0,"Epoch: 4,925 of 37,883",1
+capex_per_1b,Facility,301.8,301.8,301.8,"Epoch: 11,433 of 37,883",1
+capex_per_1b,Land,4.5,4.5,4.5,"Epoch: 172 of 37,883",1
+capex_per_1b,Utility works,4.3,4.3,4.3,"Epoch: 164 of 37,883",1
+facility_per_1b,Electrical,144.9,153.9,163.0,48–54% of facility (T&T); midpoint 51%,1;2
+facility_per_1b,Mechanical,66.4,83.0,99.6,22–33% of facility; midpoint 27.5%,1;2
+facility_per_1b,Core & shell,27.2,34.7,42.3,9–14% of facility; midpoint 11.5%,1;2
+facility_per_1b,GC fees,30.2,30.2,30.2,~10% of facility,1;2
+annual_opex_per_1b,Energy,15.68,15.68,15.68,"Epoch: 594 of 37,883 per year",1
+annual_opex_per_1b,Taxes,3.77,3.77,3.77,Epoch: 143,1
+annual_opex_per_1b,Maintenance,3.17,3.17,3.17,Epoch: 120,1
+annual_opex_per_1b,Site labor,1.06,1.06,1.06,Epoch: 40,1
+annual_opex_per_1b,Water,0.16,0.16,0.16,Epoch: 6,1
+derived,NA maintenance pool once 66 GW is running ($M/yr),7920,7920,7920,66 GW (JLL) x $120M/GW/yr (Epoch); rough,1;3
