@@ -21,8 +21,11 @@ Derived from pages already built for workbypk.com. Nothing here is invented: eve
 | A4 | `exhibits/index.html` | `160816b7cd96961d9bb2043d2b55397d17f62ba34cc40c82451fc4fb362c6bbf` |
 | A5 | `exhibits/shape-of-time/index.html` | `8d8fc91edd3d89a6d0af1cf313228d15a7dd5f2692fb42417f9332a01304a4dc` |
 | B1 | `/Users/knuggs/Downloads/PKAIOS_ARCHITECTURE_MAP.html` | `2ed881317a5f2509ed750fbe9d6af0fcf5b1946379b7e7d5d6376546a829018a` |
+| N1 | `waveminer/spend-map/index.html` | `c714297b5d2446b2581e010798e08cd999b3bbc219149e10f768fe57ff641667` |
 
-**Corpus rule:** Corpus = pages that make up Patrick's own site (hub and section pages), regardless of which model produced the first draft. Exhibits displayed as specimens of other models' work (gpt, grok, fable, shape-of-time) are excluded because they are shown as comparisons, not adopted as house style. KN Lab is excluded as out of scope (not part of workbypk).
+**Drift (2026-09-24):** A2 no longer matches its pin. Commit `e479186` inserted the N1 card at `projects/index.html:169-187` (19 lines). A2 traces at or below line 168 still hold. Traces past it in §1–§10 (`:193`, `:230-249`, `:255`) now sit 19 lines lower: for example, `[running / confirm]` has moved from `:193` to `:212`. The §11 traces (`:181`, `:274`) cite the current file. Re-pin A2 at the next full re-verification.
+
+**Corpus rule:** Corpus = pages that make up Patrick's own site (hub and section pages), regardless of which model produced the first draft. Exhibits displayed as specimens of other models' work (gpt, grok, fable, shape-of-time) are excluded because they are shown as comparisons, not adopted as house style. KN Lab is excluded as out of scope (not part of workbypk). Research notes (N1 onward) are Patrick's own work but are not corpus: they are data documents that keep their own design by decision (2026-09-24), and they are governed by §11, not by §1–§7.
 
 **Which sources are binding:**
 - **Binding rules come only from A1–A4.**
@@ -58,13 +61,13 @@ A1–A4 contain two systems. **The section system governs all new pages (P0, res
 - **MUST** use `#E4E5E2` as the page background. [`styles.css:2`, `projects/index.html:14`, `build-log/log.css:11`, `exhibits/index.html:14`]
 - **MUST** use `#6E1E28` as the single accent: links, and the brand color. [`styles.css:7`, `styles.css:32`, `projects/index.html:12`, `projects/index.html:52`, `build-log/log.css:9`, `build-log/log.css:48`, `exhibits/index.html:12`]. A4 calls garnet and paper "the house garnet and paper" (`exhibits/index.html:127`). It also describes a page that "abandons the house palette" as a departure (`exhibits/index.html:113`).
 - **MUST** set all text in Switzer, loaded from Fontshare, with the fallback `ui-sans-serif, system-ui, sans-serif`. [`styles.css:18`, `index.html:9`, `projects/index.html:9,28`, `build-log/index.html:19`, `build-log/log.css:24`, `exhibits/index.html:9,27`]
-- **MUST** be light-only. No A-file has `prefers-color-scheme`, `data-theme` or `color-scheme` (checked with `rg`, no hits).
+- **MUST** be light-only (research notes: see §11). No A-file has `prefers-color-scheme`, `data-theme` or `color-scheme` (checked with `rg`, no hits).
 - **MUST** use 1px solid hairlines as the only structural border. [`styles.css:77-78,140`, `projects/index.html:69,75`, `build-log/log.css:52,55`, `exhibits/index.html:64,68`]
 - **MUST NOT** use `box-shadow`, gradients or rounded corners on containers. There are zero `box-shadow`, `gradient` or container `border-radius` declarations in A1–A4 (`rg`). The only radius is `50%` on 8px status dots (`projects/index.html:61,64`).
 - **MUST** be a single centered column with a reading-width cap. [`styles.css:26-29`, `projects/index.html:37`, `build-log/log.css:33`, `exhibits/index.html:36`] The cap is `66ch` (P7).
 
 **P0 — resolved.**
-- **MUST** build every new page on the section system (A2–A4 tokens, scale and chrome), with one exception: links follow A1 (P9).
+- **MUST** build every new page on the section system (A2–A4 tokens, scale and chrome), with one exception: links follow A1 (P9). Research notes are out of scope for this rule; they follow §11.
 - The existing hub (A1) is not changed by this decision. Its values are recorded below as *Superseded (for reference)*.
 - *Superseded (for reference):* the hub system, built from `styles.css` tokens (`styles.css:1-8`).
 
@@ -174,7 +177,7 @@ Each color's role is inferred from the selector it styles.
   - the hub's ` — state` suffix [`index.html:45`, `styles.css:127`]
   - the hub's 15px "Updated" stamp [`index.html:73`, `styles.css:104-108`]
 
-**Figure captions:** CSS exists (`projects/index.html:91-93`), but the only `<figure>` is inside a commented-out template (`projects/index.html:230-249`). No rendered caption exists anywhere, so captions are **UNSPECIFIED** in practice.
+**Figure captions:** CSS exists (`projects/index.html:91-93`), but the only `<figure>` is inside a commented-out template (`projects/index.html:230-249`). No rendered caption existed at extraction, so captions are **UNSPECIFIED** in practice. *Update 2026-09-24:* the N1 card now renders the template figure (`projects/index.html:182-185`). That is a single use, and it sets no rule.
 
 ---
 
@@ -184,7 +187,7 @@ Each color's role is inferred from the selector it styles.
 - **MUST** keep corners square. There is no `border-radius` on any box. The wordmark is a square tile: 40px, `aspect-ratio: 1`, garnet ground, gold "PK". [`projects/index.html:40-45`, `build-log/log.css:36-41`, `exhibits/index.html:39-44`]
 - **MUST NOT** add shadows (see §1).
 - **Accent rule (single-source):** a 3px gold left border on a tinted panel, used for the quoted brief. [`exhibits/index.html:55-56`]
-- **Focus — MUST** on every page: `:focus-visible` gets `outline: 2px solid #6E1E28` with `outline-offset: 3px`. [`styles.css:42-45`] This is promoted from A1 (2026-09-21). A2–A4 currently define no focus style; see D6.
+- **Focus — MUST** on every page (research notes: see §11): `:focus-visible` gets `outline: 2px solid #6E1E28` with `outline-offset: 3px`. [`styles.css:42-45`] This is promoted from A1 (2026-09-21). A2–A4 currently define no focus style; see D6.
 - **Project marks (single-source, 7 uses):** 52px inline SVGs (40px ≤560px). Garnet primary stroke and gold secondary stroke, both `stroke-width: 2` with round caps. Garnet fills for nodes. [`projects/index.html:78-81,97`]
 
 ---
@@ -211,7 +214,7 @@ Each color's role is inferred from the selector it styles.
 - footer: 56px margin, 22px padding [`styles.css:138-139`]
 - breakpoint 600px [`styles.css:145`]
 
-- **P8 — MUST** frame every page the same way:
+- **P8 — MUST** frame every page the same way (research notes: see §11):
   - **Top:** the PK wordmark and a `← workbypk.com` back-link.
   - **Bottom:** the `— Patrick King, CMT` signature.
   - **Traces:** [`projects/index.html:107-110,255`, `build-log/index.html:25-28,71`, `exhibits/index.html:93-96,142`]
@@ -222,7 +225,7 @@ Each color's role is inferred from the selector it styles.
 ## 7. Links, motion, theme
 
 **Links:**
-- **P9 — MUST** use A1's tuned underline on every page. That means:
+- **P9 — MUST** use A1's tuned underline on every page (research notes: see §11). That means:
   - `#6E1E28` text
   - `text-decoration: underline`, with `text-decoration-thickness: 1px` and `text-underline-offset: 3px`
   - `text-decoration-color: rgba(110, 30, 40, 0.35)` at rest, going to full `#6E1E28` on hover
@@ -235,7 +238,7 @@ Each color's role is inferred from the selector it styles.
 - **MUST** honor `prefers-reduced-motion`. [`styles.css:47-50`, `build-log/log.css:73-75`] A4 has a gap here; see D2.
 
 **Theme:**
-- **MUST** be light-only (see §1). A dark theme is **UNSPECIFIED**: nothing in A1–A4 shows one. A5 uses dark garnet *bands* within a light page (a specimen, reference-only in §9). That is not a dark theme.
+- **MUST** be light-only (see §1; research notes: see §11). A dark theme is **UNSPECIFIED**: nothing in A1–A4 shows one. A5 uses dark garnet *bands* within a light page (a specimen, reference-only in §9). That is not a dark theme.
 
 ---
 
@@ -245,7 +248,7 @@ Each color's role is inferred from the selector it styles.
 - **Buttons:** none in A1–A4.
 - **Tables:** none anywhere.
 - **Long-form body copy:** A1's prose is short paragraphs. There are no article-length pages, no h3, no blockquote in prose, no footnotes and no inline code.
-- **Rendered images and figure captions:** these exist only in a commented template.
+- **Rendered images and figure captions:** these existed only in a commented template at extraction. There has been one rendered use since, the N1 card (see §4).
 - **Data visualization and charts:** none.
 - **Dark theme:** none.
 - **Role of `--ember` / `#B4402F`:** none (see D3).
@@ -297,6 +300,31 @@ Any page built from this system is bound by the following.
 2. **Nothing is added.** The builder must not add headlines, labels, claims, stats, testimonials or explanatory captions. That includes eyebrows, kickers, section intros, tooltip text, alt-text that makes claims, and "fingerprint" or metadata lines not in the supplied copy.
 3. **Self-written text is listed before publishing.** Any text the builder wrote itself, of any length and for any reason (including placeholder, alt, `aria-label`, `<title>` and meta description), is listed for Patrick's approval **before** the page is published. Nothing ships until that list is approved.
 4. Bracketed placeholders present in the corpus stay as placeholders until Patrick supplies the copy. Examples: `[DEK — issue no. 4, 2–3 sentences, pending final copy]` at `build-log/index.html:39`, and `[running / confirm]` at `projects/index.html:193`. A builder must never fill them.
+
+---
+
+## 11. Research notes (own design)
+
+**Decision (Patrick, 2026-09-24):** research notes keep their own design. The map, filters, bar charts, graded sources and dark mode are data-document needs that §1–§7 were never derived from (§8 lists tables, charts and dark theme as UNSPECIFIED). Rebuilding N1 on the section system was considered and rejected (Patrick's "draft it", 2026-09-24).
+
+**Scope:** pages published as a numbered research note in a series. First instance: N1, `waveminer/spend-map/index.html` (WaveMiner · Research note 01), published 2026-09-24.
+
+**Shared with the site** (every note MUST; these are the shared basics Patrick agreed to):
+- **Link color is house garnet** `#6E1E28` in light mode, matching the §1 accent. [`waveminer/spend-map/index.html:36,79`]
+  - *Builder-chosen, pending Patrick (not a rule):* N1's dark-mode link color is `#E8A0A8` [`:52,65`], picked for 8.8:1 contrast on N1's dark ground `#0F1514`. The site has no dark theme to derive it from (§7, §8).
+  - *Builder-chosen, pending Patrick (not a rule):* only the color is shared. N1 keeps its own underline, not P9's.
+- **A visible `:focus-visible` outline** in the link color. [`waveminer/spend-map/index.html:80`] N1's outline is 2px with a 2px offset, not §5's 3px offset. That offset is N1's own and is not a defect.
+- **Honor `prefers-reduced-motion`.** [`waveminer/spend-map/index.html:221`]
+- **A `← workbypk.com` back-link to `/`.** [`waveminer/spend-map/index.html:228`]
+- **A byline and date line with ` · ` separators** (§4). [`waveminer/spend-map/index.html:232`]
+- **`og:site_name` set to `Work by PK`.** [`waveminer/spend-map/index.html:11`]
+- **A card on `/projects/`,** in the A2 card pattern. [`projects/index.html:181`]
+
+**Series style — Proposed (not decided):** N1's own tokens and type (`waveminer/spend-map/index.html:25-72`: Barlow Condensed display, IBM Plex Sans and Mono, self-hosted) are the style for later notes in the same series. The proposal is that a new note copies N1's `:root` blocks rather than re-deriving them. Nothing from the series style carries back into site pages.
+
+**Not shared, on purpose:** N1's data blue `--accent` stays blue. It encodes meaning in the bars and edges, and the copy names it: "Blue-edged rows are the three being tested first" [`waveminer/spend-map/index.html:318`]. The published social image uses the same blue [`waveminer/spend-map/og-image.png`].
+
+**Open (not a rule):** the byline name. N1 signs "Patrick · workbypk.com" [`:232`], while A2 signs "— Patrick King, CMT" (`projects/index.html:274`). Patrick has not decided this.
 
 ---
 
