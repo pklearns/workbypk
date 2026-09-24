@@ -321,7 +321,7 @@ Any page built from this system is bound by the following.
 - **A card on `/projects/`,** in the A2 card pattern. [`projects/index.html:181`]
 - **Sign notes "Patrick"** (Patrick, 2026-09-24). N1 complies: "Patrick · workbypk.com" [`waveminer/spend-map/index.html:232`]. Site pages keep their own signature, "— Patrick King, CMT" (`projects/index.html:274`). This rule applies to notes only.
 
-**Series style — Proposed (not decided):** N1's own tokens and type (`waveminer/spend-map/index.html:25-72`: Barlow Condensed display, IBM Plex Sans and Mono, self-hosted) are the style for later notes in the same series. The proposal is that a new note copies N1's `:root` blocks rather than re-deriving them. Nothing from the series style carries back into site pages.
+**Series style — MUST** (Patrick, 2026-09-24: "same look"): later notes in the series use N1's tokens and type (`waveminer/spend-map/index.html:25-72`: Barlow Condensed display, IBM Plex Sans and Mono, self-hosted, light and dark). A new note copies N1's `@font-face` and `:root` blocks rather than re-deriving them. Nothing from the series style carries back into site pages.
 
 **Not shared, on purpose:** N1's data blue `--accent` stays blue. It encodes meaning in the bars and edges, and the copy names it: "Blue-edged rows are the three being tested first" [`waveminer/spend-map/index.html:318`]. The published social image uses the same blue [`waveminer/spend-map/og-image.png`].
 
