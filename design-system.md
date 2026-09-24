@@ -21,7 +21,9 @@ Derived from pages already built for workbypk.com. Nothing here is invented: eve
 | A4 | `exhibits/index.html` | `160816b7cd96961d9bb2043d2b55397d17f62ba34cc40c82451fc4fb362c6bbf` |
 | A5 | `exhibits/shape-of-time/index.html` | `8d8fc91edd3d89a6d0af1cf313228d15a7dd5f2692fb42417f9332a01304a4dc` |
 | B1 | `/Users/knuggs/Downloads/PKAIOS_ARCHITECTURE_MAP.html` | `2ed881317a5f2509ed750fbe9d6af0fcf5b1946379b7e7d5d6376546a829018a` |
-| N1 | `waveminer/spend-map/index.html` | `b7664a942c929118d821e305d4fffb9fb04502882a5a194a4b3bd2c9aa0307c5` |
+| N1 | `waveminer/spend-map/index.html` | `504d03373f0751c39dab7ccc19d7c7980dfc5c61320d3898d351186a9ed43d1e` |
+| R1 | `waveminer/spend-map/atlanta/index.html` | `48d96e4536df2d938c15a34fffe76251dd1f506cfbbb95d5cd5b9689dffb6cfb` |
+| R2 | `waveminer/spend-map/northern-virginia/index.html` | `60042006da13930fc306cb10e0b10d062e27cb58b54d77138a28efdb8569cbc8` |
 
 **Drift (2026-09-24):** A2 no longer matches its pin. Commit `e479186` inserted the N1 card at `projects/index.html:169-187` (19 lines). A2 traces at or below line 168 still hold. Traces past it in §1–§10 (`:193`, `:230-249`, `:255`) now sit 19 lines lower: for example, `[running / confirm]` has moved from `:193` to `:212`. The §11 traces (`:181`, `:274`) cite the current file. Re-pin A2 at the next full re-verification.
 
@@ -289,6 +291,7 @@ These are recorded so they aren't lost. They don't count toward any rule and mus
 | D4 | The "parked" legend dot uses a literal `#8a8a86` instead of `--ink-soft` (the P5 rule). | `projects/index.html:118` vs `:67` |
 | D5 | A1 (hub) uses superseded values (P1-P4, P6-P8). Out of spec; migrate or ratify later. Not compliant. | `styles.css:1-8,20-27,56-58,90-99,145-149`; `index.html:16-27,98-100` |
 | D6 | A2–A4 have no `:focus-visible` style, which the focus MUST in §5 requires. | `projects/index.html:10-102`, `build-log/log.css`, `exhibits/index.html:10-88` (no `focus` match) |
+| D7 | ⚑ R1 and R2 link to "contact form on workbypk.com", but the site has no form. `data-contact-link` points at `/#contact`, the email/X/LinkedIn section. Log only: the copy is final, so fix it in the note's source. | `waveminer/spend-map/atlanta/index.html:299`, `waveminer/spend-map/northern-virginia/index.html:299`; `index.html:90` |
 
 ---
 
@@ -307,23 +310,23 @@ Any page built from this system is bound by the following.
 
 **Decision (Patrick, 2026-09-24):** research notes keep their own design. The map, filters, bar charts, graded sources and dark mode are data-document needs that §1–§7 were never derived from (§8 lists tables, charts and dark theme as UNSPECIFIED). Rebuilding N1 on the section system was considered and rejected (Patrick's "draft it", 2026-09-24).
 
-**Scope:** pages published as a numbered research note in a series. First instance: N1, `waveminer/spend-map/index.html` (WaveMiner · Research note 01), published 2026-09-24.
+**Scope:** pages published as a numbered research note in a series. First instance: N1, `waveminer/spend-map/index.html` (WaveMiner · Research note 01), published 2026-09-24. Regional editions of a note (R1 Atlanta, R2 Northern Virginia, added 2026-09-24 as N1 v2) are part of that note and follow the same rules, with one exception: their back-link goes to `../` (the national note), not `/`, per the package README. They share N1's `fonts/`, and the same garnet link patch was applied to them.
 
 **Shared with the site** (every note MUST; these are the shared basics Patrick agreed to):
 - **Link color is house garnet** `#6E1E28` in light mode, matching the §1 accent. [`waveminer/spend-map/index.html:36,79`]
   - *Builder-chosen, pending Patrick (not a rule):* only the color is shared. N1 keeps its own underline, not P9's.
 - **Dark-mode link color is N1's own blue `#8AADE6`** (Patrick, 2026-09-24: "keep it blue"; cyan is the fallback if it ever changes). [`waveminer/spend-map/index.html:52,65`] That is 8.1:1 contrast on `#0F1514`. A builder-chosen `#E8A0A8` was tried and rejected.
 - **A visible `:focus-visible` outline** in the link color. [`waveminer/spend-map/index.html:80`] N1's outline is 2px with a 2px offset, not §5's 3px offset. That offset is N1's own and is not a defect.
-- **Honor `prefers-reduced-motion`.** [`waveminer/spend-map/index.html:221`]
-- **A `← workbypk.com` back-link to `/`.** [`waveminer/spend-map/index.html:228`]
-- **A byline and date line with ` · ` separators** (§4). [`waveminer/spend-map/index.html:232`]
+- **Honor `prefers-reduced-motion`.** [`waveminer/spend-map/index.html:227`]
+- **A `← workbypk.com` back-link to `/`.** [`waveminer/spend-map/index.html:234`]
+- **A byline and date line with ` · ` separators** (§4). [`waveminer/spend-map/index.html:238`]
 - **`og:site_name` set to `Work by PK`.** [`waveminer/spend-map/index.html:11`]
 - **A card on `/projects/`,** in the A2 card pattern. [`projects/index.html:181`]
-- **Sign notes "Patrick"** (Patrick, 2026-09-24). N1 complies: "Patrick · workbypk.com" [`waveminer/spend-map/index.html:232`]. Site pages keep their own signature, "— Patrick King, CMT" (`projects/index.html:274`). This rule applies to notes only.
+- **Sign notes "Patrick"** (Patrick, 2026-09-24). N1 complies: "Patrick · workbypk.com" [`waveminer/spend-map/index.html:238`]. Site pages keep their own signature, "— Patrick King, CMT" (`projects/index.html:274`). This rule applies to notes only.
 
 **Series style — MUST** (Patrick, 2026-09-24: "same look"): later notes in the series use N1's tokens and type (`waveminer/spend-map/index.html:25-72`: Barlow Condensed display, IBM Plex Sans and Mono, self-hosted, light and dark). A new note copies N1's `@font-face` and `:root` blocks rather than re-deriving them. Nothing from the series style carries back into site pages.
 
-**Not shared, on purpose:** N1's data blue `--accent` stays blue. It encodes meaning in the bars and edges, and the copy names it: "Blue-edged rows are the three being tested first" [`waveminer/spend-map/index.html:318`]. The published social image uses the same blue [`waveminer/spend-map/og-image.png`].
+**Not shared, on purpose:** N1's data blue `--accent` stays blue. It encodes meaning in the bars and edges, and the copy names it: "Blue-edged rows are the three being tested first" [`waveminer/spend-map/index.html:324`]. The published social image uses the same blue [`waveminer/spend-map/og-image.png`].
 
 ---
 
