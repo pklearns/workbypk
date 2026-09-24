@@ -319,12 +319,11 @@ Any page built from this system is bound by the following.
 - **A byline and date line with ` · ` separators** (§4). [`waveminer/spend-map/index.html:232`]
 - **`og:site_name` set to `Work by PK`.** [`waveminer/spend-map/index.html:11`]
 - **A card on `/projects/`,** in the A2 card pattern. [`projects/index.html:181`]
+- **Sign notes "Patrick"** (Patrick, 2026-09-24). N1 complies: "Patrick · workbypk.com" [`waveminer/spend-map/index.html:232`]. Site pages keep their own signature, "— Patrick King, CMT" (`projects/index.html:274`). This rule applies to notes only.
 
 **Series style — Proposed (not decided):** N1's own tokens and type (`waveminer/spend-map/index.html:25-72`: Barlow Condensed display, IBM Plex Sans and Mono, self-hosted) are the style for later notes in the same series. The proposal is that a new note copies N1's `:root` blocks rather than re-deriving them. Nothing from the series style carries back into site pages.
 
 **Not shared, on purpose:** N1's data blue `--accent` stays blue. It encodes meaning in the bars and edges, and the copy names it: "Blue-edged rows are the three being tested first" [`waveminer/spend-map/index.html:318`]. The published social image uses the same blue [`waveminer/spend-map/og-image.png`].
-
-**Open (not a rule):** the byline name. N1 signs "Patrick · workbypk.com" [`:232`], while A2 signs "— Patrick King, CMT" (`projects/index.html:274`). Patrick has not decided this.
 
 ---
 
