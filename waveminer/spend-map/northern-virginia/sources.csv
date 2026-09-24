@@ -1,0 +1,12 @@
+id,tier,tier_meaning,title,url,note
+1,B,High-quality analysis,CBRE: North America Data Center Trends H1 2026,https://www.cbre.com/insights/books/north-america-data-center-trends-h1-2026,
+2,B,High-quality analysis,"JLL: North America Data Center Report, Midyear 2026",https://www.jll.com/en-us/insights/market-dynamics/north-america-data-centers,
+3,C,Industry reporting,Technical.ly: Data center permits show Northern Virginia generator concentration,https://technical.ly/entrepreneurship/mapped-virginia-data-centers-thousands-of-backup-generators/,"Sep 2026, from 195 air permit applications"
+4,C,Industry reporting,Data Center Knowledge: Virginia sets Tier 4 baseline for data center generators,https://www.datacenterknowledge.com/build-design/virginia-deq-revises-data-center-generator-rules-as-community-pushback-builds,
+5,C,Industry reporting,"Virginia Mercury: Loudoun to consider data center pause, removing by-right grandfather clause",https://virginiamercury.com/2026/09/14/loudoun-to-consider-data-center-pause-removing-by-right-grandfather-clause/,Sep 2026
+6,C,Industry reporting,The Energy Mag: Prince William County data center overhaul,https://www.theenergymag.com/news/2026-09-15/virginia-prince-william-county-data-center-overhaul,Sep 2026
+7,B,High-quality analysis,"CBRE: Northern Virginia record-low vacancy; emerging areas in Fauquier, Culpeper, Stafford and Spotsylvania",https://www.cbre.com/press-releases/northern-virginia-data-center-market-sets-record-low-0-94-vacancy-rate-emerging-areas-of-data,Sep 2023
+8,C,Industry reporting,Hunton Andrews Kurth: Virginia adds electricity consumption tax but keeps data center sales tax exemption,https://www.hunton.com/insights/legal/virginia-adds-electricity-consumption-tax-but-stops-short-of-repealing-data-center-sales-tax-exemption,
+9,C,Industry reporting,Forbes: Virginia now makes data centers post $1.5 million a megawatt,https://www.forbes.com/sites/daraabasiita/2026/06/09/virginia-now-makes-data-centers-post-15-million-a-megawatt/,Jun 2026
+10,D,Vendor marketing or weak signal,iRecruit: Data center construction labor market report,https://www.irecruit.co/insights/data-center-construction-labor-market-report,recruiter-published
+11,D,Vendor marketing or weak signal,Adapt Digital Solutions: Virginia contractor license requirements (2026),https://adaptdigitalsolutions.com/articles/virginia-contractor-license-requirements/,verify against DPOR before relying on it

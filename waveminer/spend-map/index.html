@@ -195,6 +195,12 @@ section{display:flex;flex-direction:column;gap:18px}
 .clist{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:8px;color:var(--ink-2);font-size:.94rem}
 .clist li::marker{color:var(--muted)}
 
+.regions{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.region{display:flex;flex-direction:column;gap:6px;padding:18px 20px;background:var(--panel);border:1px solid var(--rule);border-radius:4px;color:var(--ink-2);text-decoration:none}
+.region strong{font-family:var(--display);font-size:1.6rem;text-transform:uppercase;color:var(--ink);line-height:1.1}
+.region:hover{border-color:var(--accent)}
+.region:hover strong{color:var(--accent)}
+
 /* sources */
 .srcs{margin:0;padding-left:2.4em;display:grid;grid-template-columns:1fr;gap:6px;font-size:.86rem;color:var(--ink-2)}
 .srcs li::marker{font-family:var(--mono);font-size:.8em;color:var(--muted)}
@@ -552,6 +558,19 @@ footer{font-size:.84rem;color:var(--muted);border-top:1px solid var(--rule);padd
 
     </div>
     <p class="unres"><b>Not yet researched:</b> specialty consumables distribution such as CDU filters, coolant, battery strings and PPE (Wesco's $1.5B a quarter of data-center sales shows distribution works at scale<sup><a href="#src-9">9</a></sup>, but the niche is unmapped). <b>Deprioritized:</b> grounds, pest control, roofing, fencing and guard services. They are a small slice of a $3.2M-a-year maintenance pool and no data-center premium turned up.</p>
+  </div>
+</section>
+
+<!-- ============ REGIONAL EDITIONS ============ -->
+<section id="regions">
+  <div class="sec-head">
+    <span class="eyebrow">Regional editions</span>
+    <h2>The same map, read locally</h2>
+    <p class="lede">The dollar split and categories don't change by city. How much money lands, which rows get stronger, and who is already there do.</p>
+  </div>
+  <div class="regions">
+    <a class="region" href="atlanta/"><span class="eyebrow">Regional edition</span><strong>Atlanta</strong><span>The busiest build market in North America. Capacity, labor, and what stays behind once the builds finish.</span></a>
+    <a class="region" href="northern-virginia/"><span class="eyebrow">Regional edition</span><strong>Northern Virginia</strong><span>The largest installed base anywhere. Generator compliance, refresh cycles, and a build frontier moving outward.</span></a>
   </div>
 </section>
 

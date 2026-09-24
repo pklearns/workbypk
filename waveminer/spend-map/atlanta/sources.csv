@@ -1,0 +1,10 @@
+id,tier,tier_meaning,title,url,note
+1,B,High-quality analysis,CBRE: North America Data Center Trends H1 2026,https://www.cbre.com/insights/books/north-america-data-center-trends-h1-2026,
+2,D,Vendor marketing or weak signal,"ROC Telecom: The Atlanta data center market, a 2026 overview",https://roctelecom.com/insights/atlanta-data-center-market/,vendor
+3,C,Industry reporting,NRDC: Georgia commission OKs largest-ever energy request dominated by speculated data centers,https://www.nrdc.org/reaction/georgia-commission-oks-largest-ever-energy-request-dominated-speculated-data-centers,"advocacy group, Dec 2025"
+4,A,Primary,Georgia Public Service Commission: Data center fact sheet,https://psc.ga.gov/site/downloads/datacenterfactsheet.pdf,
+5,C,Industry reporting,"Atlanta Journal-Constitution: Data centers dominate Georgia construction, creating new labor pressures",https://www.ajc.com/business/2026/09/data-centers-dominate-georgia-construction-creating-new-labor-pressures/,Sep 2026
+6,C,Industry reporting,Georgia Public Broadcasting: A wave of data center ordinances sweeps through Georgia counties,https://www.gpb.org/news/2025/10/22/wave-of-data-center-ordinances-sweep-through-ga-counties-how-strict-are-they,Oct 2025
+7,C,Industry reporting,"Bloomberg Tax: Data center break survives Georgia income, property tax push",https://news.bloombergtax.com/daily-tax-report-state/data-center-break-survives-georgia-income-property-tax-push,2026
+8,C,Industry reporting,IndustrialSage: Switchgear lead times are the data center's real constraint (Siemens Jackson County plant),https://www.industrialsage.com/switchgear-lead-times-2026/,
+9,D,Vendor marketing or weak signal,Georgia Electrical Authority: Georgia electrical contractor license types,https://georgiaelectricalauthority.com/georgia-electrical-contractor-license-types,verify against the state board before relying on it
