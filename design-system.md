@@ -21,7 +21,7 @@ Derived from pages already built for workbypk.com. Nothing here is invented: eve
 | A4 | `exhibits/index.html` | `160816b7cd96961d9bb2043d2b55397d17f62ba34cc40c82451fc4fb362c6bbf` |
 | A5 | `exhibits/shape-of-time/index.html` | `8d8fc91edd3d89a6d0af1cf313228d15a7dd5f2692fb42417f9332a01304a4dc` |
 | B1 | `/Users/knuggs/Downloads/PKAIOS_ARCHITECTURE_MAP.html` | `2ed881317a5f2509ed750fbe9d6af0fcf5b1946379b7e7d5d6376546a829018a` |
-| N1 | `waveminer/spend-map/index.html` | `c714297b5d2446b2581e010798e08cd999b3bbc219149e10f768fe57ff641667` |
+| N1 | `waveminer/spend-map/index.html` | `b7664a942c929118d821e305d4fffb9fb04502882a5a194a4b3bd2c9aa0307c5` |
 
 **Drift (2026-09-24):** A2 no longer matches its pin. Commit `e479186` inserted the N1 card at `projects/index.html:169-187` (19 lines). A2 traces at or below line 168 still hold. Traces past it in §1–§10 (`:193`, `:230-249`, `:255`) now sit 19 lines lower: for example, `[running / confirm]` has moved from `:193` to `:212`. The §11 traces (`:181`, `:274`) cite the current file. Re-pin A2 at the next full re-verification.
 
@@ -311,8 +311,8 @@ Any page built from this system is bound by the following.
 
 **Shared with the site** (every note MUST; these are the shared basics Patrick agreed to):
 - **Link color is house garnet** `#6E1E28` in light mode, matching the §1 accent. [`waveminer/spend-map/index.html:36,79`]
-  - *Builder-chosen, pending Patrick (not a rule):* N1's dark-mode link color is `#E8A0A8` [`:52,65`], picked for 8.8:1 contrast on N1's dark ground `#0F1514`. The site has no dark theme to derive it from (§7, §8).
   - *Builder-chosen, pending Patrick (not a rule):* only the color is shared. N1 keeps its own underline, not P9's.
+- **Dark-mode link color is N1's own blue `#8AADE6`** (Patrick, 2026-09-24: "keep it blue"; cyan is the fallback if it ever changes). [`waveminer/spend-map/index.html:52,65`] That is 8.1:1 contrast on `#0F1514`. A builder-chosen `#E8A0A8` was tried and rejected.
 - **A visible `:focus-visible` outline** in the link color. [`waveminer/spend-map/index.html:80`] N1's outline is 2px with a 2px offset, not §5's 3px offset. That offset is N1's own and is not a defect.
 - **Honor `prefers-reduced-motion`.** [`waveminer/spend-map/index.html:221`]
 - **A `← workbypk.com` back-link to `/`.** [`waveminer/spend-map/index.html:228`]
