@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Tampa Bay Succession Map</title>
+<style>:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0}[hidden]{display:none!important}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+:root{
+  --bg:#ECEFEE; --panel:#F7F9F8; --panel-2:#E3E8E6;
+  --ink:#141C1B; --ink-2:#3B4745; --muted:#63706D; --rule:#C6CFCC;
+  --accent:#1E4C8A; --accent-soft:#DCE5F2;
+  --teal:#2F7F7C; --sand:#8C7F66; --slate:#98A3A0;
+  --tag:#F0C93F; --tag-ink:#2A2206;
+  --good:#2C7449; --good-soft:#DCEEE2;
+  --warn:#9C620F; --warn-soft:#F5E6CA;
+  --crit:#A3342A; --crit-soft:#F3DAD6;
+  --hatch-a:#C3CBC9; --hatch-b:#D5DCDA;
+  --display:"Barlow Condensed","Arial Narrow","Roboto Condensed",sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0F1514; --panel:#161E1D; --panel-2:#1D2726;
+    --ink:#E2E9E7; --ink-2:#B9C4C1; --muted:#8B9895; --rule:#2B3634;
+    --accent:#8AADE6; --accent-soft:#1B2A40;
+    --teal:#63B7B2; --sand:#B3A588; --slate:#5E6A68;
+    --tag:#D9B63B; --tag-ink:#1B1604;
+    --good:#72C394; --good-soft:#162E20;
+    --warn:#E3AA4E; --warn-soft:#34270F;
+    --crit:#E6837A; --crit-soft:#3A1C19;
+    --hatch-a:#2A3533; --hatch-b:#222C2B;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0F1514; --panel:#161E1D; --panel-2:#1D2726;
+  --ink:#E2E9E7; --ink-2:#B9C4C1; --muted:#8B9895; --rule:#2B3634;
+  --accent:#8AADE6; --accent-soft:#1B2A40;
+  --teal:#63B7B2; --sand:#B3A588; --slate:#5E6A68;
+  --tag:#D9B63B; --tag-ink:#1B1604;
+  --good:#72C394; --good-soft:#162E20;
+  --warn:#E3AA4E; --warn-soft:#34270F;
+  --crit:#E6837A; --crit-soft:#3A1C19;
+  --hatch-a:#2A3533; --hatch-b:#222C2B;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55;padding-inline:20px;padding-block:28px 64px}
+.wrap{max-width:1080px;margin-inline:auto;display:flex;flex-direction:column;gap:48px}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:.01em;text-wrap:balance;margin:0;line-height:1.08}
+h1{font-size:clamp(2.4rem,6vw,3.6rem);text-transform:uppercase}
+h2{font-size:1.9rem;text-transform:uppercase}
+h3{font-size:1.3rem}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lede{font-size:1.08rem;color:var(--ink-2);max-width:68ch}
+.num{font-variant-numeric:tabular-nums}
+.code{font-family:var(--mono);font-size:.74rem;font-weight:500;background:var(--tag);color:var(--tag-ink);padding:1px 6px 1px 6px;border-radius:2px;white-space:nowrap;letter-spacing:.02em}
+sup a{font-family:var(--mono);font-size:.68rem;text-decoration:none;padding-inline:1px}
+
+/* header */
+header{display:flex;flex-direction:column;gap:14px;border-bottom:3px solid var(--ink);padding-bottom:22px}
+.meta{display:flex;flex-wrap:wrap;gap:8px 20px;font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+
+/* section frame */
+section{display:flex;flex-direction:column;gap:18px}
+.sec-head{display:flex;flex-direction:column;gap:6px}
+
+/* bars */
+.flow{background:var(--panel);border:1px solid var(--rule);border-radius:4px;padding:22px;display:flex;flex-direction:column;gap:26px}
+.barblock{display:flex;flex-direction:column;gap:10px}
+.barlabel{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+.barlabel strong{font-family:var(--display);font-size:1.15rem;text-transform:uppercase;letter-spacing:.03em}
+.bar{display:flex;height:34px;border-radius:2px;overflow:hidden;border:1px solid var(--rule)}
+.bar>span{display:block;height:100%}
+.bar>span+span{border-left:2px solid var(--panel)}
+.hatch{background:repeating-linear-gradient(135deg,var(--hatch-a) 0 7px,var(--hatch-b) 7px 14px)}
+.s-fac{background:var(--accent)}
+.s-elec{background:var(--accent)}
+.s-mech{background:var(--teal)}
+.s-shell{background:var(--sand)}
+.s-gc{background:var(--slate)}
+.s-land{background:var(--ink-2)}
+.s-energy{background:var(--hatch-a)}
+.s-tax{background:var(--hatch-b)}
+.s-maint{background:var(--accent)}
+.s-labor{background:var(--teal)}
+.s-water{background:var(--sand)}
+.legend{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px 18px;font-size:.88rem}
+.legend div{display:flex;gap:8px;align-items:baseline}
+.sw{width:11px;height:11px;border-radius:1px;flex:none;transform:translateY(1px);box-shadow:inset 0 0 0 1px var(--rule)}
+.legend b{font-family:var(--mono);font-weight:500;font-size:.84rem}
+.legend em{font-style:normal;color:var(--muted)}
+.note{font-size:.84rem;color:var(--muted);max-width:80ch}
+
+/* readings */
+.readings{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.readings li{flex:1 1 300px;background:var(--panel);padding:18px 20px;display:flex;flex-direction:column;gap:6px}
+.readings .k{font-family:var(--display);font-weight:700;font-size:1.25rem;line-height:1.15}
+.readings p{color:var(--ink-2);font-size:.94rem}
+
+/* map controls */
+.controls{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.btn{font-family:var(--mono);font-size:.78rem;letter-spacing:.03em;border:1px solid var(--rule);background:var(--panel);color:var(--ink);padding:7px 12px;border-radius:3px;cursor:pointer}
+.btn:hover{border-color:var(--ink-2)}
+.btn[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.count{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+
+/* rows */
+.maphead,.row>summary{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(0,1.35fr) minmax(0,1.6fr) minmax(0,2fr);gap:14px;align-items:start}
+.maphead{font-family:var(--mono);font-size:.7rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);padding:0 16px 8px 34px;border-bottom:2px solid var(--ink)}
+.rows{display:flex;flex-direction:column}
+.row{border-bottom:1px solid var(--rule);background:var(--panel)}
+.row:first-child{border-top:0}
+.row>summary{list-style:none;cursor:pointer;padding:14px 16px 14px 34px;position:relative}
+.row>summary::-webkit-details-marker{display:none}
+.row>summary::before{content:"+";position:absolute;left:12px;top:12px;font-family:var(--mono);font-size:1rem;color:var(--muted)}
+.row[open]>summary::before{content:"\2212"}
+.row>summary:hover{background:var(--panel-2)}
+.r-title{font-weight:600;display:block;line-height:1.3}
+.r-path{font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.03em}
+.r-money{font-family:var(--mono);font-size:.84rem;font-variant-numeric:tabular-nums;line-height:1.4}
+.r-money small{display:block;color:var(--muted);font-size:.72rem}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{font-family:var(--mono);font-size:.7rem;padding:2px 7px;border-radius:2px;border:1px solid var(--rule);color:var(--ink-2);white-space:nowrap;background:var(--bg)}
+.chip.hi{background:var(--crit-soft);color:var(--crit);border-color:transparent}
+.chip.md{background:var(--warn-soft);color:var(--warn);border-color:transparent}
+.chip.lo{background:var(--good-soft);color:var(--good);border-color:transparent}
+.chip.fl{border-color:var(--good);color:var(--good);background:transparent}
+.chip.flp{border-style:dashed}
+.r-read{font-size:.92rem;color:var(--ink-2)}
+.r-read b{color:var(--ink)}
+.row.top{box-shadow:inset 4px 0 0 var(--accent)}
+.r-body{padding:4px 16px 20px 34px}
+.r-body dl{display:grid;grid-template-columns:170px minmax(0,1fr);gap:8px 18px;margin:0;font-size:.92rem;max-width:900px}
+.r-body dt{font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.r-body dd{margin:0;color:var(--ink-2)}
+.r-body dd strong{color:var(--ink)}
+.unres{font-size:.9rem;color:var(--muted);padding:14px 16px 0 34px}
+.unres b{color:var(--ink-2)}
+
+/* shortlist */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--rule);border-top:4px solid var(--accent);border-radius:4px;padding:20px;display:flex;flex-direction:column;gap:12px}
+.card .tagline{font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.card dl{margin:0;display:flex;flex-direction:column;gap:9px;font-size:.9rem}
+.card dt{font-family:var(--mono);font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.card dd{margin:2px 0 0;color:var(--ink-2)}
+.card.watch{border-top-color:var(--slate)}
+
+/* script + spec */
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px}
+.qlist{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:10px;color:var(--ink-2)}
+.qlist li::marker{font-family:var(--mono);color:var(--muted);font-size:.85em}
+.qlist b{color:var(--ink)}
+.fields{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.fields li{display:grid;grid-template-columns:150px minmax(0,1fr);gap:14px;padding:10px 0;border-bottom:1px solid var(--rule);font-size:.92rem;color:var(--ink-2)}
+.fields code{font-family:var(--mono);font-size:.8rem;color:var(--ink);font-weight:500}
+
+/* sources */
+.srcs{margin:0;padding-left:2.4em;display:grid;grid-template-columns:1fr;gap:6px;font-size:.86rem;color:var(--ink-2)}
+.srcs li::marker{font-family:var(--mono);font-size:.8em;color:var(--muted)}
+.srcs li:target{background:var(--accent-soft)}
+.tier{font-family:var(--mono);font-size:.68rem;padding:0 5px;border:1px solid var(--rule);border-radius:2px;margin-right:6px;color:var(--muted)}
+.tier.A{color:var(--good);border-color:var(--good)}
+.tier.B{color:var(--accent);border-color:var(--accent)}
+.tier.D{color:var(--warn);border-color:var(--warn)}
+footer{font-size:.84rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:16px}
+
+@media (max-width:820px){
+  .maphead{display:none}
+  .row>summary{grid-template-columns:1fr;gap:8px}
+  .r-body dl{grid-template-columns:1fr;gap:2px 0}
+  .r-body dd{margin-bottom:8px}
+  .fields li{grid-template-columns:1fr;gap:2px}
+}
+@media (max-width:480px){
+  body{padding-inline:16px}
+  .flow{padding:16px}
+  .row>summary,.r-body{padding-left:30px;padding-right:12px}
+  .row>summary::before{left:10px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+<style>
+.s-viable{background:var(--accent)}
+.s-market{background:var(--accent)}
+.s-loan{background:var(--slate)}
+.s-buyer{background:var(--teal)}
+.s-limited{background:var(--tag)}
+.readings li.alert{box-shadow:inset 0 4px 0 var(--tag)}
+.fc{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.fc li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:12px;padding:10px 0;border-bottom:1px solid var(--rule);font-size:.92rem;color:var(--ink-2)}
+.fc b{font-family:var(--mono);font-weight:500;color:var(--ink)}
+.fc small{display:block;font-family:var(--mono);font-size:.72rem;color:var(--muted);margin-top:3px}
+.card.test{border-top-color:var(--teal)}
+</style>
+</head><body>
+<div class="wrap">
+
+<header>
+  <span class="eyebrow">WaveMiner · Research note 04 · business-succession · Tampa Bay</span>
+  <h1>Tampa Bay Succession Map</h1>
+  <p class="lede">Where owner retirements in Hillsborough, Pinellas, Pasco and Manatee get stuck for firms doing $500K–$15M a year. The advisory layer is crowded; the opening is the unglamorous plumbing of every handoff and closure that nobody clearly owns. Every figure is tagged to its source and evidence tier.</p>
+  <div class="meta"><span>Figures as of 25 Sep 2026</span><span>Stage call: 3 (Scale) now · 4 (Mature) forming</span><span>Evidence tiers A–D per WaveMiner spec §5</span><span>D = vendor or broker marketing</span></div>
+</header>
+
+<!-- ============ FUNNEL ============ -->
+<section id="funnel">
+  <div class="sec-head">
+    <span class="eyebrow">Top of funnel</span>
+    <h2>Follow six million handoffs</h2>
+    <p class="lede">McKinsey expects roughly <b class="num">6 million</b> small and mid-size businesses to face an ownership transition by 2035, worth up to <b class="num">$5T</b>, but only about <b class="num">1 million</b> of them viable to sell.<sup><a href="#src-12">12</a></sup> Owners 55 and older already hold about half of all employer firms.<sup><a href="#src-13">13</a></sup> Very little of that reaches an open market, and what does now runs through tighter SBA rules.</p>
+  </div>
+
+  <div class="flow">
+    <div class="barblock">
+      <div class="barlabel"><strong>Transitions by 2035</strong><span class="eyebrow">Hatched = closes, passes to family or employees, or never sells</span></div>
+      <div class="bar" role="img" aria-label="Of about 6 million transitions, about 1 million viable for sale">
+        <span class="s-viable" style="flex:0 0 16.7%"></span>
+        <span class="hatch" style="flex:1 1 auto"></span>
+      </div>
+      <div class="legend">
+        <div><span class="sw s-viable"></span><span><b>~1M</b> viable for sale <em>(the reachable pool)</em></span></div>
+        <div><span class="sw hatch"></span><span><b>~5M</b> close or pass privately <em>(the overlooked pool: customers, contracts, equipment and staff still need a home)</em></span></div>
+      </div>
+    </div>
+
+    <div class="barblock">
+      <div class="barlabel"><strong>Each year, how many actually hit a market</strong><span class="eyebrow">Rough arithmetic · separate scale</span></div>
+      <div class="bar" role="img" aria-label="About 250,000 transitions a year against about 8,500 closed marketplace sales">
+        <span class="s-market" style="flex:0 0 3.4%"></span>
+        <span class="hatch" style="flex:1 1 auto"></span>
+      </div>
+      <div class="legend">
+        <div><span class="sw s-market"></span><span><b>~8,500</b> closed sales reported on BizBuySell <em>(2,117 in Q2 2026)</em></span></div>
+        <div><span class="sw hatch"></span><span><b>~250,000</b> boomer transitions a year <em>(2.5M over ten years)</em></span></div>
+      </div>
+      <p class="note">One analysis sets 2.5 million boomer transitions over ten years against BizBuySell's reported closings and concludes the "silver tsunami" is real as demography but not as a market event.<sup><a href="#src-11">11</a>,<a href="#src-1">1</a></sup> BizBuySell counts only deals reported to it, so the true open-market share is higher, but still small.</p>
+    </div>
+
+    <div class="barblock">
+      <div class="barlabel"><strong>An SBA acquisition loan after 1 Oct 2026</strong><span class="eyebrow">Full change of ownership · minimum structure</span></div>
+      <div class="bar" role="img" aria-label="SBA loan up to 90 percent, buyer cash at least 5 percent, limited sources at most 5 percent">
+        <span class="s-loan" style="flex:0 0 90%"></span>
+        <span class="s-buyer" style="flex:0 0 5%"></span>
+        <span class="s-limited" style="flex:1 1 auto"></span>
+      </div>
+      <div class="legend">
+        <div><span class="sw s-loan"></span><span><b>≤90%</b> SBA 7(a) loan</span></div>
+        <div><span class="sw s-buyer"></span><span><b>≥5%</b> buyer's own equity</span></div>
+        <div><span class="sw s-limited"></span><span><b>≤5%</b> seller note on full standby, minority investors, other standby debt <em>(combined)</em></span></div>
+      </div>
+      <p class="note">SOP 50 10 8 set a hard 10% injection floor and allowed a seller note to count only if it takes no payments for the life of the loan, capped at half the injection.<sup><a href="#src-4">4</a></sup> SOP 50 10 8.1, for loans numbered from 1 Oct 2026, puts minority investor equity inside that same half.<sup><a href="#src-5">5</a></sup> Existing operators buying in their own industry may get the injection reduced or waived.<sup><a href="#src-6">6</a></sup></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ READINGS ============ -->
+<section id="readings">
+  <div class="sec-head">
+    <span class="eyebrow">What the numbers say</span>
+    <h2>Six readings</h2>
+  </div>
+  <ul class="readings">
+    <li class="alert"><span class="k">The biggest market is the businesses that don't sell.</span><p>Roughly five of every six transitions end in closure or a private handoff.<sup><a href="#src-12">12</a></sup> Their customer lists, service contracts, phone numbers, equipment and trained staff still have value to a competitor, and today mostly go to auctioneers or vanish.</p></li>
+    <li><span class="k">Buyers are not the bottleneck.</span><p>SBA 7(a) approvals rose from 47,678 loans in FY2022 to 77,600 in FY2025, search-fund launches hit historic highs, and 44% of buyers call themselves corporate refugees.<sup><a href="#src-11">11</a></sup> The original thesis loses its "not enough buyers" half.</p></li>
+    <li><span class="k">The market got pickier, not smaller.</span><p>Closed deals fell 10% in Q2 2026, yet the average cash-flow multiple rose to 2.7x. The median deal: $692K revenue, $156K cash flow, $349K price.<sup><a href="#src-1">1</a></sup> Buyers pay for proof, and 78% of them expect to use SBA money.<sup><a href="#src-3">3</a></sup></p></li>
+    <li class="alert"><span class="k">The rules change on 1 October.</span><p>A seller can no longer paper over weak books with an easy seller note, and rollover structures that kept the seller in are constrained.<sup><a href="#src-4">4</a>,<a href="#src-8">8</a></sup> Lenders can underwrite from CPA-prepared or reviewed statements when tax returns are messy.<sup><a href="#src-10">10</a></sup> Clean, lender-grade financials become the scarce input.</p></li>
+    <li><span class="k">The middle of your band is thin.</span><p>Tampa's sell-side quality-of-earnings work sits with Kaufman Rossin, CBIZ and CLA at the lower-middle market.<sup><a href="#src-16">16</a></sup> Main Street belongs to brokers who now carry exit-planning credentials.<sup><a href="#src-17">17</a></sup> Firms with $150K–$2M of cash flow fall between them.</p></li>
+    <li><span class="k">The roll-ups already arrived next door.</span><p>General Catalyst set aside $1.5B to buy accounting and other service firms; Crete reached 30+ accounting firms; Thrive Holdings is betting $1B with OpenAI in the cap table.<sup><a href="#src-20">20</a>,<a href="#src-21">21</a></sup> The partner firm fits the target profile, which is both a threat and an exit option.</p></li>
+  </ul>
+</section>
+
+<!-- ============ MAP ============ -->
+<section id="map">
+  <div class="sec-head">
+    <span class="eyebrow">The map</span>
+    <h2>Eighteen places a handoff gets stuck</h2>
+    <p class="lede">The first seven rows are the handoff plumbing: dull, repeatable chores every sale or closure needs and no one clearly owns. The rest are the advisory and acquisition layer. Each row tags the path, the wave stage it serves, how crowded Tampa Bay is, and whether a partner accounting firm plus a deal and equity-comp background is a natural fit. Open a row for the scarce input, who is there and the entry route. Blue-edged rows are on the shortlist.</p>
+  </div>
+
+  <div class="controls">
+    <div class="seg" role="group" aria-label="Filter by path">
+      <button class="btn" type="button" data-path="all" aria-pressed="true">All</button>
+      <button class="btn" type="button" data-path="plumbing" aria-pressed="false">Handoff plumbing</button>
+      <button class="btn" type="button" data-path="weakness" aria-pressed="false">Fix a weakness</button>
+      <button class="btn" type="button" data-path="modernize" aria-pressed="false">Modernize</button>
+      <button class="btn" type="button" data-path="acquire" aria-pressed="false">Acquire</button>
+    </div>
+    <div class="seg">
+      <button class="btn" id="f-fit" type="button" aria-pressed="false">Strong fit only</button>
+      <button class="btn" id="f-open" type="button" aria-pressed="false">Open all rows</button>
+      <span class="count" id="count" aria-live="polite">18 of 18 shown</span>
+    </div>
+  </div>
+
+  <div>
+    <div class="maphead"><span>Category</span><span>Size signal</span><span>Tags</span><span>Read</span></div>
+    <div class="rows" id="rows">
+
+      <details class="row top" data-path="plumbing" data-fit="yes">
+        <summary>
+          <div><span class="r-title">Closure asset harvest</span><span class="r-path">Plumbing · acquire · closures</span></div>
+          <div class="r-money">~5 of 6<small>transitions that never sell</small></div>
+          <div class="chips"><span class="chip">Stage 3</span><span class="chip lo">Crowding: thin</span><span class="chip fl">Fit: strong</span></div>
+          <div class="r-read"><b>Top mundane play.</b> The cheapest acquisition path in the wave.</div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>What it is</dt><dd>When an owner closes instead of selling, the partner firm's clients buy the useful pieces for cash: customer list, recurring service contracts, the phone number and domain, equipment, and offers to key staff.</dd>
+          <dt>Why it's missed</dt><dd>Too small for brokers and outside SBA rules; auctioneers take the equipment and the customers scatter (inference).</dd>
+          <dt>Scarce input</dt><dd>Hearing about a closure early. A fractional CFO is often the first outsider to know.</dd>
+          <dt>Watch</dt><dd>Florida's tax-transfer rule also covers owners who quit without a buyer; clear state taxes before paying for assets.<sup><a href="#src-28">28</a></sup></dd>
+          <dt>Entry</dt><dd>START. Finder's role or small co-invest per deal; pairs with the wind-down row.</dd>
+        </dl></div>
+      </details>
+
+      <details class="row top" data-path="plumbing" data-fit="yes">
+        <summary>
+          <div><span class="r-title">Clean-handoff closing kit</span><span class="r-path">Plumbing · service · transaction</span></div>
+          <div class="r-money">30 days<small>to remit tax withheld from the price</small></div>
+          <div class="chips"><span class="chip">Stage 3</span><span class="chip lo">Crowding: thin</span><span class="chip fl">Fit: strong</span></div>
+          <div class="r-read"><b>Productize it.</b> Sell through brokers and lenders who need deals to close clean.</div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>Why it matters</dt><dd>A buyer of more than half a Florida business can be jointly liable for the seller's unpaid state taxes. The buyer may hold back part of the price but must pay it to the state within 30 days; a requested DOR audit must finish within 90 days of getting the records.<sup><a href="#src-28">28</a>,<a href="#src-29">29</a></sup></dd>
+          <dt>What's in it</dt><dd>Tax clearance and withholding, lien and UCC searches, license and permit checks, entity status, and a consents tracker.</dd>
+          <dt>Who's there</dt><dd>Deal attorneys do parts of it on larger deals; small deals often skip it (inference).</dd>
+          <dt>Entry</dt><dd>START. Fixed fee per deal; attorneys stay on the legal pieces.</dd>
+        </dl></div>
+      </details>
+
+      <details class="row top" data-path="plumbing" data-fit="partial">
+        <summary>
+          <div><span class="r-title">Contractor license continuity</span><span class="r-path">Plumbing · service · Florida-specific</span></div>
+          <div class="r-money">60 days<small>to replace a departing sole qualifier</small></div>
+          <div class="chips"><span class="chip">Stage 3</span><span class="chip lo">Crowding: thin</span><span class="chip fl flp">Fit: partial</span></div>
+          <div class="r-read">The license often walks out with the retiring owner. <b>Plan it or buy the stuck firms.</b></div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>The rule</dt><dd>A Florida contracting business operates on its qualifying agent's license. If that person is the only one and leaves, the business has 60 days to employ another.<sup><a href="#src-25">25</a></sup> Electrical contracting has the same 60-day window, after which the business is no longer qualified.<sup><a href="#src-26">26</a></sup></dd>
+          <dt>The gap</dt><dd>During the gap, no permits can be pulled and no new contracts signed (secondary source).<sup><a href="#src-27">27</a></sup></dd>
+          <dt>Plays</dt><dd>Qualifier succession planning for prep clients; matching licensed successors; buying firms with good crews that are losing their qualifier.</dd>
+          <dt>Entry</dt><dd>PARTNER with a licensed contractor or licensing attorney; you run the planning and deal side.</dd>
+        </dl></div>
+      </details>
+
+      <details class="row" data-path="plumbing" data-fit="yes">
+        <summary>
+          <div><span class="r-title">Orderly wind-down</span><span class="r-path">Plumbing · service · closures</span></div>
+          <div class="r-money">Per closure<small>final returns, dissolution, records</small></div>
+          <div class="chips"><span class="chip">Stage 3</span><span class="chip lo">Crowding: thin</span><span class="chip fl">Fit: strong</span></div>
+          <div class="r-read">Natural work for the partner firm, and the feeder for the asset harvest.</div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>What it is</dt><dd>Final payroll and tax returns, state tax closeout, entity dissolution, records retention, and placing employees, packaged for owners who are closing.</dd>
+          <dt>Why it pays twice</dt><dd>The fee covers the work; the relationship surfaces the assets worth harvesting.</dd>
+        </dl></div>
+      </details>
+
+      <details class="row" data-path="plumbing" data-fit="yes">
+        <summary>
+          <div><span class="r-title">First-90-days transition admin</span><span class="r-path">Plumbing · service · post-close</span></div>
+          <div class="r-money">44%<small>of buyers are corporate refugees</small></div>
+          <div class="chips"><span class="chip">Stage 3</span><span class="chip lo">Crowding: thin</span><span class="chip fl">Fit: strong</span></div>
+          <div class="r-read">First-time buyers don't know what re-approvals they need.</div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>What breaks</dt><dd>Landlord consent, supplier credit terms tied to the old owner, the card processor, insurance policies, bank accounts and the state reemployment tax account all need re-approval after closing (inference).</dd>
+          <dt>Buyers</dt><dd>Many new owners come from corporate jobs and have never done this.<sup><a href="#src-11">11</a></sup></dd>
+          <dt>Recurs?</dt><dd>Converts to a monthly CFO retainer for the new owner.</dd>
+        </dl></div>
+      </details>
+
+      <details class="row" data-path="plumbing" data-fit="yes">
+        <summary>
+          <div><span class="r-title">Payroll &amp; retirement-plan handoff</span><span class="r-path">Plumbing · service · transaction</span></div>
+          <div class="r-money">Every deal<small>with a 401(k) or payroll provider</small></div>
+          <div class="chips"><span class="chip">Stage 3</span><span class="chip md">Crowding: medium</span><span class="chip fl">Fit: strong</span></div>
+          <div class="r-read">Plan-administration work close to an equity-comp background.</div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>What it is</dt><dd>Deciding whether to terminate, merge or carry over the retirement plan, switching payroll providers, and getting the related filings right (inference).</dd>
+          <dt>Who's there</dt><dd>Plan administrators and payroll vendors, each handling their own slice; nobody owns the handoff sequence.</dd>
+          <dt>Entry</dt><dd>Part of the closing kit; partner with a third-party administrator.</dd>
+        </dl></div>
+      </details>
+
+      <details class="row" data-path="plumbing" data-fit="partial">
+        <summary>
+          <div><span class="r-title">Owner-login &amp; digital-asset inventory</span><span class="r-path">Plumbing · service · pre-transaction</span></div>
+          <div class="r-money">Unpriced<small>domain, phone, profiles, software</small></div>
+          <div class="chips"><span class="chip">Stage 3</span><span class="chip lo">Crowding: thin</span><span class="chip fl flp">Fit: partial</span></div>
+          <div class="r-read">Real value that goes missing at closing. Cheap add-on.</div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>The problem</dt><dd>Domains, the Google Business Profile, the main phone number, the accounting file and software accounts are often registered to the owner's personal email (inference).</dd>
+          <dt>Entry</dt><dd>Checklist item in the sale-prep package and the asset harvest.</dd>
+        </dl></div>
+      </details>
+
+      <details class="row top" data-path="weakness" data-fit="yes">
+        <summary>
+          <div><span class="r-title">Lender-grade recast &amp; QoE-lite</span><span class="r-path">Service · pre-transaction</span></div>
+          <div class="r-money">$150K–$2M<small>cash flow band with no natural provider</small></div>
+          <div class="chips"><span class="chip">Stage 3</span><span class="chip lo">Crowding: thin</span><span class="chip fl">Fit: strong</span></div>
+          <div class="r-read"><b>Top candidate.</b> The rule change makes this the scarce input.</div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>Why now</dt><dd>Seller notes can't carry a deal anymore, so lenders lean harder on the numbers.<sup><a href="#src-4">4</a></sup> Lenders can accept CPA-prepared or reviewed statements in place of messy tax returns.<sup><a href="#src-10">10</a></sup></dd>
+          <dt>Scarce input</dt><dd>Three years of recast, accrual financials with an addback schedule a lender will accept.</dd>
+          <dt>Who's there</dt><dd>Big-firm QoE teams above $2M EBITDA; brokers' valuations below.<sup><a href="#src-16">16</a>,<a href="#src-17">17</a></sup> Whether the partner firm can sign CPA-reviewed statements is an open question.</dd>
+          <dt>Entry</dt><dd>START inside the partner firm as a fixed-fee package. Price hypothesis $5–10K, to be set by the test.</dd>
+          <dt>Recurs?</dt><dd>Annual refresh until sale, then a CFO retainer with the buyer.</dd>
+        </dl></div>
+      </details>
+
+      <details class="row top" data-path="weakness" data-fit="yes">
+        <summary>
+          <div><span class="r-title">Key-employee retention plans</span><span class="r-path">Professional service · transaction</span></div>
+          <div class="r-money">10% floor<small>equity injection squeezes rollover</small></div>
+          <div class="chips"><span class="chip">Stage 3</span><span class="chip lo">Crowding: thin</span><span class="chip fl">Fit: strong</span></div>
+          <div class="r-read">An equity-comp background, applied to <b>SBA-compliant</b> deal design.</div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>Why now</dt><dd>The rewrite removed most workable rollover equity, the tool that kept sellers and managers invested.<sup><a href="#src-9">9</a></sup> Under 8.1, an outside buyer taking control is treated as a full purchase with no seller rollover.<sup><a href="#src-8">8</a></sup></dd>
+          <dt>The workaround</dt><dd>Phantom equity or profit-sharing held outside the SBA borrower, including for the people who hold the trade licenses.<sup><a href="#src-10">10</a></sup></dd>
+          <dt>Scarce input</dt><dd>Someone who can design equity-style incentives that keep the licensed foreman through the handoff without tripping lender rules.</dd>
+          <dt>Who's there</dt><dd>Compensation consultants serve larger firms. Local small-deal supply not yet mapped (inference).</dd>
+          <dt>Entry</dt><dd>Bundle with the recast package; attorney drafts, you design.</dd>
+        </dl></div>
+      </details>
+
+      <details class="row" data-path="weakness" data-fit="yes">
+        <summary>
+          <div><span class="r-title">Buyer-side diligence for first-time acquirers</span><span class="r-path">Service · transaction</span></div>
+          <div class="r-money">44%<small>of buyers are corporate refugees</small></div>
+          <div class="chips"><span class="chip">Stage 3</span><span class="chip md">Crowding: medium</span><span class="chip fl">Fit: strong</span></div>
+          <div class="r-read">Good second product. Sells to the flood of new buyers.</div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>Demand</dt><dd>Corporate professionals are a growing share of buyers, and most expect SBA financing.<sup><a href="#src-11">11</a>,<a href="#src-3">3</a></sup></dd>
+          <dt>Scarce input</dt><dd>Someone who can read a small firm's books and spot what the seller's addbacks hide.</dd>
+          <dt>Who's there</dt><dd>National QoE-lite shops and search-fund service providers; local depth unknown.</dd>
+          <dt>Entry</dt><dd>START. Same skills as the recast, sold to the other side of the table (never both sides of one deal).</dd>
+        </dl></div>
+      </details>
+
+      <details class="row" data-path="modernize" data-fit="partial">
+        <summary>
+          <div><span class="r-title">Owner-dependency &amp; systems modernization</span><span class="r-path">Operating improvement · pre- or post-deal</span></div>
+          <div class="r-money">~2x → ~5x<small>SDE multiple range</small></div>
+          <div class="chips"><span class="chip">Stage 3–4</span><span class="chip md">Crowding: medium</span><span class="chip fl flp">Fit: partial</span></div>
+          <div class="r-read">The value lever inside every other row, rarely a business on its own.</div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>Why it pays</dt><dd>Below 2x usually means owner dependency or customer concentration; near 5x means recurring revenue, management depth and sticky customers.<sup><a href="#src-15">15</a></sup></dd>
+          <dt>What it is</dt><dd>Documented processes, a second-in-command, recurring contracts, and AI-assisted back office.</dd>
+          <dt>Entry</dt><dd>Inside the recast engagement before a sale; the 100-day plan after any acquisition.</dd>
+        </dl></div>
+      </details>
+
+      <details class="row" data-path="weakness" data-fit="no">
+        <summary>
+          <div><span class="r-title">Sell-side brokerage &amp; listing</span><span class="r-path">Intermediary · transaction</span></div>
+          <div class="r-money">470+<small>deals at one Tampa broker office</small></div>
+          <div class="chips"><span class="chip">Stage 3</span><span class="chip hi">Crowding: high</span><span class="chip">Fit: weak</span></div>
+          <div class="r-read">A referral partner, not an entry.</div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>Who's there</dt><dd>Established brokers, now marketing exit planning as well as listings.<sup><a href="#src-17">17</a></sup> Search traffic for selling a Tampa business is reportedly up about 40%.<sup><a href="#src-18">18</a></sup></dd>
+          <dt>Rules</dt><dd>Check Florida business-broker licensing and the federal M&amp;A broker rule before taking any success fee.</dd>
+          <dt>Entry</dt><dd>PARTNER. Brokers need sellers whose books close; you supply them.</dd>
+        </dl></div>
+      </details>
+
+      <details class="row" data-path="weakness" data-fit="no">
+        <summary>
+          <div><span class="r-title">Lower-middle-market QoE &amp; banking</span><span class="r-path">Professional service · $2M+ EBITDA</span></div>
+          <div class="r-money">6–9x<small>Tampa EBITDA multiple, $2–10M EBITDA</small></div>
+          <div class="chips"><span class="chip">Stage 4</span><span class="chip hi">Crowding: high</span><span class="chip">Fit: weak</span></div>
+          <div class="r-read">Refer up. The top of your band is already served.</div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>Who's there</dt><dd>Kaufman Rossin (now with its own banking affiliate), CBIZ and CLA; Holland &amp; Knight, Carlton Fields and Trenam on the legal side.<sup><a href="#src-16">16</a></sup></dd>
+          <dt>Tampa read</dt><dd>Multiples run slightly above national norms on PE inbound and no state income tax (vendor source).<sup><a href="#src-16">16</a></sup></dd>
+        </dl></div>
+      </details>
+
+      <details class="row" data-path="acquire" data-fit="partial">
+        <summary>
+          <div><span class="r-title">Equity for the injection gap</span><span class="r-path">Capital · transaction</span></div>
+          <div class="r-money">≤50%<small>of injection from minority investors + standby debt</small></div>
+          <div class="chips"><span class="chip">Stage 3</span><span class="chip md">Crowding: medium</span><span class="chip fl flp">Fit: partial</span></div>
+          <div class="r-read">Capital markets fit, but capital-heavy. Co-invest only alongside clients.</div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>Why</dt><dd>Buyers without enough personal capital now need outside equity, which law firms flagged as an opening for investors.<sup><a href="#src-4">4</a></sup> 8.1 caps how much of it counts.<sup><a href="#src-5">5</a></sup></dd>
+          <dt>Entry</dt><dd>WATCH. Small minority stakes in client acquisitions, if at all.</dd>
+        </dl></div>
+      </details>
+
+      <details class="row top" data-path="acquire" data-fit="yes">
+        <summary>
+          <div><span class="r-title">Add-on acquisitions for existing clients</span><span class="r-path">Acquisition advisory · transaction</span></div>
+          <div class="r-money">1.15x<small>reported coverage test, vs 1.25x</small></div>
+          <div class="chips"><span class="chip">Stage 3→4</span><span class="chip md">Crowding: medium</span><span class="chip fl">Fit: strong</span></div>
+          <div class="r-read"><b>Test this.</b> The new rules favor the partner firm's healthy clients as buyers.</div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>Why now</dt><dd>8.1 sorts deals into four categories. Business Expansion, an operator with two years under current ownership buying in the same industry, is the most favorable: injection can be cut or waived.<sup><a href="#src-6">6</a>,<a href="#src-7">7</a></sup></dd>
+          <dt>Scarce input</dt><dd>Financeable buyers who already know the industry, and a quiet way to find retiring competitors.</dd>
+          <dt>Your seat</dt><dd>Structure the deal and the retention plan; the partner firm runs diligence and integration.</dd>
+          <dt>Entry</dt><dd>START as a desk for existing clients. Fee in cash or a small equity stake.</dd>
+        </dl></div>
+      </details>
+
+      <details class="row" data-path="acquire" data-fit="yes">
+        <summary>
+          <div><span class="r-title">Local bookkeeping practice roll-up</span><span class="r-path">Acquisition · installed base</span></div>
+          <div class="r-money">~1.0x revenue<small>median practice price, 0.7–1.4x range</small></div>
+          <div class="chips"><span class="chip">Stage 4</span><span class="chip hi">Crowding: high nationally</span><span class="chip fl">Fit: strong</span></div>
+          <div class="r-read">Watch. Right skills, but billions are aimed at it.</div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>Pricing</dt><dd>Local buyers still absorb most practices under $2M revenue at gross-revenue multiples (vendor source).<sup><a href="#src-24">24</a></sup></dd>
+          <dt>Who's there</dt><dd>PE-backed acquirers closed 25+ accounting deals in January 2026 alone.<sup><a href="#src-23">23</a></sup> AI-native platforms from General Catalyst and Thrive target the same firms.<sup><a href="#src-20">20</a>,<a href="#src-21">21</a></sup></dd>
+          <dt>Window</dt><dd>Closes when a national platform starts buying in the four counties (forecast F11).</dd>
+        </dl></div>
+      </details>
+
+      <details class="row" data-path="acquire" data-fit="no">
+        <summary>
+          <div><span class="r-title">PE-favored trades as targets</span><span class="r-path">HVAC · plumbing · dental · insurance agencies</span></div>
+          <div class="r-money">~5x SDE<small>vs 2.6–2.7x average</small></div>
+          <div class="chips"><span class="chip">Stage 4</span><span class="chip hi">Crowding: high</span><span class="chip">Fit: weak</span></div>
+          <div class="r-read">Great prep clients, poor buys.</div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>Why</dt><dd>Recurring revenue, licensing barriers and active PE buyers push these to the top of the range.<sup><a href="#src-15">15</a></sup> Their owners get the most from sale prep.</dd>
+        </dl></div>
+      </details>
+
+      <details class="row" data-path="acquire" data-fit="no">
+        <summary>
+          <div><span class="r-title">Restaurants, retail, small manufacturing</span><span class="r-path">Avoid as targets</span></div>
+          <div class="r-money">−14% to −16%<small>Q2 2026 deal value, QoQ</small></div>
+          <div class="chips"><span class="chip">—</span><span class="chip">Buyers retreating</span><span class="chip">Fit: weak</span></div>
+          <div class="r-read">Avoid unless a strategic buyer is already lined up.</div>
+        </summary>
+        <div class="r-body"><dl>
+          <dt>Evidence</dt><dd>Manufacturing and restaurant transaction values fell 14% and 16% quarter over quarter; brokers read it as buyers avoiding discretionary, low-margin sectors.<sup><a href="#src-2">2</a></sup> Retail deal volume fell 15% year over year.<sup><a href="#src-1">1</a></sup></dd>
+        </dl></div>
+      </details>
+
+    </div>
+    <p class="unres"><b>Not yet researched:</b> owner age by industry for the four counties (Census ABS 2023 county tables<sup><a href="#src-14">14</a></sup>, Sunbiz officer and formation dates, DBPR license dates); which Tampa SBA lenders close change-of-ownership loans; how the 2024 storms and insurance costs moved local valuations; and the employee-ownership route (ESOPs are exempt from the 10% injection floor<sup><a href="#src-9">9</a></sup>).</p>
+  </div>
+</section>
+
+<!-- ============ SHORTLIST ============ -->
+<section id="shortlist">
+  <div class="sec-head">
+    <span class="eyebrow">Take to validation</span>
+    <h2>Mundane plays to test first</h2>
+    <p class="lede">Ranked on recurrence, crowding and whether they get paid without a deal closing. Each has the cheapest real-world test and a kill line attached.</p>
+  </div>
+  <div class="cards">
+    <article class="card">
+      <span class="tagline">TOP · Handoff plumbing · acquire</span>
+      <h3>Closure asset harvest</h3>
+      <dl>
+        <div><dt>Thesis</dt><dd>When an owner closes instead of selling, the partner firm's clients buy the customer list, service contracts, phone number, equipment and key staff for cash, below any SBA process.</dd></div>
+        <div><dt>Your seat</dt><dd>Spot the closure early, value the pieces, structure the purchase.</dd></div>
+        <div><dt>Red team</dt><dd>Customers may not follow; auctioneers and competitors already pick over closures.</dd></div>
+        <div><dt>Cheapest test</dt><dd>Ask the partner firm how many clients or contacts closed in the last three years and what happened to their customers. Ask five healthy clients what a competitor's customer list would be worth to them.</dd></div>
+        <div><dt>Kill</dt><dd>Fewer than three closures a year within reach, or clients won't pay for customer lists.</dd></div>
+      </dl>
+    </article>
+    <article class="card test">
+      <span class="tagline">TEST · Handoff plumbing · service</span>
+      <h3>Clean-handoff kit + first 90 days</h3>
+      <dl>
+        <div><dt>Thesis</dt><dd>A fixed-fee closing kit (tax clearance, liens, licenses, consents, payroll and plan handoff) that rolls into a post-close CFO retainer for the new owner.</dd></div>
+        <div><dt>Your seat</dt><dd>Design the package and sell it to brokers and SBA lenders as a referral product.</dd></div>
+        <div><dt>Red team</dt><dd>Deal attorneys may see it as their turf; small deals may refuse any added fee.</dd></div>
+        <div><dt>Cheapest test</dt><dd>Show a one-page checklist to two Tampa brokers and two SBA lenders; ask which items fail most and whether they'd refer it.</dd></div>
+        <div><dt>Kill</dt><dd>No broker or lender would refer it, or attorneys already cover it on small deals.</dd></div>
+      </dl>
+    </article>
+    <article class="card test">
+      <span class="tagline">TEST · Handoff plumbing · Florida-specific</span>
+      <h3>Contractor license continuity</h3>
+      <dl>
+        <div><dt>Thesis</dt><dd>Trade firms whose retiring owner is the only license holder have 60 days to replace them. Plan that succession for prep clients, and buy good crews that are about to lose their license.</dd></div>
+        <div><dt>Your seat</dt><dd>Planning and deal side; a licensed partner supplies the qualifier.</dd></div>
+        <div><dt>Red team</dt><dd>Renting out a license is a regulatory hazard; the partner must genuinely supervise the work.</dd></div>
+        <div><dt>Cheapest test</dt><dd>From DBPR records, count four-county contracting firms with one qualifier licensed 25+ years ago. Ask two licensing attorneys how often clients hit the 60-day wall.</dd></div>
+        <div><dt>Kill</dt><dd>Few single-qualifier firms with long-tenured licenses, or attorneys say the gap is routinely solved in-house.</dd></div>
+      </dl>
+    </article>
+  </div>
+</section>
+
+<section id="advisory">
+  <div class="sec-head">
+    <span class="eyebrow">Also on the table</span>
+    <h2>Advisory-layer plays</h2>
+    <p class="lede">Less mundane and more crowded, but timed to the 1 October SBA rule change.</p>
+  </div>
+  <div class="cards">
+    <article class="card">
+      <span class="tagline">Advisory · Fix a weakness · Stage 3, current</span>
+      <h3>SBA-ready sale prep for owners 55+</h3>
+      <dl>
+        <div><dt>Thesis</dt><dd>A fixed-fee package for owners one to five years from exit: lender-grade recast and addbacks, QoE-lite, owner-dependency fixes, and an SBA-compliant key-employee retention plan.</dd></div>
+        <div><dt>Your seat</dt><dd>Deal structure and retention-plan design. The partner firm owns the books.</dd></div>
+        <div><dt>Red team</dt><dd>Brokers and exit planners give readiness advice free to win listings. Answer: they sell listings; this sells financeability.</dd></div>
+        <div><dt>Cheapest test</dt><dd>Score 10 partner-firm clients with owners 55+ against a buyer-ready checklist. Offer three a paid review at $5–10K. Ask two Tampa SBA lenders whether they'd rely on the work.</dd></div>
+        <div><dt>Kill</dt><dd>Fewer than 2 of 10 would pay, or lenders say it doesn't change underwriting.</dd></div>
+      </dl>
+    </article>
+    <article class="card test">
+      <span class="tagline">Advisory · Acquire · Stage 3→4, next</span>
+      <h3>Add-on acquisition desk for healthy clients</h3>
+      <dl>
+        <div><dt>Thesis</dt><dd>Turn the partner firm's strongest clients into buyers of retiring competitors under the favorable Business Expansion category. Owners who never list sell to someone they know.</dd></div>
+        <div><dt>Your seat</dt><dd>Structuring, financing and the retention plan; a path to minority stakes.</dd></div>
+        <div><dt>Red team</dt><dd>Brokers already sell to strategics. Licensing for success fees needs checking first.</dd></div>
+        <div><dt>Cheapest test</dt><dd>Ask five healthy clients whether they'd buy a competitor in 24 months and at what size. Ask two lenders how they'll treat Expansion files after 1 October.</dd></div>
+        <div><dt>Kill</dt><dd>Fewer than 2 clients interested, or lenders treat Expansion files no differently.</dd></div>
+      </dl>
+    </article>
+    <article class="card watch">
+      <span class="tagline">WATCH · Acquire + modernize · Stage 4, next</span>
+      <h3>Local AI-rewired bookkeeping roll-up</h3>
+      <dl>
+        <div><dt>Thesis</dt><dd>The partner firm buys retiring bookkeepers in the four counties near 1x revenue, rewires the work with AI, and feeds more owners into the two plays above.</dd></div>
+        <div><dt>Your seat</dt><dd>Capital allocation and acquisition structure.</dd></div>
+        <div><dt>Red team</dt><dd>National platforms with billions target the same firms, and the partner firm itself is in their target profile.</dd></div>
+        <div><dt>Cheapest test</dt><dd>Count local practices with principals 60+ from DBPR and Sunbiz; ask three practice brokers about deal flow.</dd></div>
+        <div><dt>Kill</dt><dd>Fewer than about 10 plausible targets, or local prices above 1.5x revenue.</dd></div>
+      </dl>
+    </article>
+  </div>
+</section>
+
+<!-- ============ NEXT ============ -->
+<section id="next">
+  <div class="two">
+    <div class="sec-head" style="gap:14px">
+      <span class="eyebrow">Tier A network evidence</span>
+      <h2>Questions for the partner firm</h2>
+      <ol class="qlist">
+        <li><b>Intent.</b> Of clients with owners 55+, how many have mentioned selling, and in what timeframe?</li>
+        <li><b>Closures.</b> When a client or contact closed instead of selling, what happened to its customers, phone number, equipment and staff?</li>
+        <li><b>License risk.</b> Which clients depend on a single license holder who is near retirement?</li>
+        <li><b>Deal killers.</b> When a client tried to sell, what killed or cut the price: addbacks, owner dependency, customer concentration, or financing?</li>
+        <li><b>Buyers.</b> Which healthy clients have bought, or would buy, a competitor?</li>
+        <li><b>Pressure.</b> Has a PE or AI accounting platform approached the firm or practices you know? Did the 2024 storms or insurance costs change any client's plans?</li>
+      </ol>
+    </div>
+    <div class="sec-head" style="gap:14px">
+      <span class="eyebrow">Logged to forecast-log.md</span>
+      <h2>Forecasts F9–F12</h2>
+      <ul class="fc">
+        <li><b>F9</b><span>SBA 7(a) approvals for FY2026 or FY2027 come in below FY2025's 77,600 loans as the new rules bite.<small>By 2027-10-31 · Medium · SBA lending reports</small></span></li>
+        <li><b>F10</b><span>BizBuySell's average cash-flow multiple holds at 2.6x or above through Q2 2027 while deal counts stay below Q2 2025.<small>Q2 2027 report · Medium · BizBuySell Insight</small></span></li>
+        <li><b>F11</b><span>An AI-native or PE accounting roll-up buys a firm headquartered in the four counties.<small>By 2027-12-31 · Low–medium · CPA Trendlines, TBBJ</small></span></li>
+        <li><b>F12</b><span>SBA loosens the full-standby rule for seller notes on changes of ownership.<small>By 2027-12-31 · Low · SBA information notices</small></span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOURCES ============ -->
+<section id="sources">
+  <div class="sec-head">
+    <span class="eyebrow">Evidence</span>
+    <h2>Sources</h2>
+  </div>
+  <ol class="srcs">
+    <li id="src-1"><span class="tier B">B</span><a href="https://www.bizbuysell.com/insight-report/">BizBuySell Insight Report, Q2 2026</a></li>
+    <li id="src-2"><span class="tier C">C</span><a href="https://sundancefg.com/resources/bizbuysell-q2-2026-insight-report">Sundance Financial: BizBuySell Q2 2026, three takeaways</a></li>
+    <li id="src-3"><span class="tier C">C</span><a href="https://www.myfloridabusinessbroker.com/what-we-know-about-business-sales-after-two-quarters-of-2026/">My Florida Business Broker: Business sales after two quarters of 2026</a></li>
+    <li id="src-4"><span class="tier B">B</span><a href="https://www.whitefordlaw.com/news-events/client-alert-sba-issues-sop-50-10-8-key-changes-impacting-sba-7a-lending">Whiteford Taylor &amp; Preston: SOP 50 10 8 key changes</a></li>
+    <li id="src-5"><span class="tier C">C</span><a href="https://www.pioneercapitaladvisory.com/post/investor-equity-sba-7a-sop-50-10-8-1-new-rules-vs-old-rules">Pioneer Capital Advisory: Investor equity under SOP 50 10 8.1 (cites SBA Info Notice 5000-880695)</a></li>
+    <li id="src-6"><span class="tier C">C</span><a href="https://www.funderintel.com/post/sba-sop-50-10-8-1-7-things-brokers-need-to-know-before-october-1">FunderIntel: SOP 50 10 8.1, seven things before 1 October</a></li>
+    <li id="src-7"><span class="tier C">C</span><a href="https://cantrellfirm.com/blog/new-sba-acquisition-rules-sop-50-10-8-1/">Cantrell Law Firm: New 2026 SBA rules for selling your business</a></li>
+    <li id="src-8"><span class="tier C">C</span><a href="https://www.security-banks.com/blog/everything-about-new-sba-sop">Security Bank &amp; Trust: SBA loan rules in 2026</a></li>
+    <li id="src-9"><span class="tier C">C</span><a href="https://www.mmcginvest.com/post/sop-50-10-8-how-the-biggest-sba-lending-overhaul-in-five-years-is-reshaping-deal-structures">MMCG: How SOP 50 10 8 is reshaping deal structures</a></li>
+    <li id="src-10"><span class="tier C">C</span><a href="https://www.myreins.com/blog/sba-changes-sop-50-10-8-update">Reins: Seller notes, standby and equity injection</a></li>
+    <li id="src-11"><span class="tier C">C</span><a href="https://joinaccredited.com/blog/silver-tsunami-business-acquisitions">Accredited: Is the Silver Tsunami real? The 2026 data</a></li>
+    <li id="src-12"><span class="tier C">C</span><a href="https://www.ideafinancial.com/blog/the-silver-tsunami-is-here-what-the-biggest-business-transfer-in-american-history-means-for-you">Idea Financial, summarizing McKinsey Institute for Economic Mobility (2026)</a></li>
+    <li id="src-13"><span class="tier A">A</span><a href="https://advocacy.sba.gov/wp-content/uploads/2021/03/Business-Ownership-Demographics-Fact-Sheet.pdf">SBA Office of Advocacy: Business ownership demographics</a></li>
+    <li id="src-14"><span class="tier A">A</span><a href="https://data.census.gov/table?d=ECNSVY+Annual+Business+Survey+Characteristics+of+Business+Owners">Census Bureau: Annual Business Survey owner characteristics, 2023 (county tables)</a></li>
+    <li id="src-15"><span class="tier D">D</span><a href="https://www.eastcoastadvisoryteam.com/post/valuation-multiples-by-industry">East Coast Advisory Team: Valuation multiples by industry, 2026</a></li>
+    <li id="src-16"><span class="tier D">D</span><a href="https://ctacquisitions.com/m-and-a-advisory/tampa/">CT Acquisitions: M&amp;A advisor in Tampa, 2026 guide</a></li>
+    <li id="src-17"><span class="tier D">D</span><a href="https://www.yourfloridabusinessbroker.com/best-business-broker-in-tampa-st-petersburg/">Transworld Tampa (Michael Shea): Business broker in Tampa &amp; St. Petersburg</a></li>
+    <li id="src-18"><span class="tier D">D</span><a href="https://lobobusinesssales.com/blog/why-sell-my-business-tampa-searches-are-up-40-and-how-to-get-top-dollar-in-hillsborough-county">Lobo Business Sales: "Sell my business Tampa" searches up 40%</a></li>
+    <li id="src-19"><span class="tier D">D</span><a href="https://www.sailfishequityadvisors.com/florida-business-broker/tampa-business-market-report-2026">Sailfish Equity Advisors: Tampa business market report 2026</a></li>
+    <li id="src-20"><span class="tier C">C</span><a href="https://www.capitalfounders.io/playbooks/ai-enabled-roll-ups/">Capital Founders: Founder's guide to AI-enabled roll-ups</a></li>
+    <li id="src-21"><span class="tier B">B</span><a href="https://www.forbes.com/sites/annatong/2026/06/02/thrive-holdings-to-bet-1-billion-on-ai-powered-accounting-roll-up/">Forbes: Thrive Holdings to bet $1B on AI-powered accounting roll-up</a></li>
+    <li id="src-22"><span class="tier C">C</span><a href="https://footnote.news/p/private-equity-bet-accounting-was-a-fortress-ai-is-lowering-the-walls">Footnote: Private equity and AI, the accounting firm roll-up</a></li>
+    <li id="src-23"><span class="tier D">D</span><a href="https://ar-ti-fi.com/blog/pe-backed-accounting-rollups">Artifi: PE-backed accounting roll-ups, mapped</a></li>
+    <li id="src-24"><span class="tier D">D</span><a href="https://jupid.com/blog/who-is-buying-accounting-firms-2026">Jupid: Who is buying accounting firms in 2026</a></li>
+    <li id="src-25"><span class="tier A">A</span><a href="https://www.flsenate.gov/laws/statutes/2024/489.119">Florida Statutes §489.119: Business organizations; qualifying agents</a></li>
+    <li id="src-26"><span class="tier C">C</span><a href="https://douglasfirm.com/construction-electrical-qualification-termination-of-qualifier/">Douglas Law Firm: Termination of qualifier, construction and electrical</a></li>
+    <li id="src-27"><span class="tier D">D</span><a href="https://floridacommercialcontractorauthority.com/florida-contractor-qualifying-agent/">Florida Commercial Contractor Authority: Qualifying agent rules</a></li>
+    <li id="src-28"><span class="tier A">A</span><a href="https://www.flsenate.gov/Laws/Statutes/2025/213.758">Florida Statutes §213.758: Transfer of tax liabilities</a></li>
+    <li id="src-29"><span class="tier C">C</span><a href="https://farr.com/buyer-beware-liability-of-business-buyer-for-sellers-taxes/">Farr Law Firm: Liability of business buyer for seller's taxes</a></li>
+  </ol>
+</section>
+
+<footer>Transition and market-share figures are rough arithmetic on published estimates, not a count of Tampa Bay firms. SBA rule details come from law-firm and lender summaries; confirm against the SOP 50 10 8.1 text before advising any deal. Figures marked vendor or broker need a primary source before any card graduates to VALIDATE. Not legal or financial advice.</footer>
+
+</div>
+
+<script>
+(function(){
+  var rows=[].slice.call(document.querySelectorAll('#rows .row'));
+  var pathBtns=[].slice.call(document.querySelectorAll('button[data-path]'));
+  var fitBtn=document.getElementById('f-fit');
+  var openBtn=document.getElementById('f-open');
+  var count=document.getElementById('count');
+  var path='all', fitOnly=false;
+  function apply(){
+    var shown=0;
+    rows.forEach(function(r){
+      var ok=(path==='all'||r.dataset.path===path)&&(!fitOnly||r.dataset.fit==='yes');
+      r.hidden=!ok; if(ok)shown++;
+    });
+    count.textContent=shown+' of '+rows.length+' shown';
+  }
+  pathBtns.forEach(function(b){
+    b.addEventListener('click',function(){
+      path=b.dataset.path;
+      pathBtns.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+      apply();
+    });
+  });
+  fitBtn.addEventListener('click',function(){
+    fitOnly=!fitOnly; fitBtn.setAttribute('aria-pressed',fitOnly?'true':'false'); apply();
+  });
+  openBtn.addEventListener('click',function(){
+    var opening=openBtn.getAttribute('aria-pressed')!=='true';
+    rows.forEach(function(r){r.open=opening;});
+    openBtn.setAttribute('aria-pressed',opening?'true':'false');
+    openBtn.textContent=opening?'Close all rows':'Open all rows';
+  });
+  apply();
+})();
+</script>
+
+</body></html>
