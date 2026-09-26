@@ -1,0 +1,3 @@
+# Keep internal notes in the repo but off the published site.
+exclude:
+  - design-system.md
