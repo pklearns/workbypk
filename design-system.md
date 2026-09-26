@@ -13,11 +13,11 @@ Derived from pages already built for workbypk.com. Nothing here is invented: eve
 
 | ID | File (repo-relative unless absolute) | sha256 |
 |---|---|---|
-| A1 | `index.html` | `d9126d2905734ad65b48df32091b547b5376e29ffdf649b4cfe8b8b73f158d82` |
-| A1 | `styles.css` | `7a5872522bc7f5399812eddfe680d6a2bcdf0ae36df4fc1b106d574f764d9490` |
-| A2 | `projects/index.html` | `10c436a88740a93c3ceb17833627aa30078b87730b9ee522071573c847f6e08e` |
-| A3 | `build-log/index.html` | `1888168d3ebb46cf39ef160fcd226d11a32c6ed69febf9c82d372ebae12d425d` |
-| A3 | `build-log/log.css` | `572a91ff35c302811b7afdba3b08cede35c8225a6073eb36e9d64211c50367d4` |
+| A1 | `index.html` | `9e553e220151065e4bca62dbec585caad17f3a44352ffb32e426b704ee808026` |
+| A1 | `styles.css` | `ead10f9d6fc64384004c00dbe798831a021e84b1e07f5411c43be369f8dc61ae` |
+| A2 | `projects/index.html` | `fa0196d947a521aa3618ae0165e08ea5871412e2fe91833676bc5c73bd6e4e88` |
+| A3 | `build-log/index.html` | `f29e635422689186b1f40deba2f6731ff7277b17f6fa14fdb4be9e03ae58bb9b` |
+| A3 | `build-log/log.css` | `a1b74402f646457be0396a38032403157935c991d3a278f055a89e270ea50802` |
 | A4 | `exhibits/index.html` | `160816b7cd96961d9bb2043d2b55397d17f62ba34cc40c82451fc4fb362c6bbf` |
 | A5 | `exhibits/shape-of-time/index.html` | `8d8fc91edd3d89a6d0af1cf313228d15a7dd5f2692fb42417f9332a01304a4dc` |
 | B1 | `/Users/knuggs/Downloads/PKAIOS_ARCHITECTURE_MAP.html` | `2ed881317a5f2509ed750fbe9d6af0fcf5b1946379b7e7d5d6376546a829018a` |
@@ -26,9 +26,7 @@ Derived from pages already built for workbypk.com. Nothing here is invented: eve
 | R2 | `waveminer/spend-map/northern-virginia/index.html` | `3acdb5499114b11dde7c638ba56cff116405fde3417ddba780017bed42f783ab` |
 | N2 | `waveminer/agents-as-consumers/index.html` | `b744e335aa65d42e44bac5fcd2b48c97e12af403d19bd55838c1fa7f3c65301d` |
 
-**Drift (2026-09-24):** A2 no longer matches its pin. Commit `e479186` inserted the N1 card at `projects/index.html:169-187` (19 lines). A2 traces at or below line 168 still hold. Traces past it in §1–§10 (`:193`, `:230-249`, `:255`) now sit 19 lines lower: for example, `[running / confirm]` has moved from `:193` to `:212`. The §11 traces (`:181`, `:274`) cite the current file. Re-pin A2 at the next full re-verification.
-
-**Drift (2026-09-26):** the N2 card was inserted at `projects/index.html:188-206` (19 more lines). Traces at or below line 187 still hold. Past it, add a further 19: `[running / confirm]` is now at `:231`, and the signature is at `:293`. §11 traces are updated to match.
+**Re-pin (2026-09-26, Patrick: "recheck and update as needed"):** A1, A2 and A3 are re-pinned to the files as committed with this change. The original extraction pins could not be recovered, because those working-tree versions were never committed. So every trace into these five files was re-derived by content against the current files, and the line numbers were updated. Traces to *Superseded (for reference)* hub values cite the last pre-D5 versions as `styles.css@1344aab` and `index.html@1344aab` (`git show 1344aab:styles.css`). A4, A5, N1, R1, R2 and N2 match their pins. The earlier drift notes for A2 (the N1 card at `projects/index.html:170-187` and the N2 card at `:188-206`) are folded into this re-pin.
 
 **Corpus rule:** Corpus = pages that make up Patrick's own site (hub and section pages), regardless of which model produced the first draft. Exhibits displayed as specimens of other models' work (gpt, grok, fable, shape-of-time) are excluded because they are shown as comparisons, not adopted as house style. KN Lab is excluded as out of scope (not part of workbypk). Research notes (N1 onward) are Patrick's own work but are not corpus: they are data documents that keep their own design by decision (2026-09-24), and they are governed by §11, not by §1–§7.
 
@@ -58,23 +56,23 @@ Derived from pages already built for workbypk.com. Nothing here is invented: eve
 
 A1–A4 contain two systems. **The section system governs all new pages (P0, resolved).**
 
-- **Hub system (A1, superseded for new pages):** `styles.css` tokens `--bg / --ink / --ink-strong / --ink-muted / --line / --accent` (`styles.css:1-8`). Fixed px sizes, weight 500 headings.
+- **Hub system (A1, superseded; the hub itself migrated off it 2026-09-26, see D5):** `styles.css` tokens `--bg / --ink / --ink-strong / --ink-muted / --line / --accent` (`styles.css@1344aab:1-8`). Fixed px sizes, weight 500 headings.
 - **Section system (A2, A3, A4):** tokens `--garnet / --garnet-deep / --paper / --gold / --ink / --ink-soft / --rule / --mono / --s-*`. These are identical in `projects/index.html:11-25`, `build-log/log.css:8-21` and `exhibits/index.html:11-24`. Fluid `clamp()` sizes, weight 700 headings.
 
 **What both systems share** (these are firm rules):
 
-- **MUST** use `#E4E5E2` as the page background. [`styles.css:2`, `projects/index.html:14`, `build-log/log.css:11`, `exhibits/index.html:14`]
-- **MUST** use `#6E1E28` as the single accent: links, and the brand color. [`styles.css:7`, `styles.css:32`, `projects/index.html:12`, `projects/index.html:52`, `build-log/log.css:9`, `build-log/log.css:48`, `exhibits/index.html:12`]. A4 calls garnet and paper "the house garnet and paper" (`exhibits/index.html:127`). It also describes a page that "abandons the house palette" as a departure (`exhibits/index.html:113`).
-- **MUST** set all text in Switzer, loaded from Fontshare, with the fallback `ui-sans-serif, system-ui, sans-serif`. [`styles.css:18`, `index.html:9`, `projects/index.html:9,28`, `build-log/index.html:19`, `build-log/log.css:24`, `exhibits/index.html:9,27`]
+- **MUST** use `#E4E5E2` as the page background. [`styles.css:4`, `projects/index.html:14`, `build-log/log.css:11`, `exhibits/index.html:14`]
+- **MUST** use `#6E1E28` as the single accent: links, and the brand color. [`styles.css:2`, `styles.css:40`, `projects/index.html:12`, `projects/index.html:52`, `build-log/log.css:9`, `build-log/log.css:48`, `exhibits/index.html:12`]. A4 calls garnet and paper "the house garnet and paper" (`exhibits/index.html:127`). It also describes a page that "abandons the house palette" as a departure (`exhibits/index.html:113`).
+- **MUST** set all text in Switzer, loaded from Fontshare, with the fallback `ui-sans-serif, system-ui, sans-serif`. [`styles.css:25`, `index.html:9`, `projects/index.html:9,28`, `build-log/index.html:16`, `build-log/log.css:24`, `exhibits/index.html:9,27`]
 - **MUST** be light-only (research notes: see §11). No A-file has `prefers-color-scheme`, `data-theme` or `color-scheme` (checked with `rg`, no hits).
-- **MUST** use 1px solid hairlines as the only structural border. [`styles.css:77-78,140`, `projects/index.html:69,75`, `build-log/log.css:52,55`, `exhibits/index.html:64,68`]
+- **MUST** use 1px solid hairlines as the only structural border. [`styles.css:84-85,150`, `projects/index.html:69,75`, `build-log/log.css:53,56`, `exhibits/index.html:64,68`]
 - **MUST NOT** use `box-shadow`, gradients or rounded corners on containers. There are zero `box-shadow`, `gradient` or container `border-radius` declarations in A1–A4 (`rg`). The only radius is `50%` on 8px status dots (`projects/index.html:61,64`).
-- **MUST** be a single centered column with a reading-width cap. [`styles.css:26-29`, `projects/index.html:37`, `build-log/log.css:33`, `exhibits/index.html:36`] The cap is `66ch` (P7).
+- **MUST** be a single centered column with a reading-width cap. [`styles.css:34-37`, `projects/index.html:37`, `build-log/log.css:33`, `exhibits/index.html:36`] The cap is `66ch` (P7).
 
 **P0 — resolved.**
 - **MUST** build every new page on the section system (A2–A4 tokens, scale and chrome), with one exception: links follow A1 (P9). Research notes are out of scope for this rule; they follow §11.
-- The existing hub (A1) is not changed by this decision. Its values are recorded below as *Superseded (for reference)*.
-- *Superseded (for reference):* the hub system, built from `styles.css` tokens (`styles.css:1-8`).
+- The existing hub (A1) was not changed by this decision. *Update 2026-09-26 (D5, Patrick: "update"):* the hub's styles now use the section system (P1–P4, P6, P7); its masthead and footer frame is unchanged (see D5). Its values are recorded below as *Superseded (for reference)*.
+- *Superseded (for reference):* the hub system, built from `styles.css` tokens (`styles.css@1344aab:1-8`).
 
 ---
 
@@ -86,20 +84,20 @@ Each color's role is inferred from the selector it styles.
 
 | Hex | Token(s) | Role | Trace |
 |---|---|---|---|
-| `#E4E5E2` | `--bg` / `--paper` | Page background. Also the far end of every section-system `color-mix()`. | `styles.css:2,16`; `projects/index.html:14,29`; `build-log/log.css:11,25`; `exhibits/index.html:14,28` |
-| `#6E1E28` | `--accent` / `--garnet` | **Interactive and brand.** Link text, focus ring, wordmark tile, selection background, uppercase label text inside panels, SVG primary strokes. | `styles.css:7,32,43`; `projects/index.html:12,35,43,52,79`; `build-log/log.css:9,31,39,48`; `exhibits/index.html:12,34,42,62,83` |
+| `#E4E5E2` | `--bg` / `--paper` | Page background. Also the far end of every section-system `color-mix()`. | `styles.css:4,23`; `projects/index.html:14,29`; `build-log/log.css:11,25`; `exhibits/index.html:14,28` |
+| `#6E1E28` | `--accent` / `--garnet` | **Interactive and brand.** Link text, focus ring, wordmark tile, selection background, uppercase label text inside panels, SVG primary strokes. | `styles.css:2,40,51`; `projects/index.html:12,35,43,52,79`; `build-log/log.css:9,31,39,48`; `exhibits/index.html:12,34,42,62,83` |
 
 ### 2b. Section system (A2–A4)
 
 | Hex / value | Token | Role | Trace |
 |---|---|---|---|
-| `#41111A` | `--garnet-deep` | **Heading ink.** h1 and h2 text, and h2 link text. | `projects/index.html:13,49,84`; `build-log/log.css:10,45,59`; `exhibits/index.html:13,48,73` |
+| `#41111A` | `--garnet-deep` | **Heading ink.** h1 and h2 text, and h2 link text. | `projects/index.html:13,49,84`; `build-log/log.css:10,45,60`; `exhibits/index.html:13,48,73` |
 | `#221317` | `--ink` | **Body text.** Also the bold emphasis inside muted paragraphs. | `projects/index.html:17,30,87`; `build-log/log.css:13,26`; `exhibits/index.html:16,29` |
-| `#CDA96A` | `--gold` | **Ordinal and directional marks:** wordmark letters, `ISSUE NO.` / `EXHIBIT` index labels, the `→` arrow in link rows, SVG secondary strokes, the left rule on the quoted brief, the "specced" status. It is never used for body text. | `projects/index.html:15,43,66,80,117`; `build-log/log.css:12,39,57,70`; `exhibits/index.html:15,42,55,72,75` |
+| `#CDA96A` | `--gold` | **Ordinal and directional marks:** wordmark letters, `ISSUE NO.` / `EXHIBIT` index labels, the `→` arrow in link rows, SVG secondary strokes, the left rule on the quoted brief, the "specced" status. It is never used for body text. | `projects/index.html:15,43,66,80,117`; `build-log/log.css:12,39,58,71`; `exhibits/index.html:15,42,55,72,75` |
 | `#E2C48C` | (literal) | **Selection text** on a garnet selection background. | `projects/index.html:35`; `build-log/log.css:31`; `exhibits/index.html:34` |
-| `color-mix(in oklch, var(--ink) 70%, var(--paper))` | `--ink-soft` | **Secondary text:** deks, descriptions, dates, legend, footnote paragraphs, the "parked" status. | `projects/index.html:18,58,85,86,93`; `build-log/log.css:14,47,67,77`; `exhibits/index.html:17,50,77,85` |
-| `color-mix(in oklch, var(--ink) 55%, var(--paper))` | (inline) | **Metadata line:** the dates and the tech fingerprint under list items. Lighter than `--ink-soft`. | `build-log/log.css:65`; `exhibits/index.html:81` (A3 + A4 only, and A3 copies A4) |
-| `color-mix(in oklch, var(--garnet) 22%, var(--paper))` | `--rule` | **Hairline dividers** between list items, and the image border. | `projects/index.html:19,69,75,92`; `build-log/log.css:15,52,55`; `exhibits/index.html:18,64,68` |
+| `color-mix(in oklch, var(--ink) 70%, var(--paper))` | `--ink-soft` | **Secondary text:** deks, descriptions, dates, legend, footnote paragraphs, the "parked" status. | `projects/index.html:18,58,85,86,93`; `build-log/log.css:14,47,68,78`; `exhibits/index.html:17,50,77,85` |
+| `color-mix(in oklch, var(--ink) 55%, var(--paper))` | (inline) | **Metadata line:** the dates and the tech fingerprint under list items. Lighter than `--ink-soft`. | `build-log/log.css:66`; `exhibits/index.html:81` (A3 + A4, and A3 copies A4; since 2026-09-26 also the hub stamp as `--ink-meta`, `styles.css:8,115`) |
+| `color-mix(in oklch, var(--garnet) 22%, var(--paper))` | `--rule` | **Hairline dividers** between list items, and the image border. | `projects/index.html:19,69,75,92`; `build-log/log.css:15,53,56`; `exhibits/index.html:18,64,68` |
 | `#3F6B3A` | (literal) | **Status "running" (in use now).** Text and dot. | `projects/index.html:65,116`. Single file with 3 uses, so it meets the threshold, but only A2 has status. |
 | `#B4402F` | `--ember` | **No role.** Declared but never referenced. See Known page defects, D3. | `projects/index.html:16` |
 
@@ -111,13 +109,13 @@ Each color's role is inferred from the selector it styles.
 ### 2c. Color rules (resolved)
 
 - **P1 — MUST** use `#221317` (`--ink`) for body text. [`projects/index.html:17`, `build-log/log.css:13`, `exhibits/index.html:16`]
-  *Superseded (for reference):* `#33353A`, hub body ink [`styles.css:3,17`].
+  *Superseded (for reference):* `#33353A`, hub body ink [`styles.css@1344aab:3,17`].
 - **P2 — MUST** use `#41111A` (`--garnet-deep`) for h1 and h2. [`projects/index.html:49,84`, `build-log/log.css:45`, `exhibits/index.html:48,73`]
-  *Superseded (for reference):* `#1A1B1E`, hub `--ink-strong` [`styles.css:4,59,92,100,124`].
+  *Superseded (for reference):* `#1A1B1E`, hub `--ink-strong` [`styles.css@1344aab:4,59,92,100,124`].
 - **P3 — MUST** use `--ink-soft` (`color-mix(in oklch, var(--ink) 70%, var(--paper))`) for secondary text. [`projects/index.html:18`, `build-log/log.css:14`, `exhibits/index.html:17`]
-  *Superseded (for reference):* `#61636A`, hub `--ink-muted` [`styles.css:5,65,106,127,142`].
+  *Superseded (for reference):* `#61636A`, hub `--ink-muted` [`styles.css@1344aab:5,65,106,127,142`].
 - **P4 — MUST** use `--rule` (`color-mix(in oklch, var(--garnet) 22%, var(--paper))`) for hairlines. [`projects/index.html:19`, `build-log/log.css:15`, `exhibits/index.html:18`]
-  *Superseded (for reference):* `#D2D3D0`, hub `--line` [`styles.css:6,78,140`].
+  *Superseded (for reference):* `#D2D3D0`, hub `--line` [`styles.css@1344aab:6,78,140`].
 - **P5 — MUST** color the "parked" status with `--ink-soft`, both the legend dot and the status text/dot. [`projects/index.html:67`]
   *Known inconsistency:* the A2 legend dot is a literal `#8a8a86` (`projects/index.html:118`). This is logged as D4 and has not been edited.
 - **Related observation (not a rule):** "specced" uses a plain gold dot in the legend (`projects/index.html:117`) but gold at `filter: brightness(0.75)` for the status text (`projects/index.html:66`). The darkening is presumably for legibility on paper. That reason is inferred, not stated in the source.
@@ -130,8 +128,8 @@ Each color's role is inferred from the selector it styles.
 - **MUST** use Switzer for all text, loaded from `api.fontshare.com` with `display=swap` (the sources are in §1).
 - **MUST** use the system mono stack for labels and metadata in the section system: `ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace` via `--mono`. [`projects/index.html:20`, `build-log/log.css:16`, `exhibits/index.html:19`] A1 has no monospace at all.
 - **MUST NOT** use IBM Plex Mono, Space Grotesk or Inter. None of them appear in A1–A4. They appear only in B1 and in the excluded pages.
-- **MUST** load Switzer weights 400–700. [`projects/index.html:9`, `build-log/index.html:19`, `exhibits/index.html:9`]
-  *Superseded (for reference):* 400, 500 and 600 on the hub [`index.html:9`].
+- **MUST** load Switzer weights 400–700. [`projects/index.html:9`, `build-log/index.html:16`, `exhibits/index.html:9`]
+  *Superseded (for reference):* 400, 500 and 600 on the hub [`index.html@1344aab:9`].
 - The wordmark requests weight 800, which isn't loaded. See D1.
 
 ### 3b. Scale
@@ -146,11 +144,11 @@ Each color's role is inferred from the selector it styles.
 | `--s-2` | `clamp(1.9rem, 1.4rem + 2.4vw, 3.2rem)` | h1 (page title) |
 
 - **h1:** weight 700, `letter-spacing: -0.02em`, `line-height: 1.08`, `text-wrap: balance`. [`projects/index.html:49`, `build-log/log.css:45`, `exhibits/index.html:48`]
-- **h2:** weight 700, `letter-spacing: -0.01em`. [`projects/index.html:84`, `build-log/log.css:58`, `exhibits/index.html:73`]
+- **h2:** weight 700, `letter-spacing: -0.01em`. [`projects/index.html:84`, `build-log/log.css:59`, `exhibits/index.html:73`]
 - **Body:** `line-height: 1.62`, and `text-wrap: pretty` on paragraphs. [`projects/index.html:32,50`, `build-log/log.css:28,46`, `exhibits/index.html:31,49`]
 
-- **P6 — MUST** use the four fluid `--s-*` steps above, with 700-weight h1 and h2. [`projects/index.html:21-24,49,84`, `build-log/log.css:17-20,45,58`, `exhibits/index.html:20-23,48,73`]
-  *Superseded (for reference):* the hub's fixed px scale with one 600px breakpoint and 500-weight headings [`styles.css:20-21,56-58,90-91,97-99,64,73,105,141,145-149`]:
+- **P6 — MUST** use the four fluid `--s-*` steps above, with 700-weight h1 and h2. [`projects/index.html:21-24,49,84`, `build-log/log.css:17-20,45,59`, `exhibits/index.html:20-23,48,73`]
+  *Superseded (for reference):* the hub's fixed px scale with one 600px breakpoint and 500-weight headings [`styles.css@1344aab:20-21,56-58,90-91,97-99,64,73,105,141,145-149`]:
   - body 18px / 17px
   - name 26px / 23px
   - lead 20px / 19px
@@ -158,42 +156,42 @@ Each color's role is inferred from the selector it styles.
   - role and nav 17px
   - stamp and footer 15px
 - **P7 — MUST** use a body `line-height` of `1.62`. [`projects/index.html:32`, `build-log/log.css:28`, `exhibits/index.html:31`]
-  *Superseded (for reference):* `1.68` [`styles.css:21`].
-- **P7 — MUST** cap the page column at `max-width: 66ch` and secondary paragraphs at `58ch`. [`projects/index.html:37,86`, `build-log/log.css:33,67`, `exhibits/index.html:36,77`]
-  *Superseded (for reference):* `max-width: 660px` [`styles.css:27`].
+  *Superseded (for reference):* `1.68` [`styles.css@1344aab:21`].
+- **P7 — MUST** cap the page column at `max-width: 66ch` and secondary paragraphs at `58ch`. [`projects/index.html:37,86`, `build-log/log.css:33,68`, `exhibits/index.html:36,77`]
+  *Superseded (for reference):* `max-width: 660px` [`styles.css@1344aab:27`].
 
 ---
 
 ## 4. Labels, captions and metadata (section system unless noted)
 
 **Rules:**
-- **MUST** set index labels (`ISSUE NO. 4`, `EXHIBIT 01`) in mono, 600, `--s--1`, `line-height: 1`, `letter-spacing: 0.12em`, gold. The uppercase is in the copy itself, not produced by CSS. [`build-log/log.css:57` + `build-log/index.html:36`; `exhibits/index.html:72` + `exhibits/index.html:111`] (A3 + A4 only; A3 copies A4.)
-- **MUST** set metadata lines in mono, 500, `--s--1`, `line-height: 1.7`, `letter-spacing: 0.03em`, colored ink 55% into paper. This covers dates and tech fingerprints. [`build-log/log.css:61-66`, `exhibits/index.html:78-82`]
+- **MUST** set index labels (`ISSUE NO. 4`, `EXHIBIT 01`) in mono, 600, `--s--1`, `line-height: 1`, `letter-spacing: 0.12em`, gold. The uppercase is in the copy itself, not produced by CSS. [`build-log/log.css:58` + `build-log/index.html:53`; `exhibits/index.html:72` + `exhibits/index.html:111`] (A3 + A4 only; A3 copies A4.)
+- **MUST** set metadata lines in mono, 500, `--s--1`, `line-height: 1.7`, `letter-spacing: 0.03em`, colored ink 55% into paper. This covers dates and tech fingerprints. [`build-log/log.css:62-67`, `exhibits/index.html:78-82`]
 - **MUST** separate metadata fields with ` · ` (middle dot). [`projects/index.html:132`, `exhibits/index.html:114`, `index.html:99`]
-- **MUST** end link rows with `→`. In A3 and A4 the arrow is gold and nudges 4px on hover. [`build-log/log.css:70-71`, `exhibits/index.html:75-76`; A2 uses the plain `→` character in link text, `projects/index.html:135`]
-- **MUST** sign section pages with a `.sig` line reading `— Patrick King, CMT`, set 2.2–2.4rem below the content. [`projects/index.html:101,255`; `build-log/log.css:78`, `build-log/index.html:71`; `exhibits/index.html:87,142`]
-- **Section page titles end with a period** in all three section pages: "Projects." "Build log." "Exhibits." [`projects/index.html:112`, `build-log/index.html:30`, `exhibits/index.html:98`]. This is a copy pattern. Under the §10 contract a builder never writes titles anyway.
+- **MUST** end link rows with `→`. In A3 and A4 the arrow is gold and nudges 4px on hover. [`build-log/log.css:71-72`, `exhibits/index.html:75-76`; A2 uses the plain `→` character in link text, `projects/index.html:135`]
+- **MUST** sign section pages with a `.sig` line reading `— Patrick King, CMT`, set 2.2–2.4rem below the content. [`projects/index.html:101,293`; `build-log/log.css:79`, `build-log/index.html:90`; `exhibits/index.html:87,142`]
+- **Section page titles end with a period** in all three section pages: "Projects." "Build log." "Exhibits." [`projects/index.html:112`, `build-log/index.html:27`, `exhibits/index.html:98`]. This is a copy pattern. Under the §10 contract a builder never writes titles anyway.
 
 **Single-source patterns:**
 - **Status chip:** mono 600, `letter-spacing: 0.1em`, uppercased by CSS, preceded by an 8px round dot in the status color. [`projects/index.html:63-67`]
 - **Legend and dates:** mono 500, not uppercased. [`projects/index.html:57,85`]
 - **Panel label:** Switzer (not mono), 600, `--s--1`, `letter-spacing: 0.12em`, uppercase, garnet. [`exhibits/index.html:62`]
 - *Superseded (for reference):*
-  - the hub's ` — state` suffix [`index.html:45`, `styles.css:127`]
-  - the hub's 15px "Updated" stamp [`index.html:73`, `styles.css:104-108`]
+  - the hub's ` — state` suffix [`index.html:45`, `styles.css@1344aab:127`]
+  - the hub's 15px "Updated" stamp [`index.html:73`, `styles.css@1344aab:104-108`]
 
-**Figure captions:** CSS exists (`projects/index.html:91-93`), but the only `<figure>` is inside a commented-out template (`projects/index.html:230-249`). No rendered caption existed at extraction, so captions are **UNSPECIFIED** in practice. *Update 2026-09-24:* the N1 card now renders the template figure (`projects/index.html:182-185`). That is a single use, and it sets no rule. *Update 2026-09-26:* the N2 card repeats it (`projects/index.html:201-204`). Both are research-note cards, so it is still no rule for other cards.
+**Figure captions:** CSS exists (`projects/index.html:91-93`), but the only `<figure>` is inside a commented-out template (`projects/index.html:268-287`). No rendered caption existed at extraction, so captions are **UNSPECIFIED** in practice. *Update 2026-09-24:* the N1 card now renders the template figure (`projects/index.html:182-185`). That is a single use, and it sets no rule. *Update 2026-09-26:* the N2 card repeats it (`projects/index.html:201-204`). Both are research-note cards, so it is still no rule for other cards.
 
 ---
 
 ## 5. Borders, corners, shadows, marks
 
-- **MUST** separate list items with a hairline: a top border on the list container and a bottom border on each item. [`projects/index.html:69,75`; `build-log/log.css:52,55`; `exhibits/index.html:64,68`]
+- **MUST** separate list items with a hairline: a top border on the list container and a bottom border on each item. [`projects/index.html:69,75`; `build-log/log.css:53,56`; `exhibits/index.html:64,68`]
 - **MUST** keep corners square. There is no `border-radius` on any box. The wordmark is a square tile: 40px, `aspect-ratio: 1`, garnet ground, gold "PK". [`projects/index.html:40-45`, `build-log/log.css:36-41`, `exhibits/index.html:39-44`]
 - **MUST NOT** add shadows (see §1).
 - **Accent rule (single-source):** a 3px gold left border on a tinted panel, used for the quoted brief. [`exhibits/index.html:55-56`]
-- **Focus — MUST** on every page (research notes: see §11): `:focus-visible` gets `outline: 2px solid #6E1E28` with `outline-offset: 3px`. [`styles.css:42-45`] This is promoted from A1 (2026-09-21). A2–A4 currently define no focus style; see D6.
-- **Project marks (single-source, 7 uses):** 52px inline SVGs (40px ≤560px). Garnet primary stroke and gold secondary stroke, both `stroke-width: 2` with round caps. Garnet fills for nodes. [`projects/index.html:78-81,97`]
+- **Focus — MUST** on every page (research notes: see §11): `:focus-visible` gets `outline: 2px solid #6E1E28` with `outline-offset: 3px`. [`styles.css:50-53`] This is promoted from A1 (2026-09-21). A2 and A4 define no focus style; A3 does since `1a64faf` (`build-log/log.css:49`). See D6.
+- **Project marks (single-source, 9 uses):** 52px inline SVGs (40px ≤560px). Garnet primary stroke and gold secondary stroke, both `stroke-width: 2` with round caps. Garnet fills for nodes. [`projects/index.html:78-81,97`]
 
 ---
 
@@ -204,25 +202,25 @@ Each color's role is inferred from the selector it styles.
 **Section system (rem):**
 - Page padding: `clamp(3rem, 8vh, 5.5rem)` top and bottom, `clamp(1.25rem, 5vw, 2rem)` at the sides. [`projects/index.html:37`, `build-log/log.css:33`, `exhibits/index.html:36`]
 - Header row to title: `margin-bottom: 2.6rem`; title to intro: `1.2rem`. [same three files, lines 39/49, 35/45, 38/48]
-- List block: `margin-top: 2.6rem`. [`projects/index.html:69`, `build-log/log.css:52`, `exhibits/index.html:64`]
-- List item padding is `1.6rem 0 1.7rem` in `build-log/log.css:54` and `exhibits/index.html:67`, but `1.8rem 0 2rem` in `projects/index.html:74`. That difference is minor and the A2 rows are taller because they carry an icon column. It is not raised as a PICK.
-- h2 margins: `0.45rem 0 0.2rem`. [`build-log/log.css:58`, `exhibits/index.html:73`]
+- List block: `margin-top: 2.6rem`. [`projects/index.html:69`, `build-log/log.css:53`, `exhibits/index.html:64`]
+- List item padding is `1.6rem 0 1.7rem` in `build-log/log.css:55` and `exhibits/index.html:67`, but `1.8rem 0 2rem` in `projects/index.html:74`. That difference is minor and the A2 rows are taller because they carry an icon column. It is not raised as a PICK.
+- h2 margins: `0.45rem 0 0.2rem`. [`build-log/log.css:59`, `exhibits/index.html:73`]
 - Paragraph rhythm: `margin-block: 1em`. [`projects/index.html:50`, `build-log/log.css:46`, `exhibits/index.html:49`]
 - Row layout (A2 only): a grid of `64px 1fr`, gap `clamp(1rem, 3vw, 1.8rem)`, collapsing to one column at ≤560px. [`projects/index.html:70-76,95-99`]
 
 *Superseded (for reference):* the hub's px spacing.
-- body padding `clamp(36px, 7vh, 60px) 22px clamp(72px, 12vh, 120px)` [`styles.css:23`]
-- paragraph gap 20px [`styles.css:85`]
-- nav gap 22px [`styles.css:71`]
-- divider margin 34px [`styles.css:79`]
-- h2 top margin 44px [`styles.css:96`]
-- footer: 56px margin, 22px padding [`styles.css:138-139`]
-- breakpoint 600px [`styles.css:145`]
+- body padding `clamp(36px, 7vh, 60px) 22px clamp(72px, 12vh, 120px)` [`styles.css@1344aab:23`]
+- paragraph gap 20px [`styles.css@1344aab:85`]
+- nav gap 22px [`styles.css@1344aab:71`]
+- divider margin 34px [`styles.css@1344aab:79`]
+- h2 top margin 44px [`styles.css@1344aab:96`]
+- footer: 56px margin, 22px padding [`styles.css@1344aab:138-139`]
+- breakpoint 600px [`styles.css@1344aab:145`]
 
 - **P8 — MUST** frame every page the same way (research notes: see §11):
   - **Top:** the PK wordmark and a `← workbypk.com` back-link.
   - **Bottom:** the `— Patrick King, CMT` signature.
-  - **Traces:** [`projects/index.html:107-110,255`, `build-log/index.html:25-28,71`, `exhibits/index.html:93-96,142`]
+  - **Traces:** [`projects/index.html:107-110,293`, `build-log/index.html:22-25,90`, `exhibits/index.html:93-96,142`]
 - *Superseded (for reference):* the hub masthead (name, role, nav), divider and footer line "Patrick King · Bay Miles Group LLC · 2026" [`index.html:16-27,98-100`].
 
 ---
@@ -235,12 +233,12 @@ Each color's role is inferred from the selector it styles.
   - `text-decoration: underline`, with `text-decoration-thickness: 1px` and `text-underline-offset: 3px`
   - `text-decoration-color: rgba(110, 30, 40, 0.35)` at rest, going to full `#6E1E28` on hover
   - a `160ms ease` transition
-  - Trace: [`styles.css:31-40`]
-- *Superseded (for reference):* the section pages' `a { color: garnet }` with the browser-default underline [`projects/index.html:52`, `build-log/log.css:48`]. The section-specific exceptions stay as observed: the back-link and h2 title links show no underline until hover, and the h2 hover offset is 4px [`projects/index.html:46-47`, `build-log/log.css:42-43,59-60`, `exhibits/index.html:45-46`].
+  - Trace: [`styles.css:39-48`]
+- *Superseded (for reference):* the section pages' `a { color: garnet }` with the browser-default underline [`projects/index.html:52`, `build-log/log.css:48`]. The section-specific exceptions stay as observed: the back-link and h2 title links show no underline until hover, and the h2 hover offset is 4px [`projects/index.html:46-47`, `build-log/log.css:42-43,60-61`, `exhibits/index.html:45-46`].
 
 **Motion:**
-- **MUST** keep motion to short transitions (0.15–0.16s): hover color, the arrow nudge, the row tint. [`styles.css:37`, `build-log/log.css:70`, `exhibits/index.html:69,75`]
-- **MUST** honor `prefers-reduced-motion`. [`styles.css:47-50`, `build-log/log.css:73-75`] A4 has a gap here; see D2.
+- **MUST** keep motion to short transitions (0.15–0.16s): hover color, the arrow nudge, the row tint. [`styles.css:45`, `build-log/log.css:71`, `exhibits/index.html:69,75`]
+- **MUST** honor `prefers-reduced-motion`. [`styles.css:55-58`, `build-log/log.css:74-76`] A4 has a gap here; see D2.
 
 **Theme:**
 - **MUST** be light-only (see §1; research notes: see §11). A dark theme is **UNSPECIFIED**: nothing in A1–A4 shows one. A5 uses dark garnet *bands* within a light page (a specimen, reference-only in §9). That is not a dark theme.
@@ -288,13 +286,15 @@ These are recorded so they aren't lost. They don't count toward any rule and mus
 
 | ID | Defect | Trace |
 |---|---|---|
-| D1 | The wordmark requests `font-weight: 800`, but pages load Switzer only up to 700. The browser falls back to or synthesizes the weight. | `projects/index.html:9,44`; `build-log/index.html:19` + `build-log/log.css:40`; `exhibits/index.html:9,43` |
+| D1 | The wordmark requests `font-weight: 800`, but pages load Switzer only up to 700. The browser falls back to or synthesizes the weight. *A3 fixed in `1a64faf` (`build-log/log.css:40` is 700).* | `projects/index.html:9,44`; `exhibits/index.html:9,43` |
 | D2 | `exhibits/index.html` has transitions (`:69,75`) with no `prefers-reduced-motion` block. `rg` finds 0 matches in the file. | `exhibits/index.html:69,75` |
 | D3 | `--ember: #B4402F` is declared but never used (0 `var(--ember)` references). | `projects/index.html:16` |
 | D4 | The "parked" legend dot uses a literal `#8a8a86` instead of `--ink-soft` (the P5 rule). | `projects/index.html:118` vs `:67` |
-| D5 | A1 (hub) uses superseded values (P1-P4, P6-P8). Out of spec; migrate or ratify later. Not compliant. | `styles.css:1-8,20-27,56-58,90-99,145-149`; `index.html:16-27,98-100` |
-| D6 | A2–A4 have no `:focus-visible` style, which the focus MUST in §5 requires. | `projects/index.html:10-102`, `build-log/log.css`, `exhibits/index.html:10-88` (no `focus` match) |
+| D5 | *Partly resolved 2026-09-26 (Patrick: "update"):* the A1 styles now use the section system. That covers tokens and colors (P1–P4), the fluid scale with 700-weight headings (P6), line-height 1.62 and the 66ch column (P7), section spacing, Switzer 400–700, and the mono metadata style for the "Updated" stamp. The hub name is set as the h1 style (`--s-2`) and the lead as `--s-1`. **Still open:** P8. The hub keeps its masthead (name, role, nav) and its footer line in place of the wordmark, back-link and signature frame. ⚑ Builder recommendation, pending Patrick: ratify this as the hub's own frame, because a `← workbypk.com` back-link on workbypk.com would point at itself. | `styles.css`; `index.html:16-27,98-100` |
+| D6 | A2 and A4 have no `:focus-visible` style, which the focus MUST in §5 requires. *A3 fixed in `1a64faf` (`build-log/log.css:49`).* | `projects/index.html:10-102`, `exhibits/index.html:10-88` (no `focus` match) |
 | D7 | ~~R1, R2 and N2 link to "contact form on workbypk.com", but the site has no form.~~ **Resolved 2026-09-26 (Patrick):** the link text is now `patrick@workbypk.com` with `href="mailto:patrick@workbypk.com"`, which matches the hub's Contact section. "the" before the link was dropped so the sentence still reads. | `waveminer/spend-map/atlanta/index.html:299`, `waveminer/spend-map/northern-virginia/index.html:299`, `waveminer/agents-as-consumers/index.html:442`; `index.html:92` |
+| D8 | ⚑ *Added 2026-09-26 by the builder, pending Patrick's approval.* A2, A3 and A4 break P9 (the tuned link underline is a MUST on every page). They use a bare `a { color: garnet }` with the browser's default underline. | `projects/index.html:52`, `build-log/log.css:48`, `exhibits/index.html:86` (`.after a { color: garnet }`, no `text-decoration-*`; list rows at `:66` are block links with no underline by design) |
+| D9 | ⚑ *Added 2026-09-26 by the builder, pending Patrick's approval.* Dead CSS in A3: `.dim` (`build-log/log.css:47`) and `.dek` (`:68`) have no users in `build-log/index.html` since the `1a64faf` restructure. The §2b ink-soft trace and the §3b 58ch trace into `log.css:68` point at this unused rule. | `build-log/log.css:47,68` |
 
 ---
 
@@ -305,7 +305,7 @@ Any page built from this system is bound by the following.
 1. **Approved copy is preserved verbatim.** Every word, punctuation mark, capitalization and line of copy Patrick has approved goes onto the page exactly as supplied. No rewording, trimming, reordering, "tightening" or typographic substitution.
 2. **Nothing is added.** The builder must not add headlines, labels, claims, stats, testimonials or explanatory captions. That includes eyebrows, kickers, section intros, tooltip text, alt-text that makes claims, and "fingerprint" or metadata lines not in the supplied copy.
 3. **Self-written text is listed before publishing.** Any text the builder wrote itself, of any length and for any reason (including placeholder, alt, `aria-label`, `<title>` and meta description), is listed for Patrick's approval **before** the page is published. Nothing ships until that list is approved.
-4. Bracketed placeholders present in the corpus stay as placeholders until Patrick supplies the copy. Examples: `[DEK — issue no. 4, 2–3 sentences, pending final copy]` at `build-log/index.html:39`, and `[running / confirm]` at `projects/index.html:193`. A builder must never fill them.
+4. Bracketed placeholders present in the corpus stay as placeholders until Patrick supplies the copy. Examples: `[running / confirm]` and `[last touched — fill in]` at `projects/index.html:231-232`. (The earlier example, `[DEK — issue no. 4 …]` in the build log, was removed by `1a64faf`.) A builder must never fill them.
 
 ---
 
