@@ -1,0 +1,79 @@
+/* ============================================================
+   BUILD LOG — workbypk.com/build-log/
+   Tokens and base rules copied from exhibits/index.html so the
+   section renders identically. Shared file rather than an inline
+   block: the per-issue stub pages will use it too.
+   ============================================================ */
+
+:root {
+  --garnet: #6E1E28;
+  --garnet-deep: #41111A;
+  --paper: #E4E5E2;
+  --gold: #CDA96A;
+  --ink: #221317;
+  --ink-soft: color-mix(in oklch, var(--ink) 70%, var(--paper));
+  --rule: color-mix(in oklch, var(--garnet) 22%, var(--paper));
+  --mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+  --s--1: clamp(0.8rem, 0.76rem + 0.2vw, 0.9rem);
+  --s-0: clamp(1rem, 0.94rem + 0.3vw, 1.15rem);
+  --s-1: clamp(1.25rem, 1.1rem + 0.7vw, 1.6rem);
+  --s-2: clamp(1.9rem, 1.4rem + 2.4vw, 3.2rem);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Switzer', ui-sans-serif, system-ui, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: var(--s-0);
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--garnet); color: #E2C48C; }
+
+.wrap { max-width: 66ch; margin-inline: auto; padding: clamp(3rem, 8vh, 5.5rem) clamp(1.25rem, 5vw, 2rem); }
+
+.top { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 2.6rem; }
+.wordmark {
+  display: inline-grid; place-items: center;
+  width: 40px; aspect-ratio: 1;
+  background: var(--garnet); color: var(--gold);
+  font-weight: 700; font-size: 1.05rem;
+}
+.top a { color: var(--garnet); text-decoration: none; font-size: var(--s--1); }
+.top a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+h1 { font-size: var(--s-2); font-weight: 700; letter-spacing: -0.02em; line-height: 1.08; text-wrap: balance; color: var(--garnet-deep); margin-bottom: 1.2rem; }
+p { margin-block: 1em; text-wrap: pretty; }
+.dim { color: var(--ink-soft); }
+a { color: var(--garnet); }
+a:focus-visible { outline: 2px solid var(--garnet); outline-offset: 3px; }
+
+/* Issue list — modeled on .exhibits / .ex */
+
+.issues { margin-top: 2.6rem; border-top: 1px solid var(--rule); }
+.issue {
+  padding: 1.6rem 0 1.7rem;
+  border-bottom: 1px solid var(--rule);
+}
+.issue .num { font: 600 var(--s--1)/1 var(--mono); letter-spacing: 0.12em; color: var(--gold); }
+.issue h2 { font-size: var(--s-1); font-weight: 700; letter-spacing: -0.01em; margin: 0.45rem 0 0.2rem; text-wrap: balance; }
+.issue h2 a { color: var(--garnet-deep); text-decoration: none; }
+.issue h2 a:hover { color: var(--garnet); text-decoration: underline; text-underline-offset: 4px; }
+.issue time {
+  display: block;
+  font: 500 var(--s--1)/1.7 var(--mono);
+  letter-spacing: 0.03em;
+  color: color-mix(in oklch, var(--ink) 55%, var(--paper));
+}
+.issue .dek { color: var(--ink-soft); max-width: 58ch; margin: 0.45rem 0 0.7rem; }
+.issue .out { font-size: var(--s--1); margin: 0; }
+.issue .out a { text-underline-offset: 3px; }
+.issue .out .arrow { color: var(--gold); transition: translate 0.15s; display: inline-block; }
+.issue:hover .out .arrow { translate: 4px 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
+.after { margin-top: 2.4rem; font-size: var(--s--1); color: var(--ink-soft); }
+.sig { margin-top: 2.2rem; }
