@@ -22,9 +22,9 @@ Derived from pages already built for workbypk.com. Nothing here is invented: eve
 | A5 | `exhibits/shape-of-time/index.html` | `8d8fc91edd3d89a6d0af1cf313228d15a7dd5f2692fb42417f9332a01304a4dc` |
 | B1 | `/Users/knuggs/Downloads/PKAIOS_ARCHITECTURE_MAP.html` | `2ed881317a5f2509ed750fbe9d6af0fcf5b1946379b7e7d5d6376546a829018a` |
 | N1 | `waveminer/spend-map/index.html` | `504d03373f0751c39dab7ccc19d7c7980dfc5c61320d3898d351186a9ed43d1e` |
-| R1 | `waveminer/spend-map/atlanta/index.html` | `48d96e4536df2d938c15a34fffe76251dd1f506cfbbb95d5cd5b9689dffb6cfb` |
-| R2 | `waveminer/spend-map/northern-virginia/index.html` | `60042006da13930fc306cb10e0b10d062e27cb58b54d77138a28efdb8569cbc8` |
-| N2 | `waveminer/agents-as-consumers/index.html` | `c68cef9af4d6e39088e4f5ff3158be901222cfc311bbb896ce0ac25774360e50` |
+| R1 | `waveminer/spend-map/atlanta/index.html` | `fab07eb2c09bef3abedaa81fc570d80fef62a8af14ab6af04a78781c22a28c70` |
+| R2 | `waveminer/spend-map/northern-virginia/index.html` | `3acdb5499114b11dde7c638ba56cff116405fde3417ddba780017bed42f783ab` |
+| N2 | `waveminer/agents-as-consumers/index.html` | `b744e335aa65d42e44bac5fcd2b48c97e12af403d19bd55838c1fa7f3c65301d` |
 
 **Drift (2026-09-24):** A2 no longer matches its pin. Commit `e479186` inserted the N1 card at `projects/index.html:169-187` (19 lines). A2 traces at or below line 168 still hold. Traces past it in §1–§10 (`:193`, `:230-249`, `:255`) now sit 19 lines lower: for example, `[running / confirm]` has moved from `:193` to `:212`. The §11 traces (`:181`, `:274`) cite the current file. Re-pin A2 at the next full re-verification.
 
@@ -294,7 +294,7 @@ These are recorded so they aren't lost. They don't count toward any rule and mus
 | D4 | The "parked" legend dot uses a literal `#8a8a86` instead of `--ink-soft` (the P5 rule). | `projects/index.html:118` vs `:67` |
 | D5 | A1 (hub) uses superseded values (P1-P4, P6-P8). Out of spec; migrate or ratify later. Not compliant. | `styles.css:1-8,20-27,56-58,90-99,145-149`; `index.html:16-27,98-100` |
 | D6 | A2–A4 have no `:focus-visible` style, which the focus MUST in §5 requires. | `projects/index.html:10-102`, `build-log/log.css`, `exhibits/index.html:10-88` (no `focus` match) |
-| D7 | ⚑ R1, R2 and N2 link to "contact form on workbypk.com", but the site has no form. `data-contact-link` points at `/#contact`, the email/X/LinkedIn section. Log only: the copy is final, so fix it in the note's source. | `waveminer/spend-map/atlanta/index.html:299`, `waveminer/spend-map/northern-virginia/index.html:299`, `waveminer/agents-as-consumers/index.html:442`; `index.html:90` |
+| D7 | ~~R1, R2 and N2 link to "contact form on workbypk.com", but the site has no form.~~ **Resolved 2026-09-26 (Patrick):** the link text is now `patrick@workbypk.com` with `href="mailto:patrick@workbypk.com"`, which matches the hub's Contact section. "the" before the link was dropped so the sentence still reads. | `waveminer/spend-map/atlanta/index.html:299`, `waveminer/spend-map/northern-virginia/index.html:299`, `waveminer/agents-as-consumers/index.html:442`; `index.html:92` |
 
 ---
 
@@ -313,7 +313,7 @@ Any page built from this system is bound by the following.
 
 **Decision (Patrick, 2026-09-24):** research notes keep their own design. The map, filters, bar charts, graded sources and dark mode are data-document needs that §1–§7 were never derived from (§8 lists tables, charts and dark theme as UNSPECIFIED). Rebuilding N1 on the section system was considered and rejected (Patrick's "draft it", 2026-09-24).
 
-**Scope:** pages published as a numbered research note in a series. First instance: N1, `waveminer/spend-map/index.html` (WaveMiner · Research note 01), published 2026-09-24. Regional editions of a note (R1 Atlanta, R2 Northern Virginia, added 2026-09-24 as N1 v2) are part of that note and follow the same rules, with one exception: their back-link goes to `../` (the national note), not `/`, per the package README. They share N1's `fonts/`, and the same garnet link patch was applied to them. Second note: N2, `waveminer/agents-as-consumers/index.html` (WaveMiner · Research note 02), added 2026-09-26. It was copied in unchanged apart from the same garnet link patch and its `data-contact-link` (`/#contact`). It ships its own `fonts/` (byte-identical to N1's).
+**Scope:** pages published as a numbered research note in a series. First instance: N1, `waveminer/spend-map/index.html` (WaveMiner · Research note 01), published 2026-09-24. Regional editions of a note (R1 Atlanta, R2 Northern Virginia, added 2026-09-24 as N1 v2) are part of that note and follow the same rules, with one exception: their back-link goes to `../` (the national note), not `/`, per the package README. They share N1's `fonts/`, and the same garnet link patch was applied to them. Second note: N2, `waveminer/agents-as-consumers/index.html` (WaveMiner · Research note 02), added 2026-09-26. It was copied in unchanged apart from the same garnet link patch and its `data-contact-link` (now `mailto:patrick@workbypk.com`, see D7). It ships its own `fonts/` (byte-identical to N1's).
 
 **Shared with the site** (every note MUST; these are the shared basics Patrick agreed to):
 - **Link color is house garnet** `#6E1E28` in light mode, matching the §1 accent. [`waveminer/spend-map/index.html:36,79`]
