@@ -15,7 +15,7 @@ Derived from pages already built for workbypk.com. Nothing here is invented: eve
 |---|---|---|
 | A1 | `index.html` | `9e553e220151065e4bca62dbec585caad17f3a44352ffb32e426b704ee808026` |
 | A1 | `styles.css` | `ead10f9d6fc64384004c00dbe798831a021e84b1e07f5411c43be369f8dc61ae` |
-| A2 | `projects/index.html` | `fa0196d947a521aa3618ae0165e08ea5871412e2fe91833676bc5c73bd6e4e88` |
+| A2 | `projects/index.html` | `efaa3c25554c742cf6d98d94ff626362c6e690b334cca932b76f2417edaac2d4` |
 | A3 | `build-log/index.html` | `f29e635422689186b1f40deba2f6731ff7277b17f6fa14fdb4be9e03ae58bb9b` |
 | A3 | `build-log/log.css` | `a1b74402f646457be0396a38032403157935c991d3a278f055a89e270ea50802` |
 | A4 | `exhibits/index.html` | `160816b7cd96961d9bb2043d2b55397d17f62ba34cc40c82451fc4fb362c6bbf` |
@@ -26,7 +26,7 @@ Derived from pages already built for workbypk.com. Nothing here is invented: eve
 | R2 | `waveminer/spend-map/northern-virginia/index.html` | `3acdb5499114b11dde7c638ba56cff116405fde3417ddba780017bed42f783ab` |
 | N2 | `waveminer/agents-as-consumers/index.html` | `b744e335aa65d42e44bac5fcd2b48c97e12af403d19bd55838c1fa7f3c65301d` |
 
-**Re-pin (2026-09-26, Patrick: "recheck and update as needed"):** A1, A2 and A3 are re-pinned to the files as committed with this change. The original extraction pins could not be recovered, because those working-tree versions were never committed. So every trace into these five files was re-derived by content against the current files, and the line numbers were updated. Traces to *Superseded (for reference)* hub values cite the last pre-D5 versions as `styles.css@1344aab` and `index.html@1344aab` (`git show 1344aab:styles.css`). A4, A5, N1, R1, R2 and N2 match their pins. The earlier drift notes for A2 (the N1 card at `projects/index.html:170-187` and the N2 card at `:188-206`) are folded into this re-pin.
+**Re-pin (2026-09-26, Patrick: "recheck and update as needed"):** A2 was re-pinned again after the placeholder copy landed; no line numbers moved. A1, A2 and A3 are re-pinned to the files as committed with this change. The original extraction pins could not be recovered, because those working-tree versions were never committed. So every trace into these five files was re-derived by content against the current files, and the line numbers were updated. Traces to *Superseded (for reference)* hub values cite the last pre-D5 versions as `styles.css@1344aab` and `index.html@1344aab` (`git show 1344aab:styles.css`). A4, A5, N1, R1, R2 and N2 match their pins. The earlier drift notes for A2 (the N1 card at `projects/index.html:170-187` and the N2 card at `:188-206`) are folded into this re-pin.
 
 **Corpus rule:** Corpus = pages that make up Patrick's own site (hub and section pages), regardless of which model produced the first draft. Exhibits displayed as specimens of other models' work (gpt, grok, fable, shape-of-time) are excluded because they are shown as comparisons, not adopted as house style. KN Lab is excluded as out of scope (not part of workbypk). Research notes (N1 onward) are Patrick's own work but are not corpus: they are data documents that keep their own design by decision (2026-09-24), and they are governed by §11, not by §1–§7.
 
@@ -305,7 +305,7 @@ Any page built from this system is bound by the following.
 1. **Approved copy is preserved verbatim.** Every word, punctuation mark, capitalization and line of copy Patrick has approved goes onto the page exactly as supplied. No rewording, trimming, reordering, "tightening" or typographic substitution.
 2. **Nothing is added.** The builder must not add headlines, labels, claims, stats, testimonials or explanatory captions. That includes eyebrows, kickers, section intros, tooltip text, alt-text that makes claims, and "fingerprint" or metadata lines not in the supplied copy.
 3. **Self-written text is listed before publishing.** Any text the builder wrote itself, of any length and for any reason (including placeholder, alt, `aria-label`, `<title>` and meta description), is listed for Patrick's approval **before** the page is published. Nothing ships until that list is approved.
-4. Bracketed placeholders present in the corpus stay as placeholders until Patrick supplies the copy. Examples: `[running / confirm]` and `[last touched — fill in]` at `projects/index.html:231-232`. (The earlier example, `[DEK — issue no. 4 …]` in the build log, was removed by `1a64faf`.) A builder must never fill them.
+4. Bracketed placeholders present in the corpus stay as placeholders until Patrick supplies the copy. No placeholders remain in the corpus as of 2026-09-26. The last ones, on the "research system" card (`projects/index.html:231-234`), were replaced with copy Patrick approved ("a"). The build-log DEK placeholder was removed by `1a64faf`. A builder must never fill them.
 
 ---
 
