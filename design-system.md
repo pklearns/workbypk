@@ -20,7 +20,7 @@ Derived from pages already built for workbypk.com. Nothing here is invented: eve
 | A3 | `build-log/log.css` | `4c549c8cdc0a37a8347cddb274d52611463b5694e034eae901b8dac634adce7f` |
 | A4 | `exhibits/index.html` | `361440d479fe36854c3845e25eb48397152a845cd9cb59ba3fcfed1b233d8580` |
 | A5 | `exhibits/shape-of-time/index.html` | `8d8fc91edd3d89a6d0af1cf313228d15a7dd5f2692fb42417f9332a01304a4dc` |
-| B1 | `/Users/knuggs/Downloads/PKAIOS_ARCHITECTURE_MAP.html` | `2ed881317a5f2509ed750fbe9d6af0fcf5b1946379b7e7d5d6376546a829018a` |
+| B1 | `local file PKAIOS_ARCHITECTURE_MAP.html (not shipped)` | `2ed881317a5f2509ed750fbe9d6af0fcf5b1946379b7e7d5d6376546a829018a` |
 | N1 | `waveminer/spend-map/index.html` | `504d03373f0751c39dab7ccc19d7c7980dfc5c61320d3898d351186a9ed43d1e` |
 | R1 | `waveminer/spend-map/atlanta/index.html` | `fab07eb2c09bef3abedaa81fc570d80fef62a8af14ab6af04a78781c22a28c70` |
 | R2 | `waveminer/spend-map/northern-virginia/index.html` | `3acdb5499114b11dde7c638ba56cff116405fde3417ddba780017bed42f783ab` |
@@ -335,7 +335,7 @@ Any page built from this system is bound by the following.
 
 ## Appendix — B1 reference (not binding)
 
-`/Users/knuggs/Downloads/PKAIOS_ARCHITECTURE_MAP.html`. It was never shipped, and is recorded only so the divergence is on file. Nothing below applies to workbypk.com pages.
+`local file PKAIOS_ARCHITECTURE_MAP.html (not shipped)`. It was never shipped, and is recorded only so the divergence is on file. Nothing below applies to workbypk.com pages.
 
 **Type**
 - Loaded from Google Fonts: Space Grotesk 400–700, Inter 400–600, IBM Plex Mono 400–600 (`:9`).
