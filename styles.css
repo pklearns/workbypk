@@ -151,3 +151,47 @@ main p.stamp {
   font-size: var(--s--1);
   color: var(--ink-soft);
 }
+
+/* Wide screens: the page widens and sections flow into columns.
+   Paragraphs keep the 66ch reading cap; below 64rem nothing changes. */
+
+@media (min-width: 64rem) {
+  .page { max-width: 90rem; }
+
+  .masthead {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    column-gap: 2rem;
+  }
+  .masthead .nav { grid-column: 2; grid-row: 1 / span 2; margin-top: 0; }
+
+  main p { max-width: 66ch; }
+
+  .intro {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: start;
+  }
+  .intro p { margin-block: 0; }
+
+  .building h2, .notes h2 { margin-top: 3.4rem; }
+
+  .work {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+    gap: 0 clamp(2rem, 3vw, 3rem);
+  }
+  .work li {
+    margin: 0;
+    padding: 1.1rem 0 1.4rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .notes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+    gap: 0 clamp(2rem, 3vw, 3rem);
+  }
+}

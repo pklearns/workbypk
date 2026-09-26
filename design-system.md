@@ -13,8 +13,8 @@ Derived from pages already built for workbypk.com. Nothing here is invented: eve
 
 | ID | File (repo-relative unless absolute) | sha256 |
 |---|---|---|
-| A1 | `index.html` | `9e553e220151065e4bca62dbec585caad17f3a44352ffb32e426b704ee808026` |
-| A1 | `styles.css` | `ead10f9d6fc64384004c00dbe798831a021e84b1e07f5411c43be369f8dc61ae` |
+| A1 | `index.html` | `1d638aea201baf6313f254cafa1ff0739a72d95b2c8e33fdb525d1abd97e74f0` |
+| A1 | `styles.css` | `6e0214d5a5bee58da478d0300120e839b99156f200f1edd546f9c73578e3160f` |
 | A2 | `projects/index.html` | `947b008f99092bca8fa65b4b6d382c9321b32a232dcd143d77c6d03d76244e4f` |
 | A3 | `build-log/index.html` | `f29e635422689186b1f40deba2f6731ff7277b17f6fa14fdb4be9e03ae58bb9b` |
 | A3 | `build-log/log.css` | `4c549c8cdc0a37a8347cddb274d52611463b5694e034eae901b8dac634adce7f` |
@@ -26,7 +26,7 @@ Derived from pages already built for workbypk.com. Nothing here is invented: eve
 | R2 | `waveminer/spend-map/northern-virginia/index.html` | `3acdb5499114b11dde7c638ba56cff116405fde3417ddba780017bed42f783ab` |
 | N2 | `waveminer/agents-as-consumers/index.html` | `b744e335aa65d42e44bac5fcd2b48c97e12af403d19bd55838c1fa7f3c65301d` |
 
-**Re-pin (2026-09-26, Patrick: "recheck and update as needed"):** A2 was re-pinned again after the placeholder copy landed; no line numbers moved. A2, A3 and A4 were re-pinned again after the D8 fix, A4 once more after D2, and A2 and A4 after D6 (one line changed in each, so no line numbers moved). A1, A2 and A3 are re-pinned to the files as committed with this change. The original extraction pins could not be recovered, because those working-tree versions were never committed. So every trace into these five files was re-derived by content against the current files, and the line numbers were updated. Traces to *Superseded (for reference)* hub values cite the last pre-D5 versions as `styles.css@1344aab` and `index.html@1344aab` (`git show 1344aab:styles.css`). A5, N1, R1, R2 and N2 match their pins (A4 was re-pinned after D8, D2 and D6, below). The earlier drift notes for A2 (the N1 card at `projects/index.html:170-187` and the N2 card at `:188-206`) are folded into this re-pin.
+**Re-pin (2026-09-26, Patrick: "recheck and update as needed"):** A2 was re-pinned again after the placeholder copy landed; no line numbers moved. A2, A3 and A4 were re-pinned again after the D8 fix, A4 once more after D2, and A2 and A4 after D6 (one line changed in each, so no line numbers moved). A1, A2 and A3 are re-pinned to the files as committed with this change. The original extraction pins could not be recovered, because those working-tree versions were never committed. So every trace into these five files was re-derived by content against the current files, and the line numbers were updated. Traces to *Superseded (for reference)* hub values cite the last pre-D5 versions as `styles.css@1344aab` and `index.html@1344aab` (`git show 1344aab:styles.css`). A5, N1, R1, R2 and N2 match their pins (A4 was re-pinned after D8, D2 and D6, below). A1 (`index.html`, `styles.css`) was re-pinned again after the P7a wide-screen change; every hub trace into `index.html` below the masthead was re-derived by content (the section wrappers moved those lines). The earlier drift notes for A2 (the N1 card at `projects/index.html:170-187` and the N2 card at `:188-206`) are folded into this re-pin.
 
 **Corpus rule:** Corpus = pages that make up Patrick's own site (hub and section pages), regardless of which model produced the first draft. Exhibits displayed as specimens of other models' work (gpt, grok, fable, shape-of-time) are excluded because they are shown as comparisons, not adopted as house style. KN Lab is excluded as out of scope (not part of workbypk). Research notes (N1 onward) are Patrick's own work but are not corpus: they are data documents that keep their own design by decision (2026-09-24), and they are governed by §11, not by §1–§7.
 
@@ -67,7 +67,7 @@ A1–A4 contain two systems. **The section system governs all new pages (P0, res
 - **MUST** be light-only (research notes: see §11). No A-file has `prefers-color-scheme`, `data-theme` or `color-scheme` (checked with `rg`, no hits).
 - **MUST** use 1px solid hairlines as the only structural border. [`styles.css:84-85,150`, `projects/index.html:69,75`, `build-log/log.css:53,56`, `exhibits/index.html:64,68`]
 - **MUST NOT** use `box-shadow`, gradients or rounded corners on containers. There are zero `box-shadow`, `gradient` or container `border-radius` declarations in A1–A4 (`rg`). The only radius is `50%` on 8px status dots (`projects/index.html:61,64`).
-- **MUST** be a single centered column with a reading-width cap. [`styles.css:34-37`, `projects/index.html:37`, `build-log/log.css:33`, `exhibits/index.html:36`] The cap is `66ch` (P7).
+- **MUST** be a single centered column with a reading-width cap below `64rem`. At `64rem` and wider the page widens and sections flow into columns (P7a). [`styles.css:34-37,158-197`, `projects/index.html:37`, `build-log/log.css:33`, `exhibits/index.html:36`] The paragraph cap stays `66ch` (P7).
 
 **P0 — resolved.**
 - **MUST** build every new page on the section system (A2–A4 tokens, scale and chrome), with one exception: links follow A1 (P9). Research notes are out of scope for this rule; they follow §11.
@@ -157,8 +157,10 @@ Each color's role is inferred from the selector it styles.
   - stamp and footer 15px
 - **P7 — MUST** use a body `line-height` of `1.62`. [`projects/index.html:32`, `build-log/log.css:28`, `exhibits/index.html:31`]
   *Superseded (for reference):* `1.68` [`styles.css@1344aab:21`].
-- **P7 — MUST** cap the page column at `max-width: 66ch` and secondary paragraphs at `58ch`. [`projects/index.html:37,86`, `build-log/log.css:33,68`, `exhibits/index.html:36,77`]
+- **P7 — MUST** cap the page column at `max-width: 66ch` below `64rem` (wider screens: see P7a), and secondary paragraphs at `58ch`. [`projects/index.html:37,86`, `build-log/log.css:33,68`, `exhibits/index.html:36,77`]
   *Superseded (for reference):* `max-width: 660px` [`styles.css@1344aab:27`].
+- **P7a — MUST** widen on large screens. *Added 2026-09-26 by the builder; approved by Patrick ("commit").* Prompted by Patrick's request (2026-09-26): "it does not fill the page when larger… that should not be the case". At `min-width: 64rem` the page column grows to `max-width: 90rem`, and sections flow into columns: list items become a wrapping grid (`repeat(auto-fill, minmax(22rem, 1fr))`, each item topped by a `--rule` hairline), and short sibling sections sit side by side. Paragraphs keep the `66ch` cap. Below `64rem` the single 66ch column is unchanged. [`styles.css:158-197`, `index.html:31-106`]
+  *Superseded (for reference):* one 66ch column at every width [`styles.css@4c7d4aa:34-37`].
 
 ---
 
@@ -167,7 +169,7 @@ Each color's role is inferred from the selector it styles.
 **Rules:**
 - **MUST** set index labels (`ISSUE NO. 4`, `EXHIBIT 01`) in mono, 600, `--s--1`, `line-height: 1`, `letter-spacing: 0.12em`, gold. The uppercase is in the copy itself, not produced by CSS. [`build-log/log.css:58` + `build-log/index.html:53`; `exhibits/index.html:72` + `exhibits/index.html:111`] (A3 + A4 only; A3 copies A4.)
 - **MUST** set metadata lines in mono, 500, `--s--1`, `line-height: 1.7`, `letter-spacing: 0.03em`, colored ink 55% into paper. This covers dates and tech fingerprints. [`build-log/log.css:62-67`, `exhibits/index.html:78-82`]
-- **MUST** separate metadata fields with ` · ` (middle dot). [`projects/index.html:132`, `exhibits/index.html:114`, `index.html:99`]
+- **MUST** separate metadata fields with ` · ` (middle dot). [`projects/index.html:132`, `exhibits/index.html:114`, `index.html:111`]
 - **MUST** end link rows with `→`. In A3 and A4 the arrow is gold and nudges 4px on hover. [`build-log/log.css:71-72`, `exhibits/index.html:75-76`; A2 uses the plain `→` character in link text, `projects/index.html:135`]
 - **MUST** sign section pages with a `.sig` line reading `— Patrick King, CMT`, set 2.2–2.4rem below the content. [`projects/index.html:101,293`; `build-log/log.css:79`, `build-log/index.html:90`; `exhibits/index.html:87,142`]
 - **Section page titles end with a period** in all three section pages: "Projects." "Build log." "Exhibits." [`projects/index.html:112`, `build-log/index.html:27`, `exhibits/index.html:98`]. This is a copy pattern. Under the §10 contract a builder never writes titles anyway.
@@ -177,8 +179,8 @@ Each color's role is inferred from the selector it styles.
 - **Legend and dates:** mono 500, not uppercased. [`projects/index.html:57,85`]
 - **Panel label:** Switzer (not mono), 600, `--s--1`, `letter-spacing: 0.12em`, uppercase, garnet. [`exhibits/index.html:62`]
 - *Superseded (for reference):*
-  - the hub's ` — state` suffix [`index.html:45`, `styles.css@1344aab:127`]
-  - the hub's 15px "Updated" stamp [`index.html:73`, `styles.css@1344aab:104-108`]
+  - the hub's ` — state` suffix [`index.html:48`, `styles.css@1344aab:127`]
+  - the hub's 15px "Updated" stamp [`index.html:79`, `styles.css@1344aab:104-108`]
 
 **Figure captions:** CSS exists (`projects/index.html:91-93`), but the only `<figure>` is inside a commented-out template (`projects/index.html:268-287`). No rendered caption existed at extraction, so captions are **UNSPECIFIED** in practice. *Update 2026-09-24:* the N1 card now renders the template figure (`projects/index.html:182-185`). That is a single use, and it sets no rule. *Update 2026-09-26:* the N2 card repeats it (`projects/index.html:201-204`). Both are research-note cards, so it is still no rule for other cards.
 
@@ -221,7 +223,7 @@ Each color's role is inferred from the selector it styles.
   - **Top:** the PK wordmark and a `← workbypk.com` back-link.
   - **Bottom:** the `— Patrick King, CMT` signature.
   - **Traces:** [`projects/index.html:107-110,293`, `build-log/index.html:22-25,90`, `exhibits/index.html:93-96,142`]
-- **Hub exception (Patrick, 2026-09-26: "ratify"):** the hub keeps its own frame: the masthead (name, role, nav), the divider and the footer line "Patrick King · Bay Miles Group LLC · 2026" [`index.html:16-27,98-100`]. It has no wordmark, back-link or `.sig`, because a back-link to workbypk.com on workbypk.com would point at itself.
+- **Hub exception (Patrick, 2026-09-26: "ratify"):** the hub keeps its own frame: the masthead (name, role, nav), the divider and the footer line "Patrick King · Bay Miles Group LLC · 2026" [`index.html:16-27,110-112`]. It has no wordmark, back-link or `.sig`, because a back-link to workbypk.com on workbypk.com would point at itself.
 
 ---
 
@@ -290,11 +292,14 @@ These are recorded so they aren't lost. They don't count toward any rule and mus
 | D2 | **Resolved 2026-09-26 (Patrick: "d2").** `exhibits/index.html` had transitions (`:69,75`, plus the D8 link fade at `:86`) and no `prefers-reduced-motion` block. It now has A3's guard (`* { transition: none !important; }`) on line 86, so no line numbers moved. | `exhibits/index.html:69,75,86` |
 | D3 | `--ember: #B4402F` is declared but never used (0 `var(--ember)` references). | `projects/index.html:16` |
 | D4 | The "parked" legend dot uses a literal `#8a8a86` instead of `--ink-soft` (the P5 rule). | `projects/index.html:118` vs `:67` |
-| D5 | **Resolved 2026-09-26.** The A1 styles now use the section system (Patrick: "update"). That covers tokens and colors (P1–P4), the fluid scale with 700-weight headings (P6), line-height 1.62 and the 66ch column (P7), section spacing, Switzer 400–700, and the mono metadata style for the "Updated" stamp. The hub name is set as the h1 style (`--s-2`) and the lead as `--s-1`. The hub's masthead and footer frame is ratified as the P8 hub exception (Patrick: "ratify"; see §6). | `styles.css`; `index.html:16-27,98-100` |
+| D5 | **Resolved 2026-09-26.** The A1 styles now use the section system (Patrick: "update"). That covers tokens and colors (P1–P4), the fluid scale with 700-weight headings (P6), line-height 1.62 and the 66ch column (P7), section spacing, Switzer 400–700, and the mono metadata style for the "Updated" stamp. The hub name is set as the h1 style (`--s-2`) and the lead as `--s-1`. The hub's masthead and footer frame is ratified as the P8 hub exception (Patrick: "ratify"; see §6). | `styles.css`; `index.html:16-27,110-112` |
 | D6 | **Resolved 2026-09-26 (Patrick: "d6").** A2 and A4 had no `:focus-visible` style, which the focus MUST in §5 requires. Both now carry A3's rule (`a:focus-visible { outline: 2px solid var(--garnet); outline-offset: 3px; }`), appended to an existing line so no line numbers moved. Checked by keyboard: the first four links on each page get a 2px garnet ring with a 3px offset, including the exhibit rows. A3 was fixed earlier in `1a64faf` (`build-log/log.css:49`). | `projects/index.html:52`, `exhibits/index.html:86` |
-| D7 | ~~R1, R2 and N2 link to "contact form on workbypk.com", but the site has no form.~~ **Resolved 2026-09-26 (Patrick):** the link text is now `patrick@workbypk.com` with `href="mailto:patrick@workbypk.com"`, which matches the hub's Contact section. "the" before the link was dropped so the sentence still reads. | `waveminer/spend-map/atlanta/index.html:299`, `waveminer/spend-map/northern-virginia/index.html:299`, `waveminer/agents-as-consumers/index.html:442`; `index.html:92` |
+| D7 | ~~R1, R2 and N2 link to "contact form on workbypk.com", but the site has no form.~~ **Resolved 2026-09-26 (Patrick):** the link text is now `patrick@workbypk.com` with `href="mailto:patrick@workbypk.com"`, which matches the hub's Contact section. "the" before the link was dropped so the sentence still reads. | `waveminer/spend-map/atlanta/index.html:299`, `waveminer/spend-map/northern-virginia/index.html:299`, `waveminer/agents-as-consumers/index.html:442`; `index.html:102` |
 | D8 | **Resolved 2026-09-26 (Patrick: "lets go to d8").** A2, A3 and A4 broke P9 (the tuned link underline is a MUST on every page), using `a { color: garnet }` with the browser's default underline. All three now carry A1's rule: 1px thickness, 3px offset, 35% garnet at rest going to full garnet on hover, and a 160ms fade. On A2, which had no transitions before this change, the fade is switched off under `prefers-reduced-motion` on the same line (A3 already had a guard; A4 got one with D2). The listed exceptions are unchanged: back-links and build-log title links have no underline until hover, and the exhibit rows are block links with no underline. | `projects/index.html:52`, `build-log/log.css:48`, `exhibits/index.html:86` |
 | D9 | *Added 2026-09-26 by the builder; approved by Patrick ("log").* Dead CSS in A3: `.dim` (`build-log/log.css:47`) and `.dek` (`:68`) have no users in `build-log/index.html` since the `1a64faf` restructure. The §2b ink-soft trace and the §3b 58ch trace into `log.css:68` point at this unused rule. | `build-log/log.css:47,68` |
+| D10 | *Added 2026-09-26 by the builder; logged with Patrick's "commit"; open.* A2 breaks P7a: the page stays one 66ch column at every width, so on a large screen it fills about a third of the window. | `projects/index.html:37` |
+| D11 | *Added 2026-09-26 by the builder; logged with Patrick's "commit"; open.* A3 breaks P7a: the page stays one 66ch column at every width. | `build-log/log.css:33` |
+| D12 | *Added 2026-09-26 by the builder; logged with Patrick's "commit"; open.* A4 breaks P7a: the page stays one 66ch column at every width. | `exhibits/index.html:36` |
 
 ---
 
