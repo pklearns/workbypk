@@ -217,11 +217,11 @@ Each color's role is inferred from the selector it styles.
 - footer: 56px margin, 22px padding [`styles.css@1344aab:138-139`]
 - breakpoint 600px [`styles.css@1344aab:145`]
 
-- **P8 — MUST** frame every page the same way (research notes: see §11):
+- **P8 — MUST** frame every page the same way (research notes: see §11; the hub: see the exception below):
   - **Top:** the PK wordmark and a `← workbypk.com` back-link.
   - **Bottom:** the `— Patrick King, CMT` signature.
   - **Traces:** [`projects/index.html:107-110,293`, `build-log/index.html:22-25,90`, `exhibits/index.html:93-96,142`]
-- *Superseded (for reference):* the hub masthead (name, role, nav), divider and footer line "Patrick King · Bay Miles Group LLC · 2026" [`index.html:16-27,98-100`].
+- **Hub exception (Patrick, 2026-09-26: "ratify"):** the hub keeps its own frame: the masthead (name, role, nav), the divider and the footer line "Patrick King · Bay Miles Group LLC · 2026" [`index.html:16-27,98-100`]. It has no wordmark, back-link or `.sig`, because a back-link to workbypk.com on workbypk.com would point at itself.
 
 ---
 
@@ -290,11 +290,11 @@ These are recorded so they aren't lost. They don't count toward any rule and mus
 | D2 | `exhibits/index.html` has transitions (`:69,75`) with no `prefers-reduced-motion` block. `rg` finds 0 matches in the file. | `exhibits/index.html:69,75` |
 | D3 | `--ember: #B4402F` is declared but never used (0 `var(--ember)` references). | `projects/index.html:16` |
 | D4 | The "parked" legend dot uses a literal `#8a8a86` instead of `--ink-soft` (the P5 rule). | `projects/index.html:118` vs `:67` |
-| D5 | *Partly resolved 2026-09-26 (Patrick: "update"):* the A1 styles now use the section system. That covers tokens and colors (P1–P4), the fluid scale with 700-weight headings (P6), line-height 1.62 and the 66ch column (P7), section spacing, Switzer 400–700, and the mono metadata style for the "Updated" stamp. The hub name is set as the h1 style (`--s-2`) and the lead as `--s-1`. **Still open:** P8. The hub keeps its masthead (name, role, nav) and its footer line in place of the wordmark, back-link and signature frame. ⚑ Builder recommendation, pending Patrick: ratify this as the hub's own frame, because a `← workbypk.com` back-link on workbypk.com would point at itself. | `styles.css`; `index.html:16-27,98-100` |
+| D5 | **Resolved 2026-09-26.** The A1 styles now use the section system (Patrick: "update"). That covers tokens and colors (P1–P4), the fluid scale with 700-weight headings (P6), line-height 1.62 and the 66ch column (P7), section spacing, Switzer 400–700, and the mono metadata style for the "Updated" stamp. The hub name is set as the h1 style (`--s-2`) and the lead as `--s-1`. The hub's masthead and footer frame is ratified as the P8 hub exception (Patrick: "ratify"; see §6). | `styles.css`; `index.html:16-27,98-100` |
 | D6 | A2 and A4 have no `:focus-visible` style, which the focus MUST in §5 requires. *A3 fixed in `1a64faf` (`build-log/log.css:49`).* | `projects/index.html:10-102`, `exhibits/index.html:10-88` (no `focus` match) |
 | D7 | ~~R1, R2 and N2 link to "contact form on workbypk.com", but the site has no form.~~ **Resolved 2026-09-26 (Patrick):** the link text is now `patrick@workbypk.com` with `href="mailto:patrick@workbypk.com"`, which matches the hub's Contact section. "the" before the link was dropped so the sentence still reads. | `waveminer/spend-map/atlanta/index.html:299`, `waveminer/spend-map/northern-virginia/index.html:299`, `waveminer/agents-as-consumers/index.html:442`; `index.html:92` |
-| D8 | ⚑ *Added 2026-09-26 by the builder, pending Patrick's approval.* A2, A3 and A4 break P9 (the tuned link underline is a MUST on every page). They use a bare `a { color: garnet }` with the browser's default underline. | `projects/index.html:52`, `build-log/log.css:48`, `exhibits/index.html:86` (`.after a { color: garnet }`, no `text-decoration-*`; list rows at `:66` are block links with no underline by design) |
-| D9 | ⚑ *Added 2026-09-26 by the builder, pending Patrick's approval.* Dead CSS in A3: `.dim` (`build-log/log.css:47`) and `.dek` (`:68`) have no users in `build-log/index.html` since the `1a64faf` restructure. The §2b ink-soft trace and the §3b 58ch trace into `log.css:68` point at this unused rule. | `build-log/log.css:47,68` |
+| D8 | *Added 2026-09-26 by the builder; approved by Patrick ("log").* A2, A3 and A4 break P9 (the tuned link underline is a MUST on every page). They use a bare `a { color: garnet }` with the browser's default underline. | `projects/index.html:52`, `build-log/log.css:48`, `exhibits/index.html:86` (`.after a { color: garnet }`, no `text-decoration-*`; list rows at `:66` are block links with no underline by design) |
+| D9 | *Added 2026-09-26 by the builder; approved by Patrick ("log").* Dead CSS in A3: `.dim` (`build-log/log.css:47`) and `.dek` (`:68`) have no users in `build-log/index.html` since the `1a64faf` restructure. The §2b ink-soft trace and the §3b 58ch trace into `log.css:68` point at this unused rule. | `build-log/log.css:47,68` |
 
 ---
 
