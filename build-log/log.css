@@ -77,3 +77,18 @@ a:focus-visible { outline: 2px solid var(--garnet); outline-offset: 3px; }
 
 .after { margin-top: 2.4rem; font-size: var(--s--1); color: var(--ink-soft); }
 .sig { margin-top: 2.2rem; }
+
+/* Wide screens (P7a): the page widens and the issue list wraps into columns.
+   Paragraphs keep the 66ch cap; below 64rem nothing changes. */
+
+@media (min-width: 64rem) {
+  .wrap { max-width: 90rem; }
+  .wrap > p { max-width: 66ch; }
+  .issues {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+    gap: 0 clamp(2rem, 3vw, 3rem);
+    border-top: 0;
+  }
+  .issue { border-bottom: 0; border-top: 1px solid var(--rule); }
+}
