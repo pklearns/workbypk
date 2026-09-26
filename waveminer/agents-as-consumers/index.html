@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Agents as Consumers · WaveMiner · Work by PK</title>
+<meta name="description" content="AI agents as buyers, mapped through five stages: where the wave stands now, what breaks next, who pays, three opportunities to test, and dated forecasts.">
+<meta name="author" content="Patrick · workbypk.com">
+<link rel="canonical" href="https://workbypk.com/waveminer/agents-as-consumers/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Work by PK">
+<meta property="og:title" content="Agents as Consumers">
+<meta property="og:description" content="AI agents as buyers, mapped through five stages. Stage 2 now; stage 3's disputes, fraud and spend-control problems are already visible.">
+<meta property="og:url" content="https://workbypk.com/waveminer/agents-as-consumers/">
+<meta property="og:image" content="https://workbypk.com/waveminer/agents-as-consumers/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Agents as Consumers: five stages from Enable to Reconfigure, with stage 2 marked now and stage 3 marked next.">
+<meta property="article:published_time" content="2026-09-24">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Agents as Consumers">
+<meta name="twitter:description" content="AI agents as buyers, mapped through five stages: where it stands, what breaks next, who pays.">
+<meta name="twitter:image" content="https://workbypk.com/waveminer/agents-as-consumers/og-image.png">
+<style>
+@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/barlow-condensed-latin-600-normal.woff2") format("woff2")}
+@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/barlow-condensed-latin-700-normal.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/ibm-plex-sans-latin-400-normal.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url("fonts/ibm-plex-sans-latin-400-italic.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/ibm-plex-sans-latin-500-normal.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/ibm-plex-sans-latin-600-normal.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2")}
+
+:root{
+  --bg:#ECEFEE; --panel:#F7F9F8; --panel-2:#E3E8E6;
+  --ink:#141C1B; --ink-2:#3B4745; --muted:#63706D; --rule:#C6CFCC;
+  --accent:#1E4C8A; --accent-soft:#DCE5F2; --link:#6E1E28;
+  --teal:#2F7F7C; --sand:#8C7F66; --slate:#98A3A0;
+  --tag:#F0C93F; --tag-ink:#2A2206;
+  --good:#2C7449; --good-soft:#DCEEE2;
+  --warn:#9C620F; --warn-soft:#F5E6CA;
+  --crit:#A3342A; --crit-soft:#F3DAD6;
+  --hatch-a:#C3CBC9; --hatch-b:#D5DCDA;
+  --display:"Barlow Condensed","Arial Narrow","Roboto Condensed",sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0F1514; --panel:#161E1D; --panel-2:#1D2726;
+    --ink:#E2E9E7; --ink-2:#B9C4C1; --muted:#8B9895; --rule:#2B3634;
+    --accent:#8AADE6; --accent-soft:#1B2A40; --link:#8AADE6;
+    --teal:#63B7B2; --sand:#B3A588; --slate:#5E6A68;
+    --tag:#D9B63B; --tag-ink:#1B1604;
+    --good:#72C394; --good-soft:#162E20;
+    --warn:#E3AA4E; --warn-soft:#34270F;
+    --crit:#E6837A; --crit-soft:#3A1C19;
+    --hatch-a:#2A3533; --hatch-b:#222C2B;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0F1514; --panel:#161E1D; --panel-2:#1D2726;
+  --ink:#E2E9E7; --ink-2:#B9C4C1; --muted:#8B9895; --rule:#2B3634;
+  --accent:#8AADE6; --accent-soft:#1B2A40; --link:#8AADE6;
+  --teal:#63B7B2; --sand:#B3A588; --slate:#5E6A68;
+  --tag:#D9B63B; --tag-ink:#1B1604;
+  --good:#72C394; --good-soft:#162E20;
+  --warn:#E3AA4E; --warn-soft:#34270F;
+  --crit:#E6837A; --crit-soft:#3A1C19;
+  --hatch-a:#2A3533; --hatch-b:#222C2B;
+}
+*{box-sizing:border-box}
+html{color-scheme:light}
+[hidden]{display:none!important}
+img{max-width:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55;padding-inline:20px;padding-block:calc(28px + env(safe-area-inset-top,0px)) calc(64px + env(safe-area-inset-bottom,0px))}
+.wrap{max-width:1080px;margin-inline:auto;display:flex;flex-direction:column;gap:48px}
+a{color:var(--link)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:3px}
+h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:.01em;text-wrap:balance;margin:0;line-height:1.08}
+h1{font-size:clamp(2.4rem,6vw,3.6rem);text-transform:uppercase}
+h2{font-size:1.9rem;text-transform:uppercase}
+h3{font-size:1.3rem}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lede{font-size:1.08rem;color:var(--ink-2);max-width:68ch}
+.num{font-variant-numeric:tabular-nums}
+.code{font-family:var(--mono);font-size:.74rem;font-weight:500;background:var(--tag);color:var(--tag-ink);padding:1px 6px 1px 6px;border-radius:2px;white-space:nowrap;letter-spacing:.02em}
+sup a{font-family:var(--mono);font-size:.68rem;text-decoration:none;padding-inline:1px}
+
+/* header */
+header{display:flex;flex-direction:column;gap:14px;border-bottom:3px solid var(--ink);padding-bottom:22px}
+.back{font-family:var(--mono);font-size:.78rem;color:var(--muted);text-decoration:none;align-self:flex-start}
+.back:hover{color:var(--link)}
+.ask{background:var(--panel);border:1px solid var(--rule);border-top:4px solid var(--accent);border-radius:4px;padding:22px;display:flex;flex-direction:column;gap:14px}
+.ask ol{margin:0;padding-left:1.6em;display:flex;flex-direction:column;gap:10px;color:var(--ink-2)}
+.ask ol li::marker{font-family:var(--mono);color:var(--muted);font-size:.85em}
+.ask ol b{color:var(--ink)}
+.meta{display:flex;flex-wrap:wrap;gap:8px 20px;font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+
+/* section frame */
+section{display:flex;flex-direction:column;gap:18px}
+.sec-head{display:flex;flex-direction:column;gap:6px}
+
+/* bars */
+.flow{background:var(--panel);border:1px solid var(--rule);border-radius:4px;padding:22px;display:flex;flex-direction:column;gap:26px}
+.barblock{display:flex;flex-direction:column;gap:10px}
+.barlabel{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+.barlabel strong{font-family:var(--display);font-size:1.15rem;text-transform:uppercase;letter-spacing:.03em}
+.bar{display:flex;height:34px;border-radius:2px;overflow:hidden;border:1px solid var(--rule)}
+.bar>span{display:block;height:100%}
+.bar>span+span{border-left:2px solid var(--panel)}
+.hatch{background:repeating-linear-gradient(135deg,var(--hatch-a) 0 7px,var(--hatch-b) 7px 14px)}
+.s-fac{background:var(--accent)}
+.s-elec{background:var(--accent)}
+.s-mech{background:var(--teal)}
+.s-shell{background:var(--sand)}
+.s-gc{background:var(--slate)}
+.s-land{background:var(--ink-2)}
+.s-energy{background:var(--hatch-a)}
+.s-tax{background:var(--hatch-b)}
+.s-maint{background:var(--accent)}
+.s-labor{background:var(--teal)}
+.s-water{background:var(--sand)}
+.legend{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px 18px;font-size:.88rem}
+.legend div{display:flex;gap:8px;align-items:baseline}
+.sw{width:11px;height:11px;border-radius:1px;flex:none;transform:translateY(1px);box-shadow:inset 0 0 0 1px var(--rule)}
+.legend b{font-family:var(--mono);font-weight:500;font-size:.84rem}
+.legend em{font-style:normal;color:var(--muted)}
+.note{font-size:.84rem;color:var(--muted);max-width:80ch}
+
+/* readings */
+.readings{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.readings li{flex:1 1 300px;background:var(--panel);padding:18px 20px;display:flex;flex-direction:column;gap:6px}
+.readings .k{font-family:var(--display);font-weight:700;font-size:1.25rem;line-height:1.15}
+.readings p{color:var(--ink-2);font-size:.94rem}
+
+/* map controls */
+.controls{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.btn{font-family:var(--mono);font-size:.78rem;letter-spacing:.03em;border:1px solid var(--rule);background:var(--panel);color:var(--ink);padding:7px 12px;border-radius:3px;cursor:pointer}
+.btn:hover{border-color:var(--ink-2)}
+.btn[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.count{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+
+/* rows */
+.maphead,.row>summary{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(0,1.35fr) minmax(0,1.6fr) minmax(0,2fr);gap:14px;align-items:start}
+.maphead{font-family:var(--mono);font-size:.7rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);padding:0 16px 8px 34px;border-bottom:2px solid var(--ink)}
+.rows{display:flex;flex-direction:column}
+.row{border-bottom:1px solid var(--rule);background:var(--panel)}
+.row:first-child{border-top:0}
+.row>summary{list-style:none;cursor:pointer;padding:14px 16px 14px 34px;position:relative}
+.row>summary::-webkit-details-marker{display:none}
+.row>summary::before{content:"+";position:absolute;left:12px;top:12px;font-family:var(--mono);font-size:1rem;color:var(--muted)}
+.row[open]>summary::before{content:"\2212"}
+.row>summary:hover{background:var(--panel-2)}
+.r-title{font-weight:600;display:block;line-height:1.3}
+.r-path{font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.03em}
+.r-money{font-family:var(--mono);font-size:.84rem;font-variant-numeric:tabular-nums;line-height:1.4}
+.r-money small{display:block;color:var(--muted);font-size:.72rem}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{font-family:var(--mono);font-size:.7rem;padding:2px 7px;border-radius:2px;border:1px solid var(--rule);color:var(--ink-2);white-space:nowrap;background:var(--bg)}
+.chip.hi{background:var(--crit-soft);color:var(--crit);border-color:transparent}
+.chip.md{background:var(--warn-soft);color:var(--warn);border-color:transparent}
+.chip.lo{background:var(--good-soft);color:var(--good);border-color:transparent}
+.chip.fl{border-color:var(--good);color:var(--good);background:transparent}
+.chip.flp{border-style:dashed}
+.r-read{font-size:.92rem;color:var(--ink-2)}
+.r-read b{color:var(--ink)}
+.row.top{box-shadow:inset 4px 0 0 var(--accent)}
+.r-body{padding:4px 16px 20px 34px}
+.r-body dl{display:grid;grid-template-columns:170px minmax(0,1fr);gap:8px 18px;margin:0;font-size:.92rem;max-width:900px}
+.r-body dt{font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.r-body dd{margin:0;color:var(--ink-2)}
+.r-body dd strong{color:var(--ink)}
+.unres{font-size:.9rem;color:var(--muted);padding:14px 16px 0 34px}
+.unres b{color:var(--ink-2)}
+
+/* shortlist */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--rule);border-top:4px solid var(--accent);border-radius:4px;padding:20px;display:flex;flex-direction:column;gap:12px}
+.card .tagline{font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.card dl{margin:0;display:flex;flex-direction:column;gap:9px;font-size:.9rem}
+.card dt{font-family:var(--mono);font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.card dd{margin:2px 0 0;color:var(--ink-2)}
+.card.watch{border-top-color:var(--slate)}
+
+/* script + spec */
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px}
+.qlist{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:10px;color:var(--ink-2)}
+.qlist li::marker{font-family:var(--mono);color:var(--muted);font-size:.85em}
+.qlist b{color:var(--ink)}
+.fields{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.fields li{display:grid;grid-template-columns:150px minmax(0,1fr);gap:14px;padding:10px 0;border-bottom:1px solid var(--rule);font-size:.92rem;color:var(--ink-2)}
+.fields code{font-family:var(--mono);font-size:.8rem;color:var(--ink);font-weight:500}
+
+/* sources */
+.srcs{margin:0;padding-left:2.4em;display:grid;grid-template-columns:1fr;gap:6px;font-size:.86rem;color:var(--ink-2)}
+.srcs li::marker{font-family:var(--mono);font-size:.8em;color:var(--muted)}
+.srcs li:target{background:var(--accent-soft)}
+.tier{font-family:var(--mono);font-size:.68rem;padding:0 5px;border:1px solid var(--rule);border-radius:2px;margin-right:6px;color:var(--muted)}
+.tier.A{color:var(--good);border-color:var(--good)}
+.tier.B{color:var(--accent);border-color:var(--accent)}
+.tier.D{color:var(--warn);border-color:var(--warn)}
+footer{font-size:.84rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:16px}
+
+@media (max-width:820px){
+  .maphead{display:none}
+  .row>summary{grid-template-columns:1fr;gap:8px}
+  .r-body dl{grid-template-columns:1fr;gap:2px 0}
+  .r-body dd{margin-bottom:8px}
+  .fields li{grid-template-columns:1fr;gap:2px}
+}
+@media (max-width:480px){
+  body{padding-inline:16px}
+  .flow{padding:16px}
+  .row>summary,.r-body{padding-left:30px;padding-right:12px}
+  .row>summary::before{left:10px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* note 02 additions */
+.cmp-wrap{overflow-x:auto;border:1px solid var(--rule);border-radius:4px;background:var(--panel)}
+table.cmp{border-collapse:collapse;width:100%;min-width:720px;font-size:.9rem}
+table.cmp th{font-family:var(--mono);font-size:.68rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);text-align:left;padding:10px 14px;border-bottom:2px solid var(--ink);font-weight:500}
+table.cmp td{padding:12px 14px;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--ink-2)}
+table.cmp tr:last-child td{border-bottom:0}
+table.cmp td:first-child{font-weight:600;color:var(--ink);width:24%}
+table.cmp td:nth-child(2){width:20%}
+table.cmp td:nth-child(3){width:12%}
+.rules{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.rules li{display:grid;grid-template-columns:170px minmax(0,1fr);gap:14px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:.92rem;color:var(--ink-2)}
+.rules li>span:first-child{font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);padding-top:2px}
+@media (max-width:820px){.rules li{grid-template-columns:1fr;gap:2px}}
+table.cmp td:first-child{width:6%;font-family:var(--mono);font-weight:500}
+table.cmp td:nth-child(2){width:40%}
+table.cmp td:nth-child(3){width:12%;white-space:nowrap}
+table.cmp td:nth-child(4){width:12%}
+.strip{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border:1px solid var(--rule);border-radius:4px;overflow:hidden;background:var(--panel)}
+.strip li{padding:16px;display:flex;flex-direction:column;gap:6px;border-right:1px solid var(--rule)}
+.strip li:last-child{border-right:0}
+.strip .st-n{font-family:var(--mono);font-size:.74rem;color:var(--muted)}
+.st-name{font-family:var(--display);font-weight:700;font-size:1.4rem;text-transform:uppercase;line-height:1.05}
+.st-pill{font-family:var(--mono);font-size:.7rem;align-self:flex-start;padding:2px 7px;border-radius:2px;border:1px solid var(--rule);color:var(--ink-2);white-space:nowrap}
+.st-what{font-size:.86rem;color:var(--ink-2);line-height:1.4}
+.strip .st-built{background:var(--panel-2)}
+.strip .st-built .st-name{color:var(--muted)}
+.strip .st-now{box-shadow:inset 0 4px 0 var(--ink)}
+.strip .st-next{background:var(--accent-soft);box-shadow:inset 0 4px 0 var(--accent)}
+.st-now .st-pill{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.st-next .st-pill{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:4px;padding:18px 20px;display:flex;flex-direction:column;gap:12px}
+.ev{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:10px;font-size:.93rem;color:var(--ink-2)}
+.ev b{color:var(--ink)}
+.stages{display:flex;flex-direction:column;gap:14px}
+.stage{background:var(--panel);border:1px solid var(--rule);border-radius:4px;padding:20px;display:grid;grid-template-columns:170px minmax(0,1fr);gap:18px}
+.stage.st-built{background:var(--panel-2)}
+.stage.st-now{box-shadow:inset 4px 0 0 var(--ink)}
+.stage.st-next{border-color:var(--accent);box-shadow:inset 4px 0 0 var(--accent)}
+.stage-head{display:flex;gap:12px;align-items:flex-start}
+.stage-head>div{display:flex;flex-direction:column;gap:6px}
+.stage-head .st-n{font-family:var(--display);font-weight:700;font-size:2.6rem;line-height:.9;color:var(--muted);font-variant-numeric:tabular-nums}
+.stage.st-next .stage-head .st-n{color:var(--accent)}
+.stage-head h3{font-size:1.45rem;text-transform:uppercase}
+.stage dl{display:grid;grid-template-columns:130px minmax(0,1fr);gap:9px 16px;margin:0;font-size:.92rem}
+.stage dt{font-family:var(--mono);font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.stage dd{margin:0;color:var(--ink-2)}
+.path{font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.05em;background:var(--bg);border:1px solid var(--rule);color:var(--ink);padding:1px 6px;border-radius:2px;margin-right:4px;white-space:nowrap}
+.tick{color:var(--good)}
+.conf{font-family:var(--mono);font-size:.72rem;color:var(--muted);white-space:nowrap}
+@media (max-width:820px){
+  .strip{grid-template-columns:1fr}
+  .strip li{border-right:0;border-bottom:1px solid var(--rule)}
+  .strip li:last-child{border-bottom:0}
+  .stage{grid-template-columns:1fr;gap:12px}
+  .stage dl{grid-template-columns:1fr;gap:2px}
+  .stage dd{margin-bottom:8px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <a class="back" href="/">&larr; workbypk.com</a>
+  <span class="eyebrow">WaveMiner · Research note 02 · Wave: agentic-ai-consumers</span>
+  <h1>Agents as Consumers</h1>
+  <p class="lede">What happens as AI agents start researching, buying and negotiating for people and companies, mapped through five stages. The wave is in stage 2 today, and stage 3's problems are already showing. Stage 3 is where a small operator with a controls background can get there first.</p>
+  <div class="meta"><span>Patrick · workbypk.com</span><span>Published 24 Sep 2026 · evidence as of that date</span><span>Previous note: <a href="../spend-map/">AI Data Center Spend Map</a></span><span>Evidence tiers A–D under <a href="#sources">Sources</a></span></div>
+</header>
+
+<!-- ============ STAGE STRIP ============ -->
+<section id="stages-now">
+  <div class="sec-head">
+    <span class="eyebrow">Where the wave stands</span>
+    <h2>Stage 2 now, stage 3 next</h2>
+  </div>
+  <ol class="strip" aria-label="Five stages of the agent-commerce wave">
+    <li class="st-built"><span class="st-n">1</span><span class="st-name">Enable</span><span class="st-pill">Built</span><span class="st-what">Payment credentials, checkout protocols and agent identity</span></li>
+    <li class="st-now"><span class="st-n">2</span><span class="st-name">Adopt</span><span class="st-pill">Now</span><span class="st-what">Agents research; people mostly keep the final click</span></li>
+    <li class="st-next"><span class="st-n">3</span><span class="st-name">Scale</span><span class="st-pill">Next · target</span><span class="st-what">Agents buy within limits; errors, disputes and fraud surface</span></li>
+    <li class="st-later"><span class="st-n">4</span><span class="st-name">Mature</span><span class="st-pill">Later</span><span class="st-what">Agents switch vendors and negotiate; loyalty pricing erodes</span></li>
+    <li class="st-later"><span class="st-n">5</span><span class="st-name">Reconfigure</span><span class="st-pill">Later</span><span class="st-what">Businesses built on human attention shrink; new intermediaries form</span></li>
+  </ol>
+
+  <div class="two">
+    <div class="panel">
+      <h3>Why stage 2</h3>
+      <ul class="ev">
+        <li><b>The rails are built.</b> Stripe and OpenAI's checkout protocol launched September 2025; Google, Shopify, Walmart and Target launched a shared commerce standard in January 2026; Coinbase's payment protocol moved to a Linux Foundation body with 52 members including Visa, Mastercard and Amex.<sup><a href="#src-1">1</a></sup></li>
+        <li><b>Platforms are enrolling merchants for them.</b> Shopify switched on agent checkout in ChatGPT for 2M+ eligible US stores on 11 March 2026.<sup><a href="#src-3">3</a></sup> Amazon's "Buy for Me" agent completes purchases across 100M products from 400,000+ outside merchants.<sup><a href="#src-4">4</a></sup></li>
+        <li><b>Shoppers arrive through AI, and they buy.</b> AI-referred traffic to US retail sites grew 138% year over year in May 2026 and converted 54% better than other traffic.<sup><a href="#src-5">5</a></sup></li>
+        <li><b>But people keep the final click.</b> Only 11% of US consumers would let AI make the purchase decision, even for household supplies.<sup><a href="#src-7">7</a></sup> A third want to approve every agent transaction, though they expect agents to make 15% of their purchases within five years, up from 9% a year earlier.<sup><a href="#src-8">8</a></sup></li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>Stage 3 is already visible</h3>
+      <ul class="ev">
+        <li><b>Nobody knows who pays for mistakes.</b> US payment rules assume a person on the other side.<sup><a href="#src-10">10</a></sup> Under Reg E a transfer is presumed authorized once the consumer gave the agent credentials; under Reg Z a "not as agreed" dispute pushes the loss onto the merchant.<sup><a href="#src-9">9</a></sup> No card network had published binding agent-dispute rules as of August 2026.<sup><a href="#src-2">2</a></sup></li>
+        <li><b>Networks now demand controls and records.</b> Visa and Mastercard require agent providers to register, prove an authorization chain, enforce limits matching what the user delegated, and keep detailed records.<sup><a href="#src-9">9</a></sup> Amex covers erroneous purchases by registered agents, though its announcement did not address fraud.<sup><a href="#src-11">11</a></sup></li>
+        <li><b>Fraud has moved in.</b> 47.9% of AI bot traffic on Akamai's network in the second half of 2025 hit commerce sites, with agent hijacking and synthetic identities named as the new attacks.<sup><a href="#src-12">12</a></sup></li>
+        <li><b>Insurance is pricing the risk.</b> AIUC ties premiums to independent audits of an agent's controls; Munich Re rebuilt its aiSure cover for agents in 2026. AIG, Chubb, WR Berkley and Great American added AI exclusions to standard policies from 1 January 2026.<sup><a href="#src-13">13</a></sup></li>
+      </ul>
+    </div>
+  </div>
+  <p class="note">Stage 3 signals already seen: protocols handed to neutral standards bodies, first network rules, first insurance products. Still missing: regulator guidance, binding dispute rules, lawsuits at scale. Those are the arrival signals to watch (see <a href="#forecasts">forecasts</a>).</p>
+</section>
+
+<!-- ============ STAGE DETAIL ============ -->
+<section id="stages">
+  <div class="sec-head">
+    <span class="eyebrow">The evolution map</span>
+    <h2>Five stages, what breaks, who pays</h2>
+    <p class="lede">Each stage creates different work. Opportunities are sorted by path: build something, supply something, service something, or own something that gains value.</p>
+  </div>
+
+  <div class="stages">
+
+    <article class="stage st-built">
+      <div class="stage-head"><span class="st-n">1</span><div><h3>Enable</h3><span class="st-pill">Built</span></div></div>
+      <dl>
+        <dt>What happens</dt><dd>Card networks, payment processors and big tech build agent credentials, checkout protocols and agent identity: Visa's Trusted Agent Protocol (October 2025), Mastercard Agent Pay (April 2025), Google's payment protocol (now with the FIDO Alliance).<sup><a href="#src-1">1</a>,<a href="#src-2">2</a></sup></dd>
+        <dt>Opportunity</dt><dd>None for a small operator. This layer belongs to the networks and platforms.</dd>
+        <dt>Signal it's done</dt><dd>Protocols handed to neutral bodies. <span class="tick">Seen: FIDO (April 2026), Linux Foundation (July 2026).</span><sup><a href="#src-1">1</a></sup></dd>
+      </dl>
+    </article>
+
+    <article class="stage st-now">
+      <div class="stage-head"><span class="st-n">2</span><div><h3>Adopt</h3><span class="st-pill">Now</span></div></div>
+      <dl>
+        <dt>What happens</dt><dd>Agents research and compare; people approve. Platforms plug their merchants in by default. Business buyers get purchasing assistants.</dd>
+        <dt>What breaks</dt><dd>Product data. The average US retail product page is only 66% readable by AI models.<sup><a href="#src-6">6</a></sup> Businesses off the big platforms are invisible to agents. Distributor sales reps lose their opening as agents compare suppliers on data and price.<sup><a href="#src-4">4</a></sup></dd>
+        <dt>Who pays</dt><dd>Sellers who need to be found, especially B2B distributors and suppliers.</dd>
+        <dt>Opportunities</dt><dd><span class="path">Service</span> Catalog and data readiness for businesses <em>off</em> the big platforms: regional distributors, industrial suppliers, service firms that quote and schedule. <span class="path">Own</span> Distributors with clean data and APIs gain share.<sup><a href="#src-4">4</a></sup></dd>
+        <dt>Crowding</dt><dd>Consumer brands are crowded: Shopify does readiness for free, and "generative engine optimization" agencies are multiplying.<sup><a href="#src-3">3</a>,<a href="#src-16">16</a></sup> Off-platform B2B looks thinner (inference).</dd>
+      </dl>
+    </article>
+
+    <article class="stage st-next">
+      <div class="stage-head"><span class="st-n">3</span><div><h3>Scale</h3><span class="st-pill">Next · target</span></div></div>
+      <dl>
+        <dt>What happens</dt><dd>Agents complete purchases within limits people and companies set. Volume exposes errors, disputes, fraud, and spending nobody approved.</dd>
+        <dt>What breaks</dt><dd>Proof of what was actually authorized. Dispute evidence and reason codes. Merchant chargeback losses. Agent hijacking. Corporate spend control once employees' agents can buy.<sup><a href="#src-9">9</a>,<a href="#src-12">12</a></sup></dd>
+        <dt>Who pays</dt><dd>Merchants (they carry chargebacks), corporate finance teams (they answer to auditors), and anyone seeking insurance, since insurers price on audited controls.<sup><a href="#src-2">2</a>,<a href="#src-13">13</a></sup></dd>
+        <dt>Opportunities</dt><dd><span class="path">Service &rarr; product</span> Controls for agent spending inside companies: delegation limits, approval rules, audit trails, reconciliation, insurer-audit readiness. <span class="path">Service</span> Dispute evidence and chargeback handling for agent orders. <span class="path">Service</span> Independent agent-control reviews for underwriting.</dd>
+        <dt>Arrival signals</dt><dd>Regulator guidance on agent authorization; network dispute rules for agent transactions; first class action over agent purchases; audit-profession guidance on agent-initiated transactions.</dd>
+        <dt>Timing</dt><dd>Most signals likely within 12&ndash;24 months. <span class="conf">Confidence: medium</span></dd>
+      </dl>
+    </article>
+
+    <article class="stage st-later">
+      <div class="stage-head"><span class="st-n">4</span><div><h3>Mature</h3><span class="st-pill">Later</span></div></div>
+      <dl>
+        <dt>What happens</dt><dd>Agents shop continuously, switch vendors and renegotiate recurring bills. The "loyalty penalty" (higher prices for customers who never switch) stops working when a robot does the talking. Bill-negotiation agents already exist, and AI is pushing their fees from 35&ndash;60% of first-year savings toward flat subscriptions.<sup><a href="#src-14">14</a></sup></dd>
+        <dt>What breaks</dt><dd>Renewal pricing in telecom, insurance and subscriptions. Brand loyalty in commodity categories. The distributor sales relationship.</dd>
+        <dt>Opportunities</dt><dd><span class="path">Service</span> Helping regional suppliers compete in agent-run procurement: pricing rules, data, ordering APIs. <span class="path">Own</span> Businesses agents can't route around: physical fulfillment, local service, same-day availability.</dd>
+        <dt>Timing</dt><dd>2&ndash;5 years. <span class="conf">Confidence: low to medium</span></dd>
+      </dl>
+    </article>
+
+    <article class="stage st-later">
+      <div class="stage-head"><span class="st-n">5</span><div><h3>Reconfigure</h3><span class="st-pill">Later</span></div></div>
+      <dl>
+        <dt>What happens</dt><dd>Businesses built on capturing human attention shrink, and new intermediaries form around agent reputation and agent-to-agent deals. An early sign: Google search referrals to Chartbeat's publisher network fell 40.2% year over year to July 2026, after a 21.9% drop the year before.<sup><a href="#src-15">15</a></sup></dd>
+        <dt>Who loses</dt><dd>Affiliate and comparison sites, ad-funded publishers, lead-generation brokers, retention call centers, some distributor sales teams (inference).</dd>
+        <dt>Opportunities</dt><dd><span class="path">Own</span> Buying displaced businesses that still have physical or relationship assets, at distressed prices. <span class="path">Service</span> Helping them transition.</dd>
+        <dt>Timing</dt><dd>3&ndash;7 years. <span class="conf">Confidence: low</span></dd>
+      </dl>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============ CANDIDATES ============ -->
+<section id="candidates">
+  <div class="sec-head">
+    <span class="eyebrow">Be one stage early</span>
+    <h2>Three opportunities to test</h2>
+    <p class="lede">Ranked on timing, evidence, and fit with the author's operations, risk-and-controls and financial-services background.</p>
+  </div>
+  <div class="cards">
+    <article class="card">
+      <span class="tagline">Stage 3 · Service, then product · Top candidate</span>
+      <h3>Agent spending controls for mid-size companies</h3>
+      <dl>
+        <div><dt>Thesis</dt><dd>As employees and systems let agents buy, finance teams need delegation limits, approval rules, audit trails and reconciliation that will satisfy auditors, card networks and insurers. Networks already require "controls matching delegation scope" and records;<sup><a href="#src-9">9</a></sup> insurers price on audited controls.<sup><a href="#src-13">13</a></sup></dd></div>
+        <div><dt>Buyer</dt><dd>Controllers and CFOs at mid-size firms; audit and advisory firms as a channel.</dd></div>
+        <div><dt>Founder seat</dt><dd>The practitioner. This is controls design work, and financial-services relationships are the channel.</dd></div>
+        <div><dt>Red team</dt><dd>Procurement suites (Amazon Business, SAP Ariba, Coupa) will build controls in; Amazon Business already flags out-of-policy spend.<sup><a href="#src-4">4</a></sup> Big advisory firms will sell this to large enterprises. The mid-market may not feel pain until losses land.</dd></div>
+        <div><dt>Cheapest test</dt><dd>Ask five controllers or CFOs: is anyone at the company buying through an AI agent today, and what policy covers it? Would you pay $2,500&ndash;5,000 for an agent-spending controls review before your next audit? Kill it if fewer than two expect agent purchasing within 12 months.</dd></div>
+      </dl>
+    </article>
+    <article class="card">
+      <span class="tagline">Stage 2 &rarr; 4 · Service</span>
+      <h3>Agent-ready catalogs for regional distributors</h3>
+      <dl>
+        <div><dt>Thesis</dt><dd>Shopify and Amazon made consumer sellers agent-readable by default. Regional electrical, industrial and supply distributors with messy catalogs were not, and agent-run procurement routes orders to whoever has clean data and APIs.<sup><a href="#src-4">4</a></sup></dd></div>
+        <div><dt>Buyer</dt><dd>Owner or COO of a regional distributor, reached through the contractors who buy from them.</dd></div>
+        <div><dt>Red team</dt><dd>Distributors' ERP and e-commerce vendors may ship this. Data cleanup is commodity labor unless it becomes an ongoing feed you maintain.</dd></div>
+        <div><dt>Cheapest test</dt><dd>Take three regional distributors' public catalogs, run 20 real contractor purchase questions through an AI assistant, and count the failures. Show the owner the result.</dd></div>
+      </dl>
+    </article>
+    <article class="card watch">
+      <span class="tagline">Stage 3 · Service · Watch</span>
+      <h3>Dispute evidence for agent orders</h3>
+      <dl>
+        <div><dt>Thesis</dt><dd>Merchants carry agent chargebacks, and no binding network rules exist yet.<sup><a href="#src-2">2</a></sup> Logging what the agent was authorized to do becomes the evidence that wins disputes.</dd></div>
+        <div><dt>Red team</dt><dd>Chargeback specialists are already publishing agent-dispute playbooks, so this will crowd fast.<sup><a href="#src-10">10</a></sup> Better as a partner or referral line than a business.</dd></div>
+        <div><dt>Cheapest test</dt><dd>Ask three merchants whether they can tell agent orders from human ones today.</dd></div>
+      </dl>
+    </article>
+  </div>
+</section>
+
+<!-- ============ ASK ============ -->
+<section id="ask">
+  <div class="ask">
+    <span class="eyebrow">Seen this from the inside?</span>
+    <h2>Three questions for finance and procurement people</h2>
+    <p class="lede">If you run finance, purchasing or a distribution business, your answer is worth more than any source on this page. Reply through the <a href="/#contact" data-contact-link>contact form on workbypk.com</a>. Short answers are fine, and anything you share is kept anonymous.</p>
+    <ol>
+      <li><b>Today.</b> Is anyone at your company buying anything through an AI agent or assistant yet, even informally?</li>
+      <li><b>Policy.</b> If an agent made a purchase nobody meant to approve, which policy or control would catch it?</li>
+      <li><b>Suppliers.</b> Have any of your suppliers or customers asked about making catalogs, pricing or ordering readable by AI agents?</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ FORECASTS ============ -->
+<section id="forecasts">
+  <div class="sec-head">
+    <span class="eyebrow">Forecast log · made 24 Sep 2026</span>
+    <h2>Predictions this map will be scored on</h2>
+    <p class="lede">Each is dated, tied to an observable signal, and reviewed quarterly. If they miss, the stage timing above gets revised.</p>
+  </div>
+  <div class="cmp-wrap"><table class="cmp">
+    <thead><tr><th>#</th><th>Prediction</th><th>By</th><th>Confidence</th><th>If it happens</th></tr></thead>
+    <tbody>
+      <tr><td>F1</td><td>Visa or Mastercard publishes binding dispute rules or reason codes specific to agent-initiated transactions.</td><td>30 Jun 2027</td><td>Medium</td><td>Stage 3 confirmed; dispute-evidence work gets a rulebook.</td></tr>
+      <tr><td>F2</td><td>The CFPB or FTC issues guidance, a proposed rule, or an enforcement action specifically about agent-initiated consumer payments.</td><td>31 Dec 2027</td><td>Low to medium</td><td>Authorization proof becomes a compliance requirement, not a best practice.</td></tr>
+      <tr><td>F3</td><td>A major procurement suite (Amazon Business, SAP Ariba or Coupa) ships delegation controls built specifically for AI-agent purchasing.</td><td>30 Jun 2027</td><td>Medium to high</td><td>The controls opportunity shifts from product to mid-market implementation and review.</td></tr>
+      <tr><td>F4</td><td>In Global Payments' next annual survey, consumers' expected share of purchases made by AI agents within five years exceeds 20% (15% in May 2026).</td><td>2027 survey</td><td>Low to medium</td><td>Consumer comfort is rising faster than the timing above assumes.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ============ INTERSECTIONS ============ -->
+<section id="intersections">
+  <div class="sec-head">
+    <span class="eyebrow">Where waves meet</span>
+    <h2>Intersections with other waves</h2>
+  </div>
+  <ul class="rules">
+    <li><span>Programmable money</span><span>Coinbase's machine-payments protocol now sits with a Linux Foundation body, and Mastercard launched Agent Pay for Machines in June 2026: agents paying agents across cards and stablecoins.<sup><a href="#src-1">1</a>,<a href="#src-2">2</a></sup></span></li>
+    <li><span>Data-center buildout</span><span>The electrical and supply distributors on the spend map are exactly the B2B sellers whose catalogs purchasing agents will query (inference).</span></li>
+    <li><span>Business succession</span><span>Owner-run distributors that don't adapt lose agent-routed orders, and some will be retiring owners open to a sale (inference).</span></li>
+    <li><span>Aging population</span><span>Bill-management and negotiation agents for aging parents, run by their adult children (inference).</span></li>
+  </ul>
+</section>
+
+<!-- ============ HOW MADE ============ -->
+<section id="how-made">
+  <div class="sec-head">
+    <span class="eyebrow">Method</span>
+    <h2>How this was made</h2>
+    <p class="lede">First manual run of WaveMiner's evolution mapper: identify the current stage with evidence, map what each stage requires and breaks, flag next-stage opportunities, and log dated predictions. Every stage claim names a signal that can be observed. Directed and reviewed by Patrick; research compiled with Claude (Anthropic).</p>
+  </div>
+</section>
+
+<!-- ============ SOURCES ============ -->
+<section id="sources">
+  <div class="sec-head">
+    <span class="eyebrow">Provenance</span>
+    <h2>Sources</h2>
+    <p class="note">Tier A primary · B high-quality analysis · C industry reporting · D vendor marketing or weak signal. A D-tier source can suggest a lead but cannot validate it on its own.</p>
+    <p class="note">Data file: <a href="sources.csv">sources.csv</a> (every source on this page with its tier).</p>
+  </div>
+  <ol class="srcs">
+    <li id="src-1"><span class="tier C">C</span><a href="https://agenticplug.ai/current-state-of-agentic-commerce">agenticplug.ai: State of agentic commerce, protocol tracker</a> (Sep 2026)</li>
+    <li id="src-2"><span class="tier D">D</span><a href="https://www.digitalapplied.com/blog/agent-checkout-authentication-card-networks-2026">Digital Applied: Who vouches for the bot? Agent checkout authentication</a> (Aug 2026)</li>
+    <li id="src-3"><span class="tier D">D</span><a href="https://novadata.io/resources/news/shopify-agentic-storefronts-chatgpt-default-2026">Novadata: Shopify activates agentic storefronts in ChatGPT by default</a></li>
+    <li id="src-4"><span class="tier C">C</span><a href="https://distributionstrategy.com/2026/04/amazon-business-deploys-ai-across-procurement/">Distribution Strategy Group: Amazon Business deploys AI across procurement</a> (Apr 2026)</li>
+    <li id="src-5"><span class="tier C">C</span><a href="https://www.digitalcommerce360.com/2026/06/17/adobe-ai-referred-traffic-to-retail-sites-doubles-in-a-year/">Digital Commerce 360: Adobe, AI-referred traffic to retail sites doubles in a year</a> (Jun 2026)</li>
+    <li id="src-6"><span class="tier B">B</span><a href="https://business.adobe.com/blog/ai-traffic-surge-retail-sites-not-machine-readable">Adobe: AI traffic grows but retail sites lag in AI search visibility</a> (Apr 2026)</li>
+    <li id="src-7"><span class="tier B">B</span><a href="https://www.gartner.com/en/newsroom/press-releases/2026-05-27-gartner-survey-finds-consumers-want-ai-shopping-help-but-not-ai-purchase-decisions">Gartner: Consumers want AI shopping help, but not AI purchase decisions</a> (May 2026)</li>
+    <li id="src-8"><span class="tier B">B</span><a href="https://www.financialcontent.com/article/bizwire-2026-9-23-consumers-expect-ai-to-make-15-of-their-purchases-within-five-years-global-payments-research-finds">Global Payments: Consumers expect AI to make 15% of their purchases within five years</a> (Sep 2026, n=8,027)</li>
+    <li id="src-9"><span class="tier B">B</span><a href="https://www.goodwinlaw.com/en/insights/publications/2026/06/insights-technology-aiml-authorizing-agentic-payments">Goodwin: Authorizing agentic payments</a> (Jun 2026)</li>
+    <li id="src-10"><span class="tier D">D</span><a href="https://www.chargeflow.io/blog/agentic-commerce-regulation-what-merchants-need-to-know">Chargeflow: Agentic commerce regulation 2026</a></li>
+    <li id="src-11"><span class="tier C">C</span><a href="https://thefinancialbrand.com/news/payments-trends/when-ai-agents-make-incorrect-purchases-whos-responsible-197147">The Financial Brand: When an AI agent makes an incorrect purchase, who's responsible?</a></li>
+    <li id="src-12"><span class="tier B">B</span><a href="https://www.akamai.com/newsroom/press-release/akamai-research-commerce-becomes-the-epicenter-for-ai-bot-attacks-and-agentic-fraud-in-2026">Akamai: Commerce becomes the epicenter for AI bot attacks and agentic fraud</a> (Jul 2026)</li>
+    <li id="src-13"><span class="tier D">D</span><a href="https://agentmarketcap.ai/blog/2026/04/15/ai-agent-error-insurance-lloyds-aig-beazley-hallucination-liability">AgentMarketCap: AI agent error insurance takes shape</a> (Apr 2026)</li>
+    <li id="src-14"><span class="tier D">D</span><a href="https://trends.vc/bill-negotiation-agents-price-locks-playbook-moats-loyalty-penalty/">Trends.vc: Bill negotiation agents</a></li>
+    <li id="src-15"><span class="tier C">C</span><a href="https://www.searchenginejournal.com/google-search-decline-publishers-chartbeat/590681/">Search Engine Journal: Google search decline steepened to 40% for publishers (Chartbeat)</a> (Sep 2026)</li>
+    <li id="src-16"><span class="tier D">D</span><a href="https://thriveagency.com/news/10-top-generative-engine-optimization-geo-agencies-in-2026/">Thrive Agency: Top generative engine optimization agencies in 2026</a> (evidence of crowding)</li>
+  </ol>
+</section>
+
+<footer>Research notes for business exploration, not investment advice. Stage timing is a forecast, logged and scored; treat it as a hypothesis until the arrival signals appear. Research compiled with Claude (Anthropic), directed and reviewed by Patrick. &copy; 2026 Work by PK.</footer>
+
+</div>
+</body>
+</html>
