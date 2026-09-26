@@ -24,8 +24,11 @@ Derived from pages already built for workbypk.com. Nothing here is invented: eve
 | N1 | `waveminer/spend-map/index.html` | `504d03373f0751c39dab7ccc19d7c7980dfc5c61320d3898d351186a9ed43d1e` |
 | R1 | `waveminer/spend-map/atlanta/index.html` | `48d96e4536df2d938c15a34fffe76251dd1f506cfbbb95d5cd5b9689dffb6cfb` |
 | R2 | `waveminer/spend-map/northern-virginia/index.html` | `60042006da13930fc306cb10e0b10d062e27cb58b54d77138a28efdb8569cbc8` |
+| N2 | `waveminer/agents-as-consumers/index.html` | `c68cef9af4d6e39088e4f5ff3158be901222cfc311bbb896ce0ac25774360e50` |
 
 **Drift (2026-09-24):** A2 no longer matches its pin. Commit `e479186` inserted the N1 card at `projects/index.html:169-187` (19 lines). A2 traces at or below line 168 still hold. Traces past it in §1–§10 (`:193`, `:230-249`, `:255`) now sit 19 lines lower: for example, `[running / confirm]` has moved from `:193` to `:212`. The §11 traces (`:181`, `:274`) cite the current file. Re-pin A2 at the next full re-verification.
+
+**Drift (2026-09-26):** the N2 card was inserted at `projects/index.html:188-206` (19 more lines). Traces at or below line 187 still hold. Past it, add a further 19: `[running / confirm]` is now at `:231`, and the signature is at `:293`. §11 traces are updated to match.
 
 **Corpus rule:** Corpus = pages that make up Patrick's own site (hub and section pages), regardless of which model produced the first draft. Exhibits displayed as specimens of other models' work (gpt, grok, fable, shape-of-time) are excluded because they are shown as comparisons, not adopted as house style. KN Lab is excluded as out of scope (not part of workbypk). Research notes (N1 onward) are Patrick's own work but are not corpus: they are data documents that keep their own design by decision (2026-09-24), and they are governed by §11, not by §1–§7.
 
@@ -179,7 +182,7 @@ Each color's role is inferred from the selector it styles.
   - the hub's ` — state` suffix [`index.html:45`, `styles.css:127`]
   - the hub's 15px "Updated" stamp [`index.html:73`, `styles.css:104-108`]
 
-**Figure captions:** CSS exists (`projects/index.html:91-93`), but the only `<figure>` is inside a commented-out template (`projects/index.html:230-249`). No rendered caption existed at extraction, so captions are **UNSPECIFIED** in practice. *Update 2026-09-24:* the N1 card now renders the template figure (`projects/index.html:182-185`). That is a single use, and it sets no rule.
+**Figure captions:** CSS exists (`projects/index.html:91-93`), but the only `<figure>` is inside a commented-out template (`projects/index.html:230-249`). No rendered caption existed at extraction, so captions are **UNSPECIFIED** in practice. *Update 2026-09-24:* the N1 card now renders the template figure (`projects/index.html:182-185`). That is a single use, and it sets no rule. *Update 2026-09-26:* the N2 card repeats it (`projects/index.html:201-204`). Both are research-note cards, so it is still no rule for other cards.
 
 ---
 
@@ -291,7 +294,7 @@ These are recorded so they aren't lost. They don't count toward any rule and mus
 | D4 | The "parked" legend dot uses a literal `#8a8a86` instead of `--ink-soft` (the P5 rule). | `projects/index.html:118` vs `:67` |
 | D5 | A1 (hub) uses superseded values (P1-P4, P6-P8). Out of spec; migrate or ratify later. Not compliant. | `styles.css:1-8,20-27,56-58,90-99,145-149`; `index.html:16-27,98-100` |
 | D6 | A2–A4 have no `:focus-visible` style, which the focus MUST in §5 requires. | `projects/index.html:10-102`, `build-log/log.css`, `exhibits/index.html:10-88` (no `focus` match) |
-| D7 | ⚑ R1 and R2 link to "contact form on workbypk.com", but the site has no form. `data-contact-link` points at `/#contact`, the email/X/LinkedIn section. Log only: the copy is final, so fix it in the note's source. | `waveminer/spend-map/atlanta/index.html:299`, `waveminer/spend-map/northern-virginia/index.html:299`; `index.html:90` |
+| D7 | ⚑ R1, R2 and N2 link to "contact form on workbypk.com", but the site has no form. `data-contact-link` points at `/#contact`, the email/X/LinkedIn section. Log only: the copy is final, so fix it in the note's source. | `waveminer/spend-map/atlanta/index.html:299`, `waveminer/spend-map/northern-virginia/index.html:299`, `waveminer/agents-as-consumers/index.html:442`; `index.html:90` |
 
 ---
 
@@ -310,7 +313,7 @@ Any page built from this system is bound by the following.
 
 **Decision (Patrick, 2026-09-24):** research notes keep their own design. The map, filters, bar charts, graded sources and dark mode are data-document needs that §1–§7 were never derived from (§8 lists tables, charts and dark theme as UNSPECIFIED). Rebuilding N1 on the section system was considered and rejected (Patrick's "draft it", 2026-09-24).
 
-**Scope:** pages published as a numbered research note in a series. First instance: N1, `waveminer/spend-map/index.html` (WaveMiner · Research note 01), published 2026-09-24. Regional editions of a note (R1 Atlanta, R2 Northern Virginia, added 2026-09-24 as N1 v2) are part of that note and follow the same rules, with one exception: their back-link goes to `../` (the national note), not `/`, per the package README. They share N1's `fonts/`, and the same garnet link patch was applied to them.
+**Scope:** pages published as a numbered research note in a series. First instance: N1, `waveminer/spend-map/index.html` (WaveMiner · Research note 01), published 2026-09-24. Regional editions of a note (R1 Atlanta, R2 Northern Virginia, added 2026-09-24 as N1 v2) are part of that note and follow the same rules, with one exception: their back-link goes to `../` (the national note), not `/`, per the package README. They share N1's `fonts/`, and the same garnet link patch was applied to them. Second note: N2, `waveminer/agents-as-consumers/index.html` (WaveMiner · Research note 02), added 2026-09-26. It was copied in unchanged apart from the same garnet link patch and its `data-contact-link` (`/#contact`). It ships its own `fonts/` (byte-identical to N1's).
 
 **Shared with the site** (every note MUST; these are the shared basics Patrick agreed to):
 - **Link color is house garnet** `#6E1E28` in light mode, matching the §1 accent. [`waveminer/spend-map/index.html:36,79`]
@@ -322,7 +325,7 @@ Any page built from this system is bound by the following.
 - **A byline and date line with ` · ` separators** (§4). [`waveminer/spend-map/index.html:238`]
 - **`og:site_name` set to `Work by PK`.** [`waveminer/spend-map/index.html:11`]
 - **A card on `/projects/`,** in the A2 card pattern. [`projects/index.html:181`]
-- **Sign notes "Patrick"** (Patrick, 2026-09-24). N1 complies: "Patrick · workbypk.com" [`waveminer/spend-map/index.html:238`]. Site pages keep their own signature, "— Patrick King, CMT" (`projects/index.html:274`). This rule applies to notes only.
+- **Sign notes "Patrick"** (Patrick, 2026-09-24). N1 complies: "Patrick · workbypk.com" [`waveminer/spend-map/index.html:238`]. Site pages keep their own signature, "— Patrick King, CMT" (`projects/index.html:293`). This rule applies to notes only.
 
 **Series style — MUST** (Patrick, 2026-09-24: "same look"): later notes in the series use N1's tokens and type (`waveminer/spend-map/index.html:25-72`: Barlow Condensed display, IBM Plex Sans and Mono, self-hosted, light and dark). A new note copies N1's `@font-face` and `:root` blocks rather than re-deriving them. Nothing from the series style carries back into site pages.
 
