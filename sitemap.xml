@@ -7,7 +7,7 @@
   </url>
   <url>
     <loc>https://workbypk.com/projects/</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
@@ -48,6 +48,11 @@
   <url>
     <loc>https://workbypk.com/waveminer/agents-as-consumers/</loc>
     <lastmod>2026-09-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://workbypk.com/preparedness/hurricane-kit/</loc>
+    <lastmod>2026-09-28</lastmod>
     <priority>0.8</priority>
   </url>
 </urlset>

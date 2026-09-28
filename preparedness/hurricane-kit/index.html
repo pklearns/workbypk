@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>The arithmetic behind a Florida hurricane kit · Preparedness · Work by PK</title>
+<meta name="description" content="Every official checklist tells you what to buy and never how much. Here's the math for a family of four in Florida, what it costs, and where the standard advice falls short.">
+<meta name="author" content="Patrick · workbypk.com">
+<link rel="canonical" href="https://workbypk.com/preparedness/hurricane-kit/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Work by PK">
+<meta property="og:title" content="The arithmetic behind a Florida hurricane kit">
+<meta property="og:description" content="Every official checklist tells you what to buy and never how much. Here's the math for a family of four in Florida, what it costs, and where the standard advice falls short.">
+<meta property="og:url" content="https://workbypk.com/preparedness/hurricane-kit/">
+<meta property="og:image" content="https://workbypk.com/preparedness/hurricane-kit/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The arithmetic behind a Florida hurricane kit: 94 gallons of drinking water for a family of four over 14 days, and 420 gallons of toilet flushes that can't be stored.">
+<meta property="article:published_time" content="2026-09-28">
+<meta property="article:modified_time" content="2026-09-26">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The arithmetic behind a Florida hurricane kit">
+<meta name="twitter:description" content="Every official checklist tells you what to buy and never how much. Here's the math for a family of four in Florida, what it costs, and where the standard advice falls short.">
+<meta name="twitter:image" content="https://workbypk.com/preparedness/hurricane-kit/og-image.png">
+<style>
+@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/barlow-condensed-latin-600-normal.woff2") format("woff2")}
+@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/barlow-condensed-latin-700-normal.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/ibm-plex-sans-latin-400-normal.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-style:italic;font-weight:400;font-display:swap;src:url("fonts/ibm-plex-sans-latin-400-italic.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/ibm-plex-sans-latin-500-normal.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/ibm-plex-sans-latin-600-normal.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2")}
+:root{
+  --bg:#ECEFEE; --panel:#F7F9F8; --panel-2:#E3E8E6;
+  --ink:#141C1B; --ink-2:#3B4745; --muted:#63706D; --rule:#C6CFCC;
+  --accent:#1E4C8A; --accent-soft:#DCE5F2; --link:#6E1E28;
+  --teal:#2F7F7C; --sand:#8C7F66; --slate:#98A3A0;
+  --tag:#F0C93F; --tag-ink:#2A2206;
+  --good:#2C7449; --good-soft:#DCEEE2;
+  --warn:#9C620F; --warn-soft:#F5E6CA;
+  --crit:#A3342A; --crit-soft:#F3DAD6;
+  --hatch-a:#C3CBC9; --hatch-b:#D5DCDA;
+  --display:"Barlow Condensed","Arial Narrow","Roboto Condensed",sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0F1514; --panel:#161E1D; --panel-2:#1D2726;
+    --ink:#E2E9E7; --ink-2:#B9C4C1; --muted:#8B9895; --rule:#2B3634;
+    --accent:#8AADE6; --accent-soft:#1B2A40; --link:#8AADE6;
+    --teal:#63B7B2; --sand:#B3A588; --slate:#5E6A68;
+    --tag:#D9B63B; --tag-ink:#1B1604;
+    --good:#72C394; --good-soft:#162E20;
+    --warn:#E3AA4E; --warn-soft:#34270F;
+    --crit:#E6837A; --crit-soft:#3A1C19;
+    --hatch-a:#2A3533; --hatch-b:#222C2B;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0F1514; --panel:#161E1D; --panel-2:#1D2726;
+  --ink:#E2E9E7; --ink-2:#B9C4C1; --muted:#8B9895; --rule:#2B3634;
+  --accent:#8AADE6; --accent-soft:#1B2A40; --link:#8AADE6;
+  --teal:#63B7B2; --sand:#B3A588; --slate:#5E6A68;
+  --tag:#D9B63B; --tag-ink:#1B1604;
+  --good:#72C394; --good-soft:#162E20;
+  --warn:#E3AA4E; --warn-soft:#34270F;
+  --crit:#E6837A; --crit-soft:#3A1C19;
+  --hatch-a:#2A3533; --hatch-b:#222C2B;
+}
+*{box-sizing:border-box}
+html{color-scheme:light}
+[hidden]{display:none!important}
+img{max-width:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55;padding-inline:20px;padding-block:calc(28px + env(safe-area-inset-top,0px)) calc(64px + env(safe-area-inset-bottom,0px))}
+.wrap{max-width:1080px;margin-inline:auto;display:flex;flex-direction:column;gap:48px}
+a{color:var(--link)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:3px}
+h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:.01em;text-wrap:balance;margin:0;line-height:1.08}
+h1{font-size:clamp(2.4rem,6vw,3.6rem);text-transform:uppercase}
+h2{font-size:1.9rem;text-transform:uppercase}
+h3{font-size:1.3rem}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lede{font-size:1.08rem;color:var(--ink-2);max-width:68ch}
+.num{font-variant-numeric:tabular-nums}
+.code{font-family:var(--mono);font-size:.74rem;font-weight:500;background:var(--tag);color:var(--tag-ink);padding:1px 6px 1px 6px;border-radius:2px;white-space:nowrap;letter-spacing:.02em}
+sup a{font-family:var(--mono);font-size:.68rem;text-decoration:none;padding-inline:1px}
+
+/* header */
+header{display:flex;flex-direction:column;gap:14px;border-bottom:3px solid var(--ink);padding-bottom:22px}
+.back{font-family:var(--mono);font-size:.78rem;color:var(--muted);text-decoration:none;align-self:flex-start}
+.back:hover{color:var(--link)}
+.meta{display:flex;flex-wrap:wrap;gap:8px 20px;font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+
+/* section frame */
+section{display:flex;flex-direction:column;gap:18px}
+.sec-head{display:flex;flex-direction:column;gap:6px}
+
+/* bars */
+.flow{background:var(--panel);border:1px solid var(--rule);border-radius:4px;padding:22px;display:flex;flex-direction:column;gap:26px}
+.barblock{display:flex;flex-direction:column;gap:10px}
+.barlabel{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+.barlabel strong{font-family:var(--display);font-size:1.15rem;text-transform:uppercase;letter-spacing:.03em}
+.bar{display:flex;height:34px;border-radius:2px;overflow:hidden;border:1px solid var(--rule)}
+.bar>span{display:block;height:100%}
+.bar>span+span{border-left:2px solid var(--panel)}
+.hatch{background:repeating-linear-gradient(135deg,var(--hatch-a) 0 7px,var(--hatch-b) 7px 14px)}
+.s-fac{background:var(--accent)}
+.s-elec{background:var(--accent)}
+.s-mech{background:var(--teal)}
+.s-shell{background:var(--sand)}
+.s-gc{background:var(--slate)}
+.s-land{background:var(--ink-2)}
+.s-energy{background:var(--hatch-a)}
+.s-tax{background:var(--hatch-b)}
+.s-maint{background:var(--accent)}
+.s-labor{background:var(--teal)}
+.s-water{background:var(--sand)}
+.legend{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px 18px;font-size:.88rem}
+.legend div{display:flex;gap:8px;align-items:baseline}
+.sw{width:11px;height:11px;border-radius:1px;flex:none;transform:translateY(1px);box-shadow:inset 0 0 0 1px var(--rule)}
+.legend b{font-family:var(--mono);font-weight:500;font-size:.84rem}
+.legend em{font-style:normal;color:var(--muted)}
+.note{font-size:.84rem;color:var(--muted);max-width:80ch}
+
+/* readings */
+.readings{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.readings li{flex:1 1 300px;background:var(--panel);padding:18px 20px;display:flex;flex-direction:column;gap:6px}
+.readings .k{font-family:var(--display);font-weight:700;font-size:1.25rem;line-height:1.15}
+.readings p{color:var(--ink-2);font-size:.94rem}
+
+/* map controls */
+.controls{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.btn{font-family:var(--mono);font-size:.78rem;letter-spacing:.03em;border:1px solid var(--rule);background:var(--panel);color:var(--ink);padding:7px 12px;border-radius:3px;cursor:pointer}
+.btn:hover{border-color:var(--ink-2)}
+.btn[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.count{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+
+/* rows */
+.maphead,.row>summary{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(0,1.35fr) minmax(0,1.6fr) minmax(0,2fr);gap:14px;align-items:start}
+.maphead{font-family:var(--mono);font-size:.7rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);padding:0 16px 8px 34px;border-bottom:2px solid var(--ink)}
+.rows{display:flex;flex-direction:column}
+.row{border-bottom:1px solid var(--rule);background:var(--panel)}
+.row:first-child{border-top:0}
+.row>summary{list-style:none;cursor:pointer;padding:14px 16px 14px 34px;position:relative}
+.row>summary::-webkit-details-marker{display:none}
+.row>summary::before{content:"+";position:absolute;left:12px;top:12px;font-family:var(--mono);font-size:1rem;color:var(--muted)}
+.row[open]>summary::before{content:"\2212"}
+.row>summary:hover{background:var(--panel-2)}
+.r-title{font-weight:600;display:block;line-height:1.3}
+.r-path{font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.03em}
+.r-money{font-family:var(--mono);font-size:.84rem;font-variant-numeric:tabular-nums;line-height:1.4}
+.r-money small{display:block;color:var(--muted);font-size:.72rem}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{font-family:var(--mono);font-size:.7rem;padding:2px 7px;border-radius:2px;border:1px solid var(--rule);color:var(--ink-2);white-space:nowrap;background:var(--bg)}
+.chip.hi{background:var(--crit-soft);color:var(--crit);border-color:transparent}
+.chip.md{background:var(--warn-soft);color:var(--warn);border-color:transparent}
+.chip.lo{background:var(--good-soft);color:var(--good);border-color:transparent}
+.chip.fl{border-color:var(--good);color:var(--good);background:transparent}
+.chip.flp{border-style:dashed}
+.r-read{font-size:.92rem;color:var(--ink-2)}
+.r-read b{color:var(--ink)}
+.row.top{box-shadow:inset 4px 0 0 var(--accent)}
+.r-body{padding:4px 16px 20px 34px}
+.r-body dl{display:grid;grid-template-columns:170px minmax(0,1fr);gap:8px 18px;margin:0;font-size:.92rem;max-width:900px}
+.r-body dt{font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.r-body dd{margin:0;color:var(--ink-2)}
+.r-body dd strong{color:var(--ink)}
+.unres{font-size:.9rem;color:var(--muted);padding:14px 16px 0 34px}
+.unres b{color:var(--ink-2)}
+
+/* shortlist */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--rule);border-top:4px solid var(--accent);border-radius:4px;padding:20px;display:flex;flex-direction:column;gap:12px}
+.card .tagline{font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.card dl{margin:0;display:flex;flex-direction:column;gap:9px;font-size:.9rem}
+.card dt{font-family:var(--mono);font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.card dd{margin:2px 0 0;color:var(--ink-2)}
+.card.watch{border-top-color:var(--slate)}
+
+/* script + spec */
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px}
+.qlist{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:10px;color:var(--ink-2)}
+.qlist li::marker{font-family:var(--mono);color:var(--muted);font-size:.85em}
+.qlist b{color:var(--ink)}
+.fields{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.fields li{display:grid;grid-template-columns:150px minmax(0,1fr);gap:14px;padding:10px 0;border-bottom:1px solid var(--rule);font-size:.92rem;color:var(--ink-2)}
+.fields code{font-family:var(--mono);font-size:.8rem;color:var(--ink);font-weight:500}
+
+.credit{display:flex;flex-direction:column;gap:10px}
+.clist{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:8px;color:var(--ink-2);font-size:.94rem}
+.clist li::marker{color:var(--muted)}
+
+.regions{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.region{display:flex;flex-direction:column;gap:6px;padding:18px 20px;background:var(--panel);border:1px solid var(--rule);border-radius:4px;color:var(--ink-2);text-decoration:none}
+.region strong{font-family:var(--display);font-size:1.6rem;text-transform:uppercase;color:var(--ink);line-height:1.1}
+.region:hover{border-color:var(--accent)}
+.region:hover strong{color:var(--accent)}
+
+/* sources */
+.srcs{margin:0;padding-left:2.4em;display:grid;grid-template-columns:1fr;gap:6px;font-size:.86rem;color:var(--ink-2)}
+.srcs li::marker{font-family:var(--mono);font-size:.8em;color:var(--muted)}
+.srcs li:target{background:var(--accent-soft)}
+.tier{font-family:var(--mono);font-size:.68rem;padding:0 5px;border:1px solid var(--rule);border-radius:2px;margin-right:6px;color:var(--muted)}
+.tier.A{color:var(--good);border-color:var(--good)}
+.tier.B{color:var(--accent);border-color:var(--accent)}
+.tier.D{color:var(--warn);border-color:var(--warn)}
+footer{font-size:.84rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:16px}
+
+@media (max-width:820px){
+  .maphead{display:none}
+  .row>summary{grid-template-columns:1fr;gap:8px}
+  .r-body dl{grid-template-columns:1fr;gap:2px 0}
+  .r-body dd{margin-bottom:8px}
+  .fields li{grid-template-columns:1fr;gap:2px}
+}
+@media (max-width:480px){
+  body{padding-inline:16px}
+  .flow{padding:16px}
+  .row>summary,.r-body{padding-left:30px;padding-right:12px}
+  .row>summary::before{left:10px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* hurricane-kit additions (table styles from research note 02) */
+.cmp-wrap{overflow-x:auto;border:1px solid var(--rule);border-radius:4px;background:var(--panel)}
+table.cmp{border-collapse:collapse;width:100%;min-width:720px;font-size:.9rem}
+table.cmp th{font-family:var(--mono);font-size:.68rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);text-align:left;padding:10px 14px;border-bottom:2px solid var(--ink);font-weight:500}
+table.cmp td{padding:12px 14px;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--ink-2)}
+table.cmp tr:last-child td{border-bottom:0}
+table.cmp td:first-child{font-weight:600;color:var(--ink)}
+table.cmp.cost{min-width:0}
+.prose{display:flex;flex-direction:column;gap:14px;max-width:68ch}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <a class="back" href="/">&larr; workbypk.com</a>
+  <span class="eyebrow">Preparedness · Guide · Florida hurricane kit</span>
+  <h1>The arithmetic behind a Florida hurricane kit</h1>
+  <div class="meta"><span>Patrick · workbypk.com</span><span>Last verified September 26, 2026</span><span>Prices are estimates</span></div>
+  <p class="note"><em>Last verified September 26, 2026. Facts and sources were checked on September 24; the season status was checked on September 26. Prices are estimates and haven't been checked against live listings yet. This is planning arithmetic, not medical, nutritional, or insurance advice. This page gets updated, and the date above says when.</em></p>
+</header>
+
+<section id="intro">
+  <div class="prose">
+    <p>Every hurricane checklist I have ever read tells you <em>what</em> to buy. Water. Batteries. A radio. Non-perishable food. None of them tell you <em>how much</em>, and the difference between those two things is the entire problem.</p>
+    <p>"Water: one gallon per person per day" is not a plan. It's an input to a plan. The plan is the number you get when you multiply it out, look at where that volume physically goes in your house, price it, and then discover that the answer for a family of four over two weeks is ninety-four gallons and it does not fit under the sink.</p>
+    <p>On September 26, 2024, we left our house after packing as much as we could, hoping that the rising waters would not reach the house. I watched tide charts until 2 am when the water appeared to have peaked, and my neighbor sent me a video of him wading in water 8 inches deep 2 blocks from our house. We arrived the next morning to water still draining from the front door, the high water line even with my sandbags. Two months later we still had piles of furniture, drywall and toys in our yard. Fortunately, we are part of a community and friends who travelled from all over the country to help with demolition and remediation. Another fortunate piece, I was moderately prepared for a few days. I was still not prepared enough.</p>
+    <p>So I did the arithmetic. What follows is the version I built for my own household — two adults, two kids, one large dog, St. Petersburg — with the regional adjustments for the rest of Florida, because the Panhandle and the Keys and Orlando are not solving the same problem the Tampa Bay peninsula is.</p>
+  </div>
+</section>
+
+<section id="where">
+  <div class="sec-head">
+    <h2>Where you live changes the answer</h2>
+  </div>
+  <div class="prose">
+    <p>Florida is not one hazard. It's four, and the difference between them isn't category — it's what fails, for how long, and how much warning you get.</p>
+    <p><strong>West-central peninsula (Tampa Bay, Pinellas, Hillsborough, Sarasota).</strong> The problem here is geometry, not wind. The continental shelf off Florida's west coast is wide and shallow, and shallow water lets a storm pile surge higher and push it further inland than the same storm would manage on a steep coast. Tampa Bay itself is shallow and crescent-shaped, so water shoved into it has nowhere to go but up and over. Researchers who study this are consistent on one uncomfortable point: for surge, <strong>the size and track of a storm matter more than its category.</strong> Helene made landfall in the Big Bend, more than 150 miles north of Tampa, and still produced the highest surge ever recorded in Tampa Bay — five to seven feet of inundation inside the bay, and 6.31 feet at a St. Petersburg tide gauge that had never topped four feet since records began in 1947. That water came into neighborhoods where people had decided a distant Big Bend landfall meant they were fine. The planning failure here is treating a category number as a stay-home decision.</p>
+    <p><strong>Big Bend and Panhandle.</strong> Different failure mode: speed. The northeastern Gulf is where storms rapidly intensify on final approach, and the historical case that should end the argument is Michael — a tropical depression on October 7, 2018, a Category 5 at landfall at Mexico Beach on October 10 with 160 mph winds, with much of that strengthening in the final 24 hours. Helene did the same thing in 2024, intensifying rapidly over the eastern Gulf and coming ashore near Perry as a Category 4. Add fewer big-box stores per capita, longer utility restoration in rural counties, and wind that stays destructive much further inland than people expect. <strong>If you live between Pensacola and Cedar Key, your prep has to be finished before a storm is named,</strong> because a storm that intensifies on final approach shortens the warning you actually get.</p>
+    <p><strong>Southeast coast and the Keys.</strong> The shelf drops off fast on the Atlantic side, so surge amplification is less extreme for a given storm — but the systems arriving are frequently long-track Atlantic hurricanes at full strength, the building stock spans a century of wildly different codes, and the Keys have exactly one road out. Evacuation timing in Monroe County is measured in days, not hours, and for most of the island chain the entire "shelter in place with fourteen days of food" framing is secondary to leaving early.</p>
+    <p><strong>Inland Florida (Orlando, Polk, Ocala, the I-4 corridor).</strong> No surge, no evacuation zone — and that is precisely the trap. Ian's worst inland damage was freshwater river flooding that arrived <em>days</em> after landfall, in places that had never flooded and had no zone designation to warn anyone. Inland households also get the longest power outages and the least attention, which makes the food, water, and cooling arithmetic below more relevant to them, not less. <strong>The absence of an evacuation zone is not the absence of risk.</strong></p>
+    <p><strong>The one lookup everybody skips.</strong> Your evacuation zone and your FEMA flood zone are different maps, drawn by different methods, for different purposes. A house outside every evacuation zone can still sit in a flood zone — and in cities with their own stormwater floodplain mapping, like St. Petersburg, there's a <em>third</em> map showing rainfall-driven flood risk that FEMA's maps don't capture at all. Zones run A through F statewide, they get redrawn after major storms, and many inland counties have no designated zones. Look yours up at <strong>floridadisaster.org/knowyourzone</strong>, then look up your flood zone separately through your county, then check whether your city publishes a stormwater floodplain. Print the evacuation map with your address marked, because you will not be doing this lookup on a phone at 4% battery.</p>
+  </div>
+</section>
+
+<section id="water">
+  <div class="sec-head">
+    <h2>The water arithmetic</h2>
+  </div>
+  <div class="prose">
+    <p>Federal guidance starts at one gallon per person per day for at least three days, and CDC says to try to store a two-week supply if possible. Florida's own standard — from the Division of Emergency Management and the Department of Health — is at least seven days. I planned for the full fourteen and raised the daily amount for Florida heat.</p>
+    <p>Here's why the daily number isn't one gallon. Ready.gov's own guidance says water needs rise in warm climates and <strong>can double in very hot temperatures</strong>. A Florida August with no air conditioning, indoors, plus outdoor cleanup labor, is exactly the case that caveat is describing. So the working figure is 1.5 gallons per person per day, not 1.0.</p>
+  </div>
+  <div class="cmp-wrap"><table class="cmp num">
+    <thead><tr><th>Duration</th><th>4 people @ 1.0 gal (federal)</th><th>4 people @ 1.5 gal</th><th>+ 70 lb dog</th><th>Potable total</th></tr></thead>
+    <tbody>
+      <tr><td>3 days</td><td>12 gal</td><td>18 gal</td><td>2 gal</td><td><strong>20 gal</strong></td></tr>
+      <tr><td>7 days</td><td>28 gal</td><td>42 gal</td><td>5 gal</td><td><strong>47 gal</strong></td></tr>
+      <tr><td>14 days</td><td>56 gal</td><td>84 gal</td><td>10 gal</td><td><strong>94 gal</strong></td></tr>
+    </tbody>
+  </table></div>
+  <div class="prose">
+    <p>Ninety-four gallons is roughly 780 pounds of water. It is not something you improvise on 24 hours' notice, which is the entire argument for buying containers in April.</p>
+    <p><strong>Then there's the number nobody runs.</strong> A modern toilet flush is 1.28 to 1.6 gallons. Four people at five flushes a day is about 30 gallons a day — <strong>420 gallons over fourteen days.</strong> You cannot store that. Nobody can store that. So the plan isn't to store flush water, it's to <em>reduce</em> flushes (a bucket toilet with gel bags handles solids; "if it's yellow, let it mellow" handles the rest) and <em>capture</em> non-potable water for the flushes you do take. A bathtub bladder plus a lined trash can gets you to roughly 130 gallons, which covers hygiene plus about one flush per person per day.</p>
+    <p>The bathtub is not drinking water. Tub surfaces, overflow drains, and stoppers aren't food-safe and they leak. A bladder liner fixes the sanitation problem, and it's still the wrong place to store what you drink.</p>
+    <p>Two free moves, 48 hours out: fill every bottle, pitcher, and cooler in the house, and freeze eight to ten half-full two-liter bottles. They chill the fridge for the first day and become drinking water as they melt. Store-bought ice purchased three days early is just water by landfall.</p>
+  </div>
+</section>
+
+<section id="treatment">
+  <div class="sec-head">
+    <h2>What water treatment actually does — and doesn't</h2>
+  </div>
+  <div class="cmp-wrap"><table class="cmp">
+    <thead><tr><th>Method</th><th>Handles</th><th>Does <strong>not</strong> handle</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Rolling boil, 1 min</strong></td><td>Bacteria, viruses, protozoa including Crypto and Giardia</td><td>Heavy metals, salts, most chemicals — and evaporation <em>concentrates</em> them</td></tr>
+      <tr><td><strong>Unscented bleach</strong> (5–9% sodium hypochlorite: 8 drops per gallon; double if cloudy, murky, colored, or very cold; wait 30 min)</td><td>Most bacteria and viruses</td><td>Works poorly on Cryptosporidium and Giardia; no chemicals, salt, or metals</td></tr>
+      <tr><td><strong>Chlorine dioxide tablets</strong></td><td>Viruses, bacteria; kills Crypto <em>if</em> you follow the label's contact time exactly</td><td>Chemicals, salt, metals</td></tr>
+      <tr><td><strong>Hollow-fiber filter</strong> (Sawyer, LifeStraw)</td><td>Bacteria and protozoa, by pore size</td><td><strong>Viruses</strong>, dissolved chemicals, salt</td></tr>
+      <tr><td><strong>Carbon gravity system</strong> (Berkey-style)</td><td>Taste, odor, some chemicals and metals</td><td>Not a reliable virus barrier alone; not desalination</td></tr>
+      <tr><td><strong>Anything you're likely to own</strong></td><td>—</td><td><strong>Floodwater:</strong> salt, fuel, pesticides, and sewage mixed together</td></tr>
+    </tbody>
+  </table></div>
+  <div class="prose">
+    <p>That last row is the one to memorize, because it's where the marketing gets people hurt. CDC is blunt about it: you <strong>cannot</strong> make water containing fuel or toxic chemicals safe by boiling or disinfecting it, and a portable filter won't reliably strip the chemicals out either. Most portable filters don't remove viruses — pore size determines what you get, so read the certification and not the ad copy.</p>
+    <p>Practically: treat <em>biologically suspect but clear</em> water — a well, a cistern, tap water under a boil-water notice — with bleach or tablets, pre-filtering through a coffee filter if it's cloudy. Check the bleach label first: it should say 5% to 9% sodium hypochlorite, it has to be plain unscented bleach with no added cleaners, and a bottle more than a year old has lost enough strength that you shouldn't rely on it. Never attempt to treat storm surge, canal, or standing floodwater for drinking. On the Gulf coast that water is a mix of salt, sanitary sewer overflow, lawn chemicals, and fuel, and no gear you're likely to own changes that.</p>
+    <p>And unless authorities order it: <strong>don't ration drinking water.</strong> Dehydration in a 100°F house is a faster threat than running short on day twelve.</p>
+  </div>
+</section>
+
+<section id="food">
+  <div class="sec-head">
+    <h2>The food arithmetic</h2>
+  </div>
+  <div class="prose">
+    <p>Same method for food: calories required, calories stocked, and the gap. For my household the planning floor is about <strong>7,700 calories and 260 grams of protein per day</strong> — an adult doing heavy cleanup labor in heat, an adult at normal activity, and two school-age kids. Over fourteen days that's roughly <strong>108,000 calories and 3,650 grams of protein.</strong></p>
+    <p>The 42-item inventory I built delivers <strong>112,540 calories (+4%) and 5,105 g of protein (+40%) for about $840.</strong> The calorie margin is deliberately thin — it's a buffer for one spoiled item or a neighbor at the door, not a third week. The protein overshoot is mostly structural: once I built the list around shelf-stable protein sources, the total ended up well above the planning floor.</p>
+    <p>Four design rules did more work than the item list itself:</p>
+    <p><strong>Single-serve, or don't buy it.</strong> No refrigeration means an opened container is a one-sitting item. In a 90°F kitchen the two-hour rule is closer to one. That rule alone eliminates the five-pound peanut butter tub and the family-size mayo jar.</p>
+    <p><strong>Nothing that needs hot water.</strong> This is why I rejected freeze-dried #10 cans, dehydrated camping meals, instant soup, ramen, and dry beans, rice, and pasta. They all require boiling water — the exact resource you're short of. Expensive calories you'll never otherwise eat.</p>
+    <p><strong>Nothing that drives thirst.</strong> High-sodium items cost you water. That's most of why MRE cases didn't make it either, along with the fact that kids reject them.</p>
+    <p><strong>Nothing that melts.</strong> Chocolate bars are liquid at 90°F indoors. Candy-shell chocolate and fruit snacks hold.</p>
+    <p>One specific: <strong>light tuna only, never albacore.</strong> Per FDA/EPA, albacore carries about three times the mercury of canned light tuna. Light tuna and canned salmon are Best Choices; children get two servings a week from that category in age-appropriate portions. I put fish on two days out of the week, and every fish item swaps 1:1 for a chicken pouch at nearly identical calories and protein.</p>
+    <p><strong>The thesis under all of it:</strong> everything on the list is something the household eats anyway — school lunches, beach trips, a normal Tuesday. Preparedness that fails is preparedness you had to throw away. Two zones on one shelf, front is eat-next, back is newest, restock from the back. That's first-in-first-out with no system to maintain.</p>
+  </div>
+</section>
+
+<section id="cost">
+  <div class="sec-head">
+    <h2>What it actually costs</h2>
+  </div>
+  <div class="prose">
+    <p>Totals from the tracker, at mid-2026 estimated prices.</p>
+  </div>
+  <div class="cmp-wrap"><table class="cmp cost num">
+    <thead><tr><th>Starting from zero</th><th></th></tr></thead>
+    <tbody>
+      <tr><td>14 days of food, 42 items</td><td><strong>~$840</strong></td></tr>
+      <tr><td>Gear classified as essential</td><td><strong>~$5,000</strong></td></tr>
+      <tr><td>All gear, including every upgrade</td><td><strong>~$9,500</strong></td></tr>
+    </tbody>
+  </table></div>
+  <div class="prose">
+    <p>Almost nobody is actually starting from zero. Coolers, flashlights, tools, first-aid supplies, fans, and other ordinary household items make up a meaningful part of that total. Your actual cost is the gap between this list and what you already own. That's why the downloadable tracker has an On hand column: inventory first, buy second.</p>
+    <p>In my case, I'll publish the actual gap once I've finished inventorying the house, rather than pretending an estimate is more precise than it is.</p>
+    <p><strong>If the budget is $500 and not a dollar more,</strong> buy in this order: CO alarms, water containers and bottled water, chlorine dioxide tablets, two manual can openers, seven days of food, lanterns and headlamps with batteries, a NOAA weather radio, two power banks, a first-aid kit, a bucket toilet with gel bags, and cash in small bills. That's the version that keeps you safe rather than comfortable.</p>
+    <p><strong>The one four-figure recommendation: for most households, start with a battery, not a generator.</strong> A 1,900–2,000 Wh LiFePO4 power station plus about 400 W of folding solar runs around $1,200. A full battery runs a small window A/C for a few hours, or fans, phones, and lights through a day or two, and on a sunny day the panel puts back a good part of what you used. LiFePO4 is the chemistry to look for, because it handles sitting fully charged through a Florida summer and then cycling hard for a week better than older lithium batteries. Compared with a generator: no carbon monoxide, no fuel storage, no noise, and nothing to steal off the driveway at 2 a.m. A generator still wins if you need central A/C, a well pump, or medical equipment through a long outage, or more power each day than one panel can put back.</p>
+  </div>
+</section>
+
+<section id="buying">
+  <div class="sec-head">
+    <h2>Buying it, mechanically</h2>
+  </div>
+  <div class="prose">
+    <p><strong>Florida's disaster-supply sales tax exemption is now permanent.</strong> The old two-week tax holidays are gone; HB 7031, signed in June 2025, made the exemption year-round starting August 1, 2025. Covered items include batteries (AA, AAA, C, D, 6V, 9V), fire extinguishers, smoke detectors and <strong>carbon monoxide alarms</strong>, portable generators, waterproof tarps up to 1,000 sq ft, portable gas or diesel fuel cans up to five gallons, life jackets, sunscreen, insect repellent, and ground-anchor and tie-down kits. Propane and other LP gas containers are not on the list, even though the old holidays covered them. Bottled water and non-perishable food were already untaxed. Confirm current eligibility with the Florida Department of Revenue before counting on it for a big-ticket item — but the practical effect is that there is no longer any reason to wait for a specific weekend to buy.</p>
+    <p><strong>Two stores and one hardware run covers about 90%.</strong> Costco or Sam's for roughly two-thirds of the food plus bulk consumables. A Walmart or Target supercenter for the rest of the groceries and most of the household gear. Then one trip to Home Depot or Lowe's for the things that can't be substituted: tarps, cap nails, furring strips, buckets, contractor bags, extension cords, N95s, fire extinguishers, CO alarms. <strong>Hardware supplies can disappear quickly once a storm threatens.</strong> Aldi is the cost lever on canned goods if you're building the whole inventory in one pass. Publix is where you go early or not at all.</p>
+    <p><strong>Order the online-only items in early August, not during a warning.</strong> Stackable water containers, chlorine dioxide tablets, waste gel bags, bathtub bladders, power stations, solar panels, garage door braces. Availability tightens quickly once a storm threatens, and shipping windows can extend past landfall.</p>
+    <p><strong>The pharmacy run happens in June.</strong> A 30-day prescription buffer and a written medication list with doses and prescriber. If anyone in the house has refrigerated medication, get its temperature excursion limits <strong>from your pharmacist in writing, per product</strong> — the answer differs by manufacturer and guessing has consequences.</p>
+  </div>
+</section>
+
+<section id="dont-work">
+  <div class="sec-head">
+    <h2>Things people buy that don't work</h2>
+  </div>
+  <ul class="clist">
+    <li><strong>Duct-taping windows.</strong> Does nothing for impact resistance and produces larger, more dangerous shards. It is a persistent myth and it is worse than doing nothing.</li>
+    <li><strong>Buckets of #10-can freeze-dried food.</strong> Requires large volumes of boiling water.</li>
+    <li><strong>Candles.</strong> Post-storm house fires are common and fire response is not something you can count on. LED lanterns cost less.</li>
+    <li><strong>A generator bought during a warning</strong>, with no cords, no fuel, no oil, no transfer switch, and no practice run.</li>
+    <li><strong>Gallon-jug water pallets as the whole strategy.</strong> Thin jugs split in storage. Fine as a supplement, wrong as a foundation.</li>
+    <li><strong>Peel-and-stick "hurricane window film."</strong> Not rated impact protection.</li>
+    <li><strong>Bottled water hoarded past 100 gallons</strong> by someone who owns no filter, no tablets, and no way to flush a toilet. Balance beats volume.</li>
+  </ul>
+  <div class="prose">
+    <p>And the things almost nobody buys and everybody regrets: <strong>a second can opener</strong> (a classic single point of failure in a fully stocked pantry), puncture-resistant boots, cash in small bills, mosquito control for the clouds that arrive within three to five days of standing water, a refrigerator thermometer, tarp <em>fasteners</em> to go with the tarps, and a dehumidifier ready for the hour power comes back — which is when mold prevention actually happens.</p>
+    <p>Also: <strong>write your evacuation trigger down in advance.</strong> "If a Zone A or B order is issued, or surge forecast exceeds X feet, we go." Deciding that under a warning, with a spouse, in traffic, is the failure mode.</p>
+  </div>
+</section>
+
+<section id="non-negotiables">
+  <div class="sec-head">
+    <h2>The non-negotiables</h2>
+  </div>
+  <div class="prose">
+    <p><strong>Generators and anything that burns fuel go outdoors. Always.</strong> Never in a house, garage, carport, shed, or porch — not with the door open, not briefly. A garage with the door up still accumulates lethal carbon monoxide. At least 20 feet from the structure, exhaust pointed away from every window and vent, including the neighbors'. <strong>Never plug a generator into a wall outlet</strong> — backfeeding energizes the utility line and can kill a lineman working on your street. Two battery CO alarms with fresh batteries, one near sleeping areas. Headache, nausea, or confusion means everyone outside and call 911. CO disables you before you understand what's happening. Charcoal grills and camp stoves fall under the same rule, and no, you cannot heat a room with one.</p>
+    <p><strong>Floodwater.</strong> Assume sewage, fuel, lawn chemicals, glass, nails, washed-out pavement, and fire ant rafts. Assume any standing water near a downed line is energized — stay 30 feet back. Turn around, don't drown: six inches of moving water can knock an adult down, twelve inches of rushing water carries off most cars, and two feet carries off SUVs and trucks.</p>
+    <p><strong>Food after power loss.</strong> Keep the refrigerator and freezer closed. A refrigerator generally keeps food safe for about four hours without power; a full freezer about 48 hours and a half-full freezer about 24. After that, go by temperature: discard refrigerated perishables that have been above 40°F for more than two hours. <strong>Never taste food to decide whether it's safe.</strong> Discard any food that contacted floodwater, with one exception: USDA says undamaged, commercially made all-metal cans and retort pouches can be saved if you strip the labels, wash them, and sanitize them — two minutes at a boil, or fifteen minutes in a tablespoon of unscented bleach per gallon of water. Everything else goes, including dented or swollen cans, pull-tab and screw-cap lids, home-canned jars, cardboard boxes, and bottled water.</p>
+    <p><strong>The surge that kills your electronics arrives when power is restored, not when it fails.</strong> Unplug the non-essentials before restoration.</p>
+  </div>
+</section>
+
+<section id="season">
+  <div class="sec-head">
+    <h2>A quiet season doesn't change the math</h2>
+  </div>
+  <div class="prose">
+    <p>As of September 26, 2026, the Atlantic has produced seven named storms and no hurricanes. No season since 1914 had reached September 21 without one. That is a genuinely unusual year, driven by a strong El Niño, and it is still not a reason to relax.</p>
+    <p>A seasonal forecast predicts how many storms form across the whole Atlantic. It is not a landfall forecast, and NOAA says so explicitly. Andrew came out of a quiet season in 1992. The back half of the season is also Florida's half: late-season storms tend to form close in, in the western Caribbean and the southern Gulf, and curve north. Michael hit Mexico Beach on October 10, 2018. Milton came ashore at Siesta Key on October 9, 2024, thirteen days after Helene. A storm that forms that close means <strong>less time to prepare, not less to prepare for.</strong> That's the argument for doing the arithmetic in a quiet month instead of in the cone.</p>
+  </div>
+</section>
+
+<section id="how-built">
+  <div class="sec-head">
+    <h2>How this was built</h2>
+  </div>
+  <div class="prose">
+    <p>This was built with AI — specifically, a long working session that pulled current federal, state, and county guidance, ran every quantity as arithmetic rather than copying a checklist, and then produced two artifacts: a full plan document and a live inventory spreadsheet with the whole thing wired up as formulas. I checked the sources, I made the judgment calls, and I own the errors. But the reason there's a calorie table and a 420-gallon flush figure in here at all is that the marginal cost of <em>actually doing the math</em> dropped to near zero, and once it does, it becomes obvious how much standard preparedness advice is category names with no quantities attached.</p>
+    <p>That's also why this is a living page rather than a finished article. Prices decay, links rot, and zones get redrawn, so the date at the top says when it was last checked. Two updates are next: line-item prices checked against live listings, and my own household's actual gap once the On hand column is filled in.</p>
+  </div>
+</section>
+
+<section id="this-week">
+  <div class="sec-head">
+    <h2>Five things, this week</h2>
+  </div>
+  <ol class="qlist">
+    <li>Sign up for your county's emergency alerts and make sure Wireless Emergency Alerts are on for every phone in the house. Then look up your evacuation zone at floridadisaster.org/knowyourzone, <strong>and</strong> your FEMA flood zone, <strong>and</strong> your city's stormwater floodplain if it publishes one. Print the map with your address on it.</li>
+    <li>Write your evacuation trigger down and tell your household what it is.</li>
+    <li>Buy the CO alarms. Sixty dollars, permanently tax-exempt in Florida, and nothing else on any list here saves a life this reliably.</li>
+    <li>Order the online-only items today: water containers, chlorine dioxide tablets, waste gel bags.</li>
+    <li>Count what you already own before you buy anything else. Most households are further along than they think, and the tracker's On hand column shows where the real gaps are.</li>
+  </ol>
+</section>
+
+<section id="downloads">
+  <p class="note"><em>Downloads: <a href="hurricane-inventory-tracker.xlsx" download>inventory tracker spreadsheet</a></em></p>
+  <p class="note"><em>Why I built this: <a href="https://pklearns.substack.com">Build Log — Issue No. 7</a></em><!-- SWAP AFTER NO. 7 PUBLISHES --></p>
+</section>
+
+<section id="sources">
+  <div class="sec-head">
+    <h2>Sources</h2>
+  </div>
+  <p class="note"><em>Ready.gov, FEMA, Florida Division of Emergency Management, Florida Department of Health, Florida Legislature (HB 7031, 2025), City of St. Petersburg, CDC, EPA, USDA FSIS, FDA/EPA fish advice, NOAA and the National Hurricane Center, and county emergency management guidance. Season status: National Hurricane Center advisories and news reports through September 25, 2026.</em></p>
+</section>
+
+<footer>Costs are mid-2026 estimates. This is preparedness planning — not medical, nutritional, legal, or insurance advice. &copy; 2026 Work by PK.</footer>
+
+</div>
+</body>
+</html>
