@@ -70,7 +70,7 @@ A1–A4 contain two systems. **The section system governs all new pages (P0, res
 - **MUST** be a single centered column with a reading-width cap below `64rem`. At `64rem` and wider the page widens and sections flow into columns (P7a). [`styles.css:34-37,158-197`, `projects/index.html:36,100`, `build-log/log.css:33,79-92`, `exhibits/index.html:36,87`] The paragraph cap stays `66ch` (P7).
 
 **P0 — resolved.**
-- **MUST** build every new page on the section system (A2–A4 tokens, scale and chrome), with one exception: links follow A1 (P9). Research notes are out of scope for this rule; they follow §11.
+- **MUST** build every new page on the section system (A2–A4 tokens, scale and chrome), with one exception: links follow A1 (P9). Research notes and preparedness guides are out of scope for this rule; they follow §11.
 - The existing hub (A1) was not changed by this decision. *Update 2026-09-26 (D5, Patrick: "update"):* the hub's styles now use the section system (P1–P4, P6, P7); its masthead and footer frame is unchanged (see D5). Its values are recorded below as *Superseded (for reference)*.
 - *Superseded (for reference):* the hub system, built from `styles.css` tokens (`styles.css@1344aab:1-8`).
 
@@ -335,6 +335,8 @@ Any page built from this system is bound by the following.
 **Series style — MUST** (Patrick, 2026-09-24: "same look"): later notes in the series use N1's tokens and type (`waveminer/spend-map/index.html:25-72`: Barlow Condensed display, IBM Plex Sans and Mono, self-hosted, light and dark). A new note copies N1's `@font-face` and `:root` blocks rather than re-deriving them. Nothing from the series style carries back into site pages.
 
 **Not shared, on purpose:** N1's data blue `--accent` stays blue. It encodes meaning in the bars and edges, and the copy names it: "Blue-edged rows are the three being tested first" [`waveminer/spend-map/index.html:324`]. The published social image uses the same blue [`waveminer/spend-map/og-image.png`].
+
+**Preparedness guides (Patrick, 2026-09-28: "commit + doc"):** guides under `/preparedness/` keep the research-note design too. First instance: G1, `preparedness/hurricane-kit/index.html`. It uses N1's tokens, type and fonts and follows the shared basics above, with one difference: paragraphs and notes have no `ch` cap and fill the 1080px column to match the tables (`.prose`, `.wrap .note`), at Patrick's request.
 
 ---
 
