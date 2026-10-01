@@ -336,7 +336,7 @@ Any page built from this system is bound by the following.
 
 **Not shared, on purpose:** N1's data blue `--accent` stays blue. It encodes meaning in the bars and edges, and the copy names it: "Blue-edged rows are the three being tested first" [`waveminer/spend-map/index.html:324`]. The published social image uses the same blue [`waveminer/spend-map/og-image.png`].
 
-**Preparedness guides (Patrick, 2026-09-28: "commit + doc"):** guides under `/preparedness/` keep the research-note design too. First instance: G1, `preparedness/hurricane-kit/index.html`. It uses N1's tokens, type and fonts and follows the shared basics above, with one difference: paragraphs and notes have no `ch` cap and fill the 1080px column to match the tables (`.prose`, `.wrap .note`), at Patrick's request.
+**Preparedness guides (Patrick, 2026-09-28: "commit + doc"):** guides under `/preparedness/` keep the research-note design too. First instance: G1, `preparedness/hurricane-kit/index.html`. It uses N1's tokens, type and fonts and follows the shared basics above, with one difference: paragraphs and notes have no `ch` cap and fill the column to match the tables (`.prose`, `.wrap .note`), and the column follows P7a: 1080px below `64rem`, `90rem` at `64rem` and wider. Both at Patrick's request ("commit + doc", 2026-09-28; "wider", 2026-10-01).
 
 ---
 
