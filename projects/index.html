@@ -80,7 +80,7 @@ a { color: var(--garnet); text-decoration: underline; text-decoration-thickness:
 .proj .mark .fg { fill: var(--garnet); }
 
 .proj header { display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
-.proj h2 { font-size: var(--s-1); font-weight: 700; letter-spacing: -0.01em; color: var(--garnet-deep); }
+.proj h2, .proj h3 { font-size: var(--s-1); font-weight: 700; letter-spacing: -0.01em; color: var(--garnet-deep); }
 .proj .date { font: 500 var(--s--1)/1 var(--mono); color: var(--ink-soft); margin-left: auto; }
 .proj p { color: var(--ink-soft); margin: 0.6rem 0 0; max-width: 58ch; }
 .proj p b { color: var(--ink); font-weight: 600; }
@@ -97,7 +97,17 @@ a { color: var(--garnet); text-decoration: underline; text-decoration-thickness:
   .proj .date { margin-left: 0; }
 }
 
-.sig { margin-top: 2.4rem; } @media (min-width: 64rem) { .wrap { max-width: 90rem; } .wrap > p, .brief { max-width: 66ch; } .projects { display: grid; grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr)); gap: 0 clamp(2rem, 3vw, 3rem); border-top: 0; } .proj { border-bottom: 0; border-top: 1px solid var(--rule); } }
+h2.section { font-size: var(--s-1); font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; color: var(--garnet-deep); margin-top: 3.4rem; }
+.brief-list { padding-left: 1.2em; }
+.featured { margin-top: 1.2rem; }
+.proj dl.case { margin-top: 0.8rem; max-width: 58ch; }
+.proj dl.case dt { font: 500 var(--s--1)/1.7 var(--mono); letter-spacing: 0.06em; color: var(--ink-soft); margin-top: 0.7rem; }
+.proj dl.case dd { color: var(--ink-soft); }
+.proj details { margin-top: 0.9rem; }
+.proj summary { cursor: pointer; color: var(--garnet); font-size: var(--s--1); font-weight: 600; padding-block: 0.4rem; }
+.proj summary:focus-visible { outline: 2px solid var(--garnet); outline-offset: 3px; }
+
+.sig { margin-top: 2.4rem; } @media (min-width: 64rem) { .wrap { max-width: 90rem; } .wrap > p, .brief, .brief-list { max-width: 66ch; } .projects { display: grid; grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr)); gap: 0 clamp(2rem, 3vw, 3rem); border-top: 0; } .proj { border-bottom: 0; border-top: 1px solid var(--rule); } }
 </style>
 </head>
 <body>
@@ -109,6 +119,139 @@ a { color: var(--garnet); text-decoration: underline; text-decoration-thickness:
   </div>
 
   <h1>Projects.</h1>
+  <p>These are not a catalog of applications.</p>
+  <p>Each project is presented as evidence of a problem-solving method:</p>
+  <ul class="brief-list">
+    <li>what question existed;</li>
+    <li>what I assumed;</li>
+    <li>what I tested or built;</li>
+    <li>what failed;</li>
+    <li>what the evidence showed;</li>
+    <li>what changed because of it.</li>
+  </ul>
+  <p>Some projects continue. Some are finished. Some are useful because the answer was "do not build this."</p>
+
+  <h2 class="section" id="evidence">Three worked examples</h2>
+
+  <div class="projects featured">
+
+    <!-- ============ EVIDENCE: KING NUGGETS ============ -->
+    <article class="proj">
+      <div class="mark" aria-hidden="true">
+        <svg viewBox="0 0 52 52"><path class="au" d="M8 44 V36 M16 44 V28 M24 44 V32 M32 44 V20 M40 44 V26"/><path class="st" d="M6 16 Q14 6 22 14 T38 12 T48 8"/></svg>
+      </div>
+      <div>
+        <header>
+          <h3>King Nuggets — Verified Market Research System</h3>
+          <span class="status running"><i></i>running</span>
+        </header>
+        <p><b>Turned a subjective multi-factor market framework into a repeatable research system with explicit state, validation, provenance and point-in-time history.</b></p>
+        <dl class="case">
+          <dt>Problem</dt>
+          <dd>Market analysis can combine useful judgment with stale data, subjective definitions and narratives that are difficult to evaluate later.</dd>
+          <dt>Capability</dt>
+          <dd>Systems thinking · data workflows · validation · controls · research design · AI implementation</dd>
+        </dl>
+        <details>
+          <summary>How it worked</summary>
+          <dl class="case">
+            <dt>Assumption</dt>
+            <dd>That a market view is worth producing whenever a model can write one.</dd>
+            <dt>What I did</dt>
+            <dd>I translated a multi-factor market framework into explicit state, repeatable calculations, validation rules and a point-in-time archive. The system separates deterministic market state from model-generated interpretation and records data freshness, missing inputs and other conditions that affect whether a report should be produced.</dd>
+            <dt>Evidence</dt>
+            <dd>Deterministic state; validation/freshness rules; point-in-time reports; regime history; public/private state separation; research artifacts and a pre-registered null result.</dd>
+            <dt>Failure / surprise</dt>
+            <dd>A pre-registered test of one momentum screen came back null: the top decile minus the bottom decile straddled zero across every group and horizon tried. It stays a screen, not an edge.</dd>
+            <dt>What changed</dt>
+            <dd>The project moved from "generate a market view" toward "establish whether the system has enough valid evidence to produce a view."</dd>
+            <dt>Limit</dt>
+            <dd>This project does not claim market outperformance.</dd>
+          </dl>
+        </details>
+        <p class="links"><a href="https://kingnuggets.com">King Nuggets →</a><a href="https://kingnuggets.com/lab/">the Lab →</a><a href="https://kingnuggets.com/lab/article/sctr-scanner/">the null result →</a></p>
+      </div>
+    </article>
+
+    <!-- ============ EVIDENCE: CLOSED-LOOP AUTOMATION ============ -->
+    <article class="proj">
+      <div class="mark" aria-hidden="true">
+        <svg viewBox="0 0 52 52"><circle class="fg" cx="10" cy="12" r="3"/><circle class="fg" cx="42" cy="10" r="3"/><circle class="fg" cx="26" cy="26" r="3.5"/><circle class="fg" cx="12" cy="42" r="3"/><circle class="fg" cx="42" cy="40" r="3"/><path class="au" d="M13 14 L23 24 M39 12 L29 24 M15 40 L23 29 M39 38 L29 28"/></svg>
+      </div>
+      <div>
+        <header>
+          <h3>Closed-Loop Automation — Verifying the Work, Not the Model</h3>
+          <span class="status running"><i></i>running</span>
+        </header>
+        <p><b>Designed a verification layer around AI-assisted automation so task completion is established by checks and evidence rather than by the model's own claim.</b></p>
+        <dl class="case">
+          <dt>Problem</dt>
+          <dd>An automated task can look complete even when its inputs were stale, a calculation failed or the model produced a plausible result from incomplete evidence.</dd>
+          <dt>Capability</dt>
+          <dd>Automation · AI evaluation · control design · operational risk · troubleshooting · system architecture</dd>
+        </dl>
+        <details>
+          <summary>How it worked</summary>
+          <dl class="case">
+            <dt>Assumption</dt>
+            <dd>That a model's completion message is good evidence that the task succeeded.</dd>
+            <dt>What I did</dt>
+            <dd>I designed a lightweight verification pattern around existing AI-assisted workflows: trigger → input checks → execute → deterministic verification → bounded retry → approval where required → deploy → persist state. The goal was to stop treating a model's completion message as proof that the task succeeded.</dd>
+            <dt>Evidence</dt>
+            <dd>Workflow contracts; validation rules; explicit terminal states; retry/stop logic; persistent state; local/privacy boundaries.</dd>
+            <dt>Failure / surprise</dt>
+            <dd>The counter-example is Hermes, in the list below: I never built the layer around it, and it never did the job it was built for.</dd>
+            <dt>What changed</dt>
+            <dd>The automation architecture shifted from output generation toward explicit success conditions, machine-readable failure states and human approval boundaries.</dd>
+            <dt>Limit</dt>
+            <dd>This was developed in personal/local workflows, not represented as an enterprise production deployment.</dd>
+          </dl>
+        </details>
+        <p class="links"><a href="https://github.com/pklearns/agent-reliability-skills">the public skills →</a></p>
+      </div>
+    </article>
+
+    <!-- ============ EVIDENCE: KILL TESTS ============ -->
+    <article class="proj">
+      <div class="mark" aria-hidden="true">
+        <svg viewBox="0 0 52 52"><rect class="st" x="8" y="8" width="36" height="36"/><path class="au" d="M16 16 L36 36 M36 16 L16 36"/></svg>
+      </div>
+      <div>
+        <header>
+          <h3>Killing Ideas Before Building Them</h3>
+          <span class="status parked"><i></i>parked</span>
+          <span class="date">decided October 2026</span>
+        </header>
+        <p><b>Used pre-defined kill tests to evaluate three plausible ideas; two were parked before build work began and the third was deliberately reduced to one public artifact.</b></p>
+        <dl class="case">
+          <dt>Problem</dt>
+          <dd>AI makes it cheap to turn almost any plausible idea into a prototype, which makes it easier to spend time validating the wrong thing after the build has already started.</dd>
+          <dt>Capability</dt>
+          <dd>Research design · experimentation · evidence evaluation · scope control · decision discipline</dd>
+        </dl>
+        <details>
+          <summary>How it worked</summary>
+          <dl class="case">
+            <dt>Assumption</dt>
+            <dd>That a plausible idea, plus how fast AI can build it, is reason enough to start building.</dd>
+            <dt>What I did</dt>
+            <dd>I defined continuation thresholds before researching three consulting/product ideas. The research separated problem evidence, consequence, current workaround, spending evidence, dissatisfaction, and fit with the proposed deliverable.</dd>
+            <dt>Evidence</dt>
+            <dd>Pre-defined scoring rubric; research packs; PASS/HOLD/KILL decision logic; final decision memo.</dd>
+            <dt>Failure / surprise</dt>
+            <dd>Two research runs scored the same idea on opposite sides of the line. The score alone could not make the call.</dd>
+            <dt>What changed</dt>
+            <dd>Two ideas were parked before build work began. A third advanced only to one bounded public artifact rather than a product. That artifact is not published yet.</dd>
+            <dt>Limit</dt>
+            <dd>Desk research can justify a field test. It does not prove willingness to pay.</dd>
+          </dl>
+        </details>
+      </div>
+    </article>
+
+  </div>
+
+  <h2 class="section" id="status">Everything else, by status</h2>
   <p>A live look inside my head: what I've built over the past year and what state each thing is currently in. Statuses are honest — some of this runs every day, some is specced and waiting, some is parked on purpose. Updated when reality changes, not on a schedule.</p>
 
   <div class="legend" aria-hidden="true">
@@ -126,7 +269,7 @@ a { color: var(--garnet); text-decoration: underline; text-decoration-thickness:
       </div>
       <div>
         <header>
-          <h2>The Build Log</h2>
+          <h3>The Build Log</h3>
           <span class="status running"><i></i>running</span>
           <span class="date">weekly · since Jul 2026</span>
         </header>
@@ -142,7 +285,7 @@ a { color: var(--garnet); text-decoration: underline; text-decoration-thickness:
       </div>
       <div>
         <header>
-          <h2>King Nuggets Lab</h2>
+          <h3>King Nuggets Lab</h3>
           <span class="status running"><i></i>running</span>
           <span class="date">scaffolding live · entries pending</span>
         </header>
@@ -157,7 +300,7 @@ a { color: var(--garnet); text-decoration: underline; text-decoration-thickness:
       </div>
       <div>
         <header>
-          <h2>Exhibits</h2>
+          <h3>Exhibits</h3>
           <span class="status running"><i></i>running</span>
           <span class="date">published 22 Aug 2026</span>
         </header>
@@ -172,7 +315,7 @@ a { color: var(--garnet); text-decoration: underline; text-decoration-thickness:
       </div>
       <div>
         <header>
-          <h2>AI Data Center Spend Map</h2>
+          <h3>AI Data Center Spend Map</h3>
           <span class="status running"><i></i>running</span>
           <span class="date">WaveMiner · Research note 01</span>
         </header>
@@ -191,7 +334,7 @@ a { color: var(--garnet); text-decoration: underline; text-decoration-thickness:
       </div>
       <div>
         <header>
-          <h2>Agents as Consumers</h2>
+          <h3>Agents as Consumers</h3>
           <span class="status running"><i></i>running</span>
           <span class="date">WaveMiner · Research note 02</span>
         </header>
@@ -210,7 +353,7 @@ a { color: var(--garnet); text-decoration: underline; text-decoration-thickness:
       </div>
       <div>
         <header>
-          <h2>The arithmetic behind a Florida hurricane kit</h2>
+          <h3>The arithmetic behind a Florida hurricane kit</h3>
           <span class="status running"><i></i>running</span>
           <span class="date">published September 28, 2026</span>
         </header>
@@ -229,7 +372,7 @@ a { color: var(--garnet); text-decoration: underline; text-decoration-thickness:
       </div>
       <div>
         <header>
-          <h2>King Nuggets</h2>
+          <h3>King Nuggets</h3>
           <span class="status running"><i></i>running</span>
           <span class="date">daily archive · publishes selectively</span>
         </header>
@@ -245,7 +388,7 @@ a { color: var(--garnet); text-decoration: underline; text-decoration-thickness:
       </div>
       <div>
         <header>
-          <h2>The research system behind it</h2>
+          <h3>The research system behind it</h3>
           <span class="status parked"><i></i>parked</span>
           <span class="date">last touched 22 Sep 2026</span>
         </header>
@@ -260,7 +403,7 @@ a { color: var(--garnet); text-decoration: underline; text-decoration-thickness:
       </div>
       <div>
         <header>
-          <h2>Agents and automations</h2>
+          <h3>Agents and automations</h3>
           <span class="status running"><i></i>running</span>
           <span class="date">never formally audited</span>
         </header>
@@ -275,7 +418,7 @@ a { color: var(--garnet); text-decoration: underline; text-decoration-thickness:
       </div>
       <div>
         <header>
-          <h2>Project name</h2>
+          <h3>Project name</h3>
           <span class="status specced"><i></i>specced</span>
           <span class="date">date or cadence</span>
         </header>
