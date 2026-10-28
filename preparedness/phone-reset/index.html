@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keep the signal. Lose the scroll. · Preparedness · Work by PK</title>
+<meta name="description" content="A practical, free-first phone reset for people who still need to be reachable.">
+<meta name="author" content="Patrick · workbypk.com">
+<link rel="canonical" href="https://workbypk.com/preparedness/phone-reset/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Work by PK">
+<meta property="og:title" content="Keep the signal. Lose the scroll.">
+<meta property="og:description" content="A practical, free-first phone reset for people who still need to be reachable.">
+<meta property="og:url" content="https://workbypk.com/preparedness/phone-reset/">
+<meta property="article:published_time" content="2026-10-28">
+<meta property="article:modified_time" content="2026-10-28">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Keep the signal. Lose the scroll.">
+<meta name="twitter:description" content="A practical, free-first phone reset for people who still need to be reachable.">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700&display=swap" rel="stylesheet">
+<style>
+/* Section system (design-system.md §1–§7), copied from build-log/log.css.
+   Light-only. Table style is builder-chosen, approved 2026-10-22 ("table ok"). */
+:root {
+  --garnet: #6E1E28;
+  --garnet-deep: #41111A;
+  --paper: #E4E5E2;
+  --gold: #CDA96A;
+  --ink: #221317;
+  --ink-soft: color-mix(in oklch, var(--ink) 70%, var(--paper));
+  --rule: color-mix(in oklch, var(--garnet) 22%, var(--paper));
+  --mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+  --s--1: clamp(0.8rem, 0.76rem + 0.2vw, 0.9rem);
+  --s-0: clamp(1rem, 0.94rem + 0.3vw, 1.15rem);
+  --s-1: clamp(1.25rem, 1.1rem + 0.7vw, 1.6rem);
+  --s-2: clamp(1.9rem, 1.4rem + 2.4vw, 3.2rem);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Switzer', ui-sans-serif, system-ui, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: var(--s-0);
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--garnet); color: #E2C48C; }
+
+.wrap { max-width: 66ch; margin-inline: auto; padding: clamp(3rem, 8vh, 5.5rem) clamp(1.25rem, 5vw, 2rem); }
+
+.top { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 2.6rem; }
+.wordmark {
+  display: inline-grid; place-items: center;
+  width: 40px; aspect-ratio: 1;
+  background: var(--garnet); color: var(--gold);
+  font-weight: 700; font-size: 1.05rem;
+}
+.top a { color: var(--garnet); text-decoration: none; font-size: var(--s--1); }
+.top a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+h1 { font-size: var(--s-2); font-weight: 700; letter-spacing: -0.02em; line-height: 1.08; text-wrap: balance; color: var(--garnet-deep); margin-bottom: 1.2rem; }
+h2 { font-size: var(--s-1); font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; text-wrap: balance; color: var(--garnet-deep); margin-top: 3.4rem; }
+p { margin-block: 1em; text-wrap: pretty; }
+a { color: var(--garnet); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-color: rgba(110, 30, 40, 0.35); transition: text-decoration-color 160ms ease; } a:hover { text-decoration-color: var(--garnet); }
+a:focus-visible { outline: 2px solid var(--garnet); outline-offset: 3px; }
+
+.stamp { font: 500 var(--s--1)/1.7 var(--mono); letter-spacing: 0.03em; color: color-mix(in oklch, var(--ink) 55%, var(--paper)); margin: 0; }
+
+ol, ul { padding-left: 1.3em; margin-block: 1em; }
+li { margin-bottom: 0.6em; text-wrap: pretty; }
+
+.table { overflow-x: auto; margin-block: 1.2em; border-top: 1px solid var(--rule); }
+table { border-collapse: collapse; width: 100%; min-width: 36rem; font-size: var(--s--1); }
+th { text-align: left; font-weight: 600; color: var(--garnet-deep); padding: 0.6rem 0.8rem 0.6rem 0; border-bottom: 1px solid var(--rule); vertical-align: bottom; }
+td { padding: 0.7rem 0.8rem 0.7rem 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+
+.after { margin-top: 2.4rem; font-size: var(--s--1); color: var(--ink-soft); }
+.sig { margin-top: 2.2rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
+/* Wide screens (P7a): the column widens; paragraphs and lists keep the 66ch cap. */
+@media (min-width: 64rem) {
+  .wrap { max-width: 90rem; }
+  .wrap p, .wrap ol, .wrap ul { max-width: 66ch; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <span class="wordmark" aria-hidden="true">PK</span>
+    <a href="https://workbypk.com">← workbypk.com</a>
+  </div>
+
+  <h1>Keep the signal. Lose the scroll.</h1>
+  <p class="stamp">Patrick · workbypk.com · Last verified October 22, 2026 · iPhone-first, adaptable to Android</p>
+
+  <main>
+
+    <p><strong>The objective:</strong> Fewer unnecessary interruptions and reflexive app opens <strong>without missing important family, health, household, work, or safety communications</strong>. This is not a contest to minimize every minute of screen time. A useful phone is not the enemy.</p>
+
+    <section id="five-minute">
+    <h2>The five-minute version</h2>
+    <ol>
+      <li><strong>Sort notifications by consequence, not by app popularity.</strong> Immediate and audible for genuinely urgent items; immediate but silent for useful messages; Notification Center only for reference; off for promotional and attention-seeking alerts.</li>
+      <li><strong>Stop batching alerts you want to answer.</strong> If Scheduled Summary causes missed messages, remove those apps from it or turn the summary off. Use delivery style and per-app categories instead.</li>
+      <li><strong>Create two Focus modes.</strong> A Deep Work mode and an Off-Duty mode can filter noise while allowing appropriate callers and safety alerts. Test exceptions before trusting the setup.</li>
+      <li><strong>Make the first Home Screen a toolbox.</strong> Calendar, weather, home controls, tasks, notes, maps, calls, and messages. Move feeds away; hide particularly tempting apps if needed.</li>
+      <li><strong>Add friction only where you need it.</strong> Start with built-in controls ($0). If reflexive opens persist, try a free app-opening delay such as ScreenZen before paying for a blocker.</li>
+    </ol>
+    <p><strong>Operating principle:</strong> The phone should be easy to use on purpose and mildly inconvenient to use on impulse.</p>
+    </section>
+
+    <section id="notifications">
+    <h2>1. The notification decision system</h2>
+    <p>There is a difference between a notification being <em>useful</em> and being <em>interrupt-worthy</em>. Assign every app or alert category to one of four lanes.</p>
+    <div class="table"><table>
+      <thead><tr><th>Lane</th><th>Examples</th><th>Recommended delivery</th></tr></thead>
+      <tbody>
+        <tr><td><strong>A · Urgent</strong></td><td>Family emergencies; school or caregiver calls; home intrusion, smoke or water alarms; serious health/safety alerts; severe weather</td><td><strong>Immediate + audible/haptic</strong>; verify Focus behavior</td></tr>
+        <tr><td><strong>B · Actionable</strong></td><td>Direct messages; appointment changes; delivery that requires action; a critical work or system issue</td><td><strong>Immediate, usually silent</strong>; Lock Screen or Notification Center as useful</td></tr>
+        <tr><td><strong>C · Reference</strong></td><td>Routine home-device status; ordinary health trends; routine account updates; most email</td><td><strong>Notification Center only</strong>; no banner, sound, or distracting badge</td></tr>
+        <tr><td><strong>D · Noise</strong></td><td>Sales, suggested content, trending stories, social recommendations, routine marketing</td><td><strong>Off</strong>; open the app intentionally</td></tr>
+      </tbody>
+    </table></div>
+    <p><strong>Important nuance:</strong> The same app may contain all four lanes. A smart-home app might send an emergency alarm and also routine motion events. A bank app might send a fraud alert and a credit-card offer. Start with notification categories <em>inside that app</em>; then tune its iPhone-level delivery. iOS does not universally classify different events within the same app for you.</p>
+    <p><strong>Communication rule:</strong> Avoid a blanket "contacts only" call setting if you depend on calls from unknown school, medical, service-provider, or emergency numbers. Put people you must hear from on the allowlist, consider repeated-call exceptions, and verify how unsaved numbers are handled.</p>
+    <p><strong>Privacy rule:</strong> Keep sensitive message previews hidden on the Lock Screen if other people can see your device. This reduces exposure without silencing the alert.</p>
+    </section>
+
+    <section id="configure">
+    <h2>2. Configure iPhone notifications without losing important messages</h2>
+    <p><strong>A. Review every app:</strong> Settings → Notifications → [app]. For each, decide whether to permit alerts and whether they should appear on the Lock Screen, in Notification Center, or as a banner. Turn sounds and badges on only where they earn their place. Some apps have a Customize Notifications or in-app settings option. <a href="https://support.apple.com/guide/iphone/iph7c3d96bab/ios">Apple: notification settings</a></p>
+    <p><strong>B. Reconsider Scheduled Summary:</strong> Settings → Notifications → Scheduled Summary. If you repeatedly discover messages too late, stop summarizing those apps. A silent alert delivered immediately to Notification Center is often a better middle ground than delaying it for hours. Change the Lock Screen display to <strong>Stack</strong> or <strong>Count</strong> if a tall notification list itself invites checking. <a href="https://support.apple.com/guide/iphone/iph7c3d96bab/ios">Apple: notification settings</a></p>
+    <p><strong>C. Configure Focus selectively:</strong> Settings → Focus. Create <strong>Deep Work</strong> and <strong>Off-Duty</strong>. The <em>Silence Notifications From</em> approach may be safer than a narrow allowlist when unrecognized but important calls or alerts must still arrive. Separately choose allowed people, call options, and app exceptions. Review Time Sensitive settings rather than allowing every app to bypass Focus. <a href="https://support.apple.com/guide/iphone/iph21d43af5b/ios">Apple: Focus controls</a></p>
+    <p><strong>D. Set true emergency exceptions:</strong> For a trusted contact, open Contacts → Edit → Ringtone or Text Tone → Emergency Bypass if you want that person's calls or texts to sound even in Silent mode or during Focus. Emergency Bypass is intentionally stronger than an ordinary Focus allowance; use sparingly. <a href="https://support.apple.com/guide/iphone/iph21d43af5b/ios">Apple: Focus (Emergency Bypass)</a></p>
+    <p><strong>E. Test before declaring victory:</strong> Ask someone to call and text while each Focus is active. Trigger a safe test alert in home-security or monitoring apps, if supported. Confirm your watch and other devices do not unexpectedly suppress or duplicate notifications. Do not assume that a label such as "Time Sensitive" guarantees delivery from every provider.</p>
+    </section>
+
+    <section id="home-screen">
+    <h2>3. Turn the Home Screen into a control panel</h2>
+    <p>Keep <strong>one intentional first page</strong>, not an app museum. A suggested starting set:</p>
+    <ul>
+      <li><strong>At a glance:</strong> calendar, weather, next task, and any truly useful household status widget.</li>
+      <li><strong>Quick actions:</strong> phone, messages, home controls, notes/capture, tasks, maps, camera.</li>
+      <li><strong>On demand:</strong> research browser, finance, health tracking, and work tools when needed.</li>
+      <li><strong>Off the first page:</strong> infinite feeds, entertainment, shopping, video recommendations, and other habitual open-and-check apps.</li>
+    </ul>
+    <p>Move distracting apps into the App Library rather than making them impossible to access. For a stronger hurdle, long-press an eligible downloaded app and use <strong>Require Face ID</strong> or <strong>Hide and Require Face ID</strong>. Not every app is eligible to be hidden. <a href="https://support.apple.com/guide/iphone/iph00f208d05/ios">Apple: lock or hide apps</a></p>
+    <p><strong>Optional experiment:</strong> Turn on grayscale for one week if colorful feeds are a strong cue. Switch it off if it interferes with maps, photographs, cameras, or practical tasks. There is no compelling reason to treat grayscale as mandatory.</p>
+    </section>
+
+    <section id="boundaries">
+    <h2>4. Put boundaries around behaviors, not essential utilities</h2>
+    <ul>
+      <li><strong>Morning:</strong> Keep alarms, navigation, safety, exercise, weather, and a deliberate planning check. Avoid recreational feeds before your day has started.</li>
+      <li><strong>Deep work:</strong> Silence commentary, promotional alerts, and nonurgent chatter. Keep a defined route for urgent people and operational issues.</li>
+      <li><strong>Meals and personal time:</strong> Keep the phone out of hand and ideally away from the table, while critical alerts remain reachable.</li>
+      <li><strong>Before bed:</strong> Stop recreational scrolling. Keep family/emergency communication available; do not depend on blanket airplane mode if people may need you.</li>
+      <li><strong>News and social apps:</strong> Give them deliberate check windows. If you need research for work or a project, open it with a question to answer and an exit point.</li>
+    </ul>
+    <p><strong>A practical test:</strong> Before opening an app, ask, "What am I here to do?" If you cannot name the task, put the phone down. This is the low-tech version of an app-opening delay.</p>
+    </section>
+
+    <section id="tools">
+    <h2>5. Optional tools: start at $0</h2>
+    <div class="table"><table>
+      <thead><tr><th>Tool</th><th>Good for</th><th>Cost approach</th><th>Verdict</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Built-in iPhone controls</strong></td><td>Notifications, Focus, Home Screen, Screen Time, app authentication</td><td>Included</td><td><strong>Start here.</strong> No new subscription or app permissions.</td></tr>
+        <tr><td><strong><a href="https://screenzen.co/">ScreenZen</a></strong></td><td>Pauses before opening distracting apps, usage limits, scheduled blocks</td><td>Free; donation-supported</td><td><strong>Best first extra app</strong> if you still open feeds automatically.</td></tr>
+        <tr><td><strong><a href="https://one-sec.app/">one sec</a></strong></td><td>A deliberate interruption before opening selected apps</td><td>Free limited use; paid options</td><td>Well suited to a single problematic app; has published field-study evidence.</td></tr>
+        <tr><td><strong>Paid blockers (e.g., Opal)</strong></td><td>Stricter enforcement when free tools are easy to override</td><td>Subscription and terms vary</td><td>Consider only after a two-week test shows a real need.</td></tr>
+      </tbody>
+    </table></div>
+    <p>Avoid paying for a minimalist launcher just to hide icons. Also distinguish app blocking from <em>notification intelligence</em>: a blocker does not necessarily know which school, health, or household message is important.</p>
+    <p><strong>Work-device caution:</strong> Follow employer security and mobile-device-management policies. Do not install consumer blocking, VPN, accessibility, or monitoring tools on managed devices without approval. Native Focus and notification settings may also be controlled by your organization.</p>
+    </section>
+
+    <section id="evidence">
+    <h2>6. What the evidence says (and does not say)</h2>
+    <ul>
+      <li><strong>App-opening friction has promising evidence.</strong> A six-week field study of <strong>280 users</strong> of the one sec intervention found a <strong>57% reduction in actual openings of targeted apps</strong>, combining fewer attempts and cancellations at the pause screen. This is specific to target apps and not a promise of a 57% decrease in all phone use. <a href="https://pubmed.ncbi.nlm.nih.gov/36795756/">Grüning et al.</a></li>
+      <li><strong>Turning notifications off alone may not solve overuse.</strong> A randomized study with <strong>205 participants</strong> found no significant reduction in checking frequency or overall screen time after one week of disabling notifications, although perceived checking-habit strength declined and fear of missing out increased. <a href="https://doi.org/10.1080/15213269.2024.2334025">Beyond the Buzz</a></li>
+      <li><strong>More dramatic mobile-internet restrictions can change outcomes.</strong> A 2025 randomized trial found improvements in attention, mental health, and subjective well-being after two weeks without smartphone internet access while calls/texts remained available. That is <strong>more restrictive</strong> than this guide recommends; it supports the value of reducing constant access, not the superiority of any particular app. <a href="https://doi.org/10.1093/pnasnexus/pgaf017">Castelo et al., PNAS Nexus</a></li>
+      <li><strong>Creator results are not clinical evidence.</strong> Dramatic screen-time reductions in videos are interesting personal examples, not guaranteed outcomes. Treat grayscale, widget placement, and strict phone-free windows as experiments to evaluate, not universal requirements.</li>
+    </ul>
+    </section>
+
+    <section id="reset">
+    <h2>7. A 14-day reset you can actually keep</h2>
+    <ul>
+      <li><strong>Day 1 — Baseline:</strong> Record average daily pickups, time in your top three distracting apps, and any important notifications you have missed.</li>
+      <li><strong>Day 2 — Audit:</strong> Put major apps and relevant in-app event types into lanes A, B, C, or D.</li>
+      <li><strong>Day 3 — Safeguard:</strong> Configure family, school, caregiver, home, health, and work-critical alerts; test them.</li>
+      <li><strong>Day 4 — Delivery:</strong> Remove useful apps from Scheduled Summary; make B silent-immediate, C Notification Center only, D off.</li>
+      <li><strong>Day 5 — Focus:</strong> Set up Deep Work and Off-Duty modes; test incoming calls, texts, and safety alerts in both.</li>
+      <li><strong>Day 6 — Home Screen:</strong> Keep utility and capture apps on the first page; move or hide the feeds.</li>
+      <li><strong>Day 7 — First review:</strong> Fix anything missed; identify the app or situation causing the most automatic pickups.</li>
+      <li><strong>Days 8–10 — Boundaries:</strong> Make meals and one daily concentration block feed-free. Plan brief check windows for news/social apps.</li>
+      <li><strong>Day 11 — Friction:</strong> If needed, add a pause or unlock limit to just the most problematic one or two apps.</li>
+      <li><strong>Day 12 — Reliability:</strong> Re-test key alerts, especially in evening and sleep settings. Confirm unknown-number policy.</li>
+      <li><strong>Day 13 — Compare:</strong> Review pickups and unplanned app minutes against Day 1. Do not penalize productive phone use.</li>
+      <li><strong>Day 14 — Keep or revise:</strong> Retain what improved attention <strong>without</strong> losing important messages. Remove controls that add hassle without benefit.</li>
+    </ul>
+    <p><strong>Measure success with three numbers:</strong> (1) unnecessary pickups, (2) minutes in apps opened without a purpose, and (3) important alerts missed. Aim to reduce the first two while keeping the third at <strong>zero</strong>. There is no credible universal "ideal screen time" number for every adult.</p>
+    </section>
+
+    <section id="videos">
+    <h2>8. The videos behind this guide</h2>
+    <div class="table"><table>
+      <thead><tr><th>Source</th><th>Useful principle</th><th>How to apply it</th></tr></thead>
+      <tbody>
+        <tr><td><a href="https://www.youtube.com/watch?v=M4PHnwPY3Bw">Sean Oulashin — The Easy Way to Beat Phone Addiction</a></td><td>Light-touch design, notification audit, minimalist screen</td><td>Most directly actionable starting point</td></tr>
+        <tr><td><a href="https://www.youtube.com/watch?v=yuJMIs_XSIQ">Arthur Brooks — A 5-Step Approach to Ending Your Phone Addiction</a></td><td>Tech-free times and zones, mindful consumption</td><td>Protect attention and relationships, with exceptions for real responsibilities</td></tr>
+        <tr><td><a href="https://www.youtube.com/watch?v=jYNzBwLZNes">Cal Newport — How To Cure Your Phone &amp; Social Media Addiction (My 3-Step Process)</a></td><td>Zero-based technology budgeting</td><td>Keep a tool only when its benefits justify its cost in attention</td></tr>
+        <tr><td><a href="https://www.youtube.com/watch?v=ENUO7dbZ-TY">Ryder Carroll (Bullet Journal) — I Simplified My Phone (Without Making It Dumb)</a></td><td>Boring, actionable, contextual phone</td><td>Design around real tasks, not passive consumption</td></tr>
+        <tr><td><a href="https://www.youtube.com/watch?v=C7G1pWYVtBg">Matt D'Avella — I used a dumb phone for 30 days</a></td><td>Simplicity has trade-offs</td><td>Avoid sacrificing navigation, communication, or safety merely to reduce a metric</td></tr>
+      </tbody>
+    </table></div>
+    <p><strong>Bottom line:</strong> Don't surrender useful technology. Design the flow of information so urgent events reach you, useful updates are available without interrupting you, and attention-seeking apps stop choosing your next action.</p>
+    </section>
+
+    <section id="how-built">
+    <h2>How this was built</h2>
+    <p>I built this to take back some of my time. I want to focus on my family, not be drawn to the device at all times, and I still need to be reachable when it matters. The settings and the 14-day reset are what I'm starting with.</p>
+    </section>
+
+    <section id="sources">
+    <h2>Sources</h2>
+    <ul>
+      <li><a href="https://support.apple.com/guide/iphone/iph7c3d96bab/ios">Change notification settings on iPhone</a>, Apple Support</li>
+      <li><a href="https://support.apple.com/guide/iphone/iph21d43af5b/ios">Allow or silence notifications for a Focus on iPhone</a>, Apple Support</li>
+      <li><a href="https://support.apple.com/guide/iphone/iph00f208d05/ios">Lock or hide an app on iPhone</a>, Apple Support</li>
+      <li>Grüning et al., <a href="https://pubmed.ncbi.nlm.nih.gov/36795756/">Directing smartphone use through the self-nudge app one sec</a>, PNAS, 2023</li>
+      <li>Dekker et al., <a href="https://doi.org/10.1080/15213269.2024.2334025">Beyond the Buzz: Investigating the Effects of a Notification-Disabling Intervention on Smartphone Behavior and Digital Well-Being</a>, Media Psychology, 2024</li>
+      <li>Castelo et al., <a href="https://doi.org/10.1093/pnasnexus/pgaf017">Blocking mobile internet on smartphones improves sustained attention, mental health, and subjective well-being</a>, PNAS Nexus, 2025</li>
+    </ul>
+    </section>
+
+  </main>
+
+  <p class="after"><em>Prepared by Patrick King · <a href="https://workbypk.com/">Work by PK</a> · October 2026. Independent educational field guide; not a medical recommendation or employer policy. iPhone settings may vary by iOS version and device. Links and app pricing/features may change. This guide is not affiliated with the video creators or third-party app developers.</em></p>
+
+  <p class="sig">— Patrick King, CMT</p>
+
+</div>
+</body>
+</html>

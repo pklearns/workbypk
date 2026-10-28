@@ -340,6 +340,8 @@ Any page built from this system is bound by the following.
 
 **Preparedness guides (Patrick, 2026-09-28: "commit + doc"):** guides under `/preparedness/` keep the research-note design too. First instance: G1, `preparedness/hurricane-kit/index.html`. It uses N1's tokens, type and fonts and follows the shared basics above, with one difference: paragraphs and notes have no `ch` cap and fill the column to match the tables (`.prose`, `.wrap .note`), and the column follows P7a: 1080px below `64rem`, `90rem` at `64rem` and wider. Both at Patrick's request ("commit + doc", 2026-09-28; "wider", 2026-10-01).
 
+**Exception, G2 (Patrick, 2026-10-22: "section"):** `preparedness/phone-reset/index.html` is built on the section system (§1–§7 tokens, type, P8 frame, light-only), not the research-note design, and takes only G1's page structure (back-link, meta line with "Last verified", h2 sections, Sources). Its tables use a builder-chosen style Patrick approved ("table ok", 2026-10-22): 1px `--rule` hairlines, sentence-case headers, no fills. That is a single use; it does not resolve §8 Tables or Long-form body copy.
+
 ---
 
 ## Appendix — B1 reference (not binding)
