@@ -15,8 +15,8 @@ Derived from pages already built for workbypk.com. Nothing here is invented: eve
 |---|---|---|
 | A1 | `index.html` | `1467c25bf011003eeaddd7e05bdf68525e2a2147d61dcfc0e4190ae8c87ca3ba` |
 | A1 | `styles.css` | `6e0214d5a5bee58da478d0300120e839b99156f200f1edd546f9c73578e3160f` |
-| A2 | `projects/index.html` | `fa65388434ff131f4312fd5a2ac482b65b8299106461d5ef944afee3467d41e4` |
-| A3 | `build-log/index.html` | `541d39897264bd8f7abe10c8a08055c50527abfe3deec75b1f19ed503c52f6fb` |
+| A2 | `projects/index.html` | `18c8da0fd1dfc49a7e810b27e6ee42590adc46c859d344aa443b4e2a2035038f` |
+| A3 | `build-log/index.html` | `772e1741c7b9ca13c37a434b8de8e8671d1f5e420ced081087b5216728a58e0e` |
 | A3 | `build-log/log.css` | `bc3fd9c2cacaaebde4038402644f4ac1988891aa438c6638ee9df31cdf89d296` |
 | A4 | `exhibits/index.html` | `2f6b8737c870115d041eef768620d6f126acd243707876288b40802053907d30` |
 | A5 | `exhibits/shape-of-time/index.html` | `8d8fc91edd3d89a6d0af1cf313228d15a7dd5f2692fb42417f9332a01304a4dc` |
@@ -29,6 +29,8 @@ Derived from pages already built for workbypk.com. Nothing here is invented: eve
 **Re-pin (2026-09-26, Patrick: "recheck and update as needed"):** A2 was re-pinned again after the placeholder copy landed; no line numbers moved. A2, A3 and A4 were re-pinned again after the D8 fix, A4 once more after D2, and A2 and A4 after D6. A2, A3 and A4 were re-pinned once more after D1, D3, D4 and D9; D3 and D9 deleted lines, so A2 traces past line 16 moved up one and A3 traces past line 47 moved up one (past the old line 68, two). The earlier re-pins after D8, D2 and D6 changed one line in each file, so no line numbers moved then. A1, A2 and A3 are re-pinned to the files as committed with this change. The original extraction pins could not be recovered, because those working-tree versions were never committed. So every trace into these five files was re-derived by content against the current files, and the line numbers were updated. Traces to *Superseded (for reference)* hub values cite the last pre-D5 versions as `styles.css@1344aab` and `index.html@1344aab` (`git show 1344aab:styles.css`). A5, N1, R1, R2 and N2 match their pins (A4 was re-pinned after D8, D2 and D6, below). A2, A3 (`log.css`) and A4 were re-pinned after the D10–D12 roll-out. A1 (`index.html`) and A3 (`build-log/index.html`) were re-pinned again after their stylesheet links gained a `?v=p7a` version tag, so browsers fetch the P7a stylesheets instead of a cached copy; no line numbers moved. A1 (`index.html`, `styles.css`) was re-pinned again after the P7a wide-screen change; every hub trace into `index.html` below the masthead was re-derived by content (the section wrappers moved those lines). The earlier drift notes for A2 (the N1 card at `projects/index.html:169-186` and the N2 card at `:187-205`) are folded into this re-pin.
 
 **Re-pin (2026-10-02, portfolio synthesis update):** A1 and A2 re-pinned. A1 (`index.html`) gained a "How I work" section in `.notes` and a nav link; hub traces below the nav moved down one line, and traces below the Now section moved down 16. A2 (`projects/index.html`) gained a new intro, a "Three worked examples" block (three `.proj` cards with a `dl.case` field list and a native `<details>` for the longer read) and an "Everything else, by status" heading above the original intro; card titles changed from `h2` to `h3` under the two `h2.section` headings, and new CSS was added before the `.sig` line. **A2 line-number traces past line 98 are stale and were not re-derived;** re-derive by content before relying on them. New single-source patterns (not rules): `h2.section`, `dl.case` labels in mono 500, `<details>`/`summary` disclosure, and `h3` card titles.
+
+**Re-pin (2026-10-30, Build Log No. 8):** A2 and A3 re-pinned. A3 (`build-log/index.html`) gained Issue No. 7 (`6fec8b3`) and Issue No. 8 (`cc000ae`) as new first entries, 7 lines each, inserted after line 31; the two traces past that point moved down 14 (`ISSUE NO. 4` label 53 → 67, `.sig` 90 → 104), and the traces at lines 16, 22-25 and 27 did not move. A2 (`projects/index.html`) gained the phone-reset card (`07eee85`, 15 lines inserted after line 367) and one sentence in the closed-loop "Failure / surprise" field (`15d147a`, line 203 edited in place). No A2 trace at or below line 98 moved; the 2026-10-02 caveat on A2 traces past line 98 still stands.
 
 **Corpus rule:** Corpus = pages that make up Patrick's own site (hub and section pages), regardless of which model produced the first draft. Exhibits displayed as specimens of other models' work (gpt, grok, fable, shape-of-time) are excluded because they are shown as comparisons, not adopted as house style. KN Lab is excluded as out of scope (not part of workbypk). Research notes (N1 onward) are Patrick's own work but are not corpus: they are data documents that keep their own design by decision (2026-09-24), and they are governed by §11, not by §1–§7.
 
@@ -169,11 +171,11 @@ Each color's role is inferred from the selector it styles.
 ## 4. Labels, captions and metadata (section system unless noted)
 
 **Rules:**
-- **MUST** set index labels (`ISSUE NO. 4`, `EXHIBIT 01`) in mono, 600, `--s--1`, `line-height: 1`, `letter-spacing: 0.12em`, gold. The uppercase is in the copy itself, not produced by CSS. [`build-log/log.css:57` + `build-log/index.html:53`; `exhibits/index.html:72` + `exhibits/index.html:111`] (A3 + A4 only; A3 copies A4.)
+- **MUST** set index labels (`ISSUE NO. 4`, `EXHIBIT 01`) in mono, 600, `--s--1`, `line-height: 1`, `letter-spacing: 0.12em`, gold. The uppercase is in the copy itself, not produced by CSS. [`build-log/log.css:57` + `build-log/index.html:67`; `exhibits/index.html:72` + `exhibits/index.html:111`] (A3 + A4 only; A3 copies A4.)
 - **MUST** set metadata lines in mono, 500, `--s--1`, `line-height: 1.7`, `letter-spacing: 0.03em`, colored ink 55% into paper. This covers dates and tech fingerprints. [`build-log/log.css:61-66`, `exhibits/index.html:78-82`]
 - **MUST** separate metadata fields with ` · ` (middle dot). [`projects/index.html:131`, `exhibits/index.html:114`, `index.html:111`]
 - **MUST** end link rows with `→`. In A3 and A4 the arrow is gold and nudges 4px on hover. [`build-log/log.css:69-70`, `exhibits/index.html:75-76`; A2 uses the plain `→` character in link text, `projects/index.html:134`]
-- **MUST** sign section pages with a `.sig` line reading `— Patrick King, CMT`, set 2.2–2.4rem below the content. [`projects/index.html:100,292`; `build-log/log.css:77`, `build-log/index.html:90`; `exhibits/index.html:87,142`]
+- **MUST** sign section pages with a `.sig` line reading `— Patrick King, CMT`, set 2.2–2.4rem below the content. [`projects/index.html:100,292`; `build-log/log.css:77`, `build-log/index.html:104`; `exhibits/index.html:87,142`]
 - **Section page titles end with a period** in all three section pages: "Projects." "Build log." "Exhibits." [`projects/index.html:111`, `build-log/index.html:27`, `exhibits/index.html:98`]. This is a copy pattern. Under the §10 contract a builder never writes titles anyway.
 
 **Single-source patterns:**
@@ -224,7 +226,7 @@ Each color's role is inferred from the selector it styles.
 - **P8 — MUST** frame every page the same way (research notes: see §11; the hub: see the exception below):
   - **Top:** the PK wordmark and a `← workbypk.com` back-link.
   - **Bottom:** the `— Patrick King, CMT` signature.
-  - **Traces:** [`projects/index.html:106-109,292`, `build-log/index.html:22-25,90`, `exhibits/index.html:93-96,142`]
+  - **Traces:** [`projects/index.html:106-109,292`, `build-log/index.html:22-25,104`, `exhibits/index.html:93-96,142`]
 - **Hub exception (Patrick, 2026-09-26: "ratify"):** the hub keeps its own frame: the masthead (name, role, nav), the divider and the footer line "Patrick King · Bay Miles Group LLC · 2026" [`index.html:16-27,110-112`]. It has no wordmark, back-link or `.sig`, because a back-link to workbypk.com on workbypk.com would point at itself.
 
 ---
